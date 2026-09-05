@@ -1,0 +1,12 @@
+.pgrid{display:grid;gap:1.4rem;}
+@media(min-width:60rem){.pgrid{grid-template-columns:1fr 21rem;align-items:start;}}
+.pmain{min-width:0;}
+.pside{display:grid;gap:.8rem;}
+.tawrap{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px;margin-top:1.6rem;box-shadow:var(--sh-1);}
+.ta{width:100%;min-height:8.5rem;background:transparent;border:0;border-radius:10px;color:var(--ink);font-family:inherit;font-size:1.05rem;line-height:1.8;padding:1.1rem 1.2rem;resize:vertical;outline:none;}
+.tafoot{display:flex;justify-content:space-between;padding:.75rem 1.2rem;border-top:1px solid var(--soft);font-size:.8rem;color:var(--ink-3);}
+.mini{list-style:none;margin:0;padding:0;display:grid;gap:.9rem;}
+.mini li{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;}
+.mn{width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--fm);font-size:.72rem;display:grid;place-items:center;flex:none;border:1px solid var(--accent-line);margin-top:.1rem;}
+.mini b{display:block;font-size:.9rem;font-weight:600;margin-bottom:.1rem;}
+.mini em{display:block;font-style:normal;font-size:.82rem;color:var(--ink-2);line-height:1.65;}
