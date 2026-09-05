@@ -1,0 +1,42 @@
+{
+  "name": "QUDRA Final Documentation + Bolt Execution Package",
+  "version": "v2-2026-09-04-merged-final",
+  "description": "النسخة النهائية المدمجة — تجمع أفضل ما في حزمتي توثيق موازيتين (v1 عمق منتجي + هندسي، v2 أدوات تنفيذ تفصيلية) في نسخة واحدة معتمدة. راجع DECISIONS.md القرار 006 للتفاصيل الكاملة.",
+  "primary_bolt_prompt": "QUDRA_FINAL_BOLT_PROMPT.md",
+  "entry_point": "AGENTS.md",
+  "generated_control_files": [
+    "README.md",
+    "قواعد.md",
+    "SKILLS.md",
+    "QUDRA_FINAL_BOLT_PROMPT.md",
+    "AGENTS.md",
+    "PROJECT_MAP.md",
+    "TASKS.md",
+    "STATUS.md",
+    "TEST_REPORT.md",
+    "CHANGELOG.md",
+    "DECISIONS.md"
+  ],
+  "preserved_reference_files": [
+    "prototype.html",
+    "design-system.html",
+    "dev-handoff.md"
+  ],
+  "memory_structure": [
+    ".memory/glossary.md",
+    ".memory/decisions.md",
+    ".memory/notes.md",
+    ".memory/tasks/ (يُملأ أثناء التنفيذ، ملف واحد لكل مهمة)"
+  ],
+  "archived_historical_files": [
+    "docs/archive/01_فكرة_المشروع_QUDRA.md",
+    "docs/archive/02_قواعد_QUDRA_AI_Coding_Rules.md",
+    "docs/archive/03_TASKS_QUDRA_Living_Log.md",
+    "docs/archive/04_BRD_QUDRA_for_Bolt.md",
+    "docs/archive/QUDRA_Master_Profile_V3_AR.md",
+    "docs/archive/README_1.md",
+    "docs/archive/آخر_برومت_بولت.md",
+    "docs/archive/QUDRA_FINAL_BOLT_PROMPT_v1_1.md"
+  ],
+  "notes": "لا يوجد ملف CLAUDE.md منفصل في هذه النسخة — تم توحيده مع AGENTS.md لتفادي ازدواجية الصيانة (كانا قد تعارضا في نسخة سابقة بعد تحديث أحدهما فقط). AGENTS.md هو نقطة الدخول الوحيدة."
+}
