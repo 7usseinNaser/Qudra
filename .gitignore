@@ -8,3 +8,12 @@ venv/
 .mypy_cache/
 .DS_Store
 *.db
+
+# Node & Frontend
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+.eslintcache
+designer-skills/
+

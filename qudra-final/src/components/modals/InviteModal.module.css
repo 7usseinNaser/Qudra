@@ -1,0 +1,123 @@
+/* ═════════ InviteModal.module.css ═════════ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 32rem;
+  padding: 1.8rem;
+  box-shadow: var(--sh-2, 0 20px 40px rgba(0, 0, 0, 0.15));
+  text-align: start;
+}
+
+.invhead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.invhead h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.invhead p {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  font-family: var(--fm);
+  margin: 0.2rem 0 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--ink-3);
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.closeBtn:hover {
+  background: var(--soft);
+  color: var(--ink);
+}
+
+.why {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+}
+
+.field label {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  resize: vertical;
+  background: var(--card);
+  color: var(--ink);
+  outline: none;
+}
+
+.field textarea:focus {
+  border-color: var(--accent);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.suc {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.suc h3 {
+  font-size: 1.3rem;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.suc p {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  margin-bottom: 1.5rem;
+}

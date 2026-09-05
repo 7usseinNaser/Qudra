@@ -1,0 +1,264 @@
+/* ═════════ LoginPage.module.css ═════════
+   Reconstruction حرفي ودقيق من prototype.html (#slogin)
+*/
+
+.auth {
+  min-height: 100vh;
+  background: var(--card);
+  position: relative;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.band {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 180px;
+  background: linear-gradient(180deg, var(--accent-soft) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.bandMark {
+  position: absolute;
+  inset-inline-end: -40px;
+  top: -30px;
+  width: 280px;
+  height: auto;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.skip {
+  position: absolute;
+  top: 1.1rem;
+  inset-inline-start: 1.1rem;
+  z-index: 3;
+  background: none;
+  border: 0;
+  color: var(--ink-3);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 0 0.6rem;
+  transition: color 0.2s;
+}
+
+.skip:hover {
+  color: var(--ink);
+}
+
+.inner {
+  width: 100%;
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vh, 5rem) 1.2rem 3rem;
+  position: relative;
+}
+
+.top {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.topLogo {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto;
+  display: block;
+}
+
+.top h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0.8rem;
+  color: var(--ink);
+}
+
+.top p {
+  color: var(--ink-2);
+  font-size: 0.89rem;
+  margin-top: 0.35rem;
+  line-height: 1.6;
+}
+
+.fields {
+  display: grid;
+  gap: 1.1rem;
+  margin-bottom: 1.4rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.6rem 0.9rem;
+  transition: border-color 0.18s, background 0.18s;
+}
+
+.field:focus-within {
+  border-color: var(--accent);
+  background: var(--card);
+}
+
+.field label {
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  font-family: var(--fm);
+  letter-spacing: 0.05em;
+}
+
+.field input {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0;
+  outline: none;
+  min-height: 26px;
+}
+
+.pwrow {
+  display: flex;
+  align-items: center;
+}
+
+.pwrow input {
+  flex: 1;
+}
+
+.peek {
+  background: none;
+  border: 0;
+  padding: 0.2rem;
+  cursor: pointer;
+  color: var(--ink-3);
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  transition: color 0.18s, background 0.18s;
+}
+
+.peek:hover {
+  color: var(--ink);
+  background: var(--line);
+}
+
+.fielderr {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--danger, #C2372B);
+  margin: 0;
+  background: var(--danger-soft, rgba(194, 55, 43, 0.08));
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+}
+
+.lrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+}
+
+.chk {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.chk input {
+  display: none;
+}
+
+.cbx {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--line-2);
+  display: grid;
+  place-items: center;
+  transition: 0.18s;
+}
+
+.chk input:checked + .cbx {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.chk input:checked + .cbx::after {
+  content: "";
+  width: 3px;
+  height: 6px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.linkbtn {
+  background: none;
+  border: 0;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  padding: 0;
+}
+
+.linkbtn:hover {
+  text-decoration: underline;
+}
+
+.cta {
+  min-height: 48px;
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.96rem;
+  font-weight: 600;
+  box-shadow: 0 10px 26px -10px rgba(0, 120, 122, 0.65);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  background: #00696B;
+}
+
+.alt {
+  text-align: center;
+  font-size: 0.87rem;
+  color: var(--ink-2);
+  margin-top: 1rem;
+}
+
+.alt button {
+  background: none;
+  border: 0;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.87rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.alt button:hover {
+  text-decoration: underline;
+}

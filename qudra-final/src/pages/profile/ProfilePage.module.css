@@ -1,0 +1,841 @@
+/* ═════════ ProfilePage.module.css ═════════
+   مطابق 100% لـ prototype.html (#u1, #u0, #u3, #evd, #u6, #u2, #u4, #u5)
+*/
+
+.profileContainer {
+  padding-bottom: 4rem;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin-bottom: 1.2rem;
+}
+
+.back {
+  background: none;
+  border: none;
+  color: var(--ink-2);
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.82rem;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.eyebrow {
+  font-family: var(--fm);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.scrt {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.scrp {
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+
+.headrow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.pgrid {
+  display: grid;
+  gap: 1.3rem;
+}
+
+@media (min-width: 62rem) {
+  .pgrid {
+    grid-template-columns: 1fr 20rem;
+    align-items: start;
+  }
+}
+
+.pmain {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.pside {
+  display: grid;
+  gap: 1rem;
+}
+
+/* ── Hero الشخصي (phero) ── */
+.phero {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.3rem 1.5rem;
+  box-shadow: var(--sh-1, 0 1px 2px rgba(26, 26, 26, 0.04));
+  margin-bottom: 1.3rem;
+}
+
+.phav {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex: none;
+  box-shadow: 0 4px 14px -4px rgba(0, 120, 122, 0.55);
+}
+
+.phinfo {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.phinfo h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.phinfo p {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin-top: 0.2rem;
+}
+
+.phact {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+/* ── شريط الإحصائيات (Statstrip) ── */
+.statstrip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+@media (min-width: 34rem) {
+  .statstrip {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.statstrip > div {
+  background: var(--card);
+  padding: 1rem 0.9rem;
+  display: grid;
+  gap: 0.15rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.sv {
+  font-family: var(--fm);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.sk {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+/* ── بطاقات القدرات في ملفي ── */
+.skcards {
+  display: grid;
+  gap: 0.7rem;
+}
+
+@media (min-width: 40rem) {
+  .skcards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.skc {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  background: var(--card);
+  display: grid;
+  gap: 0.5rem;
+}
+
+.skc.pend {
+  border-style: dashed;
+  background: transparent;
+}
+
+.skch {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.skch h4,
+.skch h3 {
+  font-size: 0.95rem;
+  unicode-bidi: isolate;
+  font-weight: 600;
+  margin: 0;
+}
+
+.skv {
+  font-family: var(--fm);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.skc.pend .skv {
+  color: var(--ink-3);
+}
+
+.skb {
+  height: 7px;
+  border-radius: 4px;
+  background: var(--soft);
+  overflow: hidden;
+}
+
+.skb i {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--accent-fill);
+}
+
+.skb.g i {
+  background: var(--line-2);
+}
+
+.skm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+/* ── قوة الملف (Profile Strength) ── */
+.strengthbox {
+  padding: 1.2rem;
+}
+
+.strengthbox .strv {
+  font-family: var(--fm);
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.strbar {
+  height: 9px;
+  border-radius: 5px;
+  background: var(--soft);
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.strbar i {
+  display: block;
+  height: 100%;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--accent-fill), #4fd8d8);
+}
+
+.strrows {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.sr {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.83rem;
+  color: var(--ink-2);
+}
+
+.srd {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-fill);
+  flex: none;
+}
+
+/* ── U0: مصادر الأدلة ── */
+.srcs {
+  display: grid;
+  gap: 0.6rem;
+}
+
+@media (min-width: 46rem) {
+  .srcs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.srcCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.95rem 1.1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem 1rem;
+  align-items: center;
+}
+
+.srcCard.linked {
+  border-inline-start: 3px solid var(--accent);
+}
+
+.srcCard h4 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.srcCard .st {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  margin-top: 0.15rem;
+}
+
+.srcCard .st b {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.srcCard .act {
+  border: 1px solid var(--line-2);
+  background: var(--card);
+  color: var(--ink-2);
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.15s;
+  font-family: inherit;
+}
+
+.srcCard .act:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.srcCard .out {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--line);
+  padding-top: 0.55rem;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+
+/* ── U3: سجل الأدلة (Evidence) ── */
+.filters {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  margin-bottom: 0.8rem;
+}
+
+.flt {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.83rem;
+  color: var(--ink-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: inherit;
+  transition: 0.16s;
+}
+
+.flt.on {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.fc {
+  font-family: var(--fm);
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.evlist {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.evi {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  transition: border-color 0.16s;
+}
+
+.evi:hover {
+  border-color: var(--accent);
+}
+
+.evi.weak {
+  border-style: dashed;
+}
+
+.eic {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--soft);
+  color: var(--ink-2);
+  display: grid;
+  place-items: center;
+  font-family: var(--fm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  flex: none;
+}
+
+.eic.big {
+  width: 48px;
+  height: 48px;
+  font-size: 1rem;
+  border-radius: 12px;
+}
+
+.evi h4 {
+  font-size: 0.95rem;
+  margin: 0 0 0.2rem;
+  unicode-bidi: isolate;
+}
+
+.em {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+
+.em b {
+  color: var(--ink-2);
+}
+
+.vb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.vb.v1 {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.vb.v2 {
+  background: var(--soft);
+  color: var(--ink-2);
+}
+
+.vb.v3 {
+  background: #fdf6ec;
+  color: #b88230;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.vb.v1 .dot {
+  background: var(--accent-fill);
+}
+
+.vb.v2 .dot {
+  border: 1.5px solid var(--accent-fill);
+}
+
+.vb.v3 .dot {
+  border: 1.5px dashed var(--gapc, #e6a23c);
+}
+
+/* ── تفاصيل الدليل (EVD) ── */
+.evdhead {
+  padding: 1.3rem;
+}
+
+.evdtop {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.evdtop h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem;
+}
+
+.evdmeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--soft);
+  font-size: 0.84rem;
+}
+
+.evdmeta .k {
+  color: var(--ink-3);
+  margin-inline-end: 0.4rem;
+}
+
+.evdmeta .v {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.sigrid {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+
+.sgi {
+  display: grid;
+  grid-template-columns: 8rem 1fr 3.5rem;
+  gap: 0.8rem;
+  align-items: center;
+  font-size: 0.84rem;
+}
+
+.sgb {
+  height: 8px;
+  background: var(--soft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.sgb i {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--accent-fill);
+}
+
+.verifbox {
+  padding: 1.2rem;
+}
+
+.tiph2 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.impactbox {
+  padding: 1.2rem;
+}
+
+.impbig {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0.8rem 0;
+}
+
+.imnum {
+  font-family: var(--fm);
+  font-size: 1.8rem;
+  color: var(--ink-3);
+}
+
+.imnum.big {
+  font-size: 2.3rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.afflist {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+}
+
+.aff {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+
+.aff .mono {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── U6: مسار التطور عبر الزمن (Timeline) ── */
+.tlbox {
+  padding: 1.3rem 1.4rem;
+}
+
+.tlkey {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.3rem;
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+}
+
+.tlkey span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.tlkey i {
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  flex: none;
+}
+
+.tlwrap {
+  overflow-x: auto;
+  padding-bottom: 0.3rem;
+}
+
+.tlsvg {
+  width: 100%;
+  min-width: 34rem;
+  height: auto;
+  display: block;
+}
+
+.tlsvg .gl {
+  stroke: var(--soft);
+  stroke-width: 1;
+}
+
+.tlsvg .ax {
+  fill: var(--ink-3);
+  font-family: var(--fm);
+  font-size: 9px;
+}
+
+.tlsvg .ln {
+  fill: none;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tlsvg .pt {
+  cursor: pointer;
+  transition: r 0.15s ease;
+}
+
+.tlsvg .pt:hover {
+  r: 7;
+}
+
+.tltip {
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--soft);
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  min-height: 2.8em;
+  line-height: 1.7;
+}
+
+.stories {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.sty {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.stn {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: none;
+  margin-top: 0.35rem;
+}
+
+.stn.teal {
+  background: #00b8b8;
+}
+
+.stn.teal2 {
+  background: #00787a;
+}
+
+.stn.amber {
+  background: #ffc107;
+}
+
+.sty b {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.15rem;
+}
+
+.sty em {
+  display: block;
+  font-style: normal;
+  font-size: 0.84rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+
+/* ── U4: الفرص المطابقة (Opportunities) ── */
+.opp {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  align-items: start;
+  margin-bottom: 0.8rem;
+}
+
+.opp h4 {
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+.opp .co {
+  font-size: 0.79rem;
+  color: var(--ink-3);
+  margin-top: 0.1rem;
+}
+
+.opp .need {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--line);
+  padding-top: 0.55rem;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.opp .need b {
+  color: var(--gapc, #e6a23c);
+  font-weight: 600;
+}
+
+.opp .sc {
+  text-align: left;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+  font-size: 1.05rem;
+}
+
+/* ── U5: جواز الإثبات (Passport) ── */
+.passport {
+  background: var(--card);
+  border: 1px solid var(--line-2);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.passport .ph {
+  padding: 1.25rem 1.4rem;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.passport .pb {
+  padding: 1.25rem 1.4rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.passport .pf {
+  padding: 0.85rem 1.4rem;
+  border-top: 1px solid var(--line);
+  background: var(--soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

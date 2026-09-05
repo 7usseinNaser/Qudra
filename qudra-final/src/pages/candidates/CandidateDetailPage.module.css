@@ -1,0 +1,533 @@
+/* ═════════ CandidateDetailPage.module.css ═════════
+   مطابق حرفياً لـ prototype.html (#s5 + #turnBox)
+*/
+
+.detailPage {
+  padding-bottom: 4rem;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin-bottom: 1.2rem;
+}
+
+.back {
+  background: none;
+  border: none;
+  color: var(--ink-2);
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.82rem;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.headrow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.scrt {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.scrp {
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+
+.whygrid {
+  display: grid;
+  gap: 1.4rem;
+}
+
+@media (min-width: 62rem) {
+  .whygrid {
+    grid-template-columns: 19rem 1fr;
+    align-items: start;
+  }
+}
+
+.whyside {
+  display: grid;
+  gap: 1rem;
+  position: sticky;
+  top: 6rem;
+}
+
+.whymain {
+  display: grid;
+  gap: 1.4rem;
+}
+
+/* ── بطاقة النتيجة (Scorecard) ── */
+.scorecard {
+  text-align: center;
+  padding: 1.3rem;
+}
+
+.dual {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  margin: 0 auto 0.9rem;
+}
+
+.dual svg {
+  transform: rotate(-90deg);
+}
+
+.dual circle {
+  transition: stroke-dashoffset 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.dualc {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+}
+
+.dualc .big {
+  font-family: var(--fm);
+  font-size: 2.7rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.kv {
+  border-top: 1px solid var(--soft);
+  padding-top: 0.9rem;
+  display: grid;
+  gap: 0.5rem;
+  text-align: start;
+}
+
+.kv div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.86rem;
+  gap: 1rem;
+}
+
+.kv span {
+  color: var(--ink-2);
+}
+
+.kv b {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.kv b.mono {
+  font-family: var(--fm);
+  font-weight: 400;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── دليل الرموز ── */
+.legend {
+  padding: 1.2rem;
+}
+
+.legend h3 {
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+}
+
+.lg {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  margin-bottom: 0.55rem;
+}
+
+.lg:last-child {
+  margin-bottom: 0;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.dot.v1 {
+  background: var(--accent-fill);
+}
+
+.dot.v2 {
+  border: 2px solid var(--accent-fill);
+}
+
+.dot.v3 {
+  border: 1.5px dashed var(--ink-3);
+}
+
+/* ── الأسباب (Reasons) ── */
+.secrow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.secrow h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.rsn {
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  margin-bottom: 0.6rem;
+  background: var(--soft);
+}
+
+.rsn.gap {
+  background: #fdf6ec;
+  border: 1px solid #faecd8;
+}
+
+.rsntop {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.rsndot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-fill);
+  flex: none;
+}
+
+.rsn.gap .rsndot {
+  background: var(--gapc-fill, #e6a23c);
+}
+
+.rsnname {
+  flex: 1;
+}
+
+.rsntag {
+  font-size: 0.76rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-2);
+}
+
+.rsn.gap .rsntag {
+  color: var(--gapc, #b88230);
+  background: #fff;
+}
+
+.rsngot {
+  font-family: var(--fm);
+  font-size: 0.82rem;
+  color: var(--ink-2);
+}
+
+.rsntrack {
+  height: 6px;
+  background: var(--card);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0.35rem 0;
+}
+
+.rsntrack i {
+  display: block;
+  height: 100%;
+  background: var(--accent-fill);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.rsn.gap .rsntrack i {
+  background: var(--gapc-fill, #e6a23c);
+}
+
+.rsnnote {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  margin: 0.3rem 0 0;
+  line-height: 1.5;
+}
+
+/* ── صندوق التحول (TurnBox) ── */
+.turn {
+  border: 1px solid rgba(255, 193, 7, 0.75);
+  background: rgba(255, 193, 7, 0.06);
+  border-radius: 12px;
+  padding: 1.35rem 1.45rem;
+  transition: all 0.4s ease;
+}
+
+.turn.done {
+  border-color: var(--accent-fill);
+  background: var(--accent-soft);
+}
+
+.turnhead {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.turnhead h2 {
+  font-size: 1.12rem;
+  margin: 0;
+}
+
+.turnstamp {
+  font-family: var(--fm);
+  font-size: 0.8rem;
+  margin-inline-start: auto;
+  color: var(--ink-3);
+}
+
+.td {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  flex: none;
+  border: 2px dashed var(--gapc, #e6a23c);
+}
+
+.turn.done .td {
+  background: var(--accent-fill);
+  border: 0;
+}
+
+.turnbody {
+  color: var(--ink-2);
+  font-size: 0.92rem;
+  max-width: 68ch;
+  margin-bottom: 1.1rem;
+  line-height: 1.6;
+}
+
+.path {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.pstep {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  transition: border-color 0.3s;
+}
+
+.pstep.done {
+  border-color: var(--accent-fill);
+}
+
+.pstep .b {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--fm);
+  font-size: 0.68rem;
+  background: var(--soft);
+  color: var(--ink-3);
+}
+
+.pstep.done .b {
+  background: var(--accent-fill);
+  color: #fff;
+}
+
+.pstep .l {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.pstep .s {
+  margin-inline-start: auto;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  font-family: var(--fm);
+}
+
+/* ── الدليل الجديد بعد التحدي ── */
+.newev {
+  background: var(--card);
+  border: 1px solid var(--accent-fill);
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+}
+
+.nehead {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.nehead h3 {
+  font-size: 1rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+.slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.slots > div {
+  padding: 0.7rem 0.85rem;
+  border-inline-end: 1px solid var(--soft);
+}
+
+.slots > div:last-child {
+  border-inline-end: 0;
+}
+
+.sl {
+  font-family: var(--fm);
+  font-size: 0.62rem;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+
+.sv {
+  font-size: 0.85rem;
+  font-weight: 500;
+  unicode-bidi: isolate;
+  margin: 0;
+}
+
+.deltas {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--soft);
+  flex-wrap: wrap;
+}
+
+.dv {
+  font-family: var(--fm);
+  font-size: 1.2rem;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+.dv s {
+  color: var(--ink-3);
+}
+
+.dv b {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.dv b.up {
+  color: var(--accent);
+}
+
+/* ── جدول الأدلة ── */
+.evtable {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.evhead,
+.evrow {
+  display: grid;
+  grid-template-columns: 1.2fr 0.7fr 1.1fr 0.6fr 0.8fr;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+}
+
+.evhead {
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.evrow {
+  border-bottom: 1px solid var(--soft);
+}
+
+.evrow:last-child {
+  border-bottom: 0;
+}
+
+.evrow.fresh {
+  background: var(--accent-soft);
+}
+
+.src {
+  font-family: var(--fm);
+  font-size: 0.8rem;
+  color: var(--ink);
+}
+
+.sk {
+  font-weight: 500;
+}
+
+.dt {
+  font-family: var(--fm);
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+
+.lv {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+}

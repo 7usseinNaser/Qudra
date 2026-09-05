@@ -1,0 +1,265 @@
+/* ═════════ CandidatesPage.module.css ═════════
+   مطابق حرفياً لـ prototype.html (#s4)
+*/
+
+.candsPage {
+  padding-bottom: 4rem;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin-bottom: 1.2rem;
+}
+
+.back {
+  background: none;
+  border: none;
+  color: var(--ink-2);
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.82rem;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.scrt {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.scrp {
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+
+.cands {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.cand {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  transition: border-color 0.16s;
+  width: 100%;
+  text-align: right;
+  font-family: inherit;
+  color: inherit;
+}
+
+.cand.lead {
+  border-color: var(--ink);
+}
+
+.cand.won {
+  border-color: var(--accent-fill);
+}
+
+.cand .rk {
+  font-family: var(--fm);
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  width: 22px;
+  font-variant-numeric: tabular-nums;
+  flex: none;
+}
+
+.cand .av {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  flex: none;
+}
+
+.cand .who {
+  min-width: 11rem;
+}
+
+.cand .who h3 {
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+.cand .who p {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  font-family: var(--fm);
+  margin: 0.15rem 0 0;
+}
+
+.cand .chips {
+  flex: 1 1 14rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.cand .sc {
+  text-align: center;
+  flex: none;
+  width: 5rem;
+}
+
+.cand .sc .v {
+  font-family: var(--fm);
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.cand .sc .tr {
+  height: 4px;
+  background: var(--soft);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.cand .sc .tr i {
+  display: block;
+  height: 100%;
+  background: var(--accent-fill);
+  border-radius: 2px;
+  transition: width 0.45s ease;
+}
+
+.cand .rdy {
+  flex: none;
+  width: 9rem;
+}
+
+.whybtn {
+  flex: none;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 8px;
+  height: 42px;
+  padding: 0 1.1rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.16s;
+  font-family: inherit;
+}
+
+.whybtn:hover {
+  border-color: var(--ink);
+}
+
+.cinv {
+  flex: none;
+  height: 42px;
+  padding: 0 1.2rem;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  font-family: inherit;
+}
+
+.cinv:hover {
+  background: #00696b;
+}
+
+/* ── الرقاقات (Chips) ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  padding: 0.28rem 0.6rem 0.28rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.chip.proven {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-line);
+}
+
+.chip.proven .c {
+  font-family: var(--fm);
+  font-size: 0.72rem;
+  background: #fff;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 0.05rem 0.4rem;
+}
+
+.chip.claimed {
+  background: var(--soft);
+  color: var(--ink-3);
+  border: 1px dashed var(--line-2);
+}
+
+.chip.claimed .g {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gapc, #e6a23c);
+}
+
+/* ── الحالات ── */
+.pillReady {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-line);
+}
+
+.pillNear {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: #fdf6ec;
+  color: #b88230;
+  border: 1px solid #faecd8;
+}
+
+.pillFar {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: var(--soft);
+  color: var(--ink-3);
+  border: 1px solid var(--line);
+}

@@ -1,0 +1,208 @@
+/* ═════════ TopBar.module.css ═════════
+   مطابق 100% لـ prototype.html (.topbar, .stepper, .subnav)
+*/
+
+.topbar {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.in {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+  font-family: inherit;
+}
+
+.nm {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.whoami {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.navName {
+  font-family: var(--fm);
+  color: var(--ink-2);
+  font-size: 0.78rem;
+}
+
+.av {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.themebtn {
+  background: none;
+  border: none;
+  color: var(--ink-2);
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  transition: color 0.16s, background 0.16s;
+}
+
+.themebtn:hover {
+  color: var(--ink);
+  background: var(--soft);
+}
+
+.roles {
+  display: flex;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.roles button {
+  border: none;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 0.86rem;
+  font-weight: 400;
+  padding: 0.3rem 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.16s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.roles button[aria-selected="true"] {
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(26, 26, 26, 0.08);
+}
+
+/* ── Stepper (مسار صاحب المشكلة) ── */
+.stepper {
+  border-top: 1px solid var(--soft);
+}
+
+.stepNav {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+}
+
+.stepBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-3);
+  font-size: 0.87rem;
+  height: 50px;
+  padding: 0 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.16s, border-color 0.16s;
+  font-family: inherit;
+}
+
+.stepBtn:hover {
+  color: var(--ink-2);
+}
+
+.stepBtn[aria-current="step"] {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom-color: var(--ink);
+}
+
+.stepBtn .n {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--ink-3);
+  font-family: var(--fm);
+  font-size: 0.68rem;
+  display: grid;
+  place-items: center;
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  transition: 0.16s;
+}
+
+.stepBtn[aria-current="step"] .n {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+.stepBtn.done .n {
+  background: var(--accent-fill);
+  color: #fff;
+}
+
+/* ── Subnav (مسار صاحب القدرة - ملفي) ── */
+.subnav {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+.subnavInner {
+  display: flex;
+  gap: 0.15rem;
+  overflow-x: auto;
+}
+
+.subnavBtn {
+  border: none;
+  background: none;
+  color: var(--ink-2);
+  font-size: 0.87rem;
+  font-weight: 500;
+  padding: 0.75rem 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: 0.15s;
+  font-family: inherit;
+}
+
+.subnavBtn:hover {
+  color: var(--ink);
+}
+
+.subnavBtn[aria-current="page"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
