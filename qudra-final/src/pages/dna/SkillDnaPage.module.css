@@ -257,6 +257,7 @@
 
 .flag {
   background: var(--card);
-  border-left: 3px solid var(--accent);
+  border-inline-start: 3px solid var(--accent);
   padding: 0.2rem 0.8rem;
+  padding-inline-start: 0.8rem;
 }

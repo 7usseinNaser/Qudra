@@ -134,7 +134,7 @@ export function CandidatesPage() {
             className={`${styles.cand} ${c.isLead ? styles.lead : ''}`}
             data-candidate-id={c.id}
           >
-            <span className={styles.rk}>{String(idx + 1).padStart(2, '0')}</span>
+            <span className={`${styles.rk} mono`}>{String(idx + 1).padStart(2, '0')}</span>
             <span className={styles.av}>{c.name.charAt(0)}</span>
             <span className={styles.who}>
               <h3>{c.name}</h3>
@@ -145,7 +145,7 @@ export function CandidatesPage() {
               {c.proven.map(([skill, count]) => (
                 <span key={skill} className={`${styles.chip} ${styles.proven}`}>
                   <span>{skill}</span>
-                  <span className={styles.c}>{count}</span>
+                  <span className={`${styles.c} num`}>{count}</span>
                 </span>
               ))}
               {c.claimed.map((skill) => (
@@ -157,7 +157,7 @@ export function CandidatesPage() {
             </span>
 
             <span className={styles.sc}>
-              <span className={styles.v}>{c.score}%</span>
+              <span className={`${styles.v} num`}>{c.score}%</span>
               <span className={styles.tr}>
                 <i style={{ width: `${c.score}%` }} />
               </span>

@@ -239,7 +239,7 @@ export function ProfilePage() {
                     <div className={styles.skm}>
                       <span>تحت عتبة التوثيق</span>
                       <button
-                        className={styles.linkbtn}
+                        className={`${styles.linkbtn} ${styles.gap}`}
                         onClick={() => navigate('/profile/gaps')}
                       >
                         سد الفجوة

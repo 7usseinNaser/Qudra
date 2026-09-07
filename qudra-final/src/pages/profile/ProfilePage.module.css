@@ -254,6 +254,45 @@
   color: var(--ink-3);
 }
 
+/* ─── Track B (مبني على توكنز design-system.html): أزرار الروابط المصغرة ─── */
+.linkbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--proof-text);
+  font-family: var(--f-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease, color 0.15s ease;
+}
+
+.linkbtn:hover {
+  background: var(--proof-tint);
+  border-color: var(--proof-line);
+  color: var(--proof-text);
+  transform: translateY(-1px);
+}
+
+.linkbtn:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+.linkbtn.gap, .gap {
+  color: var(--gap-text);
+}
+
+.linkbtn.gap:hover, .gap:hover {
+  background: var(--gap-tint);
+  border-color: var(--gap-line);
+  color: var(--gap-text);
+}
+
 /* ── قوة الملف (Profile Strength) ── */
 .strengthbox {
   padding: 1.2rem;
@@ -347,21 +386,33 @@
   font-weight: 600;
 }
 
-.srcCard .act {
-  border: 1px solid var(--line-2);
-  background: var(--card);
-  color: var(--ink-2);
-  border-radius: 5px;
-  padding: 0.3rem 0.7rem;
-  font-size: 0.8rem;
+.srcCard .act, .act {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--f-display);
+  font-size: 0.84rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.15s;
-  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, color 0.15s ease;
 }
 
-.srcCard .act:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+.srcCard .act:hover, .act:hover {
+  border-color: var(--proof-text);
+  color: var(--proof-text);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+
+.srcCard .act:active, .act:active {
+  transform: translateY(1px) scale(0.985);
 }
 
 .srcCard .out {

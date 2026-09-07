@@ -206,3 +206,34 @@
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
+
+/* ── استجابة الشاشات الصغيرة (≤56rem / 896px ومقاسات 375px/414px) ── */
+@media (max-width: 56rem) {
+  .in {
+    gap: 0.75rem;
+    height: 56px;
+  }
+
+  .navName {
+    display: none;
+  }
+
+  .whoami {
+    gap: 0.4rem;
+  }
+
+  .roles button {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.78rem;
+  }
+
+  .nm {
+    font-size: 1.05rem;
+  }
+
+  /* إخفاء Stepper وSubnav من الشريط العلوي على الموبايل لتفادي التكديس والتمرير الأفقي الزائد — يتولى BottomNav التنقل */
+  .stepper,
+  .subnav {
+    display: none !important;
+  }
+}

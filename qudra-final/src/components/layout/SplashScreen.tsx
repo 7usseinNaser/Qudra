@@ -13,6 +13,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react'
+import { QudraLogo } from '../ui/QudraLogo'
 import styles from './SplashScreen.module.css'
 
 export function SplashScreen() {
@@ -69,20 +70,17 @@ export function SplashScreen() {
     >
       <div className={styles.spIn}>
         <span className={styles.spHalo} aria-hidden="true" />
-        <img
-          src="/assets/qudra-mark-dark.svg"
-          alt=""
+        <QudraLogo
+          size={96}
           className={styles.spMark}
           aria-hidden="true"
-          width={96}
-          height={96}
+          alt=""
         />
-        <img
-          src="/assets/qudra-wordmark-dark.webp"
-          alt="قُدرة"
-          className={styles.spLock}
+        <QudraLogo
+          variant="wordmark"
           width={240}
-          height={107}
+          className={styles.spLock}
+          alt="قُدرة"
         />
         <span className={styles.spTag}>
           من الكلام إلى <b>الدليل</b>

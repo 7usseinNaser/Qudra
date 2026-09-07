@@ -5,7 +5,7 @@
 
 **قاعدة الصيانة الإلزامية:** لا يُغلق أي Task يتضمن ملفاً جديداً أو تعديلاً جوهرياً على ملف موجود دون تحديث هذا الملف. راجع القسم 35 من `QUDRA_FINAL_BOLT_PROMPT.md` للصيغة الدقيقة المطلوبة لكل إدخال.
 
-**آخر تحديث:** لم يبدأ التنفيذ بعد — هذا الهيكل الابتدائي فقط.
+**آخر تحديث:** 2026-09-07 — اكتمال B0 (B0.5.6 توحيد شعار قُدرة عبر QudraLogo، تصحيح الأزرار وفق design-system.html، وإضافة مكوّن BottomNav للهواتف)
 
 ---
 
@@ -361,9 +361,38 @@
 
 ### `src/components/layout/MainLayout.tsx`
 
-**الغرض:** التخطيط العام الموحّد الذي يغلّف الشاشات الداخلية ويدمج الشريط العلوي `TopBar` ومحتوى المسار عبر `<Outlet />`.
+**الغرض:** التخطيط العام الموحّد الذي يغلّف الشاشات الداخلية، يدمج الشريط العلوي `TopBar` ومحتوى المسار عبر `<Outlet />`، ويدمج شريط التنقل السفلي للهواتف `BottomNav` مع هامش حماية سفلي يمنع حجب الأزرار التفاعلية.
 
-**آخر تحديث:** B0.2.1 — 2026-09-05
+**يحتوي على:**
+- هيكل الصفحة الرئيسي وحاوية المسارات `<main id="mainC">`.
+- استدعاء `TopBar` الثابت في أعلى الشاشة.
+- استدعاء `BottomNav` النشط على شاشات الهواتف (`≤56rem`).
+- دعم الهامش الديناميكي السفلي لمناطق الأمان (`env(safe-area-inset-bottom)`).
+
+**الترابط مع باقي المشروع:**
+- يستورد من: `src/components/layout/TopBar.tsx`, `src/components/layout/BottomNav.tsx`, `src/components/layout/MainLayout.module.css`.
+- يُستخدم من قبل: `src/app/router/routes.tsx`.
+
+**آخر تحديث:** B0.2.2 (Refined) — 2026-09-07
+
+---
+
+### `src/components/layout/BottomNav.tsx`
+
+**الغرض:** شريط التنقل السفلي المخصص للهواتف الذكية والشاشات الصغيرة (`≤56rem` / 896px)، يحل معضلة غياب التنقل بالإبهام على الموبايل ويوفر مساحات لمس مريحة ومطابقة للمعايير (≥44px).
+
+**يحتوي على:**
+- مسار صاحب المشكلة (`role === 'c'`): 5 وجهات (المشكلة، القدرات، المحاكاة، النتيجة، المرشحون).
+- مسار صاحب القدرة (`role === 'u'`): 5 وجهات (ملفي، مصادري، أدلتي، تطوّري، الجواز).
+- مؤشر التبويب النشط الدائري (`.activeDot`) ولون التركواز المميز (`--accent`).
+- تأثير ضبابي زجاجي فاخر للخلفية (`backdrop-filter: blur(16px)`).
+- مساحة حماية سفلية مخصصة لأجهزة iPhone وأندرويد الحديثة (`env(safe-area-inset-bottom)`).
+
+**الترابط مع باقي المشروع:**
+- يستورد من: `react-router-dom`, `src/constants/routes.ts`, `src/contexts/RoleContext.tsx`, `src/components/layout/BottomNav.module.css`.
+- يُستخدم من قبل: `src/components/layout/MainLayout.tsx`.
+
+**آخر تحديث:** B0.2.2 — 2026-09-07
 
 ---
 
@@ -471,8 +500,36 @@
 
 ---
 
+## 5. `components/ui/`
+
+### `src/components/ui/QudraLogo.tsx`
+
+**الغرض:** المكوّن الموحّد لشعار منصة قُدرة، يلغي تشتت وتكرار ملفات الشعار الخاطئة ويضمن استدعاء الأصول المعتمدة الأصلية فقط من `public/assets/`.
+
+**يحتوي على:**
+- **الأيقونة المنفردة (`variant='icon'`):** يستدعي الأيقونة الدائرية الأصلية `qudra-icon.webp` (مع `qudra-icon.png` كـ fallback عبر `<picture>`).
+- **الشعار الكامل بنص قُدرة (`variant='wordmark'`):** يستدعي `qudra-wordmark.webp` في الوضع الفاتح و `qudra-wordmark-dark.webp` في الوضع الداكن تلقائياً استناداً إلى `ThemeContext`.
+- دعم الحجم عبر `size` أو `width` / `height`، وإمكانية تمرير `className` و `style` و `aria-hidden`.
+
+**الترابط مع باقي المشروع:**
+- يستورد من: `src/contexts/ThemeContext.tsx`.
+- يُستخدم من قبل:
+  - `src/components/layout/TopBar.tsx` (variant='icon', size=26)
+  - `src/components/layout/SplashScreen.tsx` (variant='icon' size=96 + variant='wordmark' width=240)
+  - `src/pages/auth/SignUpPage.tsx` (variant='icon' size=52 + background watermark size=280)
+  - `src/pages/auth/LoginPage.tsx` (variant='icon' size=52 + background watermark size=280)
+  - `src/pages/problem/ProblemInputPage.tsx` (variant='icon' size=52)
+  - `src/pages/landing/LandingPage.tsx` (variant='wordmark' width=380 + background watermark size=760)
+
+**آخر تحديث:** 2026-09-07
+
+---
+
 ## سجل التحديثات على هذا الملف نفسه
 
 | التاريخ | Task ID | التغيير |
 |---|---|---|
+| 2026-09-07 | UI-01 | إنشاء مكوّن `QudraLogo.tsx` وتوحيده عبر 6 شاشات وحذف أصول SVG المشبوهة |
+| 2026-09-07 | CSS-01 | توحيد توكنز `design-system.html`، إعادة تصنيف المكوّنات (المسار أ/ب)، وبناء `.linkbtn` و `.act` |
 | — | — | إنشاء الهيكل الابتدائي قبل بدء التنفيذ |
+

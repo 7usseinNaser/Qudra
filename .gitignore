@@ -16,4 +16,7 @@ dist/
 .vite/
 .eslintcache
 designer-skills/
+*.log
+scratch/
+.system_generated/
 

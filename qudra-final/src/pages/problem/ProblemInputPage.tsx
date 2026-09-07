@@ -15,6 +15,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import { useProblem } from '../../contexts/ProblemContext'
+import { QudraLogo } from '../../components/ui/QudraLogo'
 import styles from './ProblemInputPage.module.css'
 
 const EXAMPLES = [
@@ -160,13 +161,11 @@ export function ProblemInputPage() {
       {isAnalyzing && (
         <div className={styles.analyzing} dir="rtl" role="dialog" aria-modal="true" aria-label="جارٍ تحليل مشكلتك">
           <div className={styles.ainner}>
-            <img
-              src="/assets/qudra-mark-dark.svg"
-              alt=""
+            <QudraLogo
+              size={52}
               className={styles.alogo}
-              width={52}
-              height={52}
               aria-hidden="true"
+              alt=""
             />
             <h2>جارٍ تحليل مشكلتك…</h2>
             <p className={styles.asub}>{subText}</p>

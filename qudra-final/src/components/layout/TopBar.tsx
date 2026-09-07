@@ -14,6 +14,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import { useRole, type Role } from '../../contexts/RoleContext'
 import { useTheme } from '../../contexts/ThemeContext'
+import { QudraLogo } from '../ui/QudraLogo'
 import styles from './TopBar.module.css'
 
 const STEPS = [
@@ -74,12 +75,7 @@ export function TopBar() {
           onClick={handleBrandClick}
           title={role === 'c' ? 'مسار المشكلة' : 'ملفك الشخصي'}
         >
-          <img
-            src={theme === 'dark' ? '/assets/qudra-mark-dark.svg' : '/assets/qudra-mark.svg'}
-            alt=""
-            style={{ width: 26, height: 26 }}
-            aria-hidden="true"
-          />
+          <QudraLogo size={26} aria-hidden="true" />
           <span className={styles.nm}>قُدرة</span>
         </button>
 

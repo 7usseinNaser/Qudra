@@ -6,14 +6,17 @@
 
 import { Outlet } from 'react-router-dom'
 import { TopBar } from './TopBar'
+import { BottomNav } from './BottomNav'
+import styles from './MainLayout.module.css'
 
 export function MainLayout() {
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--page)' }} dir="rtl">
+    <div className={styles.layout} dir="rtl">
       <TopBar />
-      <main id="mainC" tabIndex={-1}>
+      <main id="mainC" className={styles.main} tabIndex={-1}>
         <Outlet />
       </main>
+      <BottomNav />
     </div>
   )
 }

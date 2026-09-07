@@ -93,7 +93,7 @@ export function ResultPage() {
                 <span className={styles.mt}>
                   <i style={{ width: `${m.score}%` }} />
                 </span>
-                <span className={styles.mv}>{m.score}%</span>
+                <span className={`${styles.mv} num`}>{m.score}%</span>
               </div>
             ))}
           </div>
@@ -200,7 +200,7 @@ export function ResultPage() {
               <span className={styles.cvb}>
                 <i className={styles.c1} style={{ width: `${row.score}%` }} />
               </span>
-              <span className={styles.cvv}>{row.score}%</span>
+              <span className={`${styles.cvv} num`}>{row.score}%</span>
             </div>
           ))}
         </div>
@@ -225,22 +225,22 @@ export function ResultPage() {
       <div className={`box ${styles.loopbox}`}>
         <div className={styles.loop4}>
           <div>
-            <span>01</span>
+            <span className="mono">01</span>
             <h3>مشكلة</h3>
             <p>كتبتها بلغتك، بلا مسمّى وظيفي.</p>
           </div>
           <div>
-            <span>02</span>
+            <span className="mono">02</span>
             <h3>قدرة</h3>
             <p>استُخرجت من نصّك، لا من قائمة جاهزة.</p>
           </div>
           <div>
-            <span>03</span>
+            <span className="mono">03</span>
             <h3>دليل</h3>
             <p>حلّيت مهمة حقيقية، فصار عندك إثبات.</p>
           </div>
           <div>
-            <span>04</span>
+            <span className="mono">04</span>
             <h3>أثر</h3>
             <p>نتيجة المشروع تعود دليلًا في المطابقة القادمة.</p>
           </div>

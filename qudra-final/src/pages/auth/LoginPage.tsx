@@ -11,6 +11,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import { useRole } from '../../contexts/RoleContext'
+import { QudraLogo } from '../../components/ui/QudraLogo'
 import styles from './LoginPage.module.css'
 
 export function LoginPage() {
@@ -46,11 +47,11 @@ export function LoginPage() {
   return (
     <div className={styles.auth} dir="rtl">
       <div className={styles.band}>
-        <img
-          src="/assets/qudra-mark-dark.svg"
-          alt=""
+        <QudraLogo
+          size={280}
           className={styles.bandMark}
           aria-hidden="true"
+          alt=""
         />
       </div>
 
@@ -60,10 +61,10 @@ export function LoginPage() {
 
       <div className={styles.inner}>
         <div className={styles.top}>
-          <img
-            src="/assets/qudra-mark-dark.svg"
-            alt="قُدرة"
+          <QudraLogo
+            size={52}
             className={styles.topLogo}
+            alt="قُدرة"
           />
           <h1>أهلًا بعودتك</h1>
           <p>أدلتك محفوظة كما تركتها.</p>

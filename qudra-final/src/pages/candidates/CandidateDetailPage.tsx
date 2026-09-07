@@ -293,7 +293,7 @@ export function CandidateDetailPage() {
                       <span className={styles.rsntag}>
                         {isGap ? 'فجوة — بلا دليل' : 'مثبت بدليل'}
                       </span>
-                      <span className={styles.rsngot}>
+                      <span className={`${styles.rsngot} num`}>
                         {got} / {r.weight}
                       </span>
                     </div>
@@ -403,13 +403,13 @@ export function CandidateDetailPage() {
                 <div className={styles.deltas}>
                   <div>
                     <p className="note">النتيجة</p>
-                    <p className={styles.dv}>
+                    <p className={`${styles.dv} num`}>
                       <s>78%</s> <b>← 91%</b>
                     </p>
                   </div>
                   <div>
                     <p className="note">الترتيب</p>
-                    <p className={styles.dv}>
+                    <p className={`${styles.dv} num`}>
                       <s>3</s> <b className={styles.up}>← 1</b>
                     </p>
                   </div>

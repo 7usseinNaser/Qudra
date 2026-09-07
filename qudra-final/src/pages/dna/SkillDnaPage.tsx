@@ -219,7 +219,7 @@ export function SkillDnaPage() {
               <span className={styles.bt}>
                 <i style={{ width: `${d.score}%` }} />
               </span>
-              <span className={styles.sc}>{d.score}%</span>
+              <span className={`${styles.sc} num`}>{d.score}%</span>
               <span className={styles.ev}>{d.evidence}</span>
             </div>
           ))}

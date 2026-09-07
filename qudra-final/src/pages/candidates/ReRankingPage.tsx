@@ -99,7 +99,7 @@ export function ReRankingPage() {
             key={c.name}
             className={`${styles.cand} ${c.isWon ? styles.won : ''}`}
           >
-            <span className={styles.rk}>{String(idx + 1).padStart(2, '0')}</span>
+            <span className={`${styles.rk} mono`}>{String(idx + 1).padStart(2, '0')}</span>
             <span className={styles.av}>{c.name.charAt(0)}</span>
             <span className={styles.who}>
               <h3>{c.name}</h3>
@@ -107,7 +107,7 @@ export function ReRankingPage() {
             </span>
             <span className={styles.dlt}>{c.delta}</span>
             <span className={styles.sc}>
-              <span className={styles.v}>{c.score}%</span>
+              <span className={`${styles.v} num`}>{c.score}%</span>
               <span className={styles.tr}>
                 <i style={{ width: `${c.score}%` }} />
               </span>

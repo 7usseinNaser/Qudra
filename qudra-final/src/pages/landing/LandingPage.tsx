@@ -14,6 +14,7 @@ import { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import { useTheme } from '../../contexts/ThemeContext'
+import { QudraLogo } from '../../components/ui/QudraLogo'
 import styles from './LandingPage.module.css'
 
 interface ClaimItem {
@@ -79,21 +80,20 @@ export function LandingPage() {
       <section className={styles.chero}>
         <span className={styles.glow} aria-hidden="true" />
         <span className={styles.glow2} aria-hidden="true" />
-        <img
-          src={theme === 'dark' ? '/assets/qudra-mark-dark.svg' : '/assets/qudra-mark.svg'}
-          alt=""
+        <QudraLogo
+          size={760}
           className={styles.markBg}
           aria-hidden="true"
+          alt=""
         />
 
         <div className={styles.mid}>
           {/* كلمة قُدرة بالخط العربي المعتمد الأصلي */}
-          <img
-            src={theme === 'dark' ? '/assets/qudra-wordmark-dark.webp' : '/assets/qudra-wordmark.webp'}
-            alt="قُدرة"
-            className={styles.wordmark}
+          <QudraLogo
+            variant="wordmark"
             width={380}
-            height={170}
+            className={styles.wordmark}
+            alt="قُدرة"
           />
           <p className={styles.slogan}>
             من الكلام إلى <b>الدليل</b>
