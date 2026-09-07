@@ -1,0 +1,5 @@
+.bar { height: 6px; border-radius: 3px; background: var(--line-soft); overflow: hidden; }
+.fill { display: block; height: 100%; border-radius: 999px; width: 0; transition: width 0.8s cubic-bezier(.2,.7,.2,1); }
+.accent { background: var(--proof); }
+.gap { background: var(--gap); }
+@media (prefers-reduced-motion: reduce) { .fill { transition: none; } }

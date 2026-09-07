@@ -40,6 +40,8 @@ const CandidatesPage = lazy(() => import('../../pages/candidates/CandidatesPage'
 const CandidateDetailPage = lazy(() => import('../../pages/candidates/CandidateDetailPage').then(m => ({ default: m.CandidateDetailPage })))
 const ComparePage = lazy(() => import('../../pages/compare/ComparePage').then(m => ({ default: m.ComparePage })))
 const ReRankingPage = lazy(() => import('../../pages/candidates/ReRankingPage').then(m => ({ default: m.ReRankingPage })))
+const AnalyzingPage = lazy(() => import('../../pages/analyzing/AnalyzingPage').then(m => ({ default: m.AnalyzingPage })))
+const EvidenceDetailPage = lazy(() => import('../../pages/evidence/EvidenceDetailPage').then(m => ({ default: m.EvidenceDetailPage })))
 
 // Talent / Profile Flow
 const ProfilePage = lazy(() => import('../../pages/profile/ProfilePage').then(m => ({ default: m.ProfilePage })))
@@ -67,6 +69,7 @@ export const router = createBrowserRouter([
     children: [
       // 1. مسار صاحب المشكلة
       { path: ROUTES.PROBLEM, element: <Suspense fallback={<RouteFallback />}><ProblemInputPage /></Suspense> },
+      { path: ROUTES.ANALYZING, element: <Suspense fallback={<RouteFallback />}><AnalyzingPage /></Suspense> },
       { path: ROUTES.CAPABILITIES, element: <Suspense fallback={<RouteFallback />}><CapabilitiesPage /></Suspense> },
       { path: ROUTES.SIMULATION, element: <Suspense fallback={<RouteFallback />}><SimulationPage /></Suspense> },
       { path: ROUTES.EVALUATION, element: <Suspense fallback={<RouteFallback />}><EvaluationPage /></Suspense> },
@@ -81,7 +84,7 @@ export const router = createBrowserRouter([
       { path: ROUTES.PROFILE, element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
       { path: '/profile/sources', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
       { path: '/profile/evidence', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
-      { path: '/profile/evidence/:id', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
+      { path: '/profile/evidence/:id', element: <Suspense fallback={<RouteFallback />}><EvidenceDetailPage /></Suspense> },
       { path: '/profile/timeline', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
       { path: '/profile/gaps', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
       { path: '/profile/opportunities', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },

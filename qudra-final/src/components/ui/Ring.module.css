@@ -1,0 +1,7 @@
+.ring { display: grid; place-items: center; position: relative; flex: none; }
+.svg { display: block; width: 100%; height: 100%; }
+.track { stroke: var(--line); fill: none; }
+.prog { fill: none; stroke-linecap: round; transition: stroke-dasharray 0.9s cubic-bezier(.2,.7,.2,1); }
+.progStatic { fill: none; stroke-linecap: round; }
+.val { position: absolute; font-family: var(--f-display); font-weight: 700; font-size: 1.5rem; font-variant-numeric: tabular-nums; direction: ltr; line-height: 1; }
+@media (prefers-reduced-motion: reduce) { .prog { transition: none; } }

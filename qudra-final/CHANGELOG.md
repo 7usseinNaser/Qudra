@@ -6,6 +6,26 @@
 
 ## [Unreleased]
 
+### feat — 2026-09-07 — بناء النوافذ المنبثقة الخمس والشاشات الناقصة وإعادة البنية التحتية
+- **بناء النوافذ المنبثقة الخمس** (`src/components/overlays/`):
+  - `CmdPalette.tsx`: لوحة أوامر سريعة (Ctrl+K) مع بحث حي، تنقّل بالأسهم، فتح بـ Enter، إغلاق بـ Escape، قائمة مجمّعة حسب الفئة.
+  - `GradingOverlay.tsx`: نافذة تقييم الإجابات بـ 4 خطوات تضيء تباعاً (700ms لكل خطوة) مع حلقة دوّارة.
+  - `ConfirmBox.tsx`: نافذة تأكيد الخروج بأيقونة تحذير وزرين ( ghost + danger ).
+  - `ShareBox.tsx`: بطاقة مشاركة داكنة بتدرّج تركوازي مع حلقة التوقيع SVG و3 إحصائيات وزر نسخ الرابط.
+  - `StateBox.tsx`: نافذة حالة الخطأ العامة بثلاثة أنماط (error/warning/info) مع أيقونة وسبب وإجراءات.
+- **بناء الشاشات الناقصة**:
+  - `AnalyzingPage.tsx` (`/analyzing`): شاشة التحليل الآلي بـ 6 مراحل متسلسلة مع شريط تقدّم وانتقال تلقائي.
+  - `EvidenceDetailPage.tsx` (`/profile/evidence/:id`): صفحة تفصيل دليل مستقلة مع الإشارات والتأثير ونص التحقق.
+  - `ReRankingPage.module.css`: تنسيقات شاشة إعادة الترتيب بعد التحدي مع شارة "صاعد" وتدرّج تركوازي.
+- **إعادة بناء البنية التحتية المفقودة**:
+  - `src/types/`: 8 ملفات (common, candidate, evidence, capability, simulation, profile, match, index).
+  - `src/data/`: 8 ملفات بيانات تجريبية + `index.ts` (candidates, evidence, capabilities, simulation, match, reasons, profile, commands).
+  - `src/components/ui/`: 9 مكوّنات ذرية (Button, Tag, Pill, Ring, Bar, Badge, Skeleton, EmptyState, ErrorState) + `index.ts`.
+  - `src/hooks/`: 4 خطافات (useTimer, useAnimateNum, useRing, useFocusTrap) + `index.ts`.
+- **حذف UserContext المكرر**: كان غير مستخدم في أي ملف؛ وظائفه متوفرة في RoleContext.
+- **ربط المسارات الجديدة**: إضافة `ANALYZING` و `EVIDENCE_DETAIL` في routes.ts وربطها بالصفحات.
+- **اجتياز البناء الإنتاجي**: `npm run build` بنجاح كامل في 4.70 ثانية، 0 أخطاء.
+
 ### fix — 2026-09-07 — توحيد مصدر الشعار عبر QudraLogo وتصنيف المكوّنات وتصحيح الأزرار وفق design-system.html
 - **توحيد مصدر الشعار (Logo Unification)**:
   - فحص وحذف ملفي `qudra-mark.svg` و `qudra-mark-dark.svg` الزائفين اللذين سببا تشوهاً بصرياً للأيقونة في شريط التنقل العلوي (`TopBar`).

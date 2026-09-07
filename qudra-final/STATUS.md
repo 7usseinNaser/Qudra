@@ -51,9 +51,33 @@
 
 ---
 
+## آخر إنجاز فعلي (2026-09-07 — بناء النوافذ المنبثقة والشاشات الناقصة)
+
+1. **بناء النوافذ المنبثقة الخمس الناقصة** (`src/components/overlays/`):
+   - `CmdPalette` (Ctrl+K): لوحة أوامر سريعة مع بحث وتنقّل بالأسهم وفتح بـ Enter.
+   - `GradingOverlay`: نافذة تقييم الإجابات بـ 4 خطوات تضيء تباعاً.
+   - `ConfirmBox`: نافذة تأكيد الخروج بأيقونة تحذير وزرين.
+   - `ShareBox`: بطاقة مشاركة داكنة بتدرّج تركوازي مع حلقة التوقيع و3 إحصائيات.
+   - `StateBox`: نافذة حالة الخطأ العامة (error/warning/info).
+2. **بناء الشاشات الناقصة**:
+   - `AnalyzingPage` (`/analyzing`): شاشة التحليل الآلي بـ 6 مراحل متسلسلة مع شريط تقدّم.
+   - `EvidenceDetailPage` (`/profile/evidence/:id`): صفحة تفصيل دليل مستقلة مع الإشارات والتأثير.
+   - `ReRankingPage.module.css`: تنسيقات شاشة إعادة الترتيب بعد التحدي.
+3. **إعادة بناء البنية التحتية المفقودة**:
+   - `src/types/`: 8 ملفات أنواع TypeScript كاملة.
+   - `src/data/`: 8 ملفات بيانات تجريبية + `index.ts`.
+   - `src/components/ui/`: 9 مكوّنات ذرية (Button, Tag, Pill, Ring, Bar, Badge, Skeleton, EmptyState, ErrorState).
+   - `src/hooks/`: 4 خطافات (useTimer, useAnimateNum, useRing, useFocusTrap).
+4. **حذف UserContext المكرر**: دمج وظائفه في RoleContext (كان غير مستخدم أصلاً).
+5. **ربط المسارات الجديدة**: إضافة `/analyzing` و `/profile/evidence/:id` في routes.tsx.
+6. **اجتياز البناء الإنتاجي**: `npm run build` بنجاح كامل في 4.70 ثانية، 0 أخطاء.
+
+---
+
 ## الخطوة التالية المتوقعة
 
-- تقديم العمل للمستخدم واستعراض المنصة أو الانتقال لتحسينات إضافية حسب الرغبة.
+- تفكيك ProfilePage إلى مكونات مستقلة تحت `src/features/profile/`.
+- ربط النوافذ المنبثقة بأماكن استخدامها الفعلية في الشاشات (SimulationPage، ResultPage، إلخ).
 
 ---
 

@@ -7,6 +7,7 @@ export const ROUTES = {
   CAPABILITIES: '/capabilities',
   SIMULATION: '/simulation',
   EVALUATION: '/evaluation',
+  ANALYZING: '/analyzing',
   SKILL_DNA: '/skill-dna',
   RESULT: '/result',
   MATCHING: '/matching',
@@ -15,6 +16,7 @@ export const ROUTES = {
   CANDIDATE_DETAIL: '/candidates/:id',
   RE_RANKING: '/re-ranking',
   PROFILE: '/profile',
+  EVIDENCE_DETAIL: '/evidence/:id',
   INVITE: '/invite/:id',
 } as const
 export type RouteKey = keyof typeof ROUTES
