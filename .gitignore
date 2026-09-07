@@ -20,3 +20,7 @@ designer-skills/
 scratch/
 .system_generated/
 
+# AI Agent Skills & Tool Data (Caches, Datasets, Fonts ~13.8MB)
+.agents/
+*/.agents/
+skills-lock.json

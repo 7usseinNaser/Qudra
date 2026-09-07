@@ -6,3 +6,4 @@ dist/
 *.log
 scratch/
 .system_generated/
+.agents/
