@@ -1,6 +1,4 @@
-import type { EvidenceSource, ID } from './common'
-import type { Evidence } from './evidence'
-import type { ProfileCapability } from './capability'
+import type { ID } from './common'
 
 export type ProfileTab = 'sources' | 'profile' | 'evidence' | 'timeline' | 'gaps' | 'opportunities' | 'passport'
 

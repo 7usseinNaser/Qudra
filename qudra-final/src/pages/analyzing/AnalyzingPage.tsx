@@ -15,7 +15,6 @@
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { demoAnalysisStages } from '../../data'
 import styles from './AnalyzingPage.module.css'
 
 interface StageDetail {

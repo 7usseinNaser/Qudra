@@ -14,7 +14,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Pill } from '../../components/ui'
 import type { ReadinessStatus } from '../../types'
-import { READINESS_LABELS } from '../../types'
 import styles from './ReRankingPage.module.css'
 
 interface FinalCandidate {

@@ -1,4 +1,4 @@
-import type { ID, ReadinessStatus, TagVariant } from './common'
+import type { ID, ReadinessStatus } from './common'
 
 export interface ProvenSkill { name: string; evidenceCount: number }
 export interface ClaimedSkill { name: string }

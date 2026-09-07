@@ -1,15 +1,25 @@
-/**
- * MainLayout — الإطار الرئيسي لصفحات التطبيق الداخلية.
- *
- * يوفّر الشريط العلوي الموحّد (TopBar) مع منطقة المحتوى الرئيسي (Outlet).
- */
-
-import { Outlet } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { TopBar } from './TopBar'
 import { BottomNav } from './BottomNav'
+import { CmdPalette } from '../overlays'
 import styles from './MainLayout.module.css'
 
 export function MainLayout() {
+  const [cmdOpen, setCmdOpen] = useState(false)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        setCmdOpen((prev) => !prev)
+      }
+    }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [])
+
   return (
     <div className={styles.layout} dir="rtl">
       <TopBar />
@@ -17,6 +27,7 @@ export function MainLayout() {
         <Outlet />
       </main>
       <BottomNav />
+      <CmdPalette open={cmdOpen} onClose={() => setCmdOpen(false)} onNavigate={navigate} />
     </div>
   )
 }

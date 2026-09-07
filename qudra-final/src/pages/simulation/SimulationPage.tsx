@@ -15,6 +15,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import { useProblem } from '../../contexts/ProblemContext'
+import { ConfirmBox } from '../../components/overlays'
 import styles from './SimulationPage.module.css'
 
 export interface TaskItem {
@@ -65,6 +66,8 @@ export function SimulationPage() {
   // حالة شاشة Grading التقييمية
   const [isGrading, setIsGrading] = useState<boolean>(false)
   const [gradingStepsState, setGradingStepsState] = useState<boolean[]>([false, false, false, false])
+  const [showExitConfirm, setShowExitConfirm] = useState<boolean>(false)
+  const [pendingExitRoute, setPendingExitRoute] = useState<string | null>(null)
 
   // استخدام useRef للقيم اللحظية المتغيرة وفق قاعدة vercel-react-best-practices (rerender-use-ref-transient-values)
   const answersRef = useRef<string[]>(['', '', ''])
@@ -170,6 +173,30 @@ export function SimulationPage() {
       gradingTimersRef.current.forEach((t) => clearTimeout(t))
     }
   }, [pauseTimer, resumeTimer, stopTimer])
+
+  // محاولة مغادرة المحاكاة أثناء المؤقت — تفتح نافذة تأكيد
+  const handleExitAttempt = (route: string) => {
+    if (inRun && !isGrading) {
+      setPendingExitRoute(route)
+      setShowExitConfirm(true)
+    } else {
+      navigate(route)
+    }
+  }
+
+  const handleConfirmExit = () => {
+    setShowExitConfirm(false)
+    stopTimer()
+    if (pendingExitRoute) {
+      navigate(pendingExitRoute)
+      setPendingExitRoute(null)
+    }
+  }
+
+  const handleCancelExit = () => {
+    setShowExitConfirm(false)
+    setPendingExitRoute(null)
+  }
 
   // بدء المحاكاة عند نقر زر "ابدأ"
   const handleStartSim = () => {
@@ -331,6 +358,13 @@ export function SimulationPage() {
               />
             </div>
             <div className={styles.simstat}>
+              <button
+                className="btn ghost"
+                style={{ padding: '0.25rem 0.6rem', fontSize: '0.78rem' }}
+                onClick={() => handleExitAttempt('/')}
+              >
+                ← خروج
+              </button>
               <span className="mono">
                 مهمة <span id="taskNo">{currentStep + 1}</span> من{' '}
                 <span className="num">{SIM_TASKS.length}</span>
@@ -505,6 +539,14 @@ export function SimulationPage() {
           </div>
         </div>
       </div>
+
+      <ConfirmBox
+        open={showExitConfirm}
+        title="مغادرة المحاكاة"
+        body="المؤقت لا يزال يعمل. إذا خرجت الآن ستُفقد إجاباتك غير المُرسلة."
+        onConfirm={handleConfirmExit}
+        onCancel={handleCancelExit}
+      />
     </main>
   )
 }

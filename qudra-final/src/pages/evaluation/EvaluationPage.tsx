@@ -12,10 +12,11 @@
  * راجع PROJECT_MAP.md للتفاصيل الكاملة.
  */
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import { useProblem } from '../../contexts/ProblemContext'
+import { GradingOverlay } from '../../components/overlays'
 import styles from './EvaluationPage.module.css'
 
 export interface CriterionItem {
@@ -68,6 +69,11 @@ export function EvaluationPage() {
   // حالة الرسوم المتحركة
   const [animatedScore, setAnimatedScore] = useState<number>(0)
   const [barsLoaded, setBarsLoaded] = useState<boolean>(false)
+  const [showGrading, setShowGrading] = useState<boolean>(true)
+
+  const handleGradingComplete = useCallback(() => {
+    setShowGrading(false)
+  }, [])
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -122,6 +128,8 @@ export function EvaluationPage() {
 
   return (
     <main className={styles.evScreen} dir="rtl">
+      <GradingOverlay open={showGrading} onComplete={handleGradingComplete} />
+      {!showGrading && (
       <div className="narrow wide">
         <span className={styles.stepno}>الخطوة 4 من 6</span>
         <h1 className={styles.scrT}>تقييم إجاباتك</h1>
@@ -257,6 +265,7 @@ export function EvaluationPage() {
           </button>
         </div>
       </div>
+      )}
     </main>
   )
 }
