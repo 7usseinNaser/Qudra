@@ -12,8 +12,8 @@
 
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useProblem } from '../../contexts/ProblemContext'
-import { useRole } from '../../contexts/RoleContext'
+import { useProblem } from '../../contexts/useProblem'
+import { useRole } from '../../contexts/useRole'
 import styles from './ResultPage.module.css'
 
 interface MatchRow {

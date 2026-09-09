@@ -9,7 +9,7 @@
 
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useRole } from '../../contexts/RoleContext'
+import { useRole } from '../../contexts/useRole'
 import styles from './BottomNav.module.css'
 
 interface NavItem {

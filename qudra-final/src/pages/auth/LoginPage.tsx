@@ -10,7 +10,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useRole } from '../../contexts/RoleContext'
+import { useRole } from '../../contexts/useRole'
+import { AuthService } from '../../services/auth.service'
 import { QudraLogo } from '../../components/ui/QudraLogo'
 import styles from './LoginPage.module.css'
 
@@ -24,16 +25,20 @@ export function LoginPage() {
   const [rememberMe, setRememberMe] = useState(true)
   const [errorNotice, setErrorNotice] = useState('')
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email.trim() || !password.trim()) {
       setErrorNotice('البريد أو كلمة المرور غير صحيحة. تحقّق وحاول مرة أخرى.')
       return
     }
 
-    login(email)
-    // بعد تسجيل الدخول، الانتقال إلى اختيار الدور أو الصفحة الرئيسية
-    navigate(ROUTES.ROLE_SELECT)
+    try {
+      await AuthService.login({ email, password })
+      login(email)
+      navigate(ROUTES.ROLE_SELECT)
+    } catch {
+      setErrorNotice('حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.')
+    }
   }
 
   const handleSkip = () => {

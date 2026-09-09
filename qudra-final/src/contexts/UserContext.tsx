@@ -1,34 +1,9 @@
-/**
- * UserContext — سياق المستخدم والمصادقة وتبديل الدور.
- *
- * يدير:
- * 1. بيانات الحساب (الاسم، البريد، الصورة/الحرف الرمزي، وحالة تسجيل الدخول).
- * 2. الدور الفعلي المختار: 'c' (صاحب مشكلة) أو 'u' (صاحب قدرة / موهبة).
- * 3. دوال المصادقة (signup, login, logout, switchRole).
- *
- * منقول ومطابق لمنطق prototype.html (window.signup, window.pickRole, window.switchRole).
- */
-
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
-
-export type UserRole = 'c' | 'u' // 'c' = Problem Owner (مشكلتي), 'u' = Capability Owner (ملفي)
-
-export interface UserProfile {
-  name: string
-  email: string
-  avatar: string
-  isAuthenticated: boolean
-}
-
-interface UserContextValue {
-  user: UserProfile
-  role: UserRole
-  setRole: (role: UserRole) => void
-  switchRole: (role?: UserRole) => void
-  signup: (name: string, email: string) => void
-  login: (email: string) => void
-  logout: () => void
-}
+import { useState, useCallback, type ReactNode } from 'react'
+import {
+  type UserProfile,
+  type UserRole,
+  UserContext,
+} from './user-context-types'
 
 const DEFAULT_USER: UserProfile = {
   name: 'حسين ناصر',
@@ -36,8 +11,6 @@ const DEFAULT_USER: UserProfile = {
   avatar: 'ح',
   isAuthenticated: false,
 }
-
-const UserContext = createContext<UserContextValue | undefined>(undefined)
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserProfile>(DEFAULT_USER)
@@ -71,10 +44,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const logout = useCallback(() => {
-    setUser((prev) => ({
-      ...prev,
-      isAuthenticated: false,
-    }))
+    setUser(DEFAULT_USER)
   }, [])
 
   return (
@@ -92,12 +62,4 @@ export function UserProvider({ children }: { children: ReactNode }) {
       {children}
     </UserContext.Provider>
   )
-}
-
-export function useUser(): UserContextValue {
-  const ctx = useContext(UserContext)
-  if (!ctx) {
-    throw new Error('useUser must be used within UserProvider')
-  }
-  return ctx
 }

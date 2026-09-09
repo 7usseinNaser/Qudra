@@ -1,0 +1,94 @@
+.homePage {
+  max-width: var(--maxw, 74rem);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.metricCard {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--line, #D5DEDE);
+  border-radius: var(--r, 12px);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.metricIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: var(--surface-2, #F5F8F8);
+  display: grid;
+  place-items: center;
+  color: var(--proof-text, #00787A);
+  flex-shrink: 0;
+}
+
+.metricVal {
+  font-family: var(--fm, monospace);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink, #141A1A);
+  line-height: 1;
+}
+
+.metricLabel {
+  font-size: 0.82rem;
+  color: var(--ink-3, #6B7A7A);
+  margin-top: 0.25rem;
+}
+
+.banner {
+  background: linear-gradient(135deg, rgba(0, 184, 184, 0.12) 0%, rgba(255, 193, 7, 0.08) 100%);
+  border: 1px solid var(--proof-line, #8FDCDC);
+  border-radius: var(--r, 14px);
+  padding: 1.35rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.bannerText h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: var(--ink, #141A1A);
+}
+
+.bannerText p {
+  font-size: 0.86rem;
+  color: var(--ink-2, #3F4C4C);
+  margin: 0;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink, #141A1A);
+  margin: 0;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.15rem;
+}

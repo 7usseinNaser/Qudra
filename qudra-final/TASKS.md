@@ -94,9 +94,65 @@
 
 ---
 
-## مراحل مستقبلية (لم تبدأ بعد)
+## مرحلة Phase 1 — Proof Core: من التسجيل حتى Master Profile قابل للتفسير
 
-- **B1** — Backend حقيقي (Authentication، قاعدة بيانات، Endpoints حسب `dev-handoff.md`)
-- **B2** — محرك تقييم الأدلة الحقيقي (Evidence Scoring، Skill Weights، Evidence Decay)
-- **B3** — تكامل GitHub الحقيقي + محرك مطابقة حقيقي
-- **B4+** — رؤية مستقبلية (راجع `README.md` القسم 17)
+### P1.1 — البنية التحتية والمكونات الأساسية (UI & Domain Primitives)
+| # | المهمة | الحالة |
+|---|---|---|
+| P1.1.1 | مكوّن `Button` (بمساحات لمس $\ge 44\text{px}$، حالات تحميل وتفاعل سلس) | `VERIFIED` |
+| P1.1.2 | مكوّن `Badge` (لأوسمة الإثبات `--proof` والفجوات `--gap`) | `VERIFIED` |
+| P1.1.3 | مكوّن `Bar` (شريط التقدم الدلالي بالألوان المبرهنة) | `VERIFIED` |
+| P1.1.4 | مكوّن `Ring` (حلقة التقدم الشعاعية SVG للـ MatchScore والموثوقية) | `VERIFIED` |
+| P1.1.5 | مكوّنات `Skeleton`, `EmptyState`, `ErrorState` مع دعم المحاولة الفورية | `VERIFIED` |
+| P1.1.6 | مكوّن `GithubIcon` (SVG خالص بدون إيموجي ومطابق لمعايير النظام) | `VERIFIED` |
+| P1.1.7 | مكونات النطاق: `CapabilityCard`, `EvidenceCard`, `MatchScore`, `MatchExplanation`, `GapCard`, `ProfileHeader`, `VerificationBadge` | `VERIFIED` |
+
+### P1.2 — طبقة الخدمات والتخزين المحلي المستمر (Services Layer)
+| # | المهمة | الحالة |
+|---|---|---|
+| P1.2.1 | تعريف أنواع TypeScript المطابقة لمخططات FastAPI (`src/services/types.ts`) | `VERIFIED` |
+| P1.2.2 | بناء مخزن البيانات الدائم في التخزين المحلي `QudraStore` (`src/services/store.ts`) | `VERIFIED` |
+| P1.2.3 | خدمات `AuthService`, `CapabilitiesService`, `EvidenceService`, `GitHubService`, `MasterProfileService` | `VERIFIED` |
+
+### P1.3 — شاشات الهوية والتسجيل (Auth & Onboarding Loop)
+| # | المهمة | الحالة |
+|---|---|---|
+| P1.3.1 | تحديث `SignUpPage` (Q02) بتأكيد كلمة المرور وشروط الخدمة | `VERIFIED` |
+| P1.3.2 | ربط `LoginPage` (Q03) مع `AuthService` وخيار استعادة كلمة المرور | `VERIFIED` |
+| P1.3.3 | شاشة التحقق من البريد `EmailVerificationPage` (Q04) برمز 4 أرقام ومؤقت إعادة الإرسال | `VERIFIED` |
+| P1.3.4 | شاشة تعريف الهوية المهنية `BasicIdentityPage` (Q05) بالمسمى والنبذة والصورة | `VERIFIED` |
+| P1.3.5 | شاشة تحديد الهدف `FirstIntentPage` (Q06) مع مسار GitHub الموصى به | `VERIFIED` |
+
+### P1.4 — لوحة التحكم والاستكشاف (Core Hub & Discovery)
+| # | المهمة | الحالة |
+|---|---|---|
+| P1.4.1 | لوحة التحكم للمستخدم `HomePage` (Q07) بمقاييس الكفاءات ودعوة الربط | `VERIFIED` |
+| P1.4.2 | شاشة استكشاف الكفاءات `DiscoverPage` (Q08) بالفلترة حسب التخصص والأدلة | `VERIFIED` |
+| P1.4.3 | دليل الكفاءات والخبراء `PeopleDirectoryPage` (Q09) | `VERIFIED` |
+| P1.4.4 | الملف العام للكفاءة المعتمدة `PublicProfilePage` (Q10) وزر دعوة لمشروع | `VERIFIED` |
+
+### P1.5 — مسار أدلة GitHub ومسح المستودعات (GitHub Evidence Loop)
+| # | المهمة | الحالة |
+|---|---|---|
+| P1.5.1 | مؤشر اكتمال الملف المهاري `ProfileCompletionPage` (Q12) ومحطات رفع الموثوقية | `VERIFIED` |
+| P1.5.2 | بوابة الربط مع GitHub وضمانات الخصوصية `GitHubConnectPage` (Q14) | `VERIFIED` |
+| P1.5.3 | شاشة اختيار المستودعات البرمجية `RepoSelectPage` (Q15) | `VERIFIED` |
+| P1.5.4 | شاشة أنيميشن المسح الحي متعدد المراحل `GitHubScanPage` (Q16) | `VERIFIED` |
+| P1.5.5 | نتائج المسح والمهارات المستخرجة `GitHubResultsPage` (Q17) | `VERIFIED` |
+| P1.5.6 | تفاصيل المستودع الممسوح وتحليل الدوال `RepoDetailPage` (Q18) | `VERIFIED` |
+
+### P1.6 — جوهر الملف المهاري الرئيسي (Master Profile Core)
+| # | المهمة | الحالة |
+|---|---|---|
+| P1.6.1 | الملف المهاري الكامل `MasterProfilePage` (Q27) بالتبويبات الأربعة (مهارات، أدلة، DNA، سجل زمني) | `VERIFIED` |
+| P1.6.2 | تفاصيل المهارة المبرهنة والأدلة المسندة لها `CapabilityDetailPage` (Q28) | `VERIFIED` |
+| P1.6.3 | أبعاد الحمض المهاري والبصمة الهندسية `MasterDnaPage` (Q29) | `VERIFIED` |
+| P1.6.4 | السجل الزمني التراكمي للأدلة `MasterTimelinePage` (Q30) | `VERIFIED` |
+| P1.6.5 | محرك التفسير ومعادلة النقاط `WhyThisLevelPage` (Q31) | `VERIFIED` |
+
+### P1.7 — بوابات الجودة والتسليم (Quality Gates)
+| # | المهمة | الحالة |
+|---|---|---|
+| P1.7.1 | فحص الأنواع الصارم `npm run typecheck` بصفر أخطاء | `VERIFIED` |
+| P1.7.2 | فحص الأكواد والأسلوب `npm run lint` بصفر أخطاء وصفر تحذيرات | `VERIFIED` |
+| P1.7.3 | بناء حزمة الإنتاج `npm run build` بنجاح كامل لجميع الـ 1971 وحدة | `VERIFIED` |

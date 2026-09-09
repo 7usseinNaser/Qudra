@@ -14,7 +14,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useProblem } from '../../contexts/ProblemContext'
+import { useProblem } from '../../contexts/useProblem'
 import { QudraLogo } from '../../components/ui/QudraLogo'
 import styles from './ProblemInputPage.module.css'
 

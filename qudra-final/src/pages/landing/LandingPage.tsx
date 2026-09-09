@@ -13,7 +13,7 @@
 import { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useTheme } from '../../contexts/ThemeContext'
+import { useTheme } from '../../contexts/useTheme'
 import { QudraLogo } from '../../components/ui/QudraLogo'
 import styles from './LandingPage.module.css'
 

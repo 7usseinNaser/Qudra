@@ -14,7 +14,7 @@
 
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useRole } from '../../contexts/RoleContext'
+import { useRole } from '../../contexts/useRole'
 import styles from './ProfilePage.module.css'
 
 export type ProfileTab = 'u1' | 'u0' | 'u3' | 'evd' | 'u6' | 'u2' | 'u4' | 'u5'

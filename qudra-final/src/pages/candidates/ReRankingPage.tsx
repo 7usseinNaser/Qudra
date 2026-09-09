@@ -10,7 +10,7 @@
 
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useProblem } from '../../contexts/ProblemContext'
+import { useProblem } from '../../contexts/useProblem'
 import styles from './CandidatesPage.module.css'
 
 interface FinalCand {
