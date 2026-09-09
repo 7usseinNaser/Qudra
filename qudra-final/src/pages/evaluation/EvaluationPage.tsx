@@ -15,7 +15,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useProblem } from '../../contexts/ProblemContext'
+import { useProblem } from '../../contexts/useProblem'
 import { GradingOverlay } from '../../components/overlays'
 import styles from './EvaluationPage.module.css'
 

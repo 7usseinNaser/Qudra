@@ -14,7 +14,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useProblem } from '../../contexts/ProblemContext'
+import { useProblem } from '../../contexts/useProblem'
 import { ConfirmBox } from '../../components/overlays'
 import { SIM_TASKS, INITIAL_SIM_SECONDS } from './simulation-constants'
 import styles from './SimulationPage.module.css'

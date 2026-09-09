@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ProblemContext } from './ProblemContext'
+import { ProblemContext } from './problem-context-object'
 import type { ProblemContextValue } from './problem-context-value'
 
 export function useProblem(): ProblemContextValue {

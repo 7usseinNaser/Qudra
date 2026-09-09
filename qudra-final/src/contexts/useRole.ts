@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { RoleContext } from './RoleContext'
+import { RoleContext } from './role-context-object'
 import type { RoleContextValue } from './role-context-types'
 
 export function useRole(): RoleContextValue {

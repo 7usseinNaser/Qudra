@@ -12,9 +12,9 @@
 
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useRole } from '../../contexts/RoleContext'
+import { useRole } from '../../contexts/useRole'
 import type { Role } from '../../contexts/role-context-types'
-import { useTheme } from '../../contexts/ThemeContext'
+import { useTheme } from '../../contexts/useTheme'
 import { QudraLogo } from '../ui/QudraLogo'
 import styles from './TopBar.module.css'
 

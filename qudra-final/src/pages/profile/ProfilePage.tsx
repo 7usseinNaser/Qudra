@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useRole } from '../../contexts/RoleContext'
+import { useRole } from '../../contexts/useRole'
 import styles from './ProfilePage.module.css'
 import { DashboardTab } from './tabs/DashboardTab'
 import { SourcesTab } from './tabs/SourcesTab'

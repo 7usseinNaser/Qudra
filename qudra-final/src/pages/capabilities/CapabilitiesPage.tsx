@@ -12,7 +12,7 @@
 
 import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useProblem } from '../../contexts/ProblemContext'
+import { useProblem } from '../../contexts/useProblem'
 import styles from './CapabilitiesPage.module.css'
 
 function renderIcon(iconKey: string) {

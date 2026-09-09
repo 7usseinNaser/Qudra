@@ -1,7 +1,6 @@
-import { createContext, useCallback, useState, type ReactNode } from 'react'
+import { useCallback, useState, type ReactNode } from 'react'
 import { DEFAULT_USER, type Role, type UserInfo, type RoleContextValue } from './role-context-types'
-
-export const RoleContext = createContext<RoleContextValue | undefined>(undefined)
+import { RoleContext } from './role-context-object'
 
 export function RoleProvider({ children }: { children: ReactNode }) {
   const [role, setRole] = useState<Role>('c')
@@ -30,9 +29,7 @@ export function RoleProvider({ children }: { children: ReactNode }) {
     }))
   }, [])
 
-  return (
-    <RoleContext.Provider value={{ role, switchRole, user, signup, login }}>
-      {children}
-    </RoleContext.Provider>
-  )
+  const value: RoleContextValue = { role, switchRole, user, signup, login }
+
+  return <RoleContext.Provider value={value}>{children}</RoleContext.Provider>
 }

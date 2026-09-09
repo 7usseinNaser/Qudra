@@ -1,8 +1,7 @@
-import { createContext, useState, useCallback, type ReactNode } from 'react'
+import { useState, useCallback, type ReactNode } from 'react'
 import { DEFAULT_CAPABILITIES, DEFAULT_PROBLEM_TEXT, type CapabilityItem } from './problem-context-constants'
 import type { ProblemContextValue } from './problem-context-value'
-
-export const ProblemContext = createContext<ProblemContextValue | undefined>(undefined)
+import { ProblemContext } from './problem-context-object'
 
 export function ProblemProvider({ children }: { children: ReactNode }) {
   const [problemText, setProblemTextState] = useState<string>(DEFAULT_PROBLEM_TEXT)
@@ -19,19 +18,15 @@ export function ProblemProvider({ children }: { children: ReactNode }) {
     setSimulationAnswersState(answers)
   }, [])
 
-  return (
-    <ProblemContext.Provider
-      value={{
-        problemText,
-        setProblemText,
-        summary,
-        category,
-        capabilities,
-        simulationAnswers,
-        setSimulationAnswers,
-      }}
-    >
-      {children}
-    </ProblemContext.Provider>
-  )
+  const value: ProblemContextValue = {
+    problemText,
+    setProblemText,
+    summary,
+    category,
+    capabilities,
+    simulationAnswers,
+    setSimulationAnswers,
+  }
+
+  return <ProblemContext.Provider value={value}>{children}</ProblemContext.Provider>
 }

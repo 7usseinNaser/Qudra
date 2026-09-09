@@ -201,7 +201,7 @@ export function CandidatesPage() {
           isOpen={!!activeInviteCand}
           name={activeInviteCand.name}
           roleMeta={activeInviteCand.title}
-          skill="Backend"
+          skill={activeInviteCand.proven.length > 0 ? activeInviteCand.proven[0][0] : 'Backend'}
           onClose={() => setActiveInviteCand(null)}
         />
       )}

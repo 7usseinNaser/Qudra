@@ -12,6 +12,7 @@
  */
 
 import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '../../constants/routes'
 import { Pill } from '../../components/ui'
 import type { ReadinessStatus } from '../../types'
 import styles from './ReRankingPage.module.css'
@@ -69,10 +70,10 @@ export function ReRankingPage() {
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.btnGhost} onClick={() => navigate('/candidates')}>
+          <button className={styles.btnGhost} onClick={() => navigate(ROUTES.CANDIDATES)}>
             عرض المرشحين
           </button>
-          <button className={styles.btnPrimary} onClick={() => navigate('/result')}>
+          <button className={styles.btnPrimary} onClick={() => navigate(ROUTES.RESULT)}>
             اعرض فريقك
           </button>
         </div>

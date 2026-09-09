@@ -10,7 +10,21 @@ export function PassportTab({ user }: PassportTabProps) {
   const [copied, setCopied] = useState(false)
   const [showShare, setShowShare] = useState(false)
 
-  const handleCopy = () => {
+  const shareUrl = 'https://qudra.sa/p/mash'
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl)
+    } catch {
+      const ta = document.createElement('textarea')
+      ta.value = shareUrl
+      ta.style.position = 'fixed'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.select()
+      try { document.execCommand('copy') } catch { /* ignore */ }
+      document.body.removeChild(ta)
+    }
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -66,7 +80,7 @@ export function PassportTab({ user }: PassportTabProps) {
                 <button className="btn ghost" onClick={() => setShowShare(true)}>مشاركة</button>
                 <span className="note">رابط عام مشفّر للقراءة فقط</span>
               </div>
-              <span className="mono" style={{ fontSize: '0.78rem', color: 'var(--ink-3)' }}>qudra.sa/p/mash</span>
+              <span className="mono" style={{ fontSize: '0.78rem', color: 'var(--ink-3)' }}>{shareUrl}</span>
             </div>
           </div>
         </div>
@@ -81,7 +95,7 @@ export function PassportTab({ user }: PassportTabProps) {
           verifiedEvidence={6}
           provenCapabilities={3}
           fileStrength={72}
-          shareUrl="qudra.sa/p/mash"
+          shareUrl={shareUrl}
         />
       )}
     </section>

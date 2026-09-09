@@ -10,7 +10,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useRole } from '../../contexts/RoleContext'
+import { useRole } from '../../contexts/useRole'
 import { QudraLogo } from '../../components/ui/QudraLogo'
 import styles from './LoginPage.module.css'
 
