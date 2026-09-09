@@ -1,18 +1,16 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react'
-type Theme = 'light' | 'dark'
-interface ThemeContextValue { theme: Theme; toggleTheme: () => void }
-const ThemeContext = createContext<ThemeContextValue | undefined>(undefined)
-const STORAGE_KEY = 'qudra-theme'
+import { createContext, useCallback, useEffect, useState, type ReactNode } from 'react'
+import { THEME_STORAGE_KEY, type Theme, type ThemeContextValue } from './theme-context-types'
+
+export const ThemeContext = createContext<ThemeContextValue | undefined>(undefined)
+
 function getInitialTheme(): Theme {
-  try { const s = localStorage.getItem(STORAGE_KEY); if (s === 'light' || s === 'dark') return s } catch { /* ignore storage error */ }
+  try { const s = localStorage.getItem(THEME_STORAGE_KEY); if (s === 'light' || s === 'dark') return s } catch { /* ignore storage error */ }
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(getInitialTheme)
-  useEffect(() => { document.documentElement.setAttribute('data-theme', theme); try { localStorage.setItem(STORAGE_KEY, theme) } catch { /* ignore storage error */ } }, [theme])
+  useEffect(() => { document.documentElement.setAttribute('data-theme', theme); try { localStorage.setItem(THEME_STORAGE_KEY, theme) } catch { /* ignore storage error */ } }, [theme])
   const toggleTheme = useCallback(() => setTheme(p => p === 'dark' ? 'light' : 'dark'), [])
   return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
-}
-export function useTheme(): ThemeContextValue {
-  const ctx = useContext(ThemeContext); if (!ctx) throw new Error('useTheme must be used within ThemeProvider'); return ctx
 }

@@ -16,34 +16,8 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import { useProblem } from '../../contexts/ProblemContext'
 import { ConfirmBox } from '../../components/overlays'
+import { SIM_TASKS, INITIAL_SIM_SECONDS } from './simulation-constants'
 import styles from './SimulationPage.module.css'
-
-export interface TaskItem {
-  skill: string
-  question: string
-  hint: string
-}
-
-export const SIM_TASKS: TaskItem[] = [
-  {
-    skill: 'Product Thinking',
-    question: 'ما أول شيء ستبنيه، ولماذا؟',
-    hint: 'اكتب بمنطقك. لا نبحث عن مصطلحات — نبحث عن ترتيب أولويات مبرَّر.',
-  },
-  {
-    skill: 'UI/UX',
-    question: 'صف الشاشة الرئيسية للطالب: ماذا تعرض، وبأي ترتيب، ولماذا؟',
-    hint: 'ما الذي يجب أن يراه الطالب في أول ثانيتين؟ ولماذا هذا وليس غيره؟',
-  },
-  {
-    skill: 'Backend',
-    question: 'ما البيانات التي ستخزّنها، وكيف تربط الطالب بمواده ومواعيدها؟',
-    hint: 'لا نحتاج كودًا. نحتاج بنية واضحة والعلاقات بينها.',
-  },
-]
-
-// القيمة الزمنية الابتدائية الدقيقة المستخرجة حرفياً: 15*60 - 28 = 872 ثانية (14:32)
-const INITIAL_SIM_SECONDS = 15 * 60 - 28
 
 export function SimulationPage() {
   const navigate = useNavigate()

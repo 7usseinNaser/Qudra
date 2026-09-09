@@ -8,7 +8,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useRole, type Role } from '../../contexts/RoleContext'
+import { useRole } from '../../contexts/RoleContext'
+import type { Role } from '../../contexts/role-context-types'
 import styles from './RoleSelectPage.module.css'
 
 export function RoleSelectPage() {

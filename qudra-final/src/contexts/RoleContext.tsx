@@ -1,43 +1,7 @@
-/**
- * RoleContext — إدارة الدور وحساب المستخدم.
- *
- * يدعم:
- * - 'c' (أو 'company'): صاحب مشكلة («مشكلتي»).
- * - 'u' (أو 'talent'): صاحب قدرة («ملفي»).
- * - بيانات المستخدم (الاسم، البريد، الرمز الرمزي).
- *
- * مطابق لمنطق prototype.html:
- * window.switchRole('c' | 'u')
- * window.pickRole('c' | 'u')
- */
+import { createContext, useCallback, useState, type ReactNode } from 'react'
+import { DEFAULT_USER, type Role, type UserInfo, type RoleContextValue } from './role-context-types'
 
-import { createContext, useCallback, useContext, useState, type ReactNode } from 'react'
-
-export type Role = 'c' | 'u'
-
-export interface UserInfo {
-  name: string
-  email: string
-  avatar: string
-  isAuthenticated: boolean
-}
-
-interface RoleContextValue {
-  role: Role
-  switchRole: (r: Role) => void
-  user: UserInfo
-  signup: (name: string, email: string) => void
-  login: (email: string) => void
-}
-
-const DEFAULT_USER: UserInfo = {
-  name: 'أحمد السعيد',
-  email: 'ahmed@example.com',
-  avatar: 'أ',
-  isAuthenticated: false,
-}
-
-const RoleContext = createContext<RoleContextValue | undefined>(undefined)
+export const RoleContext = createContext<RoleContextValue | undefined>(undefined)
 
 export function RoleProvider({ children }: { children: ReactNode }) {
   const [role, setRole] = useState<Role>('c')
@@ -71,10 +35,4 @@ export function RoleProvider({ children }: { children: ReactNode }) {
       {children}
     </RoleContext.Provider>
   )
-}
-
-export function useRole(): RoleContextValue {
-  const ctx = useContext(RoleContext)
-  if (!ctx) throw new Error('useRole must be used within RoleProvider')
-  return ctx
 }

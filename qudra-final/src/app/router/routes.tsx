@@ -1,20 +1,5 @@
 /**
- * App Router — تعريف كافة مسارات وواجهات منصة قُدرة الـ 22.
- *
- * يشمل:
- * 1. بوابة الدخول المشتركة:
- *    - LandingPage (/)
- *    - SignUpPage (/signup)
- *    - LoginPage (/login)
- *    - RoleSelectPage (/onboarding/role)
- *    - InvitePage (/invite/:id)
- * 2. المسارات الداخلية ضمن MainLayout (المزوّد بـ TopBar الموحّد وتبديل الدور):
- *    - مسار صاحب المشكلة (6 خطوات أساسية + امتدادات الفريق والمقارنة والترتيب):
- *      /problem, /capabilities, /simulation, /evaluation, /skill-dna, /result,
- *      /candidates, /candidates/:id, /compare, /re-ranking
- *    - مسار صاحب القدرة (ملفي والتبويبات السبعة):
- *      /profile, /profile/sources, /profile/evidence, /profile/evidence/:id,
- *      /profile/timeline, /profile/gaps, /profile/opportunities, /profile/passport
+ * App Router — تعريف كافة مسارات واجهات منصة قُدرة.
  */
 
 import { lazy, Suspense } from 'react'
@@ -22,6 +7,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import { LandingPage } from '../../pages/landing/LandingPage'
 import { MainLayout } from '../../components/layout/MainLayout'
+import { RouteFallback } from './RouteFallback'
 
 // Auth & Entry
 const SignUpPage = lazy(() => import('../../pages/auth/SignUpPage').then(m => ({ default: m.SignUpPage })))
@@ -45,15 +31,6 @@ const EvidenceDetailPage = lazy(() => import('../../pages/evidence/EvidenceDetai
 
 // Talent / Profile Flow
 const ProfilePage = lazy(() => import('../../pages/profile/ProfilePage').then(m => ({ default: m.ProfilePage })))
-
-function RouteFallback() {
-  return (
-    <div className="wrap" style={{ padding: '4rem 1rem', textAlign: 'center' }}>
-      <span className="sk-line" style={{ display: 'inline-block', height: 14, width: '40%' }} />
-      <p className="note" style={{ marginTop: '1rem' }}>جارٍ التحميل…</p>
-    </div>
-  )
-}
 
 export const router = createBrowserRouter([
   // البوابة العامة المستقلة

@@ -7,18 +7,20 @@ export function useTimer({ initialSeconds, onExpire, autoStart = false }: UseTim
   const [isRunning, setIsRunning] = useState(autoStart)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const onExpireRef = useRef(onExpire)
+  const secondsLeftRef = useRef(secondsLeft)
   onExpireRef.current = onExpire
+  secondsLeftRef.current = secondsLeft
 
   const clear = useCallback(() => { if (intervalRef.current) { clearInterval(intervalRef.current); intervalRef.current = null } }, [])
   const start = useCallback(() => { clear(); setIsRunning(true) }, [clear])
   const stop = useCallback(() => { clear(); setIsRunning(false) }, [clear])
   const pause = useCallback(() => { clear(); setIsRunning(false) }, [clear])
-  const resume = useCallback(() => { if (secondsLeft > 0) setIsRunning(true) }, [secondsLeft])
+  const resume = useCallback(() => { if (secondsLeftRef.current > 0) setIsRunning(true) }, [])
   const reset = useCallback((newSeconds?: number) => { clear(); setSecondsLeft(newSeconds ?? initialSeconds); setIsRunning(false) }, [clear, initialSeconds])
 
   useEffect(() => {
     if (!isRunning) return
-    if (secondsLeft <= 0) { clear(); setIsRunning(false); onExpireRef.current?.(); return }
+    if (secondsLeftRef.current <= 0) { clear(); setIsRunning(false); onExpireRef.current?.(); return }
     intervalRef.current = setInterval(() => {
       setSecondsLeft((prev) => {
         if (prev <= 1) { clear(); setIsRunning(false); onExpireRef.current?.(); return 0 }
