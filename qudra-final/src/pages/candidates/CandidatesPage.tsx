@@ -12,6 +12,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import { InviteModal } from '../../components/modals/InviteModal'
+import { Tag } from '../../components/ui/Tag'
 import styles from './CandidatesPage.module.css'
 
 interface CandidateData {
@@ -143,16 +144,10 @@ export function CandidatesPage() {
 
             <span className={styles.chips}>
               {c.proven.map(([skill, count]) => (
-                <span key={skill} className={`${styles.chip} ${styles.proven}`}>
-                  <span>{skill}</span>
-                  <span className={`${styles.c} num`}>{count}</span>
-                </span>
+                <Tag key={skill} name={skill} variant="proven" evidenceCount={count} size="sm" />
               ))}
               {c.claimed.map((skill) => (
-                <span key={skill} className={`${styles.chip} ${styles.claimed}`}>
-                  <span className={styles.g} />
-                  <span>{skill}</span>
-                </span>
+                <Tag key={skill} name={skill} variant="claimed" size="sm" />
               ))}
             </span>
 

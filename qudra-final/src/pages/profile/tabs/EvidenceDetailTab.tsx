@@ -1,5 +1,6 @@
 import styles from '../ProfilePage.module.css'
 import { MY_EVIDENCES, type MyEvidence } from '../profile-data'
+import { Tag } from '../../../components/ui/Tag'
 
 interface EvidenceDetailTabProps {
   evidenceIndex: number
@@ -283,7 +284,7 @@ export function EvidenceDetailTab({ evidenceIndex, navigate }: EvidenceDetailTab
             </div>
             <div className="row" style={{ gap: '0.4rem', marginTop: '0.9rem', flexWrap: 'wrap' }}>
               {sig.skills.map((sk) => (
-                <span key={sk} className="tag proven">{sk}</span>
+                <Tag key={sk} name={sk} variant="proven" size="sm" />
               ))}
             </div>
             <div className={styles.hr} />

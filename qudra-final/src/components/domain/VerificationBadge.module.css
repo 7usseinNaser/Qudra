@@ -1,0 +1,30 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.icon { font-size: 0.7rem; line-height: 1; }
+
+.unverified {
+  background: var(--gap-tint);
+  color: var(--gap-text);
+  border: 1px solid var(--gap-line);
+}
+
+.partial {
+  background: var(--surface-2);
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+}
+
+.verified {
+  background: var(--proof-tint);
+  color: var(--proof-text);
+  border: 1px solid var(--proof-line);
+}

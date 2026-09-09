@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from '../ProfilePage.module.css'
 import { ShareBox } from '../../../components/overlays'
+import { Tag } from '../../../components/ui/Tag'
 
 interface PassportTabProps {
   user: { name: string; avatar: string }
@@ -58,10 +59,10 @@ export function PassportTab({ user }: PassportTabProps) {
               <div>
                 <span className={styles.lbl}>Proven Skills</span>
                 <div className="row" style={{ gap: '0.4rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="tag proven">Problem Solving <span className="c">4</span></span>
-                  <span className="tag proven">UI/UX <span className="c">3</span></span>
-                  <span className="tag proven">Product Thinking <span className="c">2</span></span>
-                  <span className="tag proven">Backend <span className="c">2</span></span>
+                  <Tag name="Problem Solving" variant="proven" evidenceCount={4} size="sm" />
+                  <Tag name="UI/UX" variant="proven" evidenceCount={3} size="sm" />
+                  <Tag name="Product Thinking" variant="proven" evidenceCount={2} size="sm" />
+                  <Tag name="Backend" variant="proven" evidenceCount={2} size="sm" />
                 </div>
               </div>
               <div>

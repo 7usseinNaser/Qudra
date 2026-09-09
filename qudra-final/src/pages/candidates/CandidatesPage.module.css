@@ -62,6 +62,24 @@
   color: inherit;
 }
 
+@media (max-width: 768px) {
+  .cand {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+  }
+  .cand .rk { align-self: flex-start; }
+  .cand .av { align-self: flex-start; }
+  .cand .who { min-width: 0; width: 100%; }
+  .cand .chips { width: 100%; flex: none; }
+  .cand .sc { width: 100%; display: flex; align-items: center; gap: 0.6rem; }
+  .cand .sc .v { font-size: 1.2rem; }
+  .cand .sc .tr { flex: 1; margin-top: 0; }
+  .cand .rdy { width: 100%; }
+  .cand .rdy > span { display: inline-block; }
+  .cand .whybtn, .cand .cinv { flex: 1; }
+}
+
 .cand.lead {
   border-color: var(--ink);
 }
@@ -186,45 +204,6 @@
 
 .cinv:hover {
   background: #00696b;
-}
-
-/* ── الرقاقات (Chips) ── */
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  border-radius: 999px;
-  padding: 0.28rem 0.6rem 0.28rem 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.chip.proven {
-  background: var(--accent-soft);
-  color: var(--accent);
-  border: 1px solid var(--accent-line);
-}
-
-.chip.proven .c {
-  font-family: var(--fm);
-  font-size: 0.72rem;
-  background: #fff;
-  color: var(--accent);
-  border-radius: 999px;
-  padding: 0.05rem 0.4rem;
-}
-
-.chip.claimed {
-  background: var(--soft);
-  color: var(--ink-3);
-  border: 1px dashed var(--line-2);
-}
-
-.chip.claimed .g {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gapc, #e6a23c);
 }
 
 /* ── الحالات ── */

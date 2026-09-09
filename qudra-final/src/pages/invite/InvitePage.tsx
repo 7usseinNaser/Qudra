@@ -9,6 +9,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
+import { Tag } from '../../components/ui/Tag'
 import styles from './InvitePage.module.css'
 
 export function InvitePage() {
@@ -52,8 +53,8 @@ export function InvitePage() {
           <div className={styles.hr} />
           <span className="lbl">يحتاجك لـ</span>
           <div className="row" style={{ gap: '0.4rem', marginTop: '0.5rem' }}>
-            <span className="tag proven">Backend</span>
-            <span className="tag proven">Database</span>
+            <Tag name="Backend" variant="proven" size="sm" />
+            <Tag name="Database" variant="proven" size="sm" />
           </div>
           <p className="note" style={{ marginTop: '0.7rem' }}>
             تغطيتك لهاتين القدرتين{' '}
@@ -67,12 +68,8 @@ export function InvitePage() {
               ما أثبته هو
             </h3>
             <div className="row" style={{ gap: '0.3rem' }}>
-              <span className="tag proven">
-                UI/UX <span className="c">3</span>
-              </span>
-              <span className="tag proven">
-                Product <span className="c">2</span>
-              </span>
+              <Tag name="UI/UX" variant="proven" evidenceCount={3} size="sm" />
+              <Tag name="Product" variant="proven" evidenceCount={2} size="sm" />
             </div>
             <p className="note" style={{ marginTop: '0.7rem' }}>
               7 أدلة موثّقة · قوّة ملف 68
@@ -85,8 +82,8 @@ export function InvitePage() {
                 ما ينقصه
               </h3>
               <div className="row" style={{ gap: '0.3rem' }}>
-                <span className="tag claimed">Backend</span>
-                <span className="tag claimed">Database</span>
+                <Tag name="Backend" variant="claimed" size="sm" />
+                <Tag name="Database" variant="claimed" size="sm" />
               </div>
               <p className="note" style={{ marginTop: '0.7rem' }}>
                 هذا سبب دعوتك — لا نخفيه عنك.

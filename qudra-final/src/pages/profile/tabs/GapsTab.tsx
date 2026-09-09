@@ -1,3 +1,4 @@
+import { Tag } from '../../../components/ui/Tag'
 import styles from '../ProfilePage.module.css'
 
 interface GapsTabProps {
@@ -23,16 +24,16 @@ export function GapsTab({ navigate }: GapsTabProps) {
             <div className="box">
               <h3 style={{ fontSize: '0.95rem', color: 'var(--accent)', marginBottom: '0.7rem' }}>ما لديك</h3>
               <div className="row" style={{ gap: '0.4rem', flexWrap: 'wrap' }}>
-                <span className="tag proven">Node.js <span className="c">6</span></span>
-                <span className="tag proven">PostgreSQL <span className="c">4</span></span>
-                <span className="tag proven">REST APIs <span className="c">3</span></span>
+                <Tag name="Node.js" variant="proven" evidenceCount={6} size="sm" />
+                <Tag name="PostgreSQL" variant="proven" evidenceCount={4} size="sm" />
+                <Tag name="REST APIs" variant="proven" evidenceCount={3} size="sm" />
               </div>
             </div>
             <div className="box">
               <h3 style={{ fontSize: '0.95rem', color: 'var(--gapc, #e6a23c)', marginBottom: '0.7rem' }}>ما ينقصك</h3>
               <div className="row" style={{ gap: '0.4rem', flexWrap: 'wrap' }}>
-                <span className="tag claimed">React Component State</span>
-                <span className="tag claimed">CSS Layout Architecture</span>
+                <Tag name="React Component State" variant="claimed" size="sm" />
+                <Tag name="CSS Layout Architecture" variant="claimed" size="sm" />
               </div>
             </div>
           </div>

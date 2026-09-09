@@ -1,0 +1,60 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--gap-line);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.header h4 {
+  font-size: 0.95rem;
+  font-family: var(--f-display);
+  margin: 0;
+}
+
+.importance {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--gap-tint);
+  color: var(--gap-text);
+  white-space: nowrap;
+}
+
+.barRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.bar {
+  height: 6px;
+  background: var(--soft);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--gap);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.rec {
+  font-size: 0.83rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}

@@ -1,0 +1,60 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  width: 100%;
+  text-align: start;
+  font-family: inherit;
+  color: inherit;
+  transition: border-color 0.16s, box-shadow 0.16s;
+}
+
+.card:not(:disabled):hover {
+  border-color: var(--proof-text);
+  box-shadow: var(--shadow);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--f-display);
+}
+
+.bar {
+  height: 5px;
+  background: var(--soft);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--proof);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.meta .num {
+  font-family: var(--f-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
