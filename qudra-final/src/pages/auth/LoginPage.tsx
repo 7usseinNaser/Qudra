@@ -24,6 +24,7 @@ export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(true)
   const [errorNotice, setErrorNotice] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,12 +33,17 @@ export function LoginPage() {
       return
     }
 
+    setLoading(true)
+    setErrorNotice('')
     try {
       await AuthService.login({ email, password })
       login(email)
       navigate(ROUTES.ROLE_SELECT)
-    } catch {
-      setErrorNotice('حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.')
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.'
+      setErrorNotice(msg)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -172,8 +178,8 @@ export function LoginPage() {
             </button>
           </div>
 
-          <button className={styles.cta} type="submit" id="loginSubmitBtn">
-            تسجيل الدخول
+          <button className={styles.cta} type="submit" id="loginSubmitBtn" disabled={loading}>
+            {loading ? 'جارٍ الدخول…' : 'تسجيل الدخول'}
           </button>
         </form>
 
