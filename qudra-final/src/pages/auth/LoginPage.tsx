@@ -10,29 +10,42 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useRole } from '../../contexts/useRole'
+import { authService } from '../../services/authService'
 import { QudraLogo } from '../../components/ui/QudraLogo'
 import styles from './LoginPage.module.css'
 
 export function LoginPage() {
   const navigate = useNavigate()
-  const { login } = useRole()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(true)
   const [errorNotice, setErrorNotice] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email.trim() || !password.trim()) {
       setErrorNotice('البريد أو كلمة المرور غير صحيحة. تحقّق وحاول مرة أخرى.')
       return
     }
 
-    login(email)
-    // بعد تسجيل الدخول، الانتقال إلى اختيار الدور أو الصفحة الرئيسية
+    setLoading(true)
+    setErrorNotice('')
+
+    const result = await authService.signIn({
+      email: email.trim(),
+      password,
+    })
+
+    setLoading(false)
+
+    if (!result.success) {
+      setErrorNotice(result.error ?? 'حدث خطأ. حاول مرة أخرى.')
+      return
+    }
+
     navigate(ROUTES.ROLE_SELECT)
   }
 
@@ -167,8 +180,8 @@ export function LoginPage() {
             </button>
           </div>
 
-          <button className={styles.cta} type="submit" id="loginSubmitBtn">
-            تسجيل الدخول
+          <button className={styles.cta} type="submit" id="loginSubmitBtn" disabled={loading}>
+            {loading ? 'جارٍ الدخول…' : 'تسجيل الدخول'}
           </button>
         </form>
 

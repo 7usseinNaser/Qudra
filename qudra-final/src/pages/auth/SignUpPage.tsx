@@ -9,22 +9,42 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
-import { useRole } from '../../contexts/useRole'
+import { authService } from '../../services/authService'
 import { QudraLogo } from '../../components/ui/QudraLogo'
 import styles from './SignUpPage.module.css'
 
 export function SignUpPage() {
   const navigate = useNavigate()
-  const { signup } = useRole()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [errorNotice, setErrorNotice] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!name.trim() || !email.trim()) return
-    signup(name, email)
+    if (!name.trim() || !email.trim() || password.length < 8) {
+      setErrorNotice('يرجى تعبئة جميع الحقول. كلمة المرور ٨ أحرف على الأقل.')
+      return
+    }
+
+    setLoading(true)
+    setErrorNotice('')
+
+    const result = await authService.signUp({
+      email: email.trim(),
+      password,
+      fullName: name.trim(),
+    })
+
+    setLoading(false)
+
+    if (!result.success) {
+      setErrorNotice(result.error ?? 'حدث خطأ. حاول مرة أخرى.')
+      return
+    }
+
     navigate(ROUTES.ROLE_SELECT)
   }
 
@@ -109,8 +129,14 @@ export function SignUpPage() {
             />
           </div>
 
-          <button className={styles.cta} type="submit" id="signupSubmitBtn">
-            أنشئ حساب
+          {errorNotice && (
+            <p className={styles.fielderr} role="alert">
+              {errorNotice}
+            </p>
+          )}
+
+          <button className={styles.cta} type="submit" id="signupSubmitBtn" disabled={loading}>
+            {loading ? 'جارٍ الإنشاء…' : 'أنشئ حساب'}
           </button>
         </form>
 
