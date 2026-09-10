@@ -18,6 +18,19 @@ class EvidenceRepository:
         )
         return list(self.db.execute(stmt).scalars().all())
 
+    def list_for_user_and_capability(
+        self, user_id: uuid.UUID, capability_id: uuid.UUID
+    ) -> list[Evidence]:
+        stmt = (
+            select(Evidence)
+            .where(
+                Evidence.user_id == user_id,
+                Evidence.capability_id == capability_id,
+            )
+            .order_by(Evidence.created_at.desc())
+        )
+        return list(self.db.execute(stmt).scalars().all())
+
     def create(self, **fields) -> Evidence:
         evidence = Evidence(**fields)
         self.db.add(evidence)

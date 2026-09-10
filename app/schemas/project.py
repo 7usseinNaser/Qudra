@@ -10,12 +10,16 @@ class ProjectCreate(BaseModel):
     title: str = Field(min_length=1, max_length=255)
     description: str | None = None
     status: ProjectStatus = ProjectStatus.DRAFT
+    technologies: list[str] = Field(default_factory=list)
+    contribution: list[str] = Field(default_factory=list)
 
 
 class ProjectUpdate(BaseModel):
     title: str | None = Field(default=None, min_length=1, max_length=255)
     description: str | None = None
     status: ProjectStatus | None = None
+    technologies: list[str] | None = None
+    contribution: list[str] | None = None
 
 
 class ProjectRead(BaseModel):
@@ -26,6 +30,8 @@ class ProjectRead(BaseModel):
     title: str
     description: str | None
     status: ProjectStatus
+    technologies: list[str] = []
+    contribution: list[str] = []
     created_at: datetime
     updated_at: datetime
 

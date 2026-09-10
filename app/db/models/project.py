@@ -2,8 +2,10 @@ import enum
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, Enum, ForeignKey, String, Text, func
-from sqlalchemy.dialects.postgresql import UUID
+from typing import Any
+
+from sqlalchemy import DateTime, Enum, ForeignKey, String, Text, func, JSON
+from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
@@ -37,6 +39,12 @@ class Project(Base):
         Enum(ProjectStatus, name="project_status"),
         default=ProjectStatus.DRAFT,
         nullable=False,
+    )
+    technologies: Mapped[Any | None] = mapped_column(
+        JSON().with_variant(JSONB(), "postgresql"), nullable=True, default=list
+    )
+    contribution: Mapped[Any | None] = mapped_column(
+        JSON().with_variant(JSONB(), "postgresql"), nullable=True, default=list
     )
 
     created_at: Mapped[datetime] = mapped_column(

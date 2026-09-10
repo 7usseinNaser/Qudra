@@ -23,13 +23,9 @@ from app.schemas.problem import (
     RequiredCapabilityRead,
 )
 
+from app.utils.normalization import canonical_key, normalize_capability_name
+
 logger = logging.getLogger("qudra.problem_analysis")
-
-
-def slugify_name(name: str) -> str:
-    """Normalize capability name to prevent duplicate variants (e.g. Backend Development -> backend-development)."""
-    clean = re.sub(r"[^\w\s-]", "", name.lower()).strip()
-    return re.sub(r"[-\s]+", "-", clean)
 
 
 class ProblemAnalysisService:
@@ -145,25 +141,30 @@ class ProblemAnalysisService:
         )
 
     def _get_or_create_capability(self, name: str, category: str | None) -> Capability:
-        norm_slug = slugify_name(name)
+        norm_name = normalize_capability_name(name)
+        key = canonical_key(norm_name)
 
-        # First check exact name
-        existing = self.cap_repo.get_by_name(name)
+        # First check exact normalized name
+        existing = self.cap_repo.get_by_name(norm_name)
         if existing:
             return existing
 
-        # Second check all existing capabilities for slug match
+        # Check raw input name
+        existing_raw = self.cap_repo.get_by_name(name)
+        if existing_raw:
+            return existing_raw
+
+        # Second check all existing capabilities for canonical key match
         all_caps = self.cap_repo.list_all()
         for cap in all_caps:
-            if slugify_name(cap.name) == norm_slug:
+            if canonical_key(cap.name) == key or cap.name.lower() == norm_name.lower():
                 return cap
 
         # Create new capability with normalized title-cased name
-        formatted_name = name.strip()
         return self.cap_repo.create(
-            name=formatted_name,
+            name=norm_name,
             category=category or "General",
-            description=f"Auto-created capability from AI analysis: {formatted_name}",
+            description=f"Auto-created capability from AI analysis: {norm_name}",
         )
 
     def _to_problem_read(self, problem: Problem) -> ProblemRead:
