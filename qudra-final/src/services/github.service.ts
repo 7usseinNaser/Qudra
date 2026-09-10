@@ -52,7 +52,7 @@ export const GitHubService = {
     return true;
   },
 
-  async fetchRealUserRepos(username: string, token?: string): Promise<GitHubRepo[]> {
+  async fetchRealUserRepos(username: string): Promise<GitHubRepo[]> {
     const cleanUsername = username.trim().replace(/^https?:\/\/github\.com\//, '').replace(/\/$/, '');
     if (!cleanUsername) {
       throw new Error('يرجى إدخال اسم مستخدم صحيح في GitHub');
@@ -62,9 +62,6 @@ export const GitHubService = {
     const headers: Record<string, string> = {
       Accept: 'application/vnd.github.v3+json',
     };
-    if (token && token.trim()) {
-      headers.Authorization = `Bearer ${token.trim()}`;
-    }
 
     const response = await fetch(url, { headers });
     if (!response.ok) {
@@ -72,7 +69,7 @@ export const GitHubService = {
         throw new Error(`حساب GitHub (@${cleanUsername}) غير موجود. تأكد من صحة الاسم.`);
       }
       if (response.status === 403) {
-        throw new Error('تم تجاوز حد طلبات GitHub API العامة مؤقتاً. يمكنك إدخال Personal Access Token أو تجربة حساب تجريبي.');
+        throw new Error('تم تجاوز حد طلبات GitHub العامة مؤقتاً من قبل خادم GitHub. يرجى الانتظار قليلاً أو تجربة الحساب التجريبي.');
       }
       throw new Error(`فشل الاتصال بـ GitHub API (كود ${response.status})`);
     }

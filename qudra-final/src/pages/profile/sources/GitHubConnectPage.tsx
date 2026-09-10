@@ -9,8 +9,6 @@ import { GithubIcon } from '../../../components/ui/GithubIcon';
 export const GitHubConnectPage: React.FC = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
-  const [token, setToken] = useState('');
-  const [showTokenInput, setShowTokenInput] = useState(false);
   const [connecting, setConnecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,7 +22,7 @@ export const GitHubConnectPage: React.FC = () => {
     setConnecting(true);
     setError(null);
     try {
-      await GitHubService.fetchRealUserRepos(username, token);
+      await GitHubService.fetchRealUserRepos(username);
       navigate(ROUTES.GITHUB_SELECT);
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -157,43 +155,6 @@ export const GitHubConnectPage: React.FC = () => {
             </span>
           </div>
 
-          <div>
-            <button
-              type="button"
-              onClick={() => setShowTokenInput(!showTokenInput)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--proof-text)',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                padding: 0
-              }}
-            >
-              {showTokenInput ? 'إخفاء خيار الـ Token' : '+ هل تريد تضمين مستودعات خاصة؟ (Personal Access Token اختياري)'}
-            </button>
-
-            {showTokenInput && (
-              <div style={{ marginTop: '0.5rem' }}>
-                <input
-                  type="password"
-                  value={token}
-                  onChange={e => setToken(e.target.value)}
-                  placeholder="ghp_xxxxxxxxxxxx (اختياري للمستودعات الخاصة)"
-                  dir="ltr"
-                  style={{
-                    width: '100%',
-                    padding: '0.6rem 0.85rem',
-                    borderRadius: '8px',
-                    border: '1px solid var(--line)',
-                    background: 'var(--surface-2)',
-                    fontSize: '0.88rem'
-                  }}
-                />
-              </div>
-            )}
-          </div>
 
           <Button
             type="submit"

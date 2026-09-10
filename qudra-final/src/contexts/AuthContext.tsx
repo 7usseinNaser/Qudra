@@ -1,51 +1,51 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useEffect, useState, type ReactNode } from 'react'
-import type { Session, User } from '@supabase/supabase-js'
-import { supabase } from '../lib/supabase'
+import type { User } from '../services/types'
+import { AuthService } from '../services/auth.service'
+import { QudraStore } from '../services/store'
 
 export interface AuthContextValue {
   user: User | null
-  session: Session | null
+  token: string | null
   loading: boolean
   signOut: () => Promise<void>
 }
 
 export const AuthContext = createContext<AuthContextValue>({
   user: null,
-  session: null,
-  loading: true,
+  token: null,
+  loading: false,
   signOut: async () => {},
 })
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null)
-  const [session, setSession] = useState<Session | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState<User | null>(() => QudraStore.getUser())
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem('qudra_auth_token'))
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
-      setSession(s)
-      setUser(s?.user ?? null)
-      setLoading(false)
-    })
+    // Sync with remote FastAPI backend if user token exists
+    let active = true
+    AuthService.getCurrentUser().then((u) => {
+      if (active) setUser(u)
+    }).catch(() => {})
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, s) => {
-      setSession(s)
-      setUser(s?.user ?? null)
-      setLoading(false)
-    })
-
-    return () => subscription.unsubscribe()
+    return () => {
+      active = false
+    }
   }, [])
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    setSession(null)
-    setUser(null)
+    setLoading(true)
+    await AuthService.logout()
+    localStorage.removeItem('qudra_auth_token')
+    setToken(null)
+    setUser(QudraStore.getUser())
+    setLoading(false)
   }
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signOut: handleSignOut }}>
+    <AuthContext.Provider value={{ user, token, loading, signOut: handleSignOut }}>
       {children}
     </AuthContext.Provider>
   )
