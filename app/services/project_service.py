@@ -16,6 +16,7 @@ from app.schemas.project import ProjectCreate, ProjectUpdate
 
 class ProjectService:
     def __init__(self, db: Session):
+        self.db = db
         self.repo = ProjectRepository(db)
         self.capability_repo = CapabilityRepository(db)
 
@@ -25,6 +26,8 @@ class ProjectService:
             title=data.title,
             description=data.description,
             status=data.status,
+            technologies=data.technologies,
+            contribution=data.contribution,
         )
 
     def list_for_owner(self, owner_id: uuid.UUID) -> list[Project]:
@@ -45,6 +48,8 @@ class ProjectService:
             title=data.title,
             description=data.description,
             status=data.status,
+            technologies=data.technologies,
+            contribution=data.contribution,
         )
 
     def add_capability(self, owner_id: uuid.UUID, project_id: uuid.UUID, capability_id: uuid.UUID):
@@ -54,4 +59,37 @@ class ProjectService:
             raise CapabilityNotFoundError()
         if self.repo.get_project_capability(project.id, capability_id):
             raise ProjectCapabilityAlreadyExistsError()
-        return self.repo.add_capability(project.id, capability_id)
+        link = self.repo.add_capability(project.id, capability_id)
+
+        # Feature 4: Create Project Evidence automatically for this capability
+        from app.db.models.evidence import EvidenceType
+        from app.schemas.evidence import EvidenceCreate
+        from app.services.evidence_service import EvidenceService
+
+        base_strength = 75.0
+        if project.technologies and len(project.technologies) > 0:
+            base_strength += 7.0
+        if project.contribution and len(project.contribution) > 0:
+            base_strength += 8.0
+        calc_strength = min(95.0, base_strength)
+
+        contrib_summary = ""
+        if project.contribution:
+            if isinstance(project.contribution, list):
+                contrib_summary = f" Contributions: {', '.join(project.contribution)}."
+            else:
+                contrib_summary = f" Contributions: {project.contribution}."
+
+        EvidenceService(self.db).create(
+            user_id=owner_id,
+            data=EvidenceCreate(
+                capability_id=capability_id,
+                type=EvidenceType.PROJECT,
+                project_id=project.id,
+                title=f"Project: {project.title}",
+                description=f"{project.description or ''}{contrib_summary}".strip() or None,
+                strength=calc_strength,
+            ),
+        )
+
+        return link
