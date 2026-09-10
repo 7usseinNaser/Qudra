@@ -76,8 +76,12 @@
 | # | المهمة | الحالة |
 |---|---|---|
 | B0.5.1 | `Modal` الأساسي (focus trap, escape, إلخ) | `VERIFIED` |
-| B0.5.2 | `CmdPalette` (Ctrl+K) | `NOT_STARTED` (ميزة مساندة مؤجلة) |
+| B0.5.2 | `CmdPalette` (Ctrl+K) | `VERIFIED` (مربوط في MainLayout مع استماع عام لاختصار Ctrl+K عبر التطبيق كاملاً) |
 | B0.5.3 | `InviteModal`, `ShareBox` | `VERIFIED` (نافذة دعوة المرشح لاختبار عملي + نسخ رابط جواز القدرات) |
+| B0.5.7 | `ConfirmBox` | `VERIFIED` (مربوط في SimulationPage لتأكيد المغادرة أثناء سريان المؤقت) |
+| B0.5.8 | `GradingOverlay` | `VERIFIED` (مربوط في EvaluationPage كشاشة تقييم انتقالية قبل عرض النتائج) |
+| B0.5.9 | `StateBox` | `VERIFIED` (جاهز للاستدعاء لعرض حالات الفراغ أو الأخطاء الحرجة) |
+| B0.5.10 | تفكيك `ProfilePage` إلى 7 تبويبات مع Container خفيف | `VERIFIED` (DashboardTab, SourcesTab, EvidenceTab, EvidenceDetailTab, TimelineTab, GapsTab, OpportunitiesTab, PassportTab + profile-data.ts) |
 
 ### B0.6 — البيانات التجريبية وطبقة الخدمات
 | # | المهمة | الحالة |
