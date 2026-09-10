@@ -1,0 +1,10 @@
+{
+  "name": "qudra-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "npm run build --prefix qudra-final && node -e \"const fs=require('fs'); if(fs.existsSync('qudra-final/dist')) fs.cpSync('qudra-final/dist', 'dist', {recursive:true});\"",
+    "dev": "npm run dev --prefix qudra-final",
+    "lint": "npm run lint --prefix qudra-final",
+    "typecheck": "npm run typecheck --prefix qudra-final"
+  }
+}
