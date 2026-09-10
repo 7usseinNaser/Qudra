@@ -1,15 +1,16 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useEffect, useState, type ReactNode } from 'react'
 import type { Session, User } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
 
-interface AuthContextValue {
+export interface AuthContextValue {
   user: User | null
   session: Session | null
   loading: boolean
   signOut: () => Promise<void>
 }
 
-const AuthContext = createContext<AuthContextValue>({
+export const AuthContext = createContext<AuthContextValue>({
   user: null,
   session: null,
   loading: true,
@@ -50,6 +51,4 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   )
 }
 
-export function useAuth() {
-  return useContext(AuthContext)
-}
+export { useAuth } from './useAuth'
