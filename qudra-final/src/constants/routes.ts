@@ -36,7 +36,6 @@ export const ROUTES = {
   CAPABILITIES: '/capabilities',
   SIMULATION: '/simulation',
   EVALUATION: '/evaluation',
-  ANALYZING: '/analyzing',
   SKILL_DNA: '/skill-dna',
   RESULT: '/result',
   MATCHING: '/matching',

@@ -160,3 +160,18 @@
 | P1.7.1 | فحص الأنواع الصارم `npm run typecheck` بصفر أخطاء | `VERIFIED` |
 | P1.7.2 | فحص الأكواد والأسلوب `npm run lint` بصفر أخطاء وصفر تحذيرات | `VERIFIED` |
 | P1.7.3 | بناء حزمة الإنتاج `npm run build` بنجاح كامل لجميع الـ 1971 وحدة | `VERIFIED` |
+
+### P1.8 — التحقق والتصليب (Verification & Hardening) — 2026-09-10
+| # | المهمة | الحالة |
+|---|---|---|
+| P1.8.1 | فحص Supabase: `grep -ri "supabase"` → صفر نتائج | `VERIFIED` |
+| P1.8.2 | توحيد مصادر البيانات: البحث عن بيانات وهمية متوازية → صفر نتائج، مصدر وحيد عبر `QudraStore` | `VERIFIED` |
+| P1.8.3 | `CandidateDetailPage` يقرأ `:id` ويعرض 5 مرشحين مختلفين | `VERIFIED` |
+| P1.8.4 | `EvidenceDetailTab` كل دليل له إشارات وتأثير مختلف | `VERIFIED` |
+| P1.8.5 | `PassportTab` يستدعي `navigator.clipboard.writeText()` | `VERIFIED` |
+| P1.8.6 | `InviteModal` المهارة من بيانات المرشح not hardcoded | `VERIFIED` |
+| P1.8.7 | إصلاح مسار يتيم `/analyzing`: حذف `ANALYZING` من `routes.ts` (شاشة التحليل تعمل inline) | `VERIFIED` |
+| P1.8.8 | إصلاح مسار يتيم `/invite/:id`: إضافة زر معاينة من `InviteModal` | `VERIFIED` |
+| P1.8.9 | `npm run typecheck` 0 أخطاء | `VERIFIED` |
+| P1.8.10 | `npm run lint` 0 أخطاء و 0 تحذيرات | `VERIFIED` |
+| P1.8.11 | `npm run build` نجاح كامل | `VERIFIED` |

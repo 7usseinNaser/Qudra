@@ -1,11 +1,32 @@
 # STATUS.md — ملخص الحالة الحالية
 
-> **آخر تحديث**: 2026-09-09
+> **آخر تحديث**: 2026-09-10
 > هذا الملف يُحدَّث بعد كل مهمة منجزة (راجع `قواعد.md` القسم 43 و46). يعكس حقيقة آخر نقطة توقف فعلية.
 
 ---
 
-## المرحلة الحالية: Phase 1 — Proof Core مكتملة ومفحوصة بنسبة 100%
+## المرحلة الحالية: Phase 1 — Proof Core مكتملة + تدقيق وتصليب 2026-09-10
+
+### تدقيق وتصليب (Verification & Hardening) — 2026-09-10
+
+1. **فحص Supabase**: `grep -ri "supabase" --include="*.ts" --include="*.tsx" --include="*.json" --include="*.env*"` → **صفر نتائج**. لا وجود لأي إشارة Supabase في الكود.
+
+2. **توحيد مصادر البيانات (Data Consistency)**: بحث عن `MY_EVIDENCES|demoCandidates|demoEvidence|demoTimelineSeries|demoDna|demoReasons` → **صفر نتائج**. جميع البيانات التجريبية موحدة عبر `QudraStore` و `mock-data.ts` كمصدر وحيد.
+
+3. **الأخطاء الحرجة الأربعة — جميعها مصلحة سابقاً وتأكد منها بالكود**:
+   - `CandidateDetailPage`: يقرأ `:id` من الرابط عبر `useParams` ويعرض 5 مرشحين مختلفين (lina, mohammed, majid, reem, sara). ✅
+   - `EvidenceDetailTab`: كل دليل له إشارات وتأثير مختلف عبر `getSignalsForEvidence()`. ✅
+   - `PassportTab`: يستدعي `navigator.clipboard.writeText()` مع fallback لـ `execCommand`. ✅
+   - `InviteModal`: المهارة تُستخرج من `detail.gapSkill` الممرر كـ prop، ليست hardcoded. ✅
+
+4. **المسارات اليتيمة (Orphan Routes)**:
+   - `/analyzing`: كان مساراً ميتاً (معرّف في `ROUTES` لكن غير مسجل في الراوتر وغير مستخدم). تم حذف `ANALYZING` من `routes.ts`. شاشة التحليل تعمل inline داخل `ProblemInputPage`. ✅
+   - `/invite/:id`: كان مسجلاً في الراوتر بلا أي زر يقود إليه. تم إضافة زر "معاينة الدعوة كما سيراها" في نافذة `InviteModal` بعد الإرسال، ينتقل إلى `/invite/:id` بمعرّف المرشح. ✅
+
+5. **بوابات الجودة (2026-09-10)**:
+   - `npm run typecheck`: **0 أخطاء** ✅
+   - `npm run lint`: **0 أخطاء و 0 تحذيرات** ✅
+   - `npm run build`: **نجاح كامل** ✅
 
 تم الانتهاء بنجاح من تنفيذ وتسليم **Phase 1: Proof Core (من التسجيل حتى Master Profile قابل للتفسير)** وفق وثيقة المواصفات `QUDRA_UX_UI_COMPLETE_SPEC.md` ومبادئ مهارة `ui-ux-pro-max`:
 

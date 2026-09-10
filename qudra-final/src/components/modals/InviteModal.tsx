@@ -6,12 +6,14 @@
  */
 
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './InviteModal.module.css'
 
 interface InviteModalProps {
   name: string
   roleMeta: string
   skill: string
+  candidateId?: string
   isOpen: boolean
   onClose: () => void
 }
@@ -20,9 +22,11 @@ export function InviteModal({
   name,
   roleMeta,
   skill,
+  candidateId,
   isOpen,
   onClose,
 }: InviteModalProps) {
+  const navigate = useNavigate()
   const [note, setNote] = useState('')
   const [sent, setSent] = useState(false)
 
@@ -86,9 +90,22 @@ export function InviteModal({
             <p>
               تصل إشعارًا للمرشح {name} مع تفاصيل مشروعك والقدرات المطلوبة منه.
             </p>
-            <button className="btn" onClick={handleClose}>
-              تم
-            </button>
+            <div className={styles.row}>
+              <button className="btn" onClick={handleClose}>
+                تم
+              </button>
+              {candidateId && (
+                <button
+                  className="btn ghost"
+                  onClick={() => {
+                    handleClose()
+                    navigate(`/invite/${candidateId}`)
+                  }}
+                >
+                  معاينة الدعوة كما سيراها
+                </button>
+              )}
+            </div>
           </div>
         )}
       </div>

@@ -605,6 +605,7 @@ export function CandidateDetailPage() {
         name={detail.name}
         roleMeta={detail.title}
         skill={detail.gapSkill}
+        candidateId={detail.id}
         onClose={() => setIsInviteOpen(false)}
       />
     </section>
