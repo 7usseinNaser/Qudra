@@ -1,0 +1,87 @@
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.2rem 0;
+  border-bottom: 2px solid var(--line, #eee);
+}
+
+.tab, .tabActive {
+  padding: 0.6rem 1rem;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  color: var(--ink-3, #999);
+}
+
+.tabActive {
+  color: var(--accent, #00b4a0);
+  border-bottom-color: var(--accent, #00b4a0);
+  font-weight: 600;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.card {
+  padding: 1rem 1.25rem;
+  border-radius: var(--r, 14px);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-soft, rgba(0,180,160,0.1));
+  color: var(--accent, #00b4a0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.identity { flex: 1; min-width: 0; }
+
+.name { font-size: 0.95rem; font-weight: 600; margin: 0; }
+.title { font-size: 0.8rem; color: var(--ink-3, #999); }
+.date { font-size: 0.75rem; color: var(--ink-3, #999); }
+
+.cardActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line, #eee);
+  align-items: center;
+}
+
+.empty {
+  padding: 2rem;
+  text-align: center;
+  border-radius: var(--r, 14px);
+}
+
+.emptyText {
+  font-size: 0.88rem;
+  color: var(--ink-3, #999);
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}

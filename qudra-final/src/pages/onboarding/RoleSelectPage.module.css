@@ -1,0 +1,180 @@
+/* ═════════ RoleSelectPage.module.css ═════════
+   Reconstruction حرفي ودقيق من prototype.html (#role)
+*/
+
+.pick {
+  min-height: 100vh;
+  background: var(--card);
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pinner {
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 9vh, 5rem) 1.4rem 3rem;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.stepno {
+  display: inline-block;
+  font-family: var(--fm);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+}
+
+.pinner h1 {
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.plede {
+  color: var(--ink-2);
+  max-width: 44ch;
+  margin: 0 0 1.6rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.pcards {
+  display: grid;
+  gap: 1.1rem;
+  width: 100%;
+  margin-bottom: 1.8rem;
+}
+
+@media (min-width: 44rem) {
+  .pcards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pcard {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.8rem;
+  text-align: center;
+  padding: 2.2rem 1.6rem;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.pcard:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.pcard.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.pico {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--soft);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  transition: background 0.2s, color 0.2s;
+}
+
+.pcard.active .pico {
+  background: #fff;
+}
+
+.pico svg {
+  width: 28px;
+  height: 28px;
+}
+
+.ptxt b {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.ptxt em {
+  display: block;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.pmark {
+  position: absolute;
+  top: 1rem;
+  inset-inline-end: 1rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--line-2);
+  display: grid;
+  place-items: center;
+  transition: all 0.2s;
+}
+
+.pcard.active .pmark {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.pcard.active .pmark::after {
+  content: "";
+  width: 4px;
+  height: 7px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.btn {
+  min-width: 14rem;
+  min-height: 48px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.96rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 26px -10px rgba(0, 120, 122, 0.65);
+  transition: transform 0.18s ease, background 0.18s ease, opacity 0.18s;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #00696B;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}

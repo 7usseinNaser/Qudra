@@ -1,0 +1,347 @@
+/* ═════════ EvaluationPage.module.css ═════════
+   Reconstruction حرفي ودقيق من prototype.html (شاشة #ev)
+*/
+
+.evScreen {
+  max-width: 58rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3.5rem;
+}
+
+.stepno {
+  display: inline-block;
+  font-family: var(--fm);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.8rem;
+}
+
+.scrT {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.4rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.scrP {
+  font-size: 0.96rem;
+  color: var(--ink-2);
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+  max-width: 52ch;
+}
+
+/* ═════════ شبكة التقييم العلوية (الدونت + المعايير) ═════════ */
+.evgrid {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 52rem) {
+  .evgrid {
+    grid-template-columns: 17rem 1fr;
+    align-items: start;
+  }
+}
+
+.box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.4rem 1.6rem;
+}
+
+.evscore {
+  text-align: center;
+}
+
+/* ═════════ الدائرة المزدوجة SVG Donut ═════════ */
+.dual {
+  position: relative;
+  width: clamp(180px, 25vw, 220px);
+  height: clamp(180px, 25vw, 220px);
+  margin: 0 auto 0.6rem;
+}
+
+.dual svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.dual circle {
+  transition: stroke-dashoffset 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.dualc {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+}
+
+.dualc .big {
+  font-family: var(--fm);
+  font-size: clamp(3rem, 6.5vw, 4.2rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--ink);
+}
+
+.dualc .note {
+  font-size: 0.84rem;
+  color: var(--ink-3);
+  margin-top: 0.25rem;
+}
+
+.evscore .noteFoot {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* ═════════ المعايير الأربعة ═════════ */
+.criteriaBox h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+  color: var(--ink);
+}
+
+.crit {
+  margin-bottom: 0.9rem;
+}
+
+.crit:last-child {
+  margin-bottom: 0;
+}
+
+.crit .l {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: var(--ink);
+}
+
+.crit .l b {
+  font-family: var(--fm);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+
+.crit .t {
+  height: 8px;
+  background: var(--soft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.crit .t i {
+  display: block;
+  height: 100%;
+  background: var(--accent-fill);
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* قاعدة اللون البرتقالي الحرفية: إذا كانت الدرجة أقل من 80 */
+.crit.low .t i {
+  background: var(--gapc-fill, #E08A00);
+}
+
+/* ═════════ نقاط القوة والضعف (split) ═════════ */
+.split {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 1.2rem;
+}
+
+@media (min-width: 48rem) {
+  .split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.swh {
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink);
+}
+
+.swh::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.swh.good::before {
+  background: var(--accent-fill);
+}
+
+.swh.weak::before {
+  background: var(--gapc-fill, #E08A00);
+}
+
+.slist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.slist li {
+  font-size: 0.89rem;
+  color: var(--ink-2);
+  padding-inline-start: 1.1rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.slist li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--line-2);
+}
+
+/* ═════════ تفصيل الإجابات الثلاث (taskBreak) ═════════ */
+.breakBox {
+  margin-top: 1.2rem;
+}
+
+.secrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.secrow h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ink);
+}
+
+.secrow .note {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.tb {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.7rem;
+  background: var(--card);
+}
+
+.tb:last-child {
+  margin-bottom: 0;
+}
+
+.tbh {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.tbh .tskill {
+  font-family: var(--fm);
+  font-size: 0.68rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-radius: 5px;
+  padding: 0.15rem 0.55rem;
+}
+
+.tbh .sc {
+  margin-inline-start: auto;
+  font-family: var(--fm);
+  font-size: 1.05rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.tbq {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.tba {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  background: var(--soft);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  border-inline-start: 2px solid var(--line-2);
+  line-height: 1.75;
+  margin: 0;
+  word-break: break-word;
+}
+
+.tba.empty {
+  color: var(--ink-3);
+  font-style: italic;
+}
+
+/* ═════════ زر نهاية الصفحة وإشعار قريباً ═════════ */
+.endActionRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+
+.comingSoonNotice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  animation: fadeIn 0.25s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}

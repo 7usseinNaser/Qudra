@@ -1,0 +1,85 @@
+.savedBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: var(--r, 14px);
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--accent-line, rgba(0,180,160,0.2));
+  background: var(--accent-soft, rgba(0,180,160,0.04));
+}
+
+.form {
+  padding: 1.5rem;
+  border-radius: var(--r, 14px);
+}
+
+.field {
+  margin-bottom: 1.2rem;
+}
+
+.fieldRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.fieldRow .field {
+  flex: 1;
+  min-width: 180px;
+}
+
+.label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line-2, #ddd);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background: var(--page, #fff);
+  color: var(--ink, #222);
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent, #00b4a0);
+}
+
+.textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line-2, #ddd);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background: var(--page, #fff);
+  color: var(--ink, #222);
+  resize: vertical;
+  transition: border-color 0.15s;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent, #00b4a0);
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 56rem) {
+  .fieldRow { flex-direction: column; }
+  .fieldRow .field { min-width: 100%; }
+}

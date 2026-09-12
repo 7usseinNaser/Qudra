@@ -1,0 +1,71 @@
+/* ConfirmBox.module.css — مطابق لـ .modal/#confirmBox في prototype.html */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 88;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  background: rgba(11, 26, 27, 0.55);
+  backdrop-filter: blur(3px);
+  animation: fade 0.25s ease both;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 26rem;
+  background: var(--card, #fff);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -25px rgba(0, 0, 0, 0.55);
+  animation: pop 0.22s cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+
+.body {
+  text-align: center;
+  padding: 2rem 1.5rem 1.4rem;
+  display: grid;
+  gap: 0.4rem;
+  justify-items: center;
+}
+
+.warn {
+  color: var(--danger, #C2372B);
+  display: grid;
+  place-items: center;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0.8rem 0 0.4rem;
+  color: var(--ink, #142020);
+}
+
+.note {
+  font-size: 0.88rem;
+  color: var(--ink-2, #5A6E6E);
+  line-height: 1.7;
+}
+
+.footer {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0 1.5rem 1.4rem;
+  justify-content: center;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay, .sheet { animation: none; }
+}
