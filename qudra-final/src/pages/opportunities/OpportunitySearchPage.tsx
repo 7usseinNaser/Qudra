@@ -8,6 +8,10 @@ import { EmptyState } from '../../components/ui/EmptyState';
 import styles from './OpportunitySearchPage.module.css';
 
 const TYPE_LABEL: Record<OpportunityType, string> = {
+  project: 'مشروع',
+  challenge: 'تحدي',
+  fulltime: 'دوام كامل',
+  consulting: 'استشارة',
   job: 'وظيفة',
   freelance: 'عمل حر',
   internship: 'تدريب',
@@ -19,6 +23,7 @@ const TYPE_LABEL: Record<OpportunityType, string> = {
 
 const LOC_LABEL: Record<OpportunityLocation, string> = {
   remote: 'عن بعد',
+  onsite: 'حضوري',
   'on-site': 'حضوري',
   hybrid: 'هجين',
 };
@@ -35,8 +40,9 @@ export function OpportunitySearchPage() {
   const [verifiedOnly, setVerifiedOnly] = useState(false);
   const [fieldFilter, setFieldFilter] = useState<string>('all');
 
-  const fields = useMemo(() => {
-    const set = new Set(allOpportunities.map((o) => o.field));
+  const fields: string[] = useMemo(() => {
+    const list = allOpportunities.map((o) => o.field).filter((f): f is string => Boolean(f));
+    const set = new Set(list);
     return ['all', ...Array.from(set)];
   }, [allOpportunities]);
 

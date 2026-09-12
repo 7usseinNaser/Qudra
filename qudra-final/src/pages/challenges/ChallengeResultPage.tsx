@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { QudraStore } from '../../services/store';
+import { Challenge } from '../../services/types';
 import { ROUTES } from '../../constants/routes';
 import { Badge } from '../../components/ui/Badge';
 import { Bar } from '../../components/ui/Bar';
@@ -17,7 +18,7 @@ export function ChallengeResultPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const challenge = useMemo(
-    () => QudraStore.getChallenges().find((c) => c.id === id),
+    () => QudraStore.getChallenges().find((c: Challenge) => c.id === id),
     [id],
   );
 
@@ -103,7 +104,7 @@ export function ChallengeResultPage() {
           <div className={`box ${styles.panel}`}>
             <h3 className={styles.sectiontitle}>معايير التقييم</h3>
             <div className={styles.criteria}>
-              {challenge.evaluationCriteria.map((crit, idx) => {
+              {challenge.evaluationCriteria.map((crit: string, idx: number) => {
                 const critScore = passed ? 75 + (idx * 5) % 20 : 30 + (idx * 7) % 25;
                 return (
                   <div key={crit} className={styles.crititem}>

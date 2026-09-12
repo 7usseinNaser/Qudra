@@ -17,7 +17,7 @@ export const EmailVerificationPage: React.FC = () => {
 
   useEffect(() => {
     AuthService.getCurrentUser().then(u => {
-      if (u.email) setEmail(u.email);
+      if (u?.email) setEmail(u.email);
     });
 
     const timer = setInterval(() => {

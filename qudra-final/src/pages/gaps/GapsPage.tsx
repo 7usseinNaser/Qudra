@@ -51,19 +51,21 @@ export function GapsPage() {
               </div>
               <Bar
                 value={gap.currentStrength}
-                max={gap.targetStrength}
-                label={`الحالي ${gap.currentStrength}% — المطلوب ${gap.targetStrength}%`}
+                max={gap.targetStrength ?? gap.requiredStrength}
+                label={`الحالي ${gap.currentStrength}% — المطلوب ${gap.targetStrength ?? gap.requiredStrength}%`}
                 variant="gap"
                 size="sm"
               />
-              <p className={styles.impact}>{gap.impact}</p>
-              <div className={styles.missing}>
-                <span className={styles.misslabel}>أدلة ناقصة:</span>
-                {gap.evidenceMissing.map((m) => (
-                  <span key={m} className={styles.missitem}>{m}</span>
-                ))}
-              </div>
-              <span className={styles.action}>{gap.recommendedAction}</span>
+              <p className={styles.impact}>{gap.impact || gap.whyItMatters}</p>
+              {(gap.evidenceMissing || []).length > 0 && (
+                <div className={styles.missing}>
+                  <span className={styles.misslabel}>أدلة ناقصة:</span>
+                  {(gap.evidenceMissing || []).map((m: string) => (
+                    <span key={m} className={styles.missitem}>{m}</span>
+                  ))}
+                </div>
+              )}
+              <span className={styles.action}>{gap.recommendedAction || gap.suggestedAction}</span>
             </button>
           ))}
         </div>

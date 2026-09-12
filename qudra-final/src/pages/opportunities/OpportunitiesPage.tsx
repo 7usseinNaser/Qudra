@@ -8,6 +8,10 @@ import { EmptyState } from '../../components/ui/EmptyState';
 import styles from './OpportunitiesPage.module.css';
 
 const TYPE_LABEL: Record<OpportunityType, string> = {
+  project: 'مشروع',
+  challenge: 'تحدي',
+  fulltime: 'دوام كامل',
+  consulting: 'استشارة',
   job: 'وظيفة',
   freelance: 'عمل حر',
   internship: 'تدريب',
@@ -18,6 +22,10 @@ const TYPE_LABEL: Record<OpportunityType, string> = {
 };
 
 const TYPE_ICON: Record<OpportunityType, string> = {
+  project: '🛠️',
+  challenge: '🎯',
+  fulltime: '💼',
+  consulting: '💡',
   job: '💼',
   freelance: '🔗',
   internship: '🎓',
@@ -113,7 +121,7 @@ export function OpportunitiesPage() {
                   <span>·</span>
                   <span>{opp.city}</span>
                 </div>
-                <p className={styles.oppwhy}>{opp.whyMatch[0]}</p>
+                <p className={styles.oppwhy}>{opp.whyMatch?.[0] || opp.description || ''}</p>
               </button>
             ))}
         </div>

@@ -27,13 +27,14 @@ export function ChallengeLibraryPage() {
   const [difficultyFilter, setDifficultyFilter] = useState<ChallengeDifficulty | 'all'>('all');
   const [typeFilter, setTypeFilter] = useState<ChallengeType | 'all'>('all');
 
-  const skills = useMemo(() => {
-    const set = new Set(allChallenges.map((c) => c.skill));
+  const skills: string[] = useMemo(() => {
+    const list = allChallenges.map((c: Challenge) => c.skill).filter((s): s is string => Boolean(s));
+    const set = new Set(list);
     return ['all', ...Array.from(set)];
   }, [allChallenges]);
 
   const filtered = useMemo(() => {
-    return allChallenges.filter((c) => {
+    return allChallenges.filter((c: Challenge) => {
       if (skillFilter !== 'all' && c.skill !== skillFilter) return false;
       if (difficultyFilter !== 'all' && c.difficulty !== difficultyFilter) return false;
       if (typeFilter !== 'all' && c.type !== typeFilter) return false;

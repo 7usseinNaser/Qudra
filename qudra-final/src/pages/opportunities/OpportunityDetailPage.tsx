@@ -58,7 +58,7 @@ export function OpportunityDetailPage() {
           <div className={`box ${styles.panel}`}>
             <h3 className={styles.paneltitle}>المتطلبات</h3>
             <ul className={styles.list}>
-              {opp.requirements.map((req) => (
+              {(opp.requirements || []).map((req) => (
                 <li key={req} className={styles.listitem}>
                   <span className={styles.bullet} aria-hidden="true">•</span>
                   {req}
@@ -67,11 +67,11 @@ export function OpportunityDetailPage() {
             </ul>
           </div>
 
-          {opp.structuredRequirements.length > 0 && (
+          {(opp.structuredRequirements || []).length > 0 && (
             <div className={`box ${styles.panel}`}>
               <h3 className={styles.paneltitle}>المتطلبات المهارية المنظمة</h3>
               <div className={styles.structreq}>
-                {opp.structuredRequirements.map((sr) => (
+                {(opp.structuredRequirements || []).map((sr) => (
                   <div key={sr.skill} className={styles.structrow}>
                     <span className={styles.structskill}>{sr.skill}</span>
                     <Badge variant={sr.importance === 'critical' ? 'gap' : 'proof'}>
@@ -87,7 +87,7 @@ export function OpportunityDetailPage() {
           <div className={`box ${styles.panel}`}>
             <h3 className={styles.paneltitle}>لماذا أنت مطابق؟</h3>
             <ul className={styles.list}>
-              {opp.whyMatch.map((reason) => (
+              {(opp.whyMatch || []).map((reason) => (
                 <li key={reason} className={styles.listitem}>
                   <span className={styles.check} aria-hidden="true">✓</span>
                   {reason}
@@ -99,9 +99,9 @@ export function OpportunityDetailPage() {
           <div className={styles.evidencegaps}>
             <div className={`box ${styles.panel} ${styles.evidencepanel}`}>
               <h3 className={styles.paneltitle}>أدلتك المطابقة</h3>
-              {opp.matchedEvidence.length > 0 ? (
+              {(opp.matchedEvidence || []).length > 0 ? (
                 <ul className={styles.list}>
-                  {opp.matchedEvidence.map((ev) => (
+                  {(opp.matchedEvidence || []).map((ev) => (
                     <li key={ev} className={styles.listitem}>
                       <span className={styles.check} aria-hidden="true">✓</span>
                       {ev}
@@ -115,9 +115,9 @@ export function OpportunityDetailPage() {
 
             <div className={`box ${styles.panel} ${styles.gappanel}`}>
               <h3 className={styles.paneltitle}>فجواتك المرتبطة</h3>
-              {opp.gaps.length > 0 ? (
+              {(opp.gaps || []).length > 0 ? (
                 <ul className={styles.list}>
-                  {opp.gaps.map((g) => (
+                  {(opp.gaps || []).map((g) => (
                     <li key={g} className={styles.listitem}>
                       <span className={styles.cross} aria-hidden="true">✗</span>
                       {g}

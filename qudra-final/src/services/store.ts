@@ -4,7 +4,12 @@ import {
   Evidence, 
   CandidateMatch, 
   GitHubRepo, 
-  MasterProfileData 
+  MasterProfileData,
+  LearningResource,
+  GapDetail,
+  Opportunity,
+  Challenge,
+  GrowthPlan
 } from './types';
 import { 
   INITIAL_MOCK_USER, 
@@ -12,7 +17,12 @@ import {
   INITIAL_EVIDENCES, 
   INITIAL_GITHUB_REPOS, 
   INITIAL_CANDIDATE_MATCHES, 
-  INITIAL_MASTER_PROFILE 
+  INITIAL_MASTER_PROFILE,
+  INITIAL_RESOURCES,
+  INITIAL_GAPS,
+  INITIAL_OPPORTUNITIES,
+  INITIAL_CHALLENGES,
+  INITIAL_GROWTH_PLAN
 } from './mock-data';
 
 const STORAGE_KEYS = {
@@ -22,7 +32,12 @@ const STORAGE_KEYS = {
   GITHUB_REPOS: 'qudra_github_repos',
   CANDIDATE_MATCHES: 'qudra_candidate_matches',
   MASTER_PROFILE: 'qudra_master_profile',
-  IS_GITHUB_CONNECTED: 'qudra_gh_connected'
+  IS_GITHUB_CONNECTED: 'qudra_gh_connected',
+  RESOURCES: 'qudra_resources',
+  GAPS: 'qudra_gaps',
+  OPPORTUNITIES: 'qudra_opportunities',
+  CHALLENGES: 'qudra_challenges',
+  GROWTH_PLAN: 'qudra_growth_plan'
 };
 
 function loadItem<T>(key: string, fallback: T): T {
@@ -120,6 +135,46 @@ export const QudraStore = {
     saveItem(STORAGE_KEYS.MASTER_PROFILE, data);
   },
 
+  // Resources
+  getResources(): LearningResource[] {
+    return loadItem<LearningResource[]>(STORAGE_KEYS.RESOURCES, INITIAL_RESOURCES);
+  },
+  setResources(resources: LearningResource[]): void {
+    saveItem(STORAGE_KEYS.RESOURCES, resources);
+  },
+
+  // Gaps
+  getGaps(): GapDetail[] {
+    return loadItem<GapDetail[]>(STORAGE_KEYS.GAPS, INITIAL_GAPS);
+  },
+  setGaps(gaps: GapDetail[]): void {
+    saveItem(STORAGE_KEYS.GAPS, gaps);
+  },
+
+  // Opportunities
+  getOpportunities(): Opportunity[] {
+    return loadItem<Opportunity[]>(STORAGE_KEYS.OPPORTUNITIES, INITIAL_OPPORTUNITIES);
+  },
+  setOpportunities(opportunities: Opportunity[]): void {
+    saveItem(STORAGE_KEYS.OPPORTUNITIES, opportunities);
+  },
+
+  // Challenges
+  getChallenges(): Challenge[] {
+    return loadItem<Challenge[]>(STORAGE_KEYS.CHALLENGES, INITIAL_CHALLENGES);
+  },
+  setChallenges(challenges: Challenge[]): void {
+    saveItem(STORAGE_KEYS.CHALLENGES, challenges);
+  },
+
+  // Growth Plan
+  getGrowthPlan(): GrowthPlan {
+    return loadItem<GrowthPlan>(STORAGE_KEYS.GROWTH_PLAN, INITIAL_GROWTH_PLAN);
+  },
+  setGrowthPlan(plan: GrowthPlan): void {
+    saveItem(STORAGE_KEYS.GROWTH_PLAN, plan);
+  },
+
   // Reset to default
   resetAll(): void {
     localStorage.removeItem(STORAGE_KEYS.USER);
@@ -129,5 +184,10 @@ export const QudraStore = {
     localStorage.removeItem(STORAGE_KEYS.CANDIDATE_MATCHES);
     localStorage.removeItem(STORAGE_KEYS.MASTER_PROFILE);
     localStorage.removeItem(STORAGE_KEYS.IS_GITHUB_CONNECTED);
+    localStorage.removeItem(STORAGE_KEYS.RESOURCES);
+    localStorage.removeItem(STORAGE_KEYS.GAPS);
+    localStorage.removeItem(STORAGE_KEYS.OPPORTUNITIES);
+    localStorage.removeItem(STORAGE_KEYS.CHALLENGES);
+    localStorage.removeItem(STORAGE_KEYS.GROWTH_PLAN);
   }
 };

@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { QudraStore } from '../../services/store';
+import { Challenge } from '../../services/types';
 import { ROUTES } from '../../constants/routes';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { useTimer } from '../../hooks/useTimer';
@@ -12,7 +13,7 @@ export function ChallengeWorkspacePage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const challenge = useMemo(
-    () => QudraStore.getChallenges().find((c) => c.id === id),
+    () => QudraStore.getChallenges().find((c: Challenge) => c.id === id),
     [id],
   );
 
@@ -89,7 +90,7 @@ export function ChallengeWorkspacePage() {
       <div className={`box ${styles.instructions}`}>
         <h3 className={styles.sectiontitle}>التعليمات</h3>
         <ul className={styles.list}>
-          {challenge.requirements.map((req) => (
+          {challenge.requirements.map((req: string) => (
             <li key={req} className={styles.listitem}>
               <span className={styles.bullet} aria-hidden="true">•</span>
               {req}

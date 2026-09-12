@@ -131,10 +131,12 @@ export function ResourceDiscoveryPage() {
                 <span>·</span>
                 <span>{DIFFICULTY_LABEL[r.difficulty]}</span>
               </div>
-              <div className={styles.rating}>
-                <span className={styles.stars} aria-hidden="true">{'★'.repeat(Math.round(r.rating))}</span>
-                <span className={styles.ratingnum}>{r.rating.toFixed(1)}</span>
-              </div>
+              {r.rating != null && (
+                <div className={styles.rating}>
+                  <span className={styles.stars} aria-hidden="true">{'★'.repeat(Math.round(r.rating))}</span>
+                  <span className={styles.ratingnum}>{r.rating.toFixed(1)}</span>
+                </div>
+              )}
               <p className={styles.why}>{r.whyRecommended}</p>
             </button>
           ))}

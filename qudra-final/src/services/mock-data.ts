@@ -4,7 +4,12 @@ import {
   Evidence, 
   CandidateMatch, 
   GitHubRepo, 
-  MasterProfileData 
+  MasterProfileData,
+  LearningResource,
+  GapDetail,
+  Opportunity,
+  Challenge,
+  GrowthPlan
 } from './types';
 
 export const INITIAL_MOCK_USER: User = {
@@ -344,3 +349,288 @@ export const INITIAL_MASTER_PROFILE: MasterProfileData = {
     }
   ]
 };
+
+export const INITIAL_RESOURCES: LearningResource[] = [
+  {
+    id: 'res_1',
+    title: 'دليل هندسة النظم الموزعة عالية التوافر بـ FastAPI',
+    provider: 'أكاديمية قُدرة الهندسية',
+    type: 'documentation',
+    price: 'free',
+    difficulty: 'advanced',
+    duration: '4 ساعات قراءة وتطبيق',
+    description: 'دليل شامل يوضح بناء خدمات مصغرة باستخدام FastAPI مع أفضل ممارسات التزامن وتوثيق الـ APIs.',
+    format: 'دليل تفاعلي',
+    language: 'العربية',
+    certificate: true,
+    rating: 4.8,
+    url: 'https://fastapi.tiangolo.com',
+    whyRecommended: 'يغطي فجوة ضبط التزامن ومراقبة الأداء تحت الحمل العالي.',
+    gapSkill: 'FastAPI & Microservices',
+    relatedGapId: 'gap_1',
+    relevanceScore: 95,
+  },
+  {
+    id: 'res_2',
+    title: 'دورة الفهرسة المتقدمة وتحسين استعلامات PostgreSQL',
+    provider: 'منصة خبراء البيانات',
+    type: 'course',
+    price: 'free',
+    difficulty: 'intermediate',
+    duration: '6 ساعات فيديو وتمارين',
+    description: 'تعلم الفهارس المتقدمة في PostgreSQL وتحليل خطط الاستعلام EXPLAIN ANALYZE لتحسين الأداء.',
+    format: 'فيديو وتمارين كود',
+    language: 'العربية والإنجليزية',
+    certificate: true,
+    rating: 4.9,
+    url: 'https://www.postgresql.org/docs/',
+    whyRecommended: 'يرفع كفاءة كتابة استعلامات JOIN المعقدة وتفادي مشاكل N+1.',
+    gapSkill: 'PostgreSQL & Database Design',
+    relatedGapId: 'gap_2',
+    relevanceScore: 90,
+  },
+];
+
+export const INITIAL_GAPS: GapDetail[] = [
+  {
+    id: 'gap_1',
+    skill: 'معالجة اللغات الطبيعية (NLP)',
+    capabilityName: 'معالجة اللغات الطبيعية (NLP)',
+    category: 'الذكاء الاصطناعي',
+    severity: 'critical',
+    currentStrength: 35,
+    requiredStrength: 80,
+    targetStrength: 80,
+    gapDelta: 45,
+    whyItMatters: 'مطلوبة بشدة في 4 مشاريع ذكاء اصطناعي مفتوحة حالياً في المنصة.',
+    impact: 'تؤثر على أهلية التقديم لمشاريع الذكاء الاصطناعي بنسبة 35%.',
+    estimatedPath: 'أسبوعان عمل مكثف على خط أنابيب HuggingFace أو LangChain.',
+    currentEvidence: [
+      'استخدام مكتبة transformers في مشروع تجريبي مصغر'
+    ],
+    evidenceMissing: [
+      'مشروع إنتاجي لمعالجة النصوص العربية وتوليد الملخصات',
+      'اختبارات دقة وتقييم للنموذج (BLEU / ROUGE metrics)'
+    ],
+    resources: [
+      {
+        title: 'دليل النماذج اللغوية وهندسة الأوامر المتقدمة',
+        provider: 'أكاديمية الذكاء الاصطناعي',
+        type: 'دليل تطبيقي',
+        duration: '3 ساعات'
+      }
+    ],
+    challenge: {
+      title: 'بناء مصنف نصوص متعدد الفئات مع قياس الدقة',
+      difficulty: 'متوسط',
+      expectedTime: 'ساعتان'
+    },
+    project: {
+      title: 'محرك بحث دلالي للوثائق التقنية',
+      description: 'بناء نظام استرجاع دلالي متكامل وتوليد الإجابات باستخدام RAG.'
+    },
+    opportunityCount: 4,
+    timeToBridge: 'أسبوعان',
+    suggestedAction: 'إكمال التحدي العملي أو ربط مستودع يوضح معالجة النصوص.',
+    recommendedAction: 'ابدأ بالتحدي العملي أولاً لإثبات مهارة تصنيف النصوص ثم اربط مستودع مشروع RAG.'
+  },
+  {
+    id: 'gap_2',
+    skill: 'إدارة حاويات Docker و Kubernetes',
+    capabilityName: 'إدارة حاويات Docker و Kubernetes',
+    category: 'DevOps & البنية التحتية',
+    severity: 'moderate',
+    currentStrength: 55,
+    requiredStrength: 75,
+    targetStrength: 75,
+    gapDelta: 20,
+    whyItMatters: 'تزيد من موثوقية نشر النظم الموزعة وسرعة التحقق في بيئة الإنتاج.',
+    impact: 'تزيد فرص القبول في المشاريع ذات النشر السحابي المستمر.',
+    estimatedPath: 'أسبوع واحد لتجهيز ملفات Dockerfile متعددة المراحل و Kubernetes manifests.',
+    currentEvidence: [
+      'ملف Dockerfile أساسي في مستودع fast-microservices-core'
+    ],
+    evidenceMissing: [
+      'إعداد نشر Kubernetes أو Helm Charts',
+      'إعداد مسار CI/CD للتحقق التلقائي وبناء الصور'
+    ],
+    resources: [
+      {
+        title: 'دليل Docker و Kubernetes للإنتاج الفعلي',
+        provider: 'مجتمع هندسة البنية التحتية',
+        type: 'كورس تفاعلي',
+        duration: '4 ساعات'
+      }
+    ],
+    challenge: {
+      title: 'تحسين ملف Dockerfile متعدد المراحل وتقليل الحجم',
+      difficulty: 'متوسط',
+      expectedTime: 'ساعة ونصف'
+    },
+    project: {
+      title: 'نشر نظام مدعوم بـ Helm على بيئة Kubernetes محلية',
+      description: 'أتمتة عملية نشر الخدمات مع ضبط المتغيرات البيئية والتخزين.'
+    },
+    opportunityCount: 3,
+    timeToBridge: 'أسبوع واحد',
+    suggestedAction: 'إضافة ملفات Dockerfile وتجهيز CI pipeline لمشروع حالي.',
+    recommendedAction: 'أضف ملف CI/CD مع فحص أمني لصور الحاويات لرفع درجة الإثبات.'
+  },
+];
+
+export const INITIAL_OPPORTUNITIES: Opportunity[] = [
+  {
+    id: 'opp_1',
+    title: 'تطوير بنية REST API لمعالجة الصوتيات',
+    organization: 'مختبرات الابتكار الرقمي',
+    orgName: 'مختبرات الابتكار الرقمي',
+    isVerifiedOrg: true,
+    type: 'project',
+    location: 'remote',
+    field: 'هندسة البرمجيات',
+    city: 'الرياض',
+    experience: '3+ سنوات',
+    compensation: '12,000 ر.س / تسليم المشروع',
+    duration: 'شهرين',
+    postedDate: '2026-09-01',
+    deadline: '2026-10-15',
+    description: 'مشروع لبناء منظومة معالجة سريعة لملفات الصوت واستخراج النصوص والملخصات باستخدام FastAPI ونماذج الذكاء الاصطناعي.',
+    requirements: [
+      'خبرة عملية في بناء REST APIs باستخدام FastAPI',
+      'إتقان التعامل مع PostgreSQL والاستعلامات السريعة',
+      'فهم التعامل مع خطوط معالجة الصوت غير المتزامنة'
+    ],
+    structuredRequirements: [
+      { skill: 'FastAPI', importance: 'critical', level: 'متقدم' },
+      { skill: 'PostgreSQL', importance: 'critical', level: 'متوسط' },
+      { skill: 'Docker', importance: 'preferred', level: 'متوسط' }
+    ],
+    whyMatch: [
+      'ملفك يحتوي على إثباتات كود عملية لـ FastAPI مطابقة للمشروع.',
+      'درجة موثوقية عالية في استعلامات PostgreSQL المتقدمة.'
+    ],
+    matchedEvidence: [
+      'مستودع fast-microservices-core على GitHub',
+      'تحليل مشكلة تحسين استعلامات قاعدة البيانات'
+    ],
+    gaps: [],
+    matchScore: 92,
+    matchReason: 'تطابق تقني عالٍ في إطار العمل وقاعدة البيانات الأساسية.',
+    requiredCapabilities: ['FastAPI & Microservices', 'PostgreSQL & Database Design'],
+    requiredSkills: ['FastAPI', 'PostgreSQL', 'Audio Processing'],
+  },
+  {
+    id: 'opp_2',
+    title: 'هندسة واجهات نظام إدارة المسابقات والتقييم',
+    organization: 'حاضنة التكنولوجيا والابتكار',
+    orgName: 'حاضنة التكنولوجيا والابتكار',
+    isVerifiedOrg: true,
+    type: 'challenge',
+    location: 'hybrid',
+    field: 'تطوير الواجهات',
+    city: 'دبي',
+    experience: '2+ سنوات',
+    compensation: 'مكافأة اجتياز 5,000 ر.س',
+    duration: '3 أسابيع',
+    postedDate: '2026-09-05',
+    deadline: '2026-09-30',
+    description: 'تحدٍّ لبناء واجهات تفاعلية متقدمة تعرض النتائج المباشرة مع رسوم بيانية ومطابقة دقيقة باستخدام React و TypeScript.',
+    requirements: [
+      'إتقان عميق لـ React و TypeScript و CSS المعياري',
+      'القدرة على التعامل مع تدفقات الحالة المعقدة والواجهات السريعة',
+      'دعم المعايير القياسية لإمكانية الوصول والتصميم المتجاوب'
+    ],
+    structuredRequirements: [
+      { skill: 'React', importance: 'critical', level: 'متقدم' },
+      { skill: 'TypeScript', importance: 'critical', level: 'متقدم' },
+      { skill: 'Performance Optimization', importance: 'preferred', level: 'متوسط' }
+    ],
+    whyMatch: [
+      'مشروع واجهات React الموثق في ملفك يلبي 88% من الشروط المطلوبة.',
+      'أكواد نظيفة ومعمارية مكونات واضحة في مستودعاتك.'
+    ],
+    matchedEvidence: [
+      'مستودع qudra-ui-system على GitHub'
+    ],
+    gaps: [
+      'إثبات اختبارات أداء الواجهة تحت الضغط'
+    ],
+    matchScore: 88,
+    matchReason: 'تطابق في واجهات React وTypeScript مع حاجة لإثبات اختبارات الأداء.',
+    requiredCapabilities: ['React & TypeScript Architecture'],
+    requiredSkills: ['React', 'TypeScript', 'Tailwind CSS'],
+  },
+];
+
+export const INITIAL_CHALLENGES: Challenge[] = [
+  {
+    id: 'ch_1',
+    title: 'تطوير مسار REST API آمن ومتزامن بـ FastAPI',
+    description: 'المطلوب بناء نقاط نهاية غير متزامنة للتعامل مع تحميل الملفات ومعالجتها في الخلفية مع التحقق من الهوية.',
+    skill: 'FastAPI',
+    difficulty: 'intermediate',
+    type: 'coding',
+    duration: '2',
+    requirements: [
+      'استخدام async / await بشكل سليم',
+      'التحقق من صحة المدخلات باستخدام Pydantic v2',
+      'معالجة الاستثناءات وإرجاع رموز خطأ HTTP دقيقة'
+    ],
+    evaluationCriteria: [
+      'صحة المعمارية والرمز النظيف',
+      'معالجة الأخطاء وحالات الحافة',
+      'التزامن وكفاءة استخدام الموارد',
+      'التوثيق التلقائي عبر OpenAPI'
+    ]
+  },
+  {
+    id: 'ch_2',
+    title: 'تحسين استعلامات قاعدة بيانات PostgreSQL وفهرستها',
+    description: 'قم بتحليل استعلام بطيء يحتوي على عدة جداول، وتحديد خطة التنفيذ وتصميم الفهارس المناسبة لتسريع الاستجابة.',
+    skill: 'PostgreSQL',
+    difficulty: 'advanced',
+    type: 'system_design',
+    duration: '3',
+    requirements: [
+      'تحليل خطة الاستعلام EXPLAIN ANALYZE',
+      'إضافة الفهارس B-Tree أو GIN المناسبة',
+      'تجنب الفهرسة الزائدة والمحافظة على أداء عمليات الكتابة'
+    ],
+    evaluationCriteria: [
+      'انخفاض زمن تنفيذ الاستعلام بنسبة 70% على الأقل',
+      'سلامة الفهارس المختارة',
+      'شرح التحليل الرياضي للخطة'
+    ]
+  }
+];
+
+export const INITIAL_GROWTH_PLAN: GrowthPlan = {
+  goal: 'الوصول إلى مستوى مهندسة نظم موزعة وذكاء اصطناعي رائدة (Principal Engineer)',
+  currentState: 'مهندسة برمجيات متقدمة مع إثباتات قوية في FastAPI و React وفجوات في NLP و Kubernetes.',
+  gapIds: ['gap_1', 'gap_2'],
+  milestones: [
+    {
+      id: 'ms_1',
+      title: 'إثبات معالجة اللغات الطبيعية وبناء نظام RAG متقدم',
+      description: 'إكمال التحدي العملي وربط مستودع كود حقيقي يوضح خط معالجة النصوص وتوليد الإجابات.',
+      status: 'in_progress',
+      resources: [
+        { title: 'دليل النماذج اللغوية وهندسة الأوامر', provider: 'أكاديمية الذكاء الاصطناعي' }
+      ],
+      practiceType: 'تحدي عملي + مستودع كود',
+      evidenceGoal: 'إثبات كود موثق لـ NLP بموثوقية 80%'
+    },
+    {
+      id: 'ms_2',
+      title: 'أتمتة الحاويات ونشر Kubernetes لمشروع إنتاجي',
+      description: 'إضافة ملفات Dockerfile متعددة المراحل و CI Pipeline متكامل.',
+      status: 'not_started',
+      resources: [
+        { title: 'دليل Docker و Kubernetes للإنتاج الفعلي', provider: 'مجتمع هندسة البنية التحتية' }
+      ],
+      practiceType: 'مشروع بنية تحتية حي',
+      evidenceGoal: 'إثبات Docker و Kubernetes بموثوقية 75%'
+    }
+  ]
+};
+

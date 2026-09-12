@@ -27,7 +27,7 @@ export function ResourceDetailPage() {
   }
 
   const relatedGap = resource.relatedGapId
-    ? QudraStore.getGaps().find((g) => g.id === resource.relatedGapId)
+    ? QudraStore.getGaps().find((g: any) => g.id === resource.relatedGapId)
     : null;
 
   return (
@@ -80,8 +80,14 @@ export function ResourceDetailPage() {
               <div className={styles.infoitem}>
                 <span className={styles.infolabel}>التقييم</span>
                 <span className={styles.infoval}>
-                  <span className={styles.stars} aria-hidden="true">{'★'.repeat(Math.round(resource.rating))}</span>
-                  {' '}{resource.rating.toFixed(1)}
+                  {resource.rating != null ? (
+                    <>
+                      <span className={styles.stars} aria-hidden="true">{'★'.repeat(Math.round(resource.rating))}</span>
+                      {' '}{resource.rating.toFixed(1)}
+                    </>
+                  ) : (
+                    '—'
+                  )}
                 </span>
               </div>
             </div>
@@ -91,7 +97,7 @@ export function ResourceDetailPage() {
             <div className={`box ${styles.panel}`}>
               <h3 className={styles.paneltitle}>الفجوة المرتبطة</h3>
               <button className={styles.gaplink} onClick={() => navigate(`/gaps/${relatedGap.id}`)}>
-                {relatedGap.capabilityName}
+                {relatedGap.capabilityName || relatedGap.skill}
               </button>
             </div>
           )}
@@ -107,7 +113,7 @@ export function ResourceDetailPage() {
             <h3 className={styles.paneltitle}>افتح المصدر</h3>
             <p className={styles.ctatext}>يفتح في نافذة خارجية.</p>
             <a
-              href={resource.url}
+              href={resource.url || '#'}
               target="_blank"
               rel="noopener noreferrer"
               className="btn dark"

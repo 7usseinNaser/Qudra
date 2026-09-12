@@ -145,3 +145,165 @@ export interface MasterProfileData {
   dna: MasterProfileDNA[];
   timeline: MasterTimelineItem[];
 }
+
+export type ResourceType = 'course' | 'documentation' | 'video' | 'interactive' | 'book';
+export type ResourcePrice = 'free' | 'paid';
+export type ResourceDifficulty = 'beginner' | 'intermediate' | 'advanced';
+
+export interface LearningResource {
+  id: string;
+  title: string;
+  provider: string;
+  type: ResourceType;
+  price: ResourcePrice;
+  difficulty: ResourceDifficulty;
+  duration: string;
+  description?: string;
+  format?: string;
+  language?: string;
+  certificate?: boolean;
+  rating?: number;
+  url?: string;
+  whyRecommended?: string;
+  gapSkill?: string;
+  relatedGapId?: string;
+  relevanceScore?: number;
+}
+
+export type GapSeverity = 'critical' | 'moderate' | 'optional';
+
+export interface GapResource {
+  title: string;
+  provider: string;
+  type: string;
+  duration: string;
+}
+
+export interface GapChallenge {
+  title: string;
+  difficulty: string;
+  expectedTime: string;
+}
+
+export interface GapProject {
+  title: string;
+  description: string;
+}
+
+export interface GapDetail {
+  id: string;
+  skill: string;
+  capabilityName?: string;
+  category: string;
+  severity: GapSeverity;
+  currentStrength: number;
+  requiredStrength: number;
+  targetStrength?: number;
+  gapDelta: number;
+  whyItMatters: string;
+  opportunityCount: number;
+  timeToBridge: string;
+  suggestedAction: string;
+  impact?: string;
+  estimatedPath?: string;
+  currentEvidence?: string[];
+  evidenceMissing?: string[];
+  resources?: GapResource[];
+  challenge?: GapChallenge;
+  project?: GapProject;
+  recommendedAction?: string;
+}
+
+export type OpportunityType = 
+  | 'project' 
+  | 'challenge' 
+  | 'fulltime' 
+  | 'consulting' 
+  | 'job' 
+  | 'freelance' 
+  | 'internship' 
+  | 'scholarship' 
+  | 'grant' 
+  | 'hackathon' 
+  | 'company_challenge';
+
+export type OpportunityLocation = 'remote' | 'onsite' | 'on-site' | 'hybrid';
+
+export interface StructuredRequirement {
+  skill: string;
+  importance: 'critical' | 'preferred' | string;
+  level: string;
+}
+
+export interface Opportunity {
+  id: string;
+  title: string;
+  organization: string;
+  orgName?: string;
+  isVerifiedOrg?: boolean;
+  type: OpportunityType;
+  location: OpportunityLocation;
+  field?: string;
+  city?: string;
+  experience?: string;
+  compensation?: string;
+  duration?: string;
+  postedDate?: string;
+  deadline?: string;
+  description?: string;
+  requirements?: string[];
+  structuredRequirements?: StructuredRequirement[];
+  whyMatch?: string[];
+  matchedEvidence?: string[];
+  gaps?: string[];
+  matchScore: number;
+  matchReason?: string;
+  requiredCapabilities?: string[];
+  requiredSkills?: string[];
+  relatedGapId?: string;
+  whyYouMatch?: string[];
+}
+
+export type ChallengeDifficulty = 'beginner' | 'intermediate' | 'advanced';
+export type ChallengeType = 'coding' | 'design' | 'system_design' | 'debugging';
+
+export interface Challenge {
+  id: string;
+  title: string;
+  description: string;
+  skill: string;
+  difficulty: ChallengeDifficulty;
+  type: ChallengeType;
+  duration: string;
+  expectedTime?: string;
+  evidenceOutcome?: string;
+  evidenceValue?: number;
+  source?: string;
+  requirements: string[];
+  evaluationCriteria: string[];
+  instructions?: string;
+  initialCode?: string;
+}
+
+export interface GrowthMilestoneResource {
+  title: string;
+  provider: string;
+}
+
+export interface GrowthMilestone {
+  id: string;
+  title: string;
+  description: string;
+  status: 'not_started' | 'in_progress' | 'completed';
+  resources: GrowthMilestoneResource[];
+  practiceType: string;
+  evidenceGoal: string;
+}
+
+export interface GrowthPlan {
+  goal: string;
+  currentState: string;
+  gapIds: string[];
+  milestones: GrowthMilestone[];
+}
+

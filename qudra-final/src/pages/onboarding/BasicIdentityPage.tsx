@@ -21,10 +21,12 @@ export const BasicIdentityPage: React.FC = () => {
 
   useEffect(() => {
     AuthService.getCurrentUser().then(u => {
-      if (u.fullName) setName(u.fullName);
-      if (u.headline) setHeadline(u.headline);
-      if (u.bio) setBio(u.bio);
-      if (u.avatarUrl) setAvatarUrl(u.avatarUrl);
+      if (u) {
+        if (u.fullName) setName(u.fullName);
+        if (u.headline) setHeadline(u.headline);
+        if (u.bio) setBio(u.bio);
+        if (u.avatarUrl) setAvatarUrl(u.avatarUrl);
+      }
     });
   }, []);
 

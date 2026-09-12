@@ -46,18 +46,18 @@ export function GapDetailPage() {
             <h3 className={styles.paneltitle}>المستوى الحالي مقابل المطلوب</h3>
             <Bar
               value={gap.currentStrength}
-              max={gap.targetStrength}
-              label={`الحالي ${gap.currentStrength}% — المطلوب ${gap.targetStrength}%`}
+              max={gap.targetStrength ?? gap.requiredStrength}
+              label={`الحالي ${gap.currentStrength}% — المطلوب ${gap.targetStrength ?? gap.requiredStrength}%`}
               variant="gap"
             />
-            <p className={styles.path}>المسار المقدّر: {gap.estimatedPath}</p>
+            <p className={styles.path}>المسار المقدّر: {gap.estimatedPath || 'مسار تدريبي مخصص'}</p>
           </div>
 
           <div className={`box ${styles.panel}`}>
             <h3 className={styles.paneltitle}>الأدلة الحالية</h3>
-            {gap.currentEvidence.length > 0 ? (
+            {(gap.currentEvidence || []).length > 0 ? (
               <ul className={styles.list}>
-                {gap.currentEvidence.map((e) => (
+                {(gap.currentEvidence || []).map((e: string) => (
                   <li key={e} className={styles.listitem}>
                     <span className={styles.check} aria-hidden="true">✓</span>
                     {e}
@@ -72,7 +72,7 @@ export function GapDetailPage() {
           <div className={`box ${styles.panel}`}>
             <h3 className={styles.paneltitle}>الأدلة الناقصة</h3>
             <ul className={styles.list}>
-              {gap.evidenceMissing.map((e) => (
+              {(gap.evidenceMissing || []).map((e: string) => (
                 <li key={e} className={styles.listitem}>
                   <span className={styles.cross} aria-hidden="true">✗</span>
                   {e}
@@ -84,7 +84,7 @@ export function GapDetailPage() {
           <div className={`box ${styles.panel}`}>
             <h3 className={styles.paneltitle}>الموارد المقترحة</h3>
             <div className={styles.resources}>
-              {gap.resources.map((r) => (
+              {(gap.resources || []).map((r) => (
                 <div key={r.title} className={styles.rescard}>
                   <h4 className={styles.resname}>{r.title}</h4>
                   <span className={styles.resmeta}>{r.provider} · {r.type} · {r.duration}</span>
@@ -93,32 +93,36 @@ export function GapDetailPage() {
             </div>
           </div>
 
-          <div className={`box ${styles.panel}`}>
-            <h3 className={styles.paneltitle}>تحدي مقترح</h3>
-            <div className={styles.challenge}>
-              <div>
-                <h4 className={styles.challengename}>{gap.challenge.title}</h4>
-                <span className={styles.challengemeta}>
-                  {gap.challenge.difficulty} · {gap.challenge.expectedTime}
-                </span>
+          {gap.challenge && (
+            <div className={`box ${styles.panel}`}>
+              <h3 className={styles.paneltitle}>تحدي مقترح</h3>
+              <div className={styles.challenge}>
+                <div>
+                  <h4 className={styles.challengename}>{gap.challenge.title}</h4>
+                  <span className={styles.challengemeta}>
+                    {gap.challenge.difficulty} · {gap.challenge.expectedTime}
+                  </span>
+                </div>
+                <button className="btn" onClick={() => navigate(ROUTES.CHALLENGES)}>
+                  ابدأ التحدي
+                </button>
               </div>
-              <button className="btn" onClick={() => navigate(ROUTES.SIMULATION)}>
-                ابدأ التحدي
-              </button>
             </div>
-          </div>
+          )}
 
-          <div className={`box ${styles.panel}`}>
-            <h3 className={styles.paneltitle}>مشروع مقترح</h3>
-            <h4 className={styles.projname}>{gap.project.title}</h4>
-            <p className={styles.projdesc}>{gap.project.description}</p>
-          </div>
+          {gap.project && (
+            <div className={`box ${styles.panel}`}>
+              <h3 className={styles.paneltitle}>مشروع مقترح</h3>
+              <h4 className={styles.projname}>{gap.project.title}</h4>
+              <p className={styles.projdesc}>{gap.project.description}</p>
+            </div>
+          )}
         </div>
 
         <aside className={styles.side}>
           <div className={`box ${styles.ctapanel}`}>
             <h3 className={styles.paneltitle}>الإجراء المقترح</h3>
-            <p className={styles.ctatext}>{gap.recommendedAction}</p>
+            <p className={styles.ctatext}>{gap.recommendedAction || gap.suggestedAction}</p>
             <button className="btn dark" onClick={() => navigate(ROUTES.GROWTH_PLAN)}>
               انتقل لخطة النمو
             </button>
