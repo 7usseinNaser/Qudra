@@ -1,8 +1,7 @@
 import uuid
 from datetime import datetime
 
-from typing import Any
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field
 
 from app.db.models.problem import ProblemStatus
 
@@ -17,8 +16,8 @@ class RequiredCapabilityRead(BaseModel):
     capability_id: uuid.UUID
     name: str
     category: str | None = None
-    importance: int | str
-    required_level: str | int
+    importance: int
+    required_level: str
     reason: str | None = None
 
 
@@ -40,38 +39,9 @@ class ProblemRead(BaseModel):
 class RequiredCapabilityAnalysis(BaseModel):
     name: str = Field(min_length=1)
     category: str | None = None
-    importance: int = Field(default=50)
+    importance: int = Field(default=50, ge=0, le=100)
     required_level: str = Field(default="INTERMEDIATE")
     reason: str | None = None
-
-    @field_validator("importance", mode="before")
-    @classmethod
-    def parse_importance(cls, v: Any) -> int:
-        if isinstance(v, (int, float)):
-            return max(0, min(100, int(v)))
-        if isinstance(v, str):
-            v_clean = v.strip().upper()
-            mapping = {"HIGH": 90, "MEDIUM": 60, "LOW": 30, "CRITICAL": 95}
-            if v_clean in mapping:
-                return mapping[v_clean]
-            try:
-                return max(0, min(100, int(v_clean)))
-            except ValueError:
-                return 50
-        return 50
-
-    @field_validator("required_level", mode="before")
-    @classmethod
-    def parse_required_level(cls, v: Any) -> str:
-        if isinstance(v, (int, float)):
-            val = int(v)
-            if val >= 80:
-                return f"ADVANCED ({val}%)"
-            elif val >= 50:
-                return f"INTERMEDIATE ({val}%)"
-            else:
-                return f"BEGINNER ({val}%)"
-        return str(v)
 
 
 class ProblemAnalysisResponse(BaseModel):

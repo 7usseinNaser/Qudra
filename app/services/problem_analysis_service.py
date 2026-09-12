@@ -1,5 +1,4 @@
 import logging
-import re
 import uuid
 from typing import Any
 
@@ -22,7 +21,6 @@ from app.schemas.problem import (
     ProblemRead,
     RequiredCapabilityRead,
 )
-
 from app.utils.normalization import canonical_key, normalize_capability_name
 
 logger = logging.getLogger("qudra.problem_analysis")
@@ -142,25 +140,20 @@ class ProblemAnalysisService:
 
     def _get_or_create_capability(self, name: str, category: str | None) -> Capability:
         norm_name = normalize_capability_name(name)
-        key = canonical_key(norm_name)
+        norm_key = canonical_key(norm_name)
 
         # First check exact normalized name
         existing = self.cap_repo.get_by_name(norm_name)
         if existing:
             return existing
 
-        # Check raw input name
-        existing_raw = self.cap_repo.get_by_name(name)
-        if existing_raw:
-            return existing_raw
-
         # Second check all existing capabilities for canonical key match
         all_caps = self.cap_repo.list_all()
         for cap in all_caps:
-            if canonical_key(cap.name) == key or cap.name.lower() == norm_name.lower():
+            if canonical_key(cap.name) == norm_key:
                 return cap
 
-        # Create new capability with normalized title-cased name
+        # Create new capability with normalized name
         return self.cap_repo.create(
             name=norm_name,
             category=category or "General",

@@ -1,11 +1,13 @@
-.venv/
-.pytest_cache/
-.env
-*.db
-
-# Python
 __pycache__/
-**/__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+*.db
 
 # Node & Frontend
 node_modules/

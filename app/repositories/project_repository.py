@@ -22,24 +22,8 @@ class ProjectRepository:
         )
         return list(self.db.execute(stmt).scalars().all())
 
-    def create(
-        self,
-        *,
-        owner_id: uuid.UUID,
-        title: str,
-        description: str | None,
-        status,
-        technologies: list[str] | None = None,
-        contribution: list[str] | None = None,
-    ) -> Project:
-        project = Project(
-            owner_id=owner_id,
-            title=title,
-            description=description,
-            status=status,
-            technologies=technologies or [],
-            contribution=contribution or [],
-        )
+    def create(self, *, owner_id: uuid.UUID, title: str, description: str | None, status) -> Project:
+        project = Project(owner_id=owner_id, title=title, description=description, status=status)
         self.db.add(project)
         self.db.commit()
         self.db.refresh(project)

@@ -23,8 +23,8 @@ class ChallengeRead(BaseModel):
     title: str
     description: str
     difficulty: str
-    time_limit: int | None
-    starter_code: str | None
+    time_limit_minutes: int | None
+    starter_content: str | None
     evaluation_criteria: Any | None
     created_at: datetime
 
@@ -41,11 +41,11 @@ class ChallengeSubmissionRead(BaseModel):
     id: uuid.UUID
     challenge_id: uuid.UUID
     user_id: uuid.UUID
-    answer: str | None
+    submission_text: str | None
     code: str | None
     repository_url: str | None
-    test_score: float
-    ai_score: float
-    final_score: float
+    test_score: float | None
+    ai_score: float | None
+    final_score: float | None
     feedback: str | None
     created_at: datetime

@@ -1,6 +1,8 @@
 from app.db.models.capability import Capability
 from app.db.models.challenge import Challenge, ChallengeSubmission
 from app.db.models.evidence import Evidence, EvidenceType, VerificationStatus
+from app.db.models.gap import Gap
+from app.db.models.opportunity import Opportunity
 from app.db.models.oral_assessment import OralAssessment
 from app.db.models.problem import Problem, ProblemAnalysis, ProblemCapability, ProblemStatus
 from app.db.models.project import Project
@@ -24,4 +26,6 @@ __all__ = [
     "OralAssessment",
     "Challenge",
     "ChallengeSubmission",
+    "Gap",
+    "Opportunity",
 ]

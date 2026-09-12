@@ -28,6 +28,7 @@ class AuthService:
             email=data.email,
             hashed_password=hash_password(data.password),
             full_name=data.full_name,
+            role=data.role,
         )
 
     def authenticate(self, email: str, password: str) -> User:

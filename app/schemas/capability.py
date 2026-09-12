@@ -26,24 +26,4 @@ class UserCapabilityRead(BaseModel):
     capability_name: str
     capability_category: str | None
     strength: float
-    evidence_strength: float = 0.0
-    evidence_count: int = 0
-    breakdown: dict[str, float] = Field(default_factory=dict)
     updated_at: datetime
-
-
-class CapabilityProfileItem(BaseModel):
-    capability_id: uuid.UUID
-    capability_name: str
-    capability_category: str | None
-    evidence_strength: float
-    evidence_count: int
-    breakdown: dict[str, float] = Field(default_factory=dict)
-    updated_at: datetime
-
-
-class FullCapabilityProfileRead(BaseModel):
-    user_id: uuid.UUID
-    full_name: str | None = None
-    email: str
-    capabilities: list[CapabilityProfileItem] = Field(default_factory=list)

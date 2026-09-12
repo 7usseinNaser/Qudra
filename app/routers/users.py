@@ -5,9 +5,9 @@ from app.db.models.user import User
 from app.db.session import get_db
 from app.dependencies.auth import get_current_user
 from app.repositories.user_capability_repository import UserCapabilityRepository
-from app.schemas.capability import FullCapabilityProfileRead, UserCapabilityRead
-from app.schemas.user import UserRead
-from app.services.evidence_service import EvidenceService
+from app.repositories.user_repository import UserRepository
+from app.schemas.capability import UserCapabilityRead
+from app.schemas.user import UserRead, UserUpdate
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -15,6 +15,15 @@ router = APIRouter(prefix="/users", tags=["users"])
 @router.get("/me", response_model=UserRead)
 def read_current_user(current_user: User = Depends(get_current_user)) -> UserRead:
     return current_user
+
+
+@router.patch("/me", response_model=UserRead)
+def update_current_user(
+    payload: UserUpdate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+) -> UserRead:
+    return UserRepository(db).update(current_user, **payload.model_dump(exclude_unset=True))
 
 
 @router.get("/me/capabilities", response_model=list[UserCapabilityRead])
@@ -30,18 +39,7 @@ def read_my_capability_profile(
             capability_name=cap.name,
             capability_category=cap.category,
             strength=uc.strength,
-            evidence_strength=uc.evidence_strength if uc.evidence_strength > 0 else uc.strength,
-            evidence_count=uc.evidence_count,
-            breakdown=uc.breakdown or {},
             updated_at=uc.updated_at,
         )
         for uc, cap in rows
     ]
-
-
-@router.get("/me/capability-profile", response_model=FullCapabilityProfileRead)
-def read_my_full_capability_profile(
-    db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
-) -> FullCapabilityProfileRead:
-    return EvidenceService(db).get_full_capability_profile(current_user.id)

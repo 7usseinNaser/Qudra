@@ -27,9 +27,9 @@ class ChallengeRepository:
             title=title,
             description=description,
             difficulty=difficulty,
-            time_limit=time_limit,
+            time_limit_minutes=time_limit,
             evaluation_criteria=evaluation_criteria,
-            starter_code=starter_code,
+            starter_content=starter_code,
         )
         self.db.add(challenge)
         self.db.commit()
@@ -69,7 +69,7 @@ class ChallengeRepository:
         submission = ChallengeSubmission(
             challenge_id=challenge_id,
             user_id=user_id,
-            answer=answer,
+            submission_text=answer,
             code=code,
             repository_url=repository_url,
             test_score=test_score,

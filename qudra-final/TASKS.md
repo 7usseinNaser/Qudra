@@ -175,3 +175,48 @@
 | P1.8.9 | `npm run typecheck` 0 أخطاء | `VERIFIED` |
 | P1.8.10 | `npm run lint` 0 أخطاء و 0 تحذيرات | `VERIFIED` |
 | P1.8.11 | `npm run build` نجاح كامل | `VERIFIED` |
+
+---
+
+## مرحلة Phase 2 — ربط الباك إند الحقيقي + إصلاح الأنواع + تسجيل المسارات (2026-09-12)
+
+### P2.1 — إصلاح أخطاء TypeScript
+| # | المهمة | الحالة |
+|---|---|---|
+| P2.1.1 | إعادة كتابة أنواع Challenge, GapDetail, GrowthPlan, Opportunity, LearningResource في types.ts | `DONE_UNVERIFIED` |
+| P2.1.2 | إصلاح tsconfig.json (إزالة baseUrl المتقادم، تصحيح paths) | `DONE_UNVERIFIED` |
+| P2.1.3 | إصلاح عرض requirements و evaluationCriteria في صفحات التحديات | `DONE_UNVERIFIED` |
+| P2.1.4 | تحديث store.ts ليرجع GrowthPlan بدل GrowthMilestone[] | `DONE_UNVERIFIED` |
+| P2.1.5 | `npm run build` بصفر أخطاء | `DONE_UNVERIFIED` |
+
+### P2.2 — فحص وربط الباك إند
+| # | المهمة | الحالة |
+|---|---|---|
+| P2.2.1 | استخراج كل endpoints من Swagger/OpenAPI | `DONE_UNVERIFIED` |
+| P2.2.2 | تأكيد ربط 19 endpoint فعلياً (Auth, Users, Capabilities, Projects, Evidence, Problems) | `DONE_UNVERIFIED` |
+| P2.2.3 | توثيق 10 فئات BACKEND BLOCKED (Challenges, Candidates, Opportunities, Gaps, Resources, Organizations, Connections, GitHub OAuth, Admin, Email Verification) | `DONE_UNVERIFIED` |
+| P2.2.4 | تحديث .env.example للإشارة لـ Render URL | `DONE_UNVERIFIED` |
+
+### P2.3 — تسجيل المسارات وإصلاح التدفق
+| # | المهمة | الحالة |
+|---|---|---|
+| P2.3.1 | تسجيل 39 route غير مسجل في الراوتر (Company, Challenges, Gaps, Opportunities, Resources, Settings, Network, Organization, Admin, System) | `DONE_UNVERIFIED` |
+| P2.3.2 | ربط ProblemCreationPage بالباك إند (POST /api/v1/problems) | `DONE_UNVERIFIED` |
+| P2.3.3 | ربط ProblemAnalysisPage بالباك إند (GET/POST /api/v1/problems/{id}/analyze) | `DONE_UNVERIFIED` |
+| P2.3.4 | ربط ProblemInputPage بالباك إند (إنشاء مشكلة عند التحليل) | `DONE_UNVERIFIED` |
+
+### P2.4 — Loading/Error States
+| # | المهمة | الحالة |
+|---|---|---|
+| P2.4.1 | إضافة Loading/Error states لـ MasterProfilePage | `DONE_UNVERIFIED` |
+| P2.4.2 | إضافة Loading/Error states لـ ProblemAnalysisPage | `DONE_UNVERIFIED` |
+| P2.4.3 | إضافة Loading state لـ ProblemCreationPage | `DONE_UNVERIFIED` |
+
+### P2.5 — فحص وتوثيق
+| # | المهمة | الحالة |
+|---|---|---|
+| P2.5.1 | فحص Supabase: grep -ri → صفر نتائج | `DONE_UNVERIFIED` |
+| P2.5.2 | تحديث STATUS.md | `DONE_UNVERIFIED` |
+| P2.5.3 | تحديث CHANGELOG.md | `DONE_UNVERIFIED` |
+| P2.5.4 | تحديث TASKS.md | `DONE_UNVERIFIED` |
+| P2.5.5 | `npm run build` بصفر أخطاء | `IN_PROGRESS` |

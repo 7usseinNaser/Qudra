@@ -6,5 +6,8 @@
     "dev": "npm run dev --prefix qudra-final",
     "lint": "npm run lint --prefix qudra-final",
     "typecheck": "npm run typecheck --prefix qudra-final"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
   }
 }

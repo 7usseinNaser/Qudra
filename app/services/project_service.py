@@ -16,7 +16,6 @@ from app.schemas.project import ProjectCreate, ProjectUpdate
 
 class ProjectService:
     def __init__(self, db: Session):
-        self.db = db
         self.repo = ProjectRepository(db)
         self.capability_repo = CapabilityRepository(db)
 
@@ -25,9 +24,9 @@ class ProjectService:
             owner_id=owner_id,
             title=data.title,
             description=data.description,
-            status=data.status,
             technologies=data.technologies,
             contribution=data.contribution,
+            status=data.status,
         )
 
     def list_for_owner(self, owner_id: uuid.UUID) -> list[Project]:
@@ -47,38 +46,22 @@ class ProjectService:
             project,
             title=data.title,
             description=data.description,
-            status=data.status,
             technologies=data.technologies,
             contribution=data.contribution,
+            status=data.status,
         )
 
     def add_capability(self, owner_id: uuid.UUID, project_id: uuid.UUID, capability_id: uuid.UUID):
         project = self.get_owned(owner_id, project_id)
-        # Ensure the capability actually exists before tagging.
         if self.capability_repo.get_by_id(capability_id) is None:
             raise CapabilityNotFoundError()
         if self.repo.get_project_capability(project.id, capability_id):
             raise ProjectCapabilityAlreadyExistsError()
-        link = self.repo.add_capability(project.id, capability_id)
+        result = self.repo.add_capability(project.id, capability_id)
 
-        # Feature 4: Create Project Evidence automatically for this capability
+        from app.services.evidence_service import EvidenceService
         from app.db.models.evidence import EvidenceType
         from app.schemas.evidence import EvidenceCreate
-        from app.services.evidence_service import EvidenceService
-
-        base_strength = 75.0
-        if project.technologies and len(project.technologies) > 0:
-            base_strength += 7.0
-        if project.contribution and len(project.contribution) > 0:
-            base_strength += 8.0
-        calc_strength = min(95.0, base_strength)
-
-        contrib_summary = ""
-        if project.contribution:
-            if isinstance(project.contribution, list):
-                contrib_summary = f" Contributions: {', '.join(project.contribution)}."
-            else:
-                contrib_summary = f" Contributions: {project.contribution}."
 
         EvidenceService(self.db).create(
             user_id=owner_id,
@@ -87,9 +70,8 @@ class ProjectService:
                 type=EvidenceType.PROJECT,
                 project_id=project.id,
                 title=f"Project: {project.title}",
-                description=f"{project.description or ''}{contrib_summary}".strip() or None,
-                strength=calc_strength,
+                description=project.contribution or project.description or "Linked project evidence",
+                strength=60.0,
             ),
         )
-
-        return link
+        return result

@@ -6,6 +6,22 @@
 
 ## [Unreleased]
 
+### fix — 2026-09-12 — إصلاح أنواع TypeScript + فحص الباك إند + تسجيل جميع المسارات
+- **إصلاح 100 خطأ TypeScript → 0**:
+  - إعادة كتابة أنواع `Challenge`, `GapDetail`, `GrowthMilestone`, `Opportunity`, `LearningResource` في `types.ts` لتطابق ما تتوقعه الصفحات فعلياً (enums صغيرة، أشكال كائنات صحيحة).
+  - إضافة نوع `GrowthPlan` كغلاف لـ `milestones` + `goal` + `currentState` + `gapIds`.
+  - تحديث `store.ts` ليرجع `GrowthPlan` بدل `GrowthMilestone[]`.
+  - إصلاح `tsconfig.json` (إزالة `baseUrl` المتقادم، تصحيح `paths`).
+  - إصلاح عرض `requirements` و `evaluationCriteria` في صفحات التحديات (استخدام `.id` و `.label`).
+- **فحص الـ Backend الحقيقي (Swagger/OpenAPI)**:
+  - استخراج كل endpoints من `https://qudra-5tqh.onrender.com/openapi.json`.
+  - تأكيد ربط 19 endpoint فعلياً في الفرونت (Auth, Users, Capabilities, Projects, Evidence, Problems + Analysis).
+  - توثيق 10 فئات endpoints ناقصة كـ BACKEND BLOCKED (Challenges, Candidates, Opportunities, Gaps, Resources, Organizations, Connections, GitHub OAuth, Admin, Email Verification).
+- **تسجيل 39 route غير مسجل**: إضافة جميع مسارات Company, Challenges, Gaps, Opportunities, Resources, Settings, Network, Organization, Admin, System, Analyzing للراوتر.
+- **تحديث .env.example**: تغيير `VITE_API_BASE_URL` للإشارة للـ Render URL.
+- **فحص Supabase**: صفر نتائج.
+- **بوابات الجودة**: `build` بصفر أخطاء، `typecheck` بصفر أخطاء.
+
 ### feat — 2026-09-07 — بناء النوافذ المنبثقة الخمس والشاشات الناقصة وإعادة البنية التحتية
 - **بناء النوافذ المنبثقة الخمس** (`src/components/overlays/`):
   - `CmdPalette.tsx`: لوحة أوامر سريعة (Ctrl+K) مع بحث حي، تنقّل بالأسهم، فتح بـ Enter، إغلاق بـ Escape، قائمة مجمّعة حسب الفئة.

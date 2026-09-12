@@ -30,36 +30,27 @@ class UserCapabilityRepository:
         return list(self.db.execute(stmt).all())
 
     def upsert_add_strength(
-        self,
-        *,
-        user_id: uuid.UUID,
-        capability_id: uuid.UUID,
-        delta: float = 0.0,
-        evidence_strength: float | None = None,
-        evidence_count: int | None = None,
+        self, *, user_id: uuid.UUID, capability_id: uuid.UUID, delta: float,
         breakdown: dict[str, float] | None = None,
     ) -> UserCapability:
+        import json
+
         entry = self.get(user_id, capability_id)
         if entry is None:
             entry = UserCapability(
-                user_id=user_id,
-                capability_id=capability_id,
-                strength=0.0,
-                evidence_strength=0.0,
-                evidence_count=0,
-                breakdown={},
+                user_id=user_id, capability_id=capability_id, strength=0.0
             )
             self.db.add(entry)
 
-        if delta:
-            entry.strength = min(100.0, entry.strength + delta)
-        if evidence_strength is not None:
-            entry.evidence_strength = evidence_strength
-        if evidence_count is not None:
-            entry.evidence_count = evidence_count
-        if breakdown is not None:
-            entry.breakdown = breakdown
-
+        entry.strength = min(100.0, entry.strength + delta)
+        entry.evidence_strength = min(100.0, entry.evidence_strength + delta)
+        entry.evidence_count = (entry.evidence_count or 0) + 1
+        if breakdown:
+            entry.breakdown = json.dumps(breakdown)
         self.db.commit()
         self.db.refresh(entry)
         return entry
+
+    def list_for_user(self, user_id: uuid.UUID) -> list[UserCapability]:
+        stmt = select(UserCapability).where(UserCapability.user_id == user_id)
+        return list(self.db.execute(stmt).scalars().all())
