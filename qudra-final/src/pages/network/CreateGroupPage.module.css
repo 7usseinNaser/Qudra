@@ -1,0 +1,97 @@
+.form {
+  padding: 1.5rem;
+  border-radius: var(--r, 14px);
+  margin-bottom: 1rem;
+}
+
+.field { margin-bottom: 1.2rem; }
+
+.label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line-2, #ddd);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background: var(--page, #fff);
+  color: var(--ink, #222);
+}
+
+.input:focus { outline: none; border-color: var(--accent, #00b4a0); }
+
+.peopleList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.6rem;
+}
+
+.personCard {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  border: 2px solid var(--line, #eee);
+  background: var(--page, #fff);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  font-family: inherit;
+  text-align: right;
+  color: var(--ink, #222);
+}
+
+.personSelected {
+  border-color: var(--accent, #00b4a0);
+  background: var(--accent-soft, rgba(0,180,160,0.04));
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-soft, rgba(0,180,160,0.1));
+  color: var(--accent, #00b4a0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.personName { flex: 1; font-size: 0.85rem; font-weight: 500; }
+
+.checkmark {
+  color: var(--accent, #00b4a0);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.note {
+  padding: 0.8rem 1.25rem;
+  border-radius: var(--r, 14px);
+  border: 1px solid var(--line, #eee);
+  background: var(--card, #f9f9f9);
+}
+
+.noteText {
+  font-size: 0.82rem;
+  color: var(--ink-3, #999);
+}
+
+@media (max-width: 56rem) {
+  .peopleList { grid-template-columns: 1fr; }
+}

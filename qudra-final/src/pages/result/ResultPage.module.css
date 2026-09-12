@@ -1,0 +1,429 @@
+/* ═════════ ResultPage.module.css ═════════
+   مطابق حرفياً لـ prototype.html (#fin)
+*/
+
+.resultPage {
+  padding-bottom: 4rem;
+}
+
+.stepno {
+  font-family: var(--fm);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.scrt {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.scrp {
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+
+.fingrid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 52rem) {
+  .fingrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.hr {
+  height: 1px;
+  background: var(--soft);
+  margin: 1rem 0;
+}
+
+.lbl {
+  font-family: var(--fm);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.sumtxt {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.5;
+  margin: 0.4rem 0 0;
+}
+
+.reqlist {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.reqlist div {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+}
+
+.matchbox .mtop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.mpct {
+  font-family: var(--fm);
+  font-size: 1.9rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.mrow {
+  display: grid;
+  grid-template-columns: minmax(5.5rem, 8.5rem) 1fr auto;
+  gap: 0.8rem;
+  align-items: center;
+  font-size: 0.87rem;
+  margin-bottom: 0.6rem;
+}
+
+.mrow:last-child {
+  margin-bottom: 0;
+}
+
+.mrow .mt {
+  height: 8px;
+  background: var(--soft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mrow .mt i {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--accent-fill);
+}
+
+.mrow.gap .mt i {
+  background: var(--gapc-fill, #e6a23c);
+}
+
+.mrow .mv {
+  font-family: var(--fm);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── ما ينقص المشروع ── */
+.needbox h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.needs {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.need {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--soft);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  flex-wrap: wrap;
+}
+
+.need > div {
+  flex: 1 1 14rem;
+}
+
+.need h4 {
+  font-size: 0.98rem;
+  margin-bottom: 0.15rem;
+}
+
+.need p {
+  font-size: 0.84rem;
+  color: var(--ink-2);
+}
+
+.ni {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.ni svg {
+  width: 21px;
+  height: 21px;
+}
+
+.nihuman {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.niai {
+  background: var(--gapc-soft, #fdf6ec);
+  color: var(--gapc, #e6a23c);
+}
+
+.whybtn {
+  background: transparent;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.16s ease;
+  font-family: inherit;
+}
+
+.whybtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── فريقك وتغطية المشروع ── */
+.teambox {
+  margin-top: 1rem;
+}
+
+.secrow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.secrow h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.tmember {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--soft);
+}
+
+.tmember:last-child {
+  border-bottom: 0;
+}
+
+.tmember .av {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  flex: none;
+  font-size: 0.88rem;
+}
+
+.tmember .info {
+  flex: 1;
+  min-width: 0;
+}
+
+.tmember h4 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.tmember p {
+  font-size: 0.79rem;
+  color: var(--ink-3);
+  margin: 0.15rem 0 0;
+}
+
+.cov {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.cvr {
+  display: grid;
+  grid-template-columns: minmax(6rem, 9rem) 1fr auto;
+  gap: 0.8rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.cvn {
+  color: var(--ink-2);
+  unicode-bidi: isolate;
+}
+
+.cvb {
+  height: 14px;
+  border-radius: 7px;
+  background: var(--soft);
+  overflow: hidden;
+  display: flex;
+}
+
+.cvb i {
+  display: block;
+  height: 100%;
+}
+
+.cvb .c1 {
+  background: var(--accent);
+}
+
+.cvb .c2 {
+  background: #7ed4d4;
+}
+
+.cvv {
+  font-family: var(--fm);
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  min-width: 2.6rem;
+  text-align: end;
+}
+
+.cvr.hole .cvv {
+  color: var(--gapc, #e6a23c);
+  font-weight: 600;
+}
+
+.covkey {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.8rem;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  flex-wrap: wrap;
+}
+
+.covkey span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.covkey i {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  flex: none;
+}
+
+.covkey .k1 {
+  background: var(--accent);
+}
+
+.covkey .k2 {
+  background: #7ed4d4;
+}
+
+.covkey .k3 {
+  background: var(--soft);
+  border: 1px solid var(--line);
+}
+
+/* ── الحلقات الأربع ── */
+.loopbox {
+  margin-top: 1rem;
+}
+
+.loop4 {
+  display: grid;
+  gap: 1.2rem;
+}
+
+@media (min-width: 52rem) {
+  .loop4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .loop4 > div {
+    padding: 0 1.4rem;
+    border-inline-end: 1px solid var(--soft);
+  }
+  .loop4 > div:last-child {
+    border-inline-end: 0;
+  }
+}
+
+.loop4 span {
+  font-family: var(--fm);
+  font-size: 0.68rem;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+
+.loop4 h3 {
+  font-size: 1rem;
+  margin: 0.4rem 0 0.3rem;
+}
+
+.loop4 p {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+.vtick {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-fill);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.vtick::after {
+  content: "";
+  width: 4px;
+  height: 7px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.vdash {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--gapc, #e6a23c);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.vdash::after {
+  content: "";
+  width: 6px;
+  height: 1.5px;
+  background: var(--gapc, #e6a23c);
+}

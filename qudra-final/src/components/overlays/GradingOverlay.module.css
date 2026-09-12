@@ -1,0 +1,92 @@
+/* GradingOverlay.module.css — مطابق لـ .grading في prototype.html:843-857 */
+
+.grading {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  background: rgba(4, 24, 26, 0.92);
+  backdrop-filter: blur(8px);
+  animation: fade 0.3s ease both;
+}
+
+.inner {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+  max-width: 32rem;
+}
+
+.ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 184, 184, 0.15);
+  border-top-color: var(--proof, #00B8B8);
+  animation: spin 0.9s linear infinite;
+}
+
+h3 {
+  color: #EAF6F6;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+p {
+  color: #8CB8CC;
+  font-size: 0.88rem;
+  max-width: 32ch;
+}
+
+.steps {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  text-align: start;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #6796AC;
+  font-size: 0.88rem;
+  transition: color 0.3s ease;
+}
+
+.tick {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  flex: none;
+  transition: all 0.3s ease;
+}
+
+.done {
+  color: #EAF6F6;
+}
+
+.done .tick {
+  background: var(--proof, #00B8B8);
+  border-color: var(--proof, #00B8B8);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring { animation: none; }
+  .grading { animation: none; }
+}
