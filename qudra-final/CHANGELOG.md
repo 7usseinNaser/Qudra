@@ -6,6 +6,18 @@
 
 ## [Unreleased]
 
+### fix & release — 2026-09-12 — إصلاح شريط التمرير الأفقي وتسجيل الدخول والرفع على GitHub
+- **حل مشكلة التمدد الأفقي (Horizontal Scrollbar)**:
+  - ضبط `LoginPage.module.css` بإضافة `overflow-x: hidden` على الحاوية و `overflow: hidden` على شريط الـ band لقص الشعار الممتد خارج الشاشة.
+- **مرونة تدفق تسجيل الدخول (Resilient Preview Auth)**:
+  - الربط مع FastAPI المباشر، مع تمكين تسجيل الدخول السلس للـ Preview في حال كان السيرفر في وضع سبات أو قاعدة البيانات غير مجهزة.
+- **تأكيد كود دانا في الباك إند**:
+  - الحفاظ على كامل خوارزميات Multi-Factor Scoring لـ دانا و `canonical_key` للتطبيع.
+- **بوابات الجودة والرفع**:
+  - اجتياز `tsc --noEmit` بنجاح (0 Errors).
+  - اجتياز `vite build` بنجاح (0 Errors).
+  - رفع الكود إلى `origin/main` على GitHub بنجاح.
+
 ### fix — 2026-09-12 — إصلاح أنواع TypeScript + فحص الباك إند + تسجيل جميع المسارات
 - **إصلاح 100 خطأ TypeScript → 0**:
   - إعادة كتابة أنواع `Challenge`, `GapDetail`, `GrowthMilestone`, `Opportunity`, `LearningResource` في `types.ts` لتطابق ما تتوقعه الصفحات فعلياً (enums صغيرة، أشكال كائنات صحيحة).
