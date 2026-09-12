@@ -120,10 +120,10 @@
     "semantic_hash": "f4aec8a7ad5f77bd5efccf53df8c4b97"
   },
   "app/db/models/project.py": {
-    "mtime": 1788604427.4394739,
-    "seen": 1788960520.6763725,
-    "ast_hash": "4bd85454ccd5e0fd37d341f210e7372c",
-    "semantic_hash": "4bd85454ccd5e0fd37d341f210e7372c"
+    "mtime": 1789206058.3423607,
+    "seen": 1789209756.337971,
+    "ast_hash": "8b88d240149f0dd0db2d294216918d0d",
+    "semantic_hash": ""
   },
   "app/db/models/project_capability.py": {
     "mtime": 1788604427.4405048,
@@ -138,10 +138,10 @@
     "semantic_hash": "189b70ca0078f076c78bbd97088ce6dc"
   },
   "app/db/models/user_capability.py": {
-    "mtime": 1788604427.4424734,
-    "seen": 1788960520.676377,
-    "ast_hash": "d4b1ec7e0e73ebd8d386564f4a122b25",
-    "semantic_hash": "d4b1ec7e0e73ebd8d386564f4a122b25"
+    "mtime": 1789206058.3423607,
+    "seen": 1789209756.3384387,
+    "ast_hash": "397d5f71b68de624b472b962d6e23375",
+    "semantic_hash": ""
   },
   "app/db/session.py": {
     "mtime": 1788604427.4434757,
@@ -186,10 +186,10 @@
     "semantic_hash": "10a87f88341365ecba4a4fa61cb6b3cc"
   },
   "app/repositories/evidence_repository.py": {
-    "mtime": 1788604427.4484704,
-    "seen": 1788960520.6763868,
-    "ast_hash": "dcc265bdd412b27b48872715f737c271",
-    "semantic_hash": "dcc265bdd412b27b48872715f737c271"
+    "mtime": 1789206058.3423607,
+    "seen": 1789209756.3408625,
+    "ast_hash": "10284ce5a5953d9c5081001dcdd8dad6",
+    "semantic_hash": ""
   },
   "app/repositories/oral_assessment_repository.py": {
     "mtime": 1788604427.4538202,
@@ -204,16 +204,16 @@
     "semantic_hash": "53cc57d379e7dbcf388f8f04af104d2b"
   },
   "app/repositories/project_repository.py": {
-    "mtime": 1788604427.458455,
-    "seen": 1788960520.6763904,
-    "ast_hash": "28e91f32dbd7b5c73ad7035b8ed55923",
-    "semantic_hash": "28e91f32dbd7b5c73ad7035b8ed55923"
+    "mtime": 1789206058.3423607,
+    "seen": 1789209756.3416178,
+    "ast_hash": "e6946e7453121f0c8fd68a9751326154",
+    "semantic_hash": ""
   },
   "app/repositories/user_capability_repository.py": {
-    "mtime": 1788604427.458455,
-    "seen": 1788960520.6763916,
-    "ast_hash": "66e960e8ff6b2c126755e6f215e96feb",
-    "semantic_hash": "66e960e8ff6b2c126755e6f215e96feb"
+    "mtime": 1789206058.3423607,
+    "seen": 1789209756.3416226,
+    "ast_hash": "222e46a587340fd5910ddb807e56421d",
+    "semantic_hash": ""
   },
   "app/repositories/user_repository.py": {
     "mtime": 1788604427.4594555,
@@ -264,10 +264,10 @@
     "semantic_hash": "a858ac756f855e23230434b4b864cbe5"
   },
   "app/routers/users.py": {
-    "mtime": 1788604427.4702184,
-    "seen": 1788960520.6764038,
-    "ast_hash": "0090b65834093b89aef52b4f45d6c359",
-    "semantic_hash": "0090b65834093b89aef52b4f45d6c359"
+    "mtime": 1789206058.3423607,
+    "seen": 1789209756.3435283,
+    "ast_hash": "dd7d52f45cafd76476d91c875855e450",
+    "semantic_hash": ""
   },
   "app/schemas/__init__.py": {
     "mtime": 1788604427.471576,
@@ -276,10 +276,10 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "app/schemas/capability.py": {
-    "mtime": 1788604427.4720893,
-    "seen": 1788960520.676406,
-    "ast_hash": "ee1df4fc1195aeb3e13f9cf4cc5069da",
-    "semantic_hash": "ee1df4fc1195aeb3e13f9cf4cc5069da"
+    "mtime": 1789206058.3423607,
+    "seen": 1789209756.3437834,
+    "ast_hash": "0cb6affae73d46e325bbc02e12f1c4a7",
+    "semantic_hash": ""
   },
   "app/schemas/challenge.py": {
     "mtime": 1788604427.4720893,
@@ -300,16 +300,16 @@
     "semantic_hash": "6e17e47cad41781301d49a8c177049c4"
   },
   "app/schemas/problem.py": {
-    "mtime": 1788604427.4731097,
-    "seen": 1788960520.676411,
-    "ast_hash": "fbb0b83a95db512a148e7c7d932f7a6f",
-    "semantic_hash": "fbb0b83a95db512a148e7c7d932f7a6f"
+    "mtime": 1789206058.3423607,
+    "seen": 1789209756.3444834,
+    "ast_hash": "9e846b2fbe027286595bc8cb77db77cb",
+    "semantic_hash": ""
   },
   "app/schemas/project.py": {
-    "mtime": 1788604427.4741046,
-    "seen": 1788960520.6764119,
-    "ast_hash": "fad94f254de4da980de77ce6f2182333",
-    "semantic_hash": "fad94f254de4da980de77ce6f2182333"
+    "mtime": 1789206058.3518767,
+    "seen": 1789209756.3444862,
+    "ast_hash": "4059daca4169a5622e66e7ec8d804523",
+    "semantic_hash": ""
   },
   "app/schemas/token.py": {
     "mtime": 1788604427.4741046,
@@ -348,10 +348,10 @@
     "semantic_hash": "5ffec64d67d3cfc07197b325b8551756"
   },
   "app/services/evidence_service.py": {
-    "mtime": 1788604427.4776206,
-    "seen": 1788960520.6764205,
-    "ast_hash": "5b00fa448b32d216f3d94f8462a2b190",
-    "semantic_hash": "5b00fa448b32d216f3d94f8462a2b190"
+    "mtime": 1789206058.3518767,
+    "seen": 1789209756.3459263,
+    "ast_hash": "dc7752f113d9de12416a7cc26fdbeb9f",
+    "semantic_hash": ""
   },
   "app/services/oral_evidence_service.py": {
     "mtime": 1788604427.4776206,
@@ -360,16 +360,16 @@
     "semantic_hash": "a8b8493dad120f317ce4bbf8807384f6"
   },
   "app/services/problem_analysis_service.py": {
-    "mtime": 1788604427.4786208,
-    "seen": 1788960520.6764228,
-    "ast_hash": "83ef94665e3248e220d9c49d4d9b766c",
-    "semantic_hash": "83ef94665e3248e220d9c49d4d9b766c"
+    "mtime": 1789206058.3518767,
+    "seen": 1789209756.3461554,
+    "ast_hash": "6a2d9355f98e3f317bce6b0932fe9636",
+    "semantic_hash": ""
   },
   "app/services/project_service.py": {
-    "mtime": 1788604427.4786208,
-    "seen": 1788960520.676424,
-    "ast_hash": "ad382b97b88cb31bf0eccd01887da6fe",
-    "semantic_hash": "ad382b97b88cb31bf0eccd01887da6fe"
+    "mtime": 1789206058.3518767,
+    "seen": 1789209756.3461583,
+    "ast_hash": "26d9d6317511c773c3fad58c73f89447",
+    "semantic_hash": ""
   },
   "app/utils/storage.py": {
     "mtime": 1788604427.4796212,
@@ -390,16 +390,10 @@
     "semantic_hash": "1801c4733e4489020ec834bbd12520a6"
   },
   "qudra-final/package.json": {
-    "mtime": 1788777598.5600495,
-    "seen": 1788960520.676429,
-    "ast_hash": "69859d4ca516fb4a371605e31f6973b9",
-    "semantic_hash": "69859d4ca516fb4a371605e31f6973b9"
-  },
-  "qudra-final/skills-lock.json": {
-    "mtime": 1788606299.7529807,
-    "seen": 1788960520.6764302,
-    "ast_hash": "35a6adc6250810f14ddbc69ed9e6383d",
-    "semantic_hash": "35a6adc6250810f14ddbc69ed9e6383d"
+    "mtime": 1789035425.6667006,
+    "seen": 1789209756.3469155,
+    "ast_hash": "d6023de400cfd4f70017251fb30fa75d",
+    "semantic_hash": ""
   },
   "qudra-final/src/app/App.tsx": {
     "mtime": 1788608772.90955,
@@ -408,28 +402,28 @@
     "semantic_hash": "948d08ba25999f8cdfa2fc72c596dfb5"
   },
   "qudra-final/src/app/providers/AppProviders.tsx": {
-    "mtime": 1788608794.27734,
-    "seen": 1788960520.6764326,
-    "ast_hash": "0790dadec2dfc982388e641da10b592a",
-    "semantic_hash": "0790dadec2dfc982388e641da10b592a"
+    "mtime": 1789033276.053255,
+    "seen": 1789209756.347161,
+    "ast_hash": "fffa73ae785a546a2cac690e73d4b815",
+    "semantic_hash": ""
   },
   "qudra-final/src/app/router/routes.tsx": {
-    "mtime": 1788613759.5922341,
-    "seen": 1788960520.6764338,
-    "ast_hash": "1af79c91375e212bfa370f33115887ad",
-    "semantic_hash": "1af79c91375e212bfa370f33115887ad"
+    "mtime": 1788965586.019292,
+    "seen": 1789209756.347167,
+    "ast_hash": "254fd99485456c146ddc62df4b4d1340",
+    "semantic_hash": ""
   },
   "qudra-final/src/components/layout/BottomNav.tsx": {
-    "mtime": 1788776935.3416734,
-    "seen": 1788960520.6764352,
-    "ast_hash": "ed765fba2c0d55db27558ca4f1e45a32",
-    "semantic_hash": "ed765fba2c0d55db27558ca4f1e45a32"
+    "mtime": 1788961589.4998295,
+    "seen": 1789209756.3471904,
+    "ast_hash": "8405049c75b0f065646b10305a00c460",
+    "semantic_hash": ""
   },
   "qudra-final/src/components/layout/MainLayout.tsx": {
-    "mtime": 1788776979.288594,
-    "seen": 1788960520.6764364,
-    "ast_hash": "222c0ba95c09f74be09832bc654520b6",
-    "semantic_hash": "222c0ba95c09f74be09832bc654520b6"
+    "mtime": 1788965561.8697927,
+    "seen": 1789209756.3471925,
+    "ast_hash": "8bab56954189a2fabff19e9273f8d315",
+    "semantic_hash": ""
   },
   "qudra-final/src/components/layout/SplashScreen.tsx": {
     "mtime": 1788780786.1916642,
@@ -438,52 +432,52 @@
     "semantic_hash": "28fd61dd51f215181869efe208ba8242"
   },
   "qudra-final/src/components/layout/TopBar.tsx": {
-    "mtime": 1788780735.3686144,
-    "seen": 1788960520.6764388,
-    "ast_hash": "bcf29d18249dd82bd4dfdc1b932e3de4",
-    "semantic_hash": "bcf29d18249dd82bd4dfdc1b932e3de4"
+    "mtime": 1788961569.826592,
+    "seen": 1789209756.3474617,
+    "ast_hash": "714f280324f37c2974838caa750b12c8",
+    "semantic_hash": ""
   },
   "qudra-final/src/components/modals/InviteModal.tsx": {
-    "mtime": 1788612650.9830449,
-    "seen": 1788960520.67644,
-    "ast_hash": "f623d56d9ecd14265b5fb29ce32d3055",
-    "semantic_hash": "f623d56d9ecd14265b5fb29ce32d3055"
+    "mtime": 1789204992.7366855,
+    "seen": 1789209756.3474646,
+    "ast_hash": "4358ddf61ca197044b585234480ed1cb",
+    "semantic_hash": ""
   },
   "qudra-final/src/components/ui/QudraLogo.tsx": {
-    "mtime": 1788780678.9649227,
-    "seen": 1788960520.6764414,
-    "ast_hash": "7f3c735bcecf853bd85d691a97e3de5b",
-    "semantic_hash": "7f3c735bcecf853bd85d691a97e3de5b"
+    "mtime": 1788961630.664399,
+    "seen": 1789209756.347491,
+    "ast_hash": "8f83392ecba5f588b0798218e9b4c52a",
+    "semantic_hash": ""
   },
   "qudra-final/src/constants/routes.ts": {
-    "mtime": 1788613743.9065783,
-    "seen": 1788960520.6764426,
-    "ast_hash": "61ce12ce52d8236e0ccac9e861a06ba8",
-    "semantic_hash": "61ce12ce52d8236e0ccac9e861a06ba8"
+    "mtime": 1789204992.7376864,
+    "seen": 1789209756.3475013,
+    "ast_hash": "446435cd6e5c50417ec83a3d55cba93e",
+    "semantic_hash": ""
   },
   "qudra-final/src/contexts/ProblemContext.tsx": {
-    "mtime": 1788610014.2991328,
-    "seen": 1788960520.6764436,
-    "ast_hash": "e447b0d3ab88bf09d704f39088280b49",
-    "semantic_hash": "e447b0d3ab88bf09d704f39088280b49"
+    "mtime": 1788965586.046744,
+    "seen": 1789209756.347505,
+    "ast_hash": "a7b8225a01feefb67701e35543876981",
+    "semantic_hash": ""
   },
   "qudra-final/src/contexts/RoleContext.tsx": {
-    "mtime": 1788611238.4985902,
-    "seen": 1788960520.6764452,
-    "ast_hash": "eea0541a08cb0fbd15af545b64bd6ba1",
-    "semantic_hash": "eea0541a08cb0fbd15af545b64bd6ba1"
+    "mtime": 1788965586.047761,
+    "seen": 1789209756.3475075,
+    "ast_hash": "3007afb071a25a61640c60bdc28b24e4",
+    "semantic_hash": ""
   },
   "qudra-final/src/contexts/ThemeContext.tsx": {
-    "mtime": 1788777679.1942916,
-    "seen": 1788960520.6764464,
-    "ast_hash": "72ebaf0a08e26debb97cec2256f0ae23",
-    "semantic_hash": "72ebaf0a08e26debb97cec2256f0ae23"
+    "mtime": 1788965586.0487561,
+    "seen": 1789209756.3475099,
+    "ast_hash": "d9fb5dd1aa2d082e2a841536bd7e5caf",
+    "semantic_hash": ""
   },
   "qudra-final/src/contexts/UserContext.tsx": {
-    "mtime": 1788611219.0862396,
-    "seen": 1788960520.676448,
-    "ast_hash": "ecbc549f9fdf1545f779f24c991d2ee5",
-    "semantic_hash": "ecbc549f9fdf1545f779f24c991d2ee5"
+    "mtime": 1788965586.0497558,
+    "seen": 1789209756.3475118,
+    "ast_hash": "f4523b3b75d8f3bcfb8b646abd70f37b",
+    "semantic_hash": ""
   },
   "qudra-final/src/main.tsx": {
     "mtime": 1788604427.5138164,
@@ -492,40 +486,40 @@
     "semantic_hash": "4da14e980c5aceb551fad3a8d3231056"
   },
   "qudra-final/src/pages/auth/LoginPage.tsx": {
-    "mtime": 1788780924.4310224,
-    "seen": 1788960520.6764534,
-    "ast_hash": "c3fd251107142cb9ea7e7d3ab43f56cb",
-    "semantic_hash": "c3fd251107142cb9ea7e7d3ab43f56cb"
+    "mtime": 1789033460.6083145,
+    "seen": 1789209756.3478343,
+    "ast_hash": "1b78b32d3954f44d6b937ba5924fdf4b",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/auth/SignUpPage.tsx": {
-    "mtime": 1788780853.5376244,
-    "seen": 1788960520.6764545,
-    "ast_hash": "a5d1c953eed2ae9444e78f1a2c98f777",
-    "semantic_hash": "a5d1c953eed2ae9444e78f1a2c98f777"
+    "mtime": 1789033482.4413235,
+    "seen": 1789209756.3478372,
+    "ast_hash": "f28aebfe7538765d3944834f3f4ed6ec",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/candidates/CandidateDetailPage.tsx": {
-    "mtime": 1788777200.1628861,
-    "seen": 1788960520.676456,
-    "ast_hash": "af823833b17c7fb591f99ee297d68e78",
-    "semantic_hash": "af823833b17c7fb591f99ee297d68e78"
+    "mtime": 1789204992.745685,
+    "seen": 1789209756.347839,
+    "ast_hash": "9cfd3f2e03109c8b471944c64e3b409c",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/candidates/CandidatesPage.tsx": {
-    "mtime": 1788777152.5263999,
-    "seen": 1788960520.6764572,
-    "ast_hash": "366db57a498b38f8439c77b25f4a39a4",
-    "semantic_hash": "366db57a498b38f8439c77b25f4a39a4"
+    "mtime": 1788965561.923473,
+    "seen": 1789209756.3478413,
+    "ast_hash": "967c7b6941a7268c9b2b64eea8c6ed49",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/candidates/ReRankingPage.tsx": {
-    "mtime": 1788777220.5450008,
-    "seen": 1788960520.6764598,
-    "ast_hash": "1d208b4f34276b7c887318cc5e24c45e",
-    "semantic_hash": "1d208b4f34276b7c887318cc5e24c45e"
+    "mtime": 1788965586.0658233,
+    "seen": 1789209756.3478434,
+    "ast_hash": "837d7ffc8ae7fcacf549dbcd5e590098",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/capabilities/CapabilitiesPage.tsx": {
-    "mtime": 1788614189.9251952,
-    "seen": 1788960520.6764612,
-    "ast_hash": "7fd0985cb296b58bd4eeb8bd7c95fd66",
-    "semantic_hash": "7fd0985cb296b58bd4eeb8bd7c95fd66"
+    "mtime": 1788961389.7561092,
+    "seen": 1789209756.3478453,
+    "ast_hash": "6f68a70f028957c094c95c7e7bca5cd4",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/compare/ComparePage.tsx": {
     "mtime": 1788613084.419659,
@@ -540,58 +534,58 @@
     "semantic_hash": "ffe20eee17d1d70bf2f8d92d1e75a029"
   },
   "qudra-final/src/pages/evaluation/EvaluationPage.tsx": {
-    "mtime": 1788613829.6997998,
-    "seen": 1788960520.676465,
-    "ast_hash": "ea4d09c091a44e8aea5ee092b6e1d19f",
-    "semantic_hash": "ea4d09c091a44e8aea5ee092b6e1d19f"
+    "mtime": 1788965586.0681076,
+    "seen": 1789209756.3483834,
+    "ast_hash": "0d9e4355d669adec41b6eeb6db7a288d",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/invite/InvitePage.tsx": {
-    "mtime": 1788613734.210596,
-    "seen": 1788960520.6764662,
-    "ast_hash": "e9d1acbe3cb135c67c61a9e661ae061e",
-    "semantic_hash": "e9d1acbe3cb135c67c61a9e661ae061e"
+    "mtime": 1788965561.9288352,
+    "seen": 1789209756.3484006,
+    "ast_hash": "6872ead3fa798171e36936c54b5e471b",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/landing/LandingPage.tsx": {
-    "mtime": 1788781061.754119,
-    "seen": 1788960520.6764677,
-    "ast_hash": "04e762e5e33e52aa58abddc51dd55746",
-    "semantic_hash": "04e762e5e33e52aa58abddc51dd55746"
+    "mtime": 1788961610.5743227,
+    "seen": 1789209756.348403,
+    "ast_hash": "1ddc0e21280a8ed073a0553f96bdaf3e",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/onboarding/RoleSelectPage.tsx": {
-    "mtime": 1788614051.741099,
-    "seen": 1788960520.6764688,
-    "ast_hash": "c90a651477a7b3f07f9fa0fbcd17a909",
-    "semantic_hash": "c90a651477a7b3f07f9fa0fbcd17a909"
+    "mtime": 1788961510.526898,
+    "seen": 1789209756.3484282,
+    "ast_hash": "d73348c4ef99810465e857d49b03c92c",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/problem/ProblemInputPage.tsx": {
-    "mtime": 1788780989.815807,
-    "seen": 1788960520.6764703,
-    "ast_hash": "7d46247b46408ab6ce57cfdb9b280470",
-    "semantic_hash": "7d46247b46408ab6ce57cfdb9b280470"
+    "mtime": 1788961411.7240238,
+    "seen": 1789209756.348448,
+    "ast_hash": "f8c2af40b59ea1db11a766b6e79d2364",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/profile/ProfilePage.tsx": {
-    "mtime": 1788781374.260897,
-    "seen": 1788960520.6764712,
-    "ast_hash": "5f8c1ae5c11bc567cc29eefeb9b0a454",
-    "semantic_hash": "5f8c1ae5c11bc567cc29eefeb9b0a454"
+    "mtime": 1788965561.930839,
+    "seen": 1789209756.3484519,
+    "ast_hash": "cfe4b2ae8bb094ba9128351473e54ec1",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/result/ResultPage.tsx": {
-    "mtime": 1788777116.9371128,
-    "seen": 1788960520.6764727,
-    "ast_hash": "259ed52f0d91ed772e25d62f49706e21",
-    "semantic_hash": "259ed52f0d91ed772e25d62f49706e21"
+    "mtime": 1788961450.086072,
+    "seen": 1789209756.3485026,
+    "ast_hash": "615e772d5e05238fbf6c1a69cec535b5",
+    "semantic_hash": ""
   },
   "qudra-final/src/pages/simulation/SimulationPage.tsx": {
-    "mtime": 1788610642.7129002,
-    "seen": 1788960520.676474,
-    "ast_hash": "50781354f5e1bee64a51c91353400dda",
-    "semantic_hash": "50781354f5e1bee64a51c91353400dda"
+    "mtime": 1788965586.0753367,
+    "seen": 1789209756.3485196,
+    "ast_hash": "19d0ccfa384f656784cb7f10ecc06eb7",
+    "semantic_hash": ""
   },
   "qudra-final/src/vite-env.d.ts": {
-    "mtime": 1788604427.5194445,
-    "seen": 1788960520.6764753,
-    "ast_hash": "f777c7430beb5793a4471df83aab81d8",
-    "semantic_hash": "f777c7430beb5793a4471df83aab81d8"
+    "mtime": 1789033626.228315,
+    "seen": 1789209756.3485522,
+    "ast_hash": "732764c818bd2930073394e4442d8f87",
+    "semantic_hash": ""
   },
   "qudra-final/tsconfig.json": {
     "mtime": 1788604427.5204518,
@@ -658,5 +652,1241 @@
     "seen": 1788960520.6764889,
     "ast_hash": "b7ce12f267c825b24a938a609d0d864b",
     "semantic_hash": "b7ce12f267c825b24a938a609d0d864b"
+  },
+  "alembic/versions/cd8885062f2e_sync_current_models.py": {
+    "mtime": 1788965561.8442323,
+    "seen": 1789209756.3337278,
+    "ast_hash": "dbfb4ffa2a507b56eaeb3cc22206cb01",
+    "semantic_hash": ""
+  },
+  "app/utils/normalization.py": {
+    "mtime": 1789206058.3518767,
+    "seen": 1789209756.3461618,
+    "ast_hash": "59963036fad00a866144e13931208df2",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1789037052.9497228,
+    "seen": 1789209756.3464215,
+    "ast_hash": "42542baa37bce4cf821e1a7074e1c73a",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/app/router/RouteFallback.tsx": {
+    "mtime": 1788965561.852232,
+    "seen": 1789209756.3471642,
+    "ast_hash": "a01bfd47888aa6af1faeafd61047e2a3",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/CandidateCard.tsx": {
+    "mtime": 1788965561.8542254,
+    "seen": 1789209756.347169,
+    "ast_hash": "2c1f3fb6dd63ea0e8416abf27151ef8d",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/CapabilityCard.tsx": {
+    "mtime": 1788965586.0208452,
+    "seen": 1789209756.3471713,
+    "ast_hash": "6727264c4464957d5d180e0491ca837b",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/EvidenceCard.tsx": {
+    "mtime": 1788965586.0226321,
+    "seen": 1789209756.347173,
+    "ast_hash": "fbe4b811563251940d9469fbba135453",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/EvidenceStatus.tsx": {
+    "mtime": 1788965561.8584776,
+    "seen": 1789209756.3471744,
+    "ast_hash": "af3281a2726d316541a1340ad6545eb6",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/GapCard.tsx": {
+    "mtime": 1788965586.0247347,
+    "seen": 1789209756.3471768,
+    "ast_hash": "91cff900549cda62cb90001447bd22d4",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/MatchExplanation.tsx": {
+    "mtime": 1788965586.0262983,
+    "seen": 1789209756.347179,
+    "ast_hash": "d3cdc386fe53e70ee9fd4c372dc27d9d",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/MatchScore.tsx": {
+    "mtime": 1788965586.027462,
+    "seen": 1789209756.3471808,
+    "ast_hash": "480a24cf4fce49e3673dde5173786da6",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/ProfileHeader.tsx": {
+    "mtime": 1788965586.0290422,
+    "seen": 1789209756.3471825,
+    "ast_hash": "51900ca96222861a6f650cca970d1a69",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/ProjectCard.tsx": {
+    "mtime": 1788965561.8664777,
+    "seen": 1789209756.3471844,
+    "ast_hash": "da2be2dc25009b00e87e430d9eafe1e2",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/VerificationBadge.tsx": {
+    "mtime": 1788965752.2540777,
+    "seen": 1789209756.3471863,
+    "ast_hash": "29790032a2ffdf0365cc2fd2b5f3bfd6",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/domain/index.ts": {
+    "mtime": 1788965586.0311203,
+    "seen": 1789209756.3471882,
+    "ast_hash": "06eeeaa33928a8119f0519a69b05ff4b",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/layout/RouteFallback.tsx": {
+    "mtime": 1788965485.628309,
+    "seen": 1789209756.3471944,
+    "ast_hash": "a01bfd47888aa6af1faeafd61047e2a3",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/overlays/CmdPalette.tsx": {
+    "mtime": 1788965561.8709216,
+    "seen": 1789209756.3474667,
+    "ast_hash": "632e2fe3a10d67493c47711a230c7ee1",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/overlays/ConfirmBox.tsx": {
+    "mtime": 1788965561.8725798,
+    "seen": 1789209756.3474689,
+    "ast_hash": "122b1c94805447f5c7a0289ff1337a0e",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/overlays/GradingOverlay.tsx": {
+    "mtime": 1788965561.8742228,
+    "seen": 1789209756.3474705,
+    "ast_hash": "6284daae6b8148db876d2fc2accccd0a",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/overlays/ShareBox.tsx": {
+    "mtime": 1788965561.8753967,
+    "seen": 1789209756.3474724,
+    "ast_hash": "6b06c9d1bca7b3c269ee66c55fafbf44",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/overlays/StateBox.tsx": {
+    "mtime": 1788965561.876529,
+    "seen": 1789209756.3474743,
+    "ast_hash": "2f345411e475acb8ec207786209f9e13",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/overlays/index.ts": {
+    "mtime": 1788965561.8770697,
+    "seen": 1789209756.3474765,
+    "ast_hash": "309d1115b97f3721dd2ec5d41f789613",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/Badge.tsx": {
+    "mtime": 1788965586.0342917,
+    "seen": 1789209756.3474786,
+    "ast_hash": "68cfc061a520d3dfe5fd72f18fa8041d",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/Bar.tsx": {
+    "mtime": 1788965586.0364368,
+    "seen": 1789209756.34748,
+    "ast_hash": "e0d57b056b99910509ee090c98f682e7",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/Button.tsx": {
+    "mtime": 1788965586.0381086,
+    "seen": 1789209756.347482,
+    "ast_hash": "fee46009473eec4299a1e583f436c93b",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/EmptyState.tsx": {
+    "mtime": 1788965586.0397108,
+    "seen": 1789209756.3474834,
+    "ast_hash": "2f107a0d6561757f7748999b84c2aa52",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/ErrorState.tsx": {
+    "mtime": 1788965586.040242,
+    "seen": 1789209756.347485,
+    "ast_hash": "0296d4308d768dcaac72abfff662ca39",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/GithubIcon.tsx": {
+    "mtime": 1788965485.6386125,
+    "seen": 1789209756.347487,
+    "ast_hash": "626ff3e00ee3e96b73c8736e51643f07",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/Pill.tsx": {
+    "mtime": 1788965561.886817,
+    "seen": 1789209756.3474889,
+    "ast_hash": "526ca2918078c26620c7186eb1f6da35",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/Ring.tsx": {
+    "mtime": 1788965586.0424008,
+    "seen": 1789209756.3474934,
+    "ast_hash": "55e56eb5577cc75aaeddc0f027ed72d3",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/Skeleton.tsx": {
+    "mtime": 1788965586.0440247,
+    "seen": 1789209756.347495,
+    "ast_hash": "f6b2aae74dec9144fbf0981eb724e7ff",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/Tag.tsx": {
+    "mtime": 1788965561.8915884,
+    "seen": 1789209756.3474967,
+    "ast_hash": "6e5d060c7282ddbc720fb4becb94a370",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/components/ui/index.ts": {
+    "mtime": 1789032826.5267365,
+    "seen": 1789209756.3474987,
+    "ast_hash": "ec214c4a80c747652c16acf9d55f47e4",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/AuthContext.tsx": {
+    "mtime": 1789035646.5241652,
+    "seen": 1789209756.347503,
+    "ast_hash": "cef0b8eedba7d7192736c352632f96b1",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/problem-context-constants.ts": {
+    "mtime": 1788965561.897406,
+    "seen": 1789209756.3475137,
+    "ast_hash": "5b2327314500b307d80b76af96717da7",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/problem-context-object.ts": {
+    "mtime": 1788965561.898463,
+    "seen": 1789209756.3475153,
+    "ast_hash": "32fd8655d0030c0470e1f4ee9f40adc9",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/problem-context-types.ts": {
+    "mtime": 1788965485.6473486,
+    "seen": 1789209756.3475173,
+    "ast_hash": "e799034d865a06801863fac29f4ac882",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/problem-context-value.ts": {
+    "mtime": 1788965561.898463,
+    "seen": 1789209756.347519,
+    "ast_hash": "2608531f90fd29bd717ec1815a862b4c",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/role-context-object.ts": {
+    "mtime": 1788965561.898463,
+    "seen": 1789209756.3475206,
+    "ast_hash": "24bc11ce797b6ea3188f2905988f10ee",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/role-context-types.ts": {
+    "mtime": 1788965586.051762,
+    "seen": 1789209756.3475225,
+    "ast_hash": "6af370b0eaf43741dbdb6f0c786cd876",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/theme-context-object.ts": {
+    "mtime": 1788965561.90047,
+    "seen": 1789209756.347525,
+    "ast_hash": "a20f2f76385dc5cadb8ef1513351ba17",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/theme-context-types.ts": {
+    "mtime": 1788965586.0527544,
+    "seen": 1789209756.3475263,
+    "ast_hash": "394cf9b09737a7eec44a1d01198e9e40",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/useAuth.ts": {
+    "mtime": 1789033676.8234625,
+    "seen": 1789209756.3475282,
+    "ast_hash": "7a048dde9eb0bfdc29dd28e345a65b49",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/useProblem.ts": {
+    "mtime": 1788965586.0537598,
+    "seen": 1789209756.3475301,
+    "ast_hash": "c1f4f17873483e5c46274db925cdf2d1",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/useRole.ts": {
+    "mtime": 1788965586.0547583,
+    "seen": 1789209756.347532,
+    "ast_hash": "bc6851c5152c15a7f9b09870bf37173c",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/useTheme.ts": {
+    "mtime": 1788965586.0557542,
+    "seen": 1789209756.3475335,
+    "ast_hash": "75b4a83c6967156fbaa06ba7f80fc8a3",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/useUser.ts": {
+    "mtime": 1788965485.6534646,
+    "seen": 1789209756.3475354,
+    "ast_hash": "5516b3ade36d7c7ffa69fcee4f75f0ca",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/contexts/user-context-types.ts": {
+    "mtime": 1788965485.6534646,
+    "seen": 1789209756.3475368,
+    "ast_hash": "ea863dc63a187de739aedfdd38623c67",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/data/demo-candidates.ts": {
+    "mtime": 1788965561.9064698,
+    "seen": 1789209756.347539,
+    "ast_hash": "9c70810696f5dea14815a183bfe48cbe",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/data/demo-capabilities.ts": {
+    "mtime": 1788965561.90747,
+    "seen": 1789209756.3475404,
+    "ast_hash": "6a99aeb1861d12f7940f6e07b83a82f2",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/data/demo-commands.ts": {
+    "mtime": 1788965561.90747,
+    "seen": 1789209756.3475423,
+    "ast_hash": "efbc6ae11d50b73410c59784a9fea038",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/data/demo-evidence.ts": {
+    "mtime": 1788965561.908469,
+    "seen": 1789209756.347544,
+    "ast_hash": "03b34ceef27d18ca46f6532d623806ba",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/data/demo-match.ts": {
+    "mtime": 1788965561.909469,
+    "seen": 1789209756.3475456,
+    "ast_hash": "b47d6086ecab42ff718f233018c03380",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/data/demo-profile.ts": {
+    "mtime": 1788965561.909469,
+    "seen": 1789209756.3475473,
+    "ast_hash": "25fe585681699264c7b0cc181803e26a",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/data/demo-reasons.ts": {
+    "mtime": 1788965561.9104733,
+    "seen": 1789209756.3475492,
+    "ast_hash": "d866903df128013f44d116a3bc313bf9",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/data/demo-simulation.ts": {
+    "mtime": 1788965561.911471,
+    "seen": 1789209756.3475506,
+    "ast_hash": "6ea51c9149cf3ce78f976d304c555435",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/data/index.ts": {
+    "mtime": 1788965561.911471,
+    "seen": 1789209756.3475523,
+    "ast_hash": "94fcd9cb52ebd869681cc72d040925ca",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/hooks/index.ts": {
+    "mtime": 1788965561.9124744,
+    "seen": 1789209756.3475542,
+    "ast_hash": "d2052d909afefe905acb2a042e2f5d0f",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/hooks/useAnimateNum.ts": {
+    "mtime": 1788965561.9134686,
+    "seen": 1789209756.3475556,
+    "ast_hash": "1b2a7422ee3fa0ccee90b9793022f1f4",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/hooks/useFocusTrap.ts": {
+    "mtime": 1788965561.9134686,
+    "seen": 1789209756.347557,
+    "ast_hash": "af2ffcbb54c66117f9f3bffc7cae8f24",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/hooks/useRing.ts": {
+    "mtime": 1788965561.9144704,
+    "seen": 1789209756.3475585,
+    "ast_hash": "d8a36ad3aee95287cb73be624a5fe14a",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/hooks/useTimer.ts": {
+    "mtime": 1788965561.9144704,
+    "seen": 1789209756.3475602,
+    "ast_hash": "66cf9f41c7a163b435ffda0b5027618d",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/admin/AdminDashboardPage.tsx": {
+    "mtime": 1789204992.7386858,
+    "seen": 1789209756.3478212,
+    "ast_hash": "a6d5eb1d82f5f7291f07695c30eb4264",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/admin/AiAnalysisQueuePage.tsx": {
+    "mtime": 1789204992.740684,
+    "seen": 1789209756.347824,
+    "ast_hash": "4186785081cff19a044545812f30b131",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/admin/EvidenceReviewPage.tsx": {
+    "mtime": 1789204992.7426853,
+    "seen": 1789209756.3478262,
+    "ast_hash": "5e8c4ec23019e0dd9e12982625d90949",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/admin/VerificationQueuePage.tsx": {
+    "mtime": 1789204992.7436862,
+    "seen": 1789209756.3478281,
+    "ast_hash": "e8b7ed07a9c1b41520263b74b9cdb1c4",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/analyzing/AnalyzingPage.tsx": {
+    "mtime": 1788965561.9164724,
+    "seen": 1789209756.34783,
+    "ast_hash": "ecf97c087dd97d9bdb026e9d2a603ae9",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/auth/EmailVerificationPage.tsx": {
+    "mtime": 1788965485.6553273,
+    "seen": 1789209756.3478317,
+    "ast_hash": "82d349ec674aae025edc3e7095963fbf",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/challenges/ChallengeDetailPage.tsx": {
+    "mtime": 1789204992.7476833,
+    "seen": 1789209756.3478472,
+    "ast_hash": "a8af4f559b8ce9fbdd77ba7f311dcfe6",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/challenges/ChallengeLibraryPage.tsx": {
+    "mtime": 1789204992.749607,
+    "seen": 1789209756.3478487,
+    "ast_hash": "bdd3a13e5fbfc8ea4e097f8394633866",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/challenges/ChallengeResultPage.tsx": {
+    "mtime": 1789204992.7516046,
+    "seen": 1789209756.3478506,
+    "ast_hash": "f679bc05293d1398e2d5d76fcba90a08",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/challenges/ChallengeWorkspacePage.tsx": {
+    "mtime": 1789204992.7526033,
+    "seen": 1789209756.3478522,
+    "ast_hash": "e96fbe2635fc52841264d5a8577d1cb9",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/CandidateComparisonPage.tsx": {
+    "mtime": 1789204992.7546022,
+    "seen": 1789209756.347854,
+    "ast_hash": "05c0557f9e669b038edb9194253ebccf",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/CandidateDetailCompanyPage.tsx": {
+    "mtime": 1789204992.7552736,
+    "seen": 1789209756.3478556,
+    "ast_hash": "e1a3d4ad91f1df3be08d7730fbaf085b",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/CandidateResultsPage.tsx": {
+    "mtime": 1789204992.7575471,
+    "seen": 1789209756.3478572,
+    "ast_hash": "bb3bbf55451ef2e68262ec79dd22f476",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/CompanyChallengePage.tsx": {
+    "mtime": 1789204992.7588944,
+    "seen": 1789209756.3478587,
+    "ast_hash": "093cd4c57b78683660bb73161b76b602",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/CompanyHomePage.tsx": {
+    "mtime": 1789204992.7622933,
+    "seen": 1789209756.3478606,
+    "ast_hash": "8785cc237c22f237209ea2e83cb2146a",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/FindTalentPage.tsx": {
+    "mtime": 1789204992.7633479,
+    "seen": 1789209756.3478658,
+    "ast_hash": "710a03dc30da078c3b2a8de711ebe391",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/InviteCandidatePage.tsx": {
+    "mtime": 1789204992.765394,
+    "seen": 1789209756.3478677,
+    "ast_hash": "afd49e6bacd8bff5bc6563163afb1d06",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/JobDefinitionPage.tsx": {
+    "mtime": 1789204992.7663946,
+    "seen": 1789209756.3478692,
+    "ast_hash": "4816a669051db76b2f39c9879193e09c",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/ProblemAnalysisPage.tsx": {
+    "mtime": 1789204992.7683928,
+    "seen": 1789209756.3478708,
+    "ast_hash": "8d796168fd50316b7de2dc7071cf1b51",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/ProblemCandidateResultsPage.tsx": {
+    "mtime": 1789204992.7693932,
+    "seen": 1789209756.3478725,
+    "ast_hash": "cc4a85779e05f97ad3467a495e1caac6",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/ProblemCreationPage.tsx": {
+    "mtime": 1789204992.7693932,
+    "seen": 1789209756.3478742,
+    "ast_hash": "14d833c2a2761317d65d4d3f6504a73c",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/RequirementAnalysisPage.tsx": {
+    "mtime": 1789204992.7693932,
+    "seen": 1789209756.3478756,
+    "ast_hash": "e74746e375d48739d2b3764dd3346a93",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/company/TeamBuilderPage.tsx": {
+    "mtime": 1789204992.7693932,
+    "seen": 1789209756.347877,
+    "ast_hash": "f5e4869c4338ab2e20315fa9df7e7aa9",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/discover/DiscoverPage.tsx": {
+    "mtime": 1788965485.661971,
+    "seen": 1789209756.3481202,
+    "ast_hash": "eaa07442287354c1d163cac56a55da05",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/discover/PeopleDirectoryPage.tsx": {
+    "mtime": 1788965485.663075,
+    "seen": 1789209756.3481228,
+    "ast_hash": "4e94ab1bab43a39edc85db7c5eb869ae",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/discover/PublicProfilePage.tsx": {
+    "mtime": 1788965485.6636784,
+    "seen": 1789209756.3481252,
+    "ast_hash": "894ac7db13be684bb4a8329963d75070",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/evidence/EvidenceDetailPage.tsx": {
+    "mtime": 1789032890.2807207,
+    "seen": 1789209756.3483858,
+    "ast_hash": "e80152d28a2d8af03acae4e8fde5d50d",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/gaps/GapDetailPage.tsx": {
+    "mtime": 1789204992.7693932,
+    "seen": 1789209756.348388,
+    "ast_hash": "fe103a57326c96a1da1407acc2066873",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/gaps/GapsPage.tsx": {
+    "mtime": 1789204992.7776828,
+    "seen": 1789209756.3483942,
+    "ast_hash": "54fd50a33ebb510dbdb7e8507ce320b5",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/gaps/GrowthPlanPage.tsx": {
+    "mtime": 1789204992.7796762,
+    "seen": 1789209756.3483958,
+    "ast_hash": "01dde2110fd69019590e2f2092557696",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/home/HomePage.tsx": {
+    "mtime": 1788965485.6686678,
+    "seen": 1789209756.3483987,
+    "ast_hash": "da5a4659f10654f75add3c06076b2583",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/network/CommunicationSettingsPage.tsx": {
+    "mtime": 1789204992.7796762,
+    "seen": 1789209756.3484046,
+    "ast_hash": "b7f98dd02aae39b866ce233db9d52a26",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/network/ConnectionRequestsPage.tsx": {
+    "mtime": 1789204992.7853007,
+    "seen": 1789209756.3484063,
+    "ast_hash": "4907841cff079e599c5f9f0ef64eff88",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/network/ConnectionsPage.tsx": {
+    "mtime": 1789204992.7853007,
+    "seen": 1789209756.348408,
+    "ast_hash": "bc66c51e8febd0967892b7726694b658",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/network/ConversationPage.tsx": {
+    "mtime": 1789204992.7883344,
+    "seen": 1789209756.3484097,
+    "ast_hash": "50a351e0091089068322c7b6a98a45ec",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/network/CreateGroupPage.tsx": {
+    "mtime": 1789204992.7901244,
+    "seen": 1789209756.3484159,
+    "ast_hash": "5df34c53d7a615f43f2411d2d8409edf",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/network/GroupConversationPage.tsx": {
+    "mtime": 1789204992.7921326,
+    "seen": 1789209756.3484173,
+    "ast_hash": "e9dad9c6535a1aa062e857b19e046061",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/network/MessagesInboxPage.tsx": {
+    "mtime": 1789204992.7927916,
+    "seen": 1789209756.348422,
+    "ast_hash": "9f153c133d35d02e71e854501c76b708",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/onboarding/BasicIdentityPage.tsx": {
+    "mtime": 1788965485.669744,
+    "seen": 1789209756.348424,
+    "ast_hash": "cd12df144405971aa1a26d2d9337869a",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/onboarding/FirstIntentPage.tsx": {
+    "mtime": 1788965485.6708467,
+    "seen": 1789209756.3484259,
+    "ast_hash": "479b806db2192e91d32ffe275284e10f",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/opportunities/ApplicationPage.tsx": {
+    "mtime": 1789204992.7927916,
+    "seen": 1789209756.34843,
+    "ast_hash": "b2ce8c059491e698c02f0912df2a8287",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/opportunities/MatchExplanationPage.tsx": {
+    "mtime": 1789204992.7969682,
+    "seen": 1789209756.3484318,
+    "ast_hash": "82707bd55761628210ff2b1be2d361ff",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/opportunities/OpportunitiesPage.tsx": {
+    "mtime": 1789204992.7989786,
+    "seen": 1789209756.3484337,
+    "ast_hash": "f57190932129459ec245af149deced99",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/opportunities/OpportunityDetailPage.tsx": {
+    "mtime": 1789204992.7999792,
+    "seen": 1789209756.3484354,
+    "ast_hash": "544147a896ae84b4c62432268201b443",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/opportunities/OpportunitySearchPage.tsx": {
+    "mtime": 1789204992.8019798,
+    "seen": 1789209756.348437,
+    "ast_hash": "93c879dd4713eaa1cbcdef221fad42e6",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/organization/OrganizationDashboardPage.tsx": {
+    "mtime": 1789204992.8039773,
+    "seen": 1789209756.3484392,
+    "ast_hash": "571d8d40d844a3256102ec86f27934fc",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/organization/OrganizationMembersPage.tsx": {
+    "mtime": 1789204992.8049774,
+    "seen": 1789209756.348441,
+    "ast_hash": "dcfb7da577708e810d5f48cb8f0e1bbc",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/organization/OrganizationProfilePage.tsx": {
+    "mtime": 1789204992.8065145,
+    "seen": 1789209756.3484423,
+    "ast_hash": "deca956b3a5f36763e8e8ed7a7804a65",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/organization/OrganizationRolesPage.tsx": {
+    "mtime": 1789204992.8076658,
+    "seen": 1789209756.3484445,
+    "ast_hash": "46ddd0dd1b9fd2cd8f074278ba7adc68",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/organization/OrganizationVerificationPage.tsx": {
+    "mtime": 1789204992.8096614,
+    "seen": 1789209756.3484461,
+    "ast_hash": "677f9f32163a878b4b4857b3ccc0531e",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/ProfileCompletionPage.tsx": {
+    "mtime": 1788965485.6720083,
+    "seen": 1789209756.3484497,
+    "ast_hash": "999919ab09f304519c08a25ee87f7cc3",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/master/CapabilityDetailPage.tsx": {
+    "mtime": 1788965485.672549,
+    "seen": 1789209756.3484535,
+    "ast_hash": "ab9b8945b2cfa3d02d8f2e786c1b39b9",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/master/MasterDnaPage.tsx": {
+    "mtime": 1788965485.6738493,
+    "seen": 1789209756.3484552,
+    "ast_hash": "8b6cda46361538cb852a887b9c51ecfa",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/master/MasterProfilePage.tsx": {
+    "mtime": 1788965485.6750116,
+    "seen": 1789209756.3484566,
+    "ast_hash": "e5333dc29d20072a2900f2fc99edb265",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/master/MasterTimelinePage.tsx": {
+    "mtime": 1788965485.675618,
+    "seen": 1789209756.3484583,
+    "ast_hash": "13ec72a07fe167f4bcfa598cd12570f4",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/master/WhyThisLevelPage.tsx": {
+    "mtime": 1788965485.6767223,
+    "seen": 1789209756.3484597,
+    "ast_hash": "a70468a2b569c945dc4db7158633214f",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/profile-data.ts": {
+    "mtime": 1788965561.9318466,
+    "seen": 1789209756.3484619,
+    "ast_hash": "d77b61a0e1e25c2e1b30b406a3a4c078",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/sources/GitHubConnectPage.tsx": {
+    "mtime": 1789035578.326362,
+    "seen": 1789209756.3484633,
+    "ast_hash": "cff1d3ff2f1ddafb4069c3db1853df33",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/sources/GitHubResultsPage.tsx": {
+    "mtime": 1788965485.6789029,
+    "seen": 1789209756.348465,
+    "ast_hash": "12ee41b26b92e034749233ef8b6be227",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/sources/GitHubScanPage.tsx": {
+    "mtime": 1788965485.6800084,
+    "seen": 1789209756.3484664,
+    "ast_hash": "71e8cc5df9ad73d0cfa317e500589b32",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/sources/RepoDetailPage.tsx": {
+    "mtime": 1788965485.6805518,
+    "seen": 1789209756.3484683,
+    "ast_hash": "c1ec5d7240d6741cf581f1e65806abc7",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/sources/RepoSelectPage.tsx": {
+    "mtime": 1788965485.6816194,
+    "seen": 1789209756.34847,
+    "ast_hash": "b27c20958a9ebbf03aa9785247203830",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/tabs/DashboardTab.tsx": {
+    "mtime": 1788965561.9318466,
+    "seen": 1789209756.3484716,
+    "ast_hash": "6cd6e6da4dc02a7c01db68f4654e783f",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/tabs/EvidenceDetailTab.tsx": {
+    "mtime": 1788965561.9329045,
+    "seen": 1789209756.348473,
+    "ast_hash": "8d4cda203f7d76e4972f10ce01e85f8b",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/tabs/EvidenceTab.tsx": {
+    "mtime": 1788965561.933894,
+    "seen": 1789209756.3484795,
+    "ast_hash": "2279026ef71a1f6f881f6ec9c4db5aa5",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/tabs/GapsTab.tsx": {
+    "mtime": 1788965561.933894,
+    "seen": 1789209756.348486,
+    "ast_hash": "22ae8ab31f0dd6b568d98a355d08e564",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/tabs/OpportunitiesTab.tsx": {
+    "mtime": 1788965561.934851,
+    "seen": 1789209756.3484874,
+    "ast_hash": "74567b8d16ff0e7328f460acba9842db",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/tabs/PassportTab.tsx": {
+    "mtime": 1788965561.93584,
+    "seen": 1789209756.348489,
+    "ast_hash": "0bf7130104923587e530213b5642fdf0",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/tabs/SourcesTab.tsx": {
+    "mtime": 1788965561.9368353,
+    "seen": 1789209756.3484905,
+    "ast_hash": "cddd0be40885f28267518120c436590a",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/profile/tabs/TimelineTab.tsx": {
+    "mtime": 1788965561.9378345,
+    "seen": 1789209756.3484924,
+    "ast_hash": "398a9067ab33c73a77812e425457ebf4",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/resources/ResourceDetailPage.tsx": {
+    "mtime": 1789204992.811132,
+    "seen": 1789209756.3484938,
+    "ast_hash": "21c23be4d6657691e5cba2a0501f26e2",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/resources/ResourceDiscoveryPage.tsx": {
+    "mtime": 1789204992.8124468,
+    "seen": 1789209756.3484952,
+    "ast_hash": "2418c225375d6d35d32889d52dd77ad2",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/settings/ConnectedAccountsPage.tsx": {
+    "mtime": 1789204992.8124468,
+    "seen": 1789209756.348509,
+    "ast_hash": "ffa8d908912360c2cebcd8b0befbe6c5",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/settings/NotificationsPage.tsx": {
+    "mtime": 1789204992.8124468,
+    "seen": 1789209756.348511,
+    "ast_hash": "8527963f2326505ddea9265217f7421b",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/settings/PrivacyPage.tsx": {
+    "mtime": 1789204992.8163183,
+    "seen": 1789209756.3485165,
+    "ast_hash": "13cc468fdf9ab8536dcba5dc37474c6a",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/settings/SettingsPage.tsx": {
+    "mtime": 1789204992.8177433,
+    "seen": 1789209756.348518,
+    "ast_hash": "2373f2389f9e2406ea73262c6bd4a277",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/simulation/simulation-constants.ts": {
+    "mtime": 1788965586.0763514,
+    "seen": 1789209756.3485215,
+    "ast_hash": "5a6844c3b15f447a84c2f9e72ae70d32",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/pages/system/SystemStatesPage.tsx": {
+    "mtime": 1789204992.8205078,
+    "seen": 1789209756.348523,
+    "ast_hash": "b41f5ed0d95886bb71c9bba54068d5e8",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/services/auth.service.ts": {
+    "mtime": 1789035325.0836675,
+    "seen": 1789209756.3485243,
+    "ast_hash": "a7137c65a81023fabad77ba751b2b8e8",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/services/capabilities.service.ts": {
+    "mtime": 1788965485.6869912,
+    "seen": 1789209756.348526,
+    "ast_hash": "2a9c840658e1dcc3de1c2b8dbebeb193",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/services/evidence.service.ts": {
+    "mtime": 1788965485.6875591,
+    "seen": 1789209756.3485277,
+    "ast_hash": "7cb3de6f252d0bd7debe78458bc243d9",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/services/github.service.ts": {
+    "mtime": 1789035516.9958787,
+    "seen": 1789209756.3485293,
+    "ast_hash": "8016da324275ae1e217acd0f0c057245",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/services/index.ts": {
+    "mtime": 1789035259.5148015,
+    "seen": 1789209756.3485312,
+    "ast_hash": "fbed3d107450b7e00c1392a017aa494d",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/services/master-profile.service.ts": {
+    "mtime": 1788965485.6898184,
+    "seen": 1789209756.3485327,
+    "ast_hash": "2473c83eebb53d27085df54e03bcd373",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/services/mock-data.ts": {
+    "mtime": 1788965485.6908324,
+    "seen": 1789209756.3485343,
+    "ast_hash": "ba611972e5c7d342089d95267b46f51d",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/services/store.ts": {
+    "mtime": 1788965485.6918306,
+    "seen": 1789209756.348536,
+    "ast_hash": "b3359c0bf16329ca72a5dd58cff67dce",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/services/types.ts": {
+    "mtime": 1788965485.6928322,
+    "seen": 1789209756.3485377,
+    "ast_hash": "97080b6f19359f8b8e7fe8141389e618",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/types/candidate.ts": {
+    "mtime": 1788965561.9428535,
+    "seen": 1789209756.3485389,
+    "ast_hash": "2963349325c17e40ad9efb71089a545e",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/types/capability.ts": {
+    "mtime": 1788965561.943851,
+    "seen": 1789209756.348541,
+    "ast_hash": "9c4f2b933b13924adc716b2732830bef",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/types/common.ts": {
+    "mtime": 1788965561.9448488,
+    "seen": 1789209756.3485425,
+    "ast_hash": "a942c89d5a82d1d609836f5c487b7662",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/types/evidence.ts": {
+    "mtime": 1788965561.9448488,
+    "seen": 1789209756.348544,
+    "ast_hash": "52eaf36f1d8737df99d5666e00a0cf27",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/types/index.ts": {
+    "mtime": 1788965561.9458504,
+    "seen": 1789209756.3485456,
+    "ast_hash": "e1f5936e5076e267d196f624bbb6a88c",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/types/match.ts": {
+    "mtime": 1788965561.9468584,
+    "seen": 1789209756.348547,
+    "ast_hash": "79056aa295da2020446f58fa8915265c",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/types/profile.ts": {
+    "mtime": 1788965561.9468584,
+    "seen": 1789209756.3485487,
+    "ast_hash": "8908c178d3ab320ba3fbe949b63a48a0",
+    "semantic_hash": ""
+  },
+  "qudra-final/src/types/simulation.ts": {
+    "mtime": 1788965561.9478552,
+    "seen": 1789209756.3485503,
+    "ast_hash": "b69bad15c0c60063fdefc44b8f811845",
+    "semantic_hash": ""
+  },
+  "tests/test_ai_features_spec.py": {
+    "mtime": 1789206058.356146,
+    "seen": 1789209756.3497708,
+    "ast_hash": "075f01a968230538a8cad1b8f656dd85",
+    "semantic_hash": ""
+  },
+  "ARCHITECTURE.md": {
+    "mtime": 1788604427.41874,
+    "seen": 1789209756.3510988,
+    "ast_hash": "9e94b86edb2d41b989cdc788ed7810ea",
+    "semantic_hash": ""
+  },
+  "PROJECT_SPEC.md": {
+    "mtime": 1788604427.4197447,
+    "seen": 1789209756.3511016,
+    "ast_hash": "16453516de4ec412d329a1dba86fedf3",
+    "semantic_hash": ""
+  },
+  "docker-compose.yml": {
+    "mtime": 1788604427.4806263,
+    "seen": 1789209756.351104,
+    "ast_hash": "322270adf411394d70283a6cad738aee",
+    "semantic_hash": ""
+  },
+  "qudra-final/.memory/notes.md": {
+    "mtime": 1788776896.1888976,
+    "seen": 1789209756.3511057,
+    "ast_hash": "0853f460767ff483d37b2093b518b895",
+    "semantic_hash": ""
+  },
+  "qudra-final/.memory/tasks/2026-09-05_B0.3.1_LandingPage.md": {
+    "mtime": 1788607073.0840838,
+    "seen": 1789209756.351108,
+    "ast_hash": "6367ab10899f8aa4f9b9941a64fa6d1a",
+    "semantic_hash": ""
+  },
+  "qudra-final/.memory/tasks/2026-09-05_B0.3.2_Problem_Capabilities.md": {
+    "mtime": 1788609189.1102839,
+    "seen": 1789209756.3511105,
+    "ast_hash": "cedd1fab5f712d2293ca99ce55b7ed9d",
+    "semantic_hash": ""
+  },
+  "qudra-final/.memory/tasks/2026-09-05_B0.3.4_Simulation_Evaluation.md": {
+    "mtime": 1788610759.4863513,
+    "seen": 1789209756.3511126,
+    "ast_hash": "6066ab27e116a9e0fff57ad1fb186a9c",
+    "semantic_hash": ""
+  },
+  "qudra-final/.memory/tasks/2026-09-05_B0_ALL_SCREENS_RECONSTRUCTION.md": {
+    "mtime": 1788615644.6639223,
+    "seen": 1789209756.3511145,
+    "ast_hash": "9058d90969bf6d9dc2c13e7cfaeaea0b",
+    "semantic_hash": ""
+  },
+  "qudra-final/.memory/tasks/2026-09-07_B0_DEEP_AUDIT_AND_REFINEMENT.md": {
+    "mtime": 1788777977.605954,
+    "seen": 1789209756.3511162,
+    "ast_hash": "47d7f168cea13e8075405238ffd0eae5",
+    "semantic_hash": ""
+  },
+  "qudra-final/AGENTS.md": {
+    "mtime": 1788604427.4826267,
+    "seen": 1789209756.3511186,
+    "ast_hash": "5f29c024eaa5f598ec182bac04fa15f8",
+    "semantic_hash": ""
+  },
+  "qudra-final/CHANGELOG.md": {
+    "mtime": 1788965561.8462238,
+    "seen": 1789209756.3511205,
+    "ast_hash": "c2820959fa43882dd1a7accacda85a14",
+    "semantic_hash": ""
+  },
+  "qudra-final/DECISIONS.md": {
+    "mtime": 1788781619.9774911,
+    "seen": 1789209756.3511224,
+    "ast_hash": "3dbf983a2840da22963ddd2b0d369852",
+    "semantic_hash": ""
+  },
+  "qudra-final/PROJECT_MAP.md": {
+    "mtime": 1788965561.8482234,
+    "seen": 1789209756.3511245,
+    "ast_hash": "f139a207434c67c1bf9c3fcc3d16c09b",
+    "semantic_hash": ""
+  },
+  "qudra-final/QUDRA_FINAL_BOLT_PROMPT.md": {
+    "mtime": 1788604427.4854174,
+    "seen": 1789209756.3511267,
+    "ast_hash": "f3cd23b09fbf0c12e26569c2900ec518",
+    "semantic_hash": ""
+  },
+  "qudra-final/QUDRA_UX_UI_COMPLETE_SPEC.md": {
+    "mtime": 1789033498.357751,
+    "seen": 1789209756.3511286,
+    "ast_hash": "62aab82bb42fabdbcda708876bfc0f9d",
+    "semantic_hash": ""
+  },
+  "qudra-final/README.md": {
+    "mtime": 1788604427.4864528,
+    "seen": 1789209756.3511307,
+    "ast_hash": "36d187b9f8c475133359579651f61f72",
+    "semantic_hash": ""
+  },
+  "qudra-final/SKILLS.md": {
+    "mtime": 1788607135.6706762,
+    "seen": 1789209756.3511324,
+    "ast_hash": "d43b5f14e4e86339cadfe7eddc8a70e7",
+    "semantic_hash": ""
+  },
+  "qudra-final/STATUS.md": {
+    "mtime": 1789204992.7309585,
+    "seen": 1789209756.3511348,
+    "ast_hash": "01b04a18194bf2fed50ad11794c60aea",
+    "semantic_hash": ""
+  },
+  "qudra-final/TASKS.md": {
+    "mtime": 1789204992.7325945,
+    "seen": 1789209756.3511367,
+    "ast_hash": "0fda655b4c03e319158e7acaf37133f4",
+    "semantic_hash": ""
+  },
+  "qudra-final/TEST_REPORT.md": {
+    "mtime": 1788615673.5937364,
+    "seen": 1789209756.3511388,
+    "ast_hash": "fddb0a741fea63b52615a14e865a5b7f",
+    "semantic_hash": ""
+  },
+  "qudra-final/design-system.html": {
+    "mtime": 1788604427.4927688,
+    "seen": 1789209756.3511405,
+    "ast_hash": "a524f7cc0e1471c96d27ffad22c83e2c",
+    "semantic_hash": ""
+  },
+  "qudra-final/dev-handoff.md": {
+    "mtime": 1788604427.4937694,
+    "seen": 1789209756.3511424,
+    "ast_hash": "923027ebdce16b5433791bfeb1fe0a15",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/01___QUDRA.md": {
+    "mtime": 1788604427.4937694,
+    "seen": 1789209756.351144,
+    "ast_hash": "044574623967174758d01bdd93876dc2",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/01_\u0641\u0643\u0631\u0629_\u0627\u0644\u0645\u0634\u0631\u0648\u0639_QUDRA.md": {
+    "mtime": 1788604427.4952734,
+    "seen": 1789209756.351148,
+    "ast_hash": "044574623967174758d01bdd93876dc2",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/02__QUDRA_AI_Coding_Rules.md": {
+    "mtime": 1788604427.4952734,
+    "seen": 1789209756.35115,
+    "ast_hash": "d8d19dce564cb7ad7b0875737ef8721d",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/02_\u0642\u0648\u0627\u0639\u062f_QUDRA_AI_Coding_Rules.md": {
+    "mtime": 1788604427.4968038,
+    "seen": 1789209756.3511524,
+    "ast_hash": "d8d19dce564cb7ad7b0875737ef8721d",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/03_TASKS_QUDRA_Living_Log.md": {
+    "mtime": 1788604427.4988518,
+    "seen": 1789209756.351154,
+    "ast_hash": "451082f73eb3e85b55fbe4be85050cc1",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/04_BRD_QUDRA_for_Bolt.md": {
+    "mtime": 1788604427.4998615,
+    "seen": 1789209756.351156,
+    "ast_hash": "ddc4b6c1caf1b7a101a1fffe66c98192",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/QUDRA_FINAL_BOLT_PROMPT_v1_1.md": {
+    "mtime": 1788604427.4998615,
+    "seen": 1789209756.3511577,
+    "ast_hash": "e09fdd7ef6ec8e078a192503b989cfbd",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/QUDRA_Master_Profile_V3_AR.md": {
+    "mtime": 1788604427.5008602,
+    "seen": 1789209756.3511596,
+    "ast_hash": "a7486a9f3717d9fae95e5805e2506c92",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/README.md": {
+    "mtime": 1788604427.501871,
+    "seen": 1789209756.3511617,
+    "ast_hash": "d2aaac8dc0e51189e879f21417c40cab",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/README_1.md": {
+    "mtime": 1788604427.501871,
+    "seen": 1789209756.3511634,
+    "ast_hash": "be97d1e93045e11c55f1ded971a1b86f",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/__.md": {
+    "mtime": 1788604427.502859,
+    "seen": 1789209756.3511653,
+    "ast_hash": "3be89fdf6382e8cb8224e6416301f6c7",
+    "semantic_hash": ""
+  },
+  "qudra-final/docs/archive/\u0622\u062e\u0631_\u0628\u0631\u0648\u0645\u062a_\u0628\u0648\u0644\u062a.md": {
+    "mtime": 1788604427.5038588,
+    "seen": 1789209756.3511674,
+    "ast_hash": "3be89fdf6382e8cb8224e6416301f6c7",
+    "semantic_hash": ""
+  },
+  "qudra-final/index.html": {
+    "mtime": 1788604427.5038588,
+    "seen": 1789209756.3511693,
+    "ast_hash": "3da4818699614b329a12332a861f3acb",
+    "semantic_hash": ""
+  },
+  "qudra-final/prototype.html": {
+    "mtime": 1788604427.5083828,
+    "seen": 1789209756.3511708,
+    "ast_hash": "94910bba8bbf6f17ba5ff0cf4437da3f",
+    "semantic_hash": ""
+  },
+  "qudra-final/\u0642\u0648\u0627\u0639\u062f.md": {
+    "mtime": 1788604427.5224726,
+    "seen": 1789209756.351173,
+    "ast_hash": "bc93c845680b9c222384be9a63e6bd92",
+    "semantic_hash": ""
+  },
+  "requirements.txt": {
+    "mtime": 1788604427.5224726,
+    "seen": 1789209756.3511746,
+    "ast_hash": "5524e7a663b6c88065eadc6d53dad70f",
+    "semantic_hash": ""
+  },
+  "qudra-final/assets/qudra-icon.png": {
+    "mtime": 1788604427.4907784,
+    "seen": 1789209756.3511765,
+    "ast_hash": "f9103a6bf677c794e14459c5bf29313d",
+    "semantic_hash": ""
+  },
+  "qudra-final/assets/qudra-icon.webp": {
+    "mtime": 1788604427.4907784,
+    "seen": 1789209756.3511784,
+    "ast_hash": "3198d6320b4be8c5d638a25466da3515",
+    "semantic_hash": ""
+  },
+  "qudra-final/assets/qudra-mark-dark.svg": {
+    "mtime": 1788604427.4917738,
+    "seen": 1789209756.3511808,
+    "ast_hash": "f737feedb3ebcea391c0e6199687de11",
+    "semantic_hash": ""
+  },
+  "qudra-final/assets/qudra-mark.svg": {
+    "mtime": 1788604427.4917738,
+    "seen": 1789209756.3511827,
+    "ast_hash": "8898aab6b57a7c4fbe9d757ab7258211",
+    "semantic_hash": ""
+  },
+  "qudra-final/assets/qudra-wordmark-dark.webp": {
+    "mtime": 1788605878.1350222,
+    "seen": 1789209756.3511844,
+    "ast_hash": "69600943d895dfd357ba7cf4bc211bb2",
+    "semantic_hash": ""
+  },
+  "qudra-final/assets/qudra-wordmark.webp": {
+    "mtime": 1788605878.1274166,
+    "seen": 1789209756.351186,
+    "ast_hash": "f064e2bea4155982582b329fad48b3ea",
+    "semantic_hash": ""
+  },
+  "qudra-final/public/assets/qudra-icon.png": {
+    "mtime": 1788604427.4907784,
+    "seen": 1789209756.3511877,
+    "ast_hash": "f9103a6bf677c794e14459c5bf29313d",
+    "semantic_hash": ""
+  },
+  "qudra-final/public/assets/qudra-icon.webp": {
+    "mtime": 1788604427.4907784,
+    "seen": 1789209756.3511896,
+    "ast_hash": "3198d6320b4be8c5d638a25466da3515",
+    "semantic_hash": ""
+  },
+  "qudra-final/public/assets/qudra-wordmark-dark.webp": {
+    "mtime": 1788605878.1350222,
+    "seen": 1789209756.3511913,
+    "ast_hash": "69600943d895dfd357ba7cf4bc211bb2",
+    "semantic_hash": ""
+  },
+  "qudra-final/public/assets/qudra-wordmark.webp": {
+    "mtime": 1788605878.1274166,
+    "seen": 1789209756.3511932,
+    "ast_hash": "f064e2bea4155982582b329fad48b3ea",
+    "semantic_hash": ""
   }
 }
