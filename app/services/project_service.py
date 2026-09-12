@@ -24,6 +24,8 @@ class ProjectService:
             owner_id=owner_id,
             title=data.title,
             description=data.description,
+            technologies=data.technologies,
+            contribution=data.contribution,
             status=data.status,
         )
 
@@ -44,14 +46,32 @@ class ProjectService:
             project,
             title=data.title,
             description=data.description,
+            technologies=data.technologies,
+            contribution=data.contribution,
             status=data.status,
         )
 
     def add_capability(self, owner_id: uuid.UUID, project_id: uuid.UUID, capability_id: uuid.UUID):
         project = self.get_owned(owner_id, project_id)
-        # Ensure the capability actually exists before tagging.
         if self.capability_repo.get_by_id(capability_id) is None:
             raise CapabilityNotFoundError()
         if self.repo.get_project_capability(project.id, capability_id):
             raise ProjectCapabilityAlreadyExistsError()
-        return self.repo.add_capability(project.id, capability_id)
+        result = self.repo.add_capability(project.id, capability_id)
+
+        from app.services.evidence_service import EvidenceService
+        from app.db.models.evidence import EvidenceType
+        from app.schemas.evidence import EvidenceCreate
+
+        EvidenceService(self.db).create(
+            user_id=owner_id,
+            data=EvidenceCreate(
+                capability_id=capability_id,
+                type=EvidenceType.PROJECT,
+                project_id=project.id,
+                title=f"Project: {project.title}",
+                description=project.contribution or project.description or "Linked project evidence",
+                strength=60.0,
+            ),
+        )
+        return result

@@ -9,12 +9,16 @@ from app.db.models.project import ProjectStatus
 class ProjectCreate(BaseModel):
     title: str = Field(min_length=1, max_length=255)
     description: str | None = None
+    technologies: str | None = None
+    contribution: str | None = None
     status: ProjectStatus = ProjectStatus.DRAFT
 
 
 class ProjectUpdate(BaseModel):
     title: str | None = Field(default=None, min_length=1, max_length=255)
     description: str | None = None
+    technologies: str | None = None
+    contribution: str | None = None
     status: ProjectStatus | None = None
 
 
@@ -25,6 +29,8 @@ class ProjectRead(BaseModel):
     owner_id: uuid.UUID
     title: str
     description: str | None
+    technologies: str | None
+    contribution: str | None
     status: ProjectStatus
     created_at: datetime
     updated_at: datetime

@@ -33,6 +33,8 @@ class Project(Base):
     )
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    technologies: Mapped[str | None] = mapped_column(Text, nullable=True)
+    contribution: Mapped[str | None] = mapped_column(Text, nullable=True)
     status: Mapped[ProjectStatus] = mapped_column(
         Enum(ProjectStatus, name="project_status"),
         default=ProjectStatus.DRAFT,

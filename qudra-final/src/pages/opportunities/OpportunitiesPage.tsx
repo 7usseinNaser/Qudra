@@ -15,6 +15,10 @@ const TYPE_LABEL: Record<OpportunityType, string> = {
   grant: 'منحة بحثية',
   hackathon: 'هاكاثون',
   company_challenge: 'تحدي شركة',
+  project: 'مشروع',
+  challenge: 'تحدٍ',
+  fulltime: 'دوام كامل',
+  consulting: 'استشارة',
 };
 
 const TYPE_ICON: Record<OpportunityType, string> = {
@@ -25,6 +29,10 @@ const TYPE_ICON: Record<OpportunityType, string> = {
   grant: '🔬',
   hackathon: '⚡',
   company_challenge: '🏆',
+  project: '🛠',
+  challenge: '🎯',
+  fulltime: '⏱',
+  consulting: '💡',
 };
 
 export function OpportunitiesPage() {
@@ -39,7 +47,7 @@ export function OpportunitiesPage() {
     return counts;
   }, [opportunities]);
 
-  const types: OpportunityType[] = ['job', 'freelance', 'internship', 'scholarship', 'grant', 'hackathon', 'company_challenge'];
+  const types: OpportunityType[] = ['job', 'freelance', 'internship', 'scholarship', 'grant', 'hackathon', 'company_challenge', 'project', 'challenge', 'fulltime', 'consulting'];
 
   return (
     <main id="main" className="wrap" tabIndex={-1} dir="rtl" style={{ padding: 'clamp(1.5rem,4vw,2.75rem) 0 5rem' }}>
@@ -113,7 +121,7 @@ export function OpportunitiesPage() {
                   <span>·</span>
                   <span>{opp.city}</span>
                 </div>
-                <p className={styles.oppwhy}>{opp.whyMatch[0]}</p>
+                <p className={styles.oppwhy}>{opp.whyMatch?.[0]}</p>
               </button>
             ))}
         </div>

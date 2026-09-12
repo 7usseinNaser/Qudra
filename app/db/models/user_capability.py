@@ -30,6 +30,9 @@ class UserCapability(Base):
         UUID(as_uuid=True), ForeignKey("capabilities.id", ondelete="CASCADE"), nullable=False
     )
     strength: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    evidence_strength: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    evidence_count: Mapped[int] = mapped_column(default=0, nullable=False)
+    breakdown: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False

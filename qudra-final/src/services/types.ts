@@ -248,8 +248,8 @@ export interface GrowthPlan {
   milestones: GrowthMilestone[];
 }
 
-export type OpportunityType = 'job' | 'freelance' | 'internship' | 'scholarship' | 'grant' | 'hackathon' | 'company_challenge';
-export type OpportunityLocation = 'remote' | 'on-site' | 'hybrid';
+export type OpportunityType = 'job' | 'freelance' | 'internship' | 'scholarship' | 'grant' | 'hackathon' | 'company_challenge' | 'project' | 'challenge' | 'fulltime' | 'consulting';
+export type OpportunityLocation = 'remote' | 'onsite' | 'on-site' | 'hybrid';
 
 export interface StructuredRequirement {
   skill: string;

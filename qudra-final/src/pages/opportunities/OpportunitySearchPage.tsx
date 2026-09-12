@@ -15,10 +15,15 @@ const TYPE_LABEL: Record<OpportunityType, string> = {
   grant: 'منحة بحثية',
   hackathon: 'هاكاثون',
   company_challenge: 'تحدي شركة',
+  project: 'مشروع',
+  challenge: 'تحدٍ',
+  fulltime: 'دوام كامل',
+  consulting: 'استشارة',
 };
 
 const LOC_LABEL: Record<OpportunityLocation, string> = {
   remote: 'عن بعد',
+  onsite: 'حضوري',
   'on-site': 'حضوري',
   hybrid: 'هجين',
 };
@@ -50,8 +55,8 @@ export function OpportunitySearchPage() {
     });
   }, [allOpportunities, typeFilter, locationFilter, verifiedOnly, fieldFilter]);
 
-  const types: (OpportunityType | 'all')[] = ['all', 'job', 'freelance', 'internship', 'scholarship', 'grant', 'hackathon', 'company_challenge'];
-  const locations: (OpportunityLocation | 'all')[] = ['all', 'remote', 'hybrid', 'on-site'];
+  const types: (OpportunityType | 'all')[] = ['all', 'job', 'freelance', 'internship', 'scholarship', 'grant', 'hackathon', 'company_challenge', 'project', 'challenge', 'fulltime', 'consulting'];
+  const locations: (OpportunityLocation | 'all')[] = ['all', 'remote', 'hybrid', 'on-site', 'onsite'];
 
   return (
     <main id="main" className="wrap" tabIndex={-1} dir="rtl" style={{ padding: 'clamp(1.5rem,4vw,2.75rem) 0 5rem' }}>

@@ -30,8 +30,11 @@ class UserCapabilityRepository:
         return list(self.db.execute(stmt).all())
 
     def upsert_add_strength(
-        self, *, user_id: uuid.UUID, capability_id: uuid.UUID, delta: float
+        self, *, user_id: uuid.UUID, capability_id: uuid.UUID, delta: float,
+        breakdown: dict[str, float] | None = None,
     ) -> UserCapability:
+        import json
+
         entry = self.get(user_id, capability_id)
         if entry is None:
             entry = UserCapability(
@@ -40,6 +43,14 @@ class UserCapabilityRepository:
             self.db.add(entry)
 
         entry.strength = min(100.0, entry.strength + delta)
+        entry.evidence_strength = min(100.0, entry.evidence_strength + delta)
+        entry.evidence_count = (entry.evidence_count or 0) + 1
+        if breakdown:
+            entry.breakdown = json.dumps(breakdown)
         self.db.commit()
         self.db.refresh(entry)
         return entry
+
+    def list_for_user(self, user_id: uuid.UUID) -> list[UserCapability]:
+        stmt = select(UserCapability).where(UserCapability.user_id == user_id)
+        return list(self.db.execute(stmt).scalars().all())
