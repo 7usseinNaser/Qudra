@@ -1,0 +1,42 @@
+.card {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--gap-line, #F0CE72);
+  border-radius: var(--r, 12px);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: rgba(255, 243, 210, 0.2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink, #141A1A);
+  margin: 0;
+}
+
+.reason {
+  font-size: 0.84rem;
+  color: var(--ink-2, #3F4C4C);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.actionBox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface, #FFFFFF);
+  border: 1px dashed var(--gap-line, #F0CE72);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--gap-text, #8A6200);
+}

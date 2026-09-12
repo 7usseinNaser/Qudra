@@ -1,0 +1,114 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--ground, #EDF1F1);
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--line, #D5DEDE);
+  border-radius: var(--r, 16px);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.iconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--proof-tint, #DFF4F4);
+  color: var(--proof-text, #00787A);
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink, #141A1A);
+  margin: 0 0 0.35rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--ink-2, #3F4C4C);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.emailBadge {
+  font-family: var(--fm, monospace);
+  color: var(--proof-text, #00787A);
+  font-weight: 600;
+  display: inline-block;
+  direction: ltr;
+}
+
+.digitsRow {
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+  direction: ltr;
+}
+
+.digitInput {
+  width: 52px;
+  height: 56px;
+  text-align: center;
+  font-family: var(--fm, monospace);
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid var(--line, #D5DEDE);
+  border-radius: 8px;
+  background: var(--surface-2, #F5F8F8);
+  color: var(--ink, #141A1A);
+  transition: border-color 0.16s, box-shadow 0.16s;
+}
+
+.digitInput:focus {
+  outline: none;
+  border-color: var(--proof, #00B8B8);
+  box-shadow: 0 0 0 3px var(--proof-tint, #DFF4F4);
+}
+
+.resendRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--ink-3, #6B7A7A);
+}
+
+.resendBtn {
+  background: none;
+  border: none;
+  color: var(--proof-text, #00787A);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.resendBtn:disabled {
+  color: var(--ink-3, #6B7A7A);
+  cursor: not-allowed;
+}
+
+.error {
+  background: var(--danger-tint, #FBE7E5);
+  color: var(--danger, #C2372B);
+  padding: 0.6rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  border: 1px solid #F6B8B3;
+}

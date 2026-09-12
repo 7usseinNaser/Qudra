@@ -1,0 +1,141 @@
+.section {
+  padding: 1.25rem;
+  border-radius: var(--r, 14px);
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.summary {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--ink-2, #666);
+}
+
+.complexityRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.complexityLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.capList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.capRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.capInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.capConfidence {
+  min-width: 120px;
+}
+
+.capScore {
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.capBar { width: 100%; }
+
+.missingList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.missingItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--ink-2, #666);
+}
+
+.warnIcon {
+  color: var(--gapc, #e0a800);
+}
+
+.text {
+  font-size: 0.88rem;
+  color: var(--ink-3, #999);
+}
+
+.teamSuggestion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.teamMember {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line, #eee);
+}
+
+.teamMember:last-child { border-bottom: none; }
+
+.teamAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-soft, rgba(0,180,160,0.1));
+  color: var(--accent, #00b4a0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.teamRole {
+  display: block;
+  font-weight: 500;
+  font-size: 0.88rem;
+}
+
+.teamSkill {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--ink-3, #999);
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 56rem) {
+  .capRow { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .capConfidence { width: 100%; }
+}

@@ -1,0 +1,300 @@
+/* ═════════ ComparePage.module.css ═════════
+   مطابق حرفياً لـ prototype.html (#cmp)
+*/
+
+.cmpPage {
+  padding-bottom: 4rem;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin-bottom: 1.2rem;
+}
+
+.back {
+  background: none;
+  border: none;
+  color: var(--ink-2);
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.82rem;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.eyebrow {
+  font-family: var(--fm);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.scrt {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.scrp {
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+
+.headrow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.cmpick {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+@media (min-width: 44rem) {
+  .cmpick {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cpk {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+  box-shadow: var(--sh-1, 0 1px 2px rgba(26, 26, 26, 0.04));
+}
+
+.cpk .lbl {
+  font-family: var(--fm);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.cpopts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.cpo {
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  border-radius: 999px;
+  padding: 0 0.85rem;
+  min-height: 40px;
+  font-size: 0.83rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.16s;
+}
+
+.cpo:hover {
+  border-color: var(--line-2);
+}
+
+.cpo.on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-ink, #fff);
+}
+
+.cpo.onB {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.pgrid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+@media (min-width: 54rem) {
+  .pgrid {
+    grid-template-columns: 1fr 20rem;
+  }
+}
+
+.cmpbox {
+  display: grid;
+  justify-items: center;
+  padding: 1.4rem;
+}
+
+.cmpsvg {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  overflow: visible;
+}
+
+.cmpsvg .lblA {
+  font-family: var(--fm);
+  font-size: 9px;
+  fill: var(--ink-2);
+}
+
+.cmpleg {
+  display: flex;
+  gap: 1.4rem;
+  justify-content: center;
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  flex-wrap: wrap;
+}
+
+.cmpleg span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.cmpleg i {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  flex: none;
+}
+
+.sigtip {
+  font-family: var(--fm);
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  text-align: center;
+  margin-top: 0.6rem;
+  line-height: 1.5;
+}
+
+/* ── أشرطة التغطية المشتركة ── */
+.pcard {
+  padding: 1.2rem;
+}
+
+.pcard h3 {
+  font-size: 0.98rem;
+  margin: 0 0 0.8rem;
+}
+
+.cvr2 {
+  display: grid;
+  grid-template-columns: minmax(5.5rem, 8.5rem) 1fr auto;
+  gap: 0.7rem;
+  align-items: center;
+  font-size: 0.84rem;
+  margin-bottom: 0.55rem;
+}
+
+.cvr2:last-child {
+  margin-bottom: 0;
+}
+
+.cvn {
+  color: var(--ink-2);
+  unicode-bidi: isolate;
+}
+
+.cb2 {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--soft);
+  overflow: hidden;
+  display: flex;
+}
+
+.cb2 i {
+  display: block;
+  height: 100%;
+}
+
+.cb2 .a {
+  background: var(--ink);
+}
+
+.cb2 .b {
+  background: var(--accent);
+}
+
+.cvv2 {
+  font-family: var(--fm);
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  min-width: 2.4rem;
+  text-align: end;
+}
+
+.cmpv {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.cmpv.good {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+}
+
+.cmpv.warn {
+  background: var(--gapc-soft, #fdf6ec);
+  border: 1px solid #faecd8;
+}
+
+.vh {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.vd {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.cmpv.good .vh {
+  color: var(--accent);
+}
+
+.cmpv.good .vd {
+  background: var(--accent-fill);
+}
+
+.cmpv.warn .vh {
+  color: var(--gapc, #b88230);
+}
+
+.cmpv.warn .vd {
+  background: var(--gapc-fill, #e6a23c);
+}
+
+.cmpv p {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+  margin: 0;
+}
