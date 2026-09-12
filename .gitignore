@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+*.db
+
+# Node & Frontend
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+.eslintcache
+designer-skills/
+*.log
+scratch/
+.system_generated/
+
+# AI Agent Skills & Tool Data (Caches, Datasets, Fonts ~13.8MB)
+.agents/
+*/.agents/
+skills-lock.json
