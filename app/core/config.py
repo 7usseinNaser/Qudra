@@ -34,6 +34,11 @@ class Settings(BaseSettings):
         "https://qudra-5tqh.onrender.com",
     ]
 
+    # GitHub OAuth
+    GITHUB_CLIENT_ID: str = ""
+    GITHUB_CLIENT_SECRET: str = ""
+    GITHUB_REDIRECT_URI: str = "http://localhost:8000/api/v1/auth/github/callback"
+
 
 @lru_cache
 def get_settings() -> Settings:

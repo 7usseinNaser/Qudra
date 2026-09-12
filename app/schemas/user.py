@@ -35,4 +35,6 @@ class UserRead(BaseModel):
     is_active: bool
     is_email_verified: bool
     is_onboarded: bool
+    github_id: str | None = None
+    github_username: str | None = None
     created_at: datetime
