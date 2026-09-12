@@ -1,0 +1,25 @@
+export interface CommandEntry { group: string; code: string; route: string; label: string }
+
+export const demoCommands: CommandEntry[] = [
+  { group: 'المسار', code: '01', route: '/problem', label: 'وصف المشكلة' },
+  { group: 'المسار', code: '02', route: '/capabilities', label: 'القدرات المطلوبة' },
+  { group: 'المسار', code: '03', route: '/simulation', label: 'المحاكاة' },
+  { group: 'المسار', code: '04', route: '/evaluation', label: 'التقييم' },
+  { group: 'المسار', code: '05', route: '/skill-dna', label: 'بصمة القدرات' },
+  { group: 'المسار', code: '06', route: '/result', label: 'النتيجة والفريق' },
+  { group: 'ملفي', code: 'P1', route: '/profile', label: 'ملفي' },
+  { group: 'ملفي', code: 'P2', route: '/profile/sources', label: 'مصادري' },
+  { group: 'ملفي', code: 'P3', route: '/profile/evidence', label: 'أدلتي' },
+  { group: 'ملفي', code: 'P4', route: '/profile/timeline', label: 'تطوّري' },
+  { group: 'ملفي', code: 'P5', route: '/profile/gaps', label: 'فجوتي' },
+  { group: 'ملفي', code: 'P6', route: '/profile/opportunities', label: 'الفرص' },
+  { group: 'ملفي', code: 'P7', route: '/profile/passport', label: 'بطاقة الإثبات' },
+  { group: 'الفريق', code: 'T1', route: '/candidates', label: 'المرشحون' },
+  { group: 'الفريق', code: 'T4', route: '/compare', label: 'مقارنة بصمتين' },
+  { group: 'الفريق', code: 'T2', route: '/candidates/c3', label: 'لماذا هذا الشخص' },
+  { group: 'الفريق', code: 'T3', route: '/invite/1', label: 'دعوة واردة' },
+  { group: 'الدخول', code: 'A1', route: '/', label: 'الصفحة الرئيسية' },
+  { group: 'الدخول', code: 'A2', route: '/signup', label: 'إنشاء حساب' },
+  { group: 'الدخول', code: 'A3', route: '/login', label: 'تسجيل الدخول' },
+  { group: 'الدخول', code: 'A4', route: '/onboarding/role', label: 'اختيار الدور' },
+]

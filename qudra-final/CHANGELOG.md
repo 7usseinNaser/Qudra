@@ -1,0 +1,144 @@
+# CHANGELOG.md — سجل التغييرات
+
+> يُحدَّث بعد كل مهمة منجزة، بصيغة تشبه Conventional Commits حيثما أمكن.
+
+---
+
+## [Unreleased]
+
+### fix — 2026-09-12 — إصلاح أنواع TypeScript + فحص الباك إند + تسجيل جميع المسارات
+- **إصلاح 100 خطأ TypeScript → 0**:
+  - إعادة كتابة أنواع `Challenge`, `GapDetail`, `GrowthMilestone`, `Opportunity`, `LearningResource` في `types.ts` لتطابق ما تتوقعه الصفحات فعلياً (enums صغيرة، أشكال كائنات صحيحة).
+  - إضافة نوع `GrowthPlan` كغلاف لـ `milestones` + `goal` + `currentState` + `gapIds`.
+  - تحديث `store.ts` ليرجع `GrowthPlan` بدل `GrowthMilestone[]`.
+  - إصلاح `tsconfig.json` (إزالة `baseUrl` المتقادم، تصحيح `paths`).
+  - إصلاح عرض `requirements` و `evaluationCriteria` في صفحات التحديات (استخدام `.id` و `.label`).
+- **فحص الـ Backend الحقيقي (Swagger/OpenAPI)**:
+  - استخراج كل endpoints من `https://qudra-5tqh.onrender.com/openapi.json`.
+  - تأكيد ربط 19 endpoint فعلياً في الفرونت (Auth, Users, Capabilities, Projects, Evidence, Problems + Analysis).
+  - توثيق 10 فئات endpoints ناقصة كـ BACKEND BLOCKED (Challenges, Candidates, Opportunities, Gaps, Resources, Organizations, Connections, GitHub OAuth, Admin, Email Verification).
+- **تسجيل 39 route غير مسجل**: إضافة جميع مسارات Company, Challenges, Gaps, Opportunities, Resources, Settings, Network, Organization, Admin, System, Analyzing للراوتر.
+- **تحديث .env.example**: تغيير `VITE_API_BASE_URL` للإشارة للـ Render URL.
+- **فحص Supabase**: صفر نتائج.
+- **بوابات الجودة**: `build` بصفر أخطاء، `typecheck` بصفر أخطاء.
+
+### feat — 2026-09-07 — بناء النوافذ المنبثقة الخمس والشاشات الناقصة وإعادة البنية التحتية
+- **بناء النوافذ المنبثقة الخمس** (`src/components/overlays/`):
+  - `CmdPalette.tsx`: لوحة أوامر سريعة (Ctrl+K) مع بحث حي، تنقّل بالأسهم، فتح بـ Enter، إغلاق بـ Escape، قائمة مجمّعة حسب الفئة.
+  - `GradingOverlay.tsx`: نافذة تقييم الإجابات بـ 4 خطوات تضيء تباعاً (700ms لكل خطوة) مع حلقة دوّارة.
+  - `ConfirmBox.tsx`: نافذة تأكيد الخروج بأيقونة تحذير وزرين ( ghost + danger ).
+  - `ShareBox.tsx`: بطاقة مشاركة داكنة بتدرّج تركوازي مع حلقة التوقيع SVG و3 إحصائيات وزر نسخ الرابط.
+  - `StateBox.tsx`: نافذة حالة الخطأ العامة بثلاثة أنماط (error/warning/info) مع أيقونة وسبب وإجراءات.
+- **بناء الشاشات الناقصة**:
+  - `AnalyzingPage.tsx` (`/analyzing`): شاشة التحليل الآلي بـ 6 مراحل متسلسلة مع شريط تقدّم وانتقال تلقائي.
+  - `EvidenceDetailPage.tsx` (`/profile/evidence/:id`): صفحة تفصيل دليل مستقلة مع الإشارات والتأثير ونص التحقق.
+  - `ReRankingPage.module.css`: تنسيقات شاشة إعادة الترتيب بعد التحدي مع شارة "صاعد" وتدرّج تركوازي.
+- **إعادة بناء البنية التحتية المفقودة**:
+  - `src/types/`: 8 ملفات (common, candidate, evidence, capability, simulation, profile, match, index).
+  - `src/data/`: 8 ملفات بيانات تجريبية + `index.ts` (candidates, evidence, capabilities, simulation, match, reasons, profile, commands).
+  - `src/components/ui/`: 9 مكوّنات ذرية (Button, Tag, Pill, Ring, Bar, Badge, Skeleton, EmptyState, ErrorState) + `index.ts`.
+  - `src/hooks/`: 4 خطافات (useTimer, useAnimateNum, useRing, useFocusTrap) + `index.ts`.
+- **حذف UserContext المكرر**: كان غير مستخدم في أي ملف؛ وظائفه متوفرة في RoleContext.
+- **ربط المسارات الجديدة**: إضافة `ANALYZING` و `EVIDENCE_DETAIL` في routes.ts وربطها بالصفحات.
+- **اجتياز البناء الإنتاجي**: `npm run build` بنجاح كامل في 4.70 ثانية، 0 أخطاء.
+
+### fix — 2026-09-07 — توحيد مصدر الشعار عبر QudraLogo وتصنيف المكوّنات وتصحيح الأزرار وفق design-system.html
+- **توحيد مصدر الشعار (Logo Unification)**:
+  - فحص وحذف ملفي `qudra-mark.svg` و `qudra-mark-dark.svg` الزائفين اللذين سببا تشوهاً بصرياً للأيقونة في شريط التنقل العلوي (`TopBar`).
+  - إنشاء مكوّن مشترك موحد `src/components/ui/QudraLogo.tsx` يستدعي الأصول الأصلية المعتمدة من `public/assets/`:
+    * `qudra-icon.webp` (الأيقونة الدائرية الأصلية مع fallback).
+    * `qudra-wordmark.webp` و `qudra-wordmark-dark.webp` للشعار الكامل بالنص المعتمد.
+  - تعميم المكوّن عبر 6 شاشات: `TopBar`, `SplashScreen`, `SignUpPage`, `LoginPage`, `ProblemInputPage`, `LandingPage`.
+- **تصنيف مكوّنات النظام وفق المسارين الصارمين (المسار أ / المسار ب)**:
+  - المسار أ (منسوخ حرفياً من `design-system.html` مع ذكر السطر): `.btn` (291-297)، `.card` (139)، `.panel` (141)، `.tag` (208-212)، `.pill` (260-264)، `.ev` (221-232)، `:focus-visible` (99).
+  - المسار ب (مبني على التوكنز): `.linkbtn`، `.act`، `.box`، `.flt`، وحقول الإدخال.
+- **إصلاح أزرار ProfilePage الثلاثة وبطاقات المصادر**:
+  - تصحيح أزرار "عرض مسار التطور ←"، "سد الفجوة"، و"افتح تفاصيل الدليل ←" بنقلها من النمط الافتراضي الخام للمتصفح إلى فئة `.linkbtn` بحواف كاملة (`border-radius: 999px`) وانتقال سلس وألوان هوية النظام (`var(--proof-text)`, `var(--proof-tint)`, `var(--gap-text)`).
+  - تصحيح أزرار الإدارة والإضافة في بطاقات المصادر `.act` لتأخذ `border-radius: 999px` وارتفاعاً مريحاً 36px.
+- **تحديث Design Tokens في `tokens.css` و `tokens-dark.css`**:
+  - مطابقة الأسماء الرسمية من `design-system.html` (`--f-display`, `--f-body`, `--f-mono`, `--ground`, `--surface`, `--proof-text`, إلخ) مع الحفاظ على الاختصارات القديمة كـ aliases.
+- **اجتياز بوابات الجودة**: `typecheck` بصفر أخطاء، `eslint` بصفر أخطاء، و `build` في 1.76 ثانية.
+
+### refactor — 2026-09-07 — تدقيق الجودة الشامل والتحسين البصري واستجابة الهواتف (B0 Deep Audit & Refinement)
+- **بناء مكوّن BottomNav للهواتف الذكية**: إنشاء `src/components/layout/BottomNav.tsx` و`BottomNav.module.css` بحجم لمس مريح (≥44px)، وتأثير زجاجي ضبابي فاخر، وتكيف تلقائي بحسب دور المستخدم (صاحب مشكلة / صاحب قدرة).
+- **إصلاح استجابة الشريط العلوي (TopBar)**: القضاء على شريط التمرير الأفقي غير المرغوب (Horizontal Overflow) على مقاسات 375px و414px عبر إخفاء اسم المستخدم في الشاشات الصغيرة وضبط حجم عناصر التبديل.
+- **تأمين مساحات الأمان السفلية**: إضافة هامش حماية سفلي في `MainLayout.module.css` مع `env(safe-area-inset-bottom)` لمنع احتجاب الأزرار التفاعلية خلف شريط التنقل.
+- **تصحيح الخصائص المنطقية للاتجاه العربي (RTL)**: استبدال `border-left` بـ `border-inline-start` في `SkillDnaPage.module.css`.
+- **توحيد أرقام التوثيق وعلامات الفهارس**: تطبيق كلاس `num` لدعم الأرقام الجدلية المنفصلة LTR، وكلاس `mono` لعلامات المراحل 01–04 عبر كافة صفحات المطابقة والنتائج والمرشحين.
+- **تفعيل واستخدام مهارات الوكلاء**:
+  - `motion`: تثبيت الحزمة لدعم التحولات الانسيابية الدقيقة.
+  - `codeburn`: تشغيل مراقبة التوكنز وتوثيق التكلفة (`$1.97` اليوم).
+  - `ponytail-audit`: فحص وتقليص التعقيد وإزالة الملف المكرر `.md`.
+  - `ui-ux-pro-max`: تدقيق التباين اللوني، مساحات اللمس، وتناسق الخطوط الثلاثة المعتمدة.
+- **بوابات الجودة**: اجتياز `npm run typecheck` و`npm run lint` و`npm run build` بنسبة 100% بصفر أخطاء.
+
+### feat — 2026-09-05 — بناء وترابط كامل شاشات قُدرة الـ 22 بدون استثناء (B0 Full Reconstruction)
+- اكتمال بناء وترابط كامل واجهات وشاشات منصة قُدرة الـ 22 بدون أي استثناء وبدون أي روابط ميتة (Zero Dead Links / Zero Dead UI)، مطابقة طبق الأصل لـ `prototype.html`:
+  - **بوابة الدخول المشتركة**: `LandingPage` (`/`)، `SignUpPage` (`/signup`)، `LoginPage` (`/login`)، `RoleSelectPage` (`/onboarding/role`)، و `InvitePage` (`/invite/:id`).
+  - **مسار صاحب المشكلة (6 خطوات متسلسلة)**: `ProblemInputPage` (`/problem`)، `CapabilitiesPage` (`/capabilities`)، `SimulationPage` (`/simulation`)، `EvaluationPage` (`/evaluation`)، `SkillDnaPage` (`/skill-dna`) بالبصمة الخماسية التفاعلية SVG، و `ResultPage` (`/result`) بنسبة التغطية وخريطة الفريق.
+  - **امتدادات فريق العمل والمطابقة**: `CandidatesPage` (`/candidates`)، `CandidateDetailPage` (`/candidates/:id`) مع تحدي قفزة الدرجة من 78% إلى 91% (`#turnBox`)، `ComparePage` (`/compare`) بالمقارنة المزدوجة المتراكبة SVG لمرشحين، `ReRankingPage` (`/re-ranking`) بالترتيب الجديد وحلقة الأثر الرباعية، و `InviteModal` لدعوة المرشح لاختبار عملي.
+  - **مسار صاحب القدرة والملف الشخصي (7 تبويبات + شاشة التفصيل)**: `ProfilePage` بتبويباته كاملة: لوحة التحكم وقوة الملف 72% (`/profile`)، مصادر الأدلة الأربعة (`/profile/sources`)، سجل الأدلة الـ 11 وفلاتر التحقق الثلاثة (`/profile/evidence`)، تفاصيل الدليل المفرد وأثره على القدرات (`/profile/evidence/:id`)، مسار التطور الزمني التفاعلي SVG عبر 16 شهراً وقصص التطور (`/profile/timeline`)، فجوة الجاهزية 68% للانتقال لـ Full Stack ومحطات التعلم (`/profile/gaps`)، الفرص المطابقة الحقيقية الأربع (`/profile/opportunities`)، وبطاقة الإثبات وجواز القدرات (`/profile/passport`).
+  - **الشريط العلوي الموحّد (TopBar)**: تبديل فوري لحظي بين مساري «مشكلتي» و«ملفي» مع شريط الخطوات الست وشريط التبويبات السبعة وتبديل الوضع الداكن/الفاتح.
+- إجراء الفحص الآلي الشامل عبر بروتوكول Chrome CDP لجميع الـ 23 واجهة وتفاعل واجتيازها جميعاً بنسبة 100%، مع خلو الكونسول التام من الأخطاء (0 errors)، ونجاح البناء الإنتاجي `npm run build` في ثانيتين.
+
+### feat — 2026-09-05 — بناء SimulationPage و EvaluationPage وتحديث SplashScreen (B0.3.4 & B0.3.5)
+- تعديل مكوّن `SplashScreen.tsx` بتعليق `sessionStorage` مؤقتاً لأغراض بيئة التطوير (القرار 007) والتحقق الفعلي عبر 3 عمليات Reload متتالية بظهور الشاشة في كل منها.
+- بناء `SimulationPage.tsx` و `SimulationPage.module.css` مطابقة حرفياً لـ `prototype.html`:
+  - شاشة `simIntro` بالمعايير الأربعة وصندوق النصيحة وزر البداية.
+  - شاشة `simRun` بالمهام الثلاث الأصلية (Product Thinking, UI/UX, Backend).
+  - المؤقت الدقيق 872 ثانية (14:32) مع كلاس `.low` عند الوصول لدقيقة أو أقل ونظام pause/resume عبر `visibilitychange` مستنداً إلى `useRef` و `useEffect` للتنظيف النظيف.
+  - عداد الكلمات الحي ومؤشرات الكتابة الشكلية الثلاثة (`sig3`: طول كافٍ، تبرير، تحديد).
+  - معالجة انتهاء الوقت التلقائي بحفظ الإجابة وتعطيل الحقول وتشغيل التقييم.
+  - شاشة لحظة التقييم (`grading`) بمراحلها الأربع (260ms / 640ms / 1020ms / 1400ms بإجمالي 1820ms) ثم الانتقال لـ `/evaluation`.
+- بناء `EvaluationPage.tsx` و `EvaluationPage.module.css` مطابقة حرفياً لـ `prototype.html`:
+  - الدائرة المزدوجة SVG Donut (`r=86`, `C=540.4`) مع أنيميشن انسيابي لـ `stroke-dashoffset` وتصاعد الرقم في المركز إلى 85 خلال 900ms.
+  - بطاقة المعايير الأربعة وقاعدة اللون البرتقالي للأقل من 80 على «بنية الحل» (75%).
+  - قوائم نقاط القوة الثلاث وما يحتاج تقوية (نقطتان).
+  - قسم تفصيل الإجابات الثلاث (`taskBreak`) مع عرض نصوص إجابات المستخدم الحقيقية المكتوبة في المحاكاة.
+  - معالجة زر «حوّل النتيجة إلى قدرات مثبتة» بتنبيه مرحلي يوضح الانتقال لـ B0.3.6 لمنع Dead UI (القرار 008).
+- تحديث `ProblemContext.tsx` لتخزين ومشاركة `simulationAnswers` بين الصفحات.
+- تسجيل مساري `/simulation` و `/evaluation` في `routes.tsx`.
+- تنفيذ الفحص الآلي الشامل عبر Chrome CDP (0 أخطاء بالكونسول، إثبات عد تنازلي للمؤقت 14:32 -> 14:29، إثبات pause/resume عند تبديل التبويب، إثبات سلوك انتهاء الوقت التلقائي، وإثبات انتقال الإجابات الحقيقية وعرضها في التقييم).
+
+### feat — 2026-09-05 — بناء SplashScreen و ProblemInputPage و CapabilitiesPage (B0.3.2 & B0.3.3)
+- إنشاء مكوّن `SplashScreen.tsx` و `SplashScreen.module.css` مطابقاً لـ `prototype.html` بتوقيت 2.75 ثانية وتوهج الهالة ودعم التخطي و `sessionStorage`.
+- إعادة بناء `ProblemInputPage.tsx` بـ State حي لـ Textarea وعداد الأحرف، وأزرار الأمثلة الثلاثة الجاهزة، والتحقق الأدنى من الطول (15 حرفاً).
+- تنفيذ شاشة التحليل الذكي الميدانية (`Analyzing Overlay`) بالمراحل الست المتسلسلة وإبراز العبارات المستخرجة والانتقال التلقائي.
+- إنشاء صفحة القدرات `CapabilitiesPage.tsx` وعرض القدرات الخمس المستخرجة (3 أساسية و2 مساندة) وملخص المشكلة ودعوة المحاكاة والشريط الجانبي.
+- إنشاء `ProblemContext.tsx` لمشاركة نص المشكلة والقدرات عبر تدفق صاحب المشكلة، وإضافة مسار `/capabilities` في `routes.tsx`.
+- فحص واختبار التدفق كاملاً بنجاح عبر بروتوكول CDP في متصفح Chrome الحقيقي بصفر أخطاء في الـ Console.
+
+### feat — 2026-09-05 — إعادة بناء LandingPage مطابقة لـ prototype.html (B0.3.1)
+- إعادة بناء `LandingPage.tsx` و `LandingPage.module.css` مطابقة بالكامل لـ `prototype.html` وفق مبدأ "Reconstruction وليس Redesign".
+- برمجة شاشة البداية الكاملة (Hero) مع التوهجات والشعار اللفظي المعتمد ("من الكلام إلى الدليل") وزر الانطلاق "ابدأ الآن".
+- برمجة المُقارِن التفاعلي (Claim vs Evidence) مع السلايدر التفاعلي (0-100) والحسابات الديناميكية لبطاقة ماجد الشمري والوسوم المثبتة مقابل غير المثبتة.
+- برمجة قسم الخطوات الثلاث (صِف، أثبت، طابِق) ودعوة إنشاء الحساب.
+- استخراج وتوليد أصول الشعار الخطي المعتمد `qudra-wordmark.webp` و `qudra-wordmark-dark.webp` كصور شفافة خفيفة وتضمينها في `public/assets/`.
+- إضافة بند "حدود البحث عن المهارات" إلى `SKILLS.md` لمنع الحلقات اللانهائية.
+
+### docs — 2026-09-04 — الدمج النهائي (v2)
+- **دمج حزمتي توثيق موازيتين** (نُسِجتا في جلستين منفصلتين) في نسخة نهائية واحدة معتمدة — راجع `DECISIONS.md` القرار 006 للتفاصيل الكاملة.
+- إضافة `QUDRA_FINAL_BOLT_PROMPT.md`: برومبت تنفيذي كامل (v1.2) بمعرّفات Quality Gate قابلة للتتبع (QG-01 → QG-30)، 44 قسماً، ترتيب Phases تنفيذي دقيق.
+- إضافة `PROJECT_MAP.md`: خريطة تفصيلية لكل ملف كود (فارغة حالياً، تُملأ إلزامياً أثناء التنفيذ).
+- إضافة القسمين 46-47 لـ `قواعد.md`: منع الادّعاء الكاذب (`100% verified` بدون دليل) وقاعدة Dead UI، وقابلية استبدال Mock بـ API دون إعادة كتابة الصفحات.
+- إضافة أولويات MVP الرسمية (P0–P3) إلى `README.md`.
+- توحيد `AGENTS.md`/`CLAUDE.md` (كانا متعارضين بعد تحديث أحدهما فقط) في ملف `AGENTS.md` واحد نهائي.
+- تحديث `SKILLS.md` بأوامر `npx skills find` / `npx skills add` الفعلية القابلة للتنفيذ في Terminal بولت.
+- توسعة بروتوكول التوثيق: إضافة `.memory/tasks/YYYY-MM-DD_<TASK-ID>.md` كسجل تفصيلي إلزامي لكل مهمة.
+
+### docs — 2026-09-03 — الدمج الأول (v1)
+- إنشاء حزمة التوثيق الموحدة الأولى: `README.md`, `قواعد.md`, `SKILLS.md`, `.memory/` (glossary, decisions, notes), وتحديث `TASKS.md`, `STATUS.md`, `DECISIONS.md`, `CHANGELOG.md`, `TEST_REPORT.md`.
+- توحيد جميع الملفات المبعثرة السابقة (01_فكرة، 02_قواعد، 03_TASKS، 04_BRD، README القديمة) في مصدر حقيقة واحد لكل موضوع.
+- استخراج توكنز الألوان الفعلية من `prototype.html` (بدل الوصف التقريبي) وتوثيقها بدقة في `README.md` و`قواعد.md`.
+- تصحيح خط الـ Display المعتمد إلى Readex Pro (حسب `design-system.html`) بدل IBM Plex Sans Arabic المذكور خطأً في نسخ قديمة من ملف القواعد.
+
+---
+
+## كيف تُضاف مهمة جديدة لهذا السجل
+
+```markdown
+## [YYYY-MM-DD]
+
+### feat | fix | docs | refactor | style | test | chore
+- وصف موجز وواضح للتغيير، بصيغة الفعل الحاضر (مثال: "إضافة مكوّن Tag بحالتي proven/claimed").
+```

@@ -1,0 +1,177 @@
+.headrow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.panel {
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.paneltitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 0.8rem;
+}
+
+.text {
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.caplist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.capitem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+}
+
+.capinfo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.capskill {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.capconfidence {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.conflabel {
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+
+.confval {
+  font-family: var(--f-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.confbar {
+  width: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ambiguitylist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ambiguityitem {
+  padding: 0.7rem;
+  background: var(--surface-2);
+  border: 1px solid var(--warning-line, var(--line));
+  border-radius: var(--r);
+  border-inline-start: 3px solid var(--warning);
+}
+
+.ambiguitytext {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.84rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.warnicon {
+  color: var(--warning);
+  font-size: 0.9rem;
+}
+
+.ambiguitysuggestion {
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  margin-top: 0.3rem;
+  padding-inline-start: 1.3rem;
+}
+
+.sugglabel {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.normlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.normitem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  font-size: 0.82rem;
+}
+
+.normfrom {
+  color: var(--ink-3);
+  text-decoration: line-through;
+}
+
+.normarrow {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.normto {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .capitem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .confbar {
+    width: 100%;
+  }
+}
