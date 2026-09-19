@@ -1,0 +1,152 @@
+.headrow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.timerbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.timer {
+  font-family: var(--f-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.timerLow {
+  color: var(--danger);
+}
+
+.timerlabel {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.instructions {
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.sectiontitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 0.8rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.listitem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+
+.bullet {
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.startpanel {
+  padding: 2rem;
+  text-align: center;
+}
+
+.workspace {
+  padding: 1.2rem;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 16rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: var(--f-mono);
+  font-size: 0.88rem;
+  resize: vertical;
+  background: var(--surface-2);
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  outline: 2px solid var(--proof);
+  border-color: var(--proof);
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.savednote {
+  display: inline-block;
+  font-size: 0.78rem;
+  color: var(--proof-text);
+  margin-top: 0.5rem;
+}
+
+.submitting {
+  padding: 2rem;
+  text-align: center;
+}
+
+.expired {
+  padding: 2rem;
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.confirmbox {
+  max-width: 26rem;
+  width: 90%;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+  .headrow {
+    flex-direction: column;
+  }
+  .timerbox {
+    align-items: flex-start;
+  }
+}

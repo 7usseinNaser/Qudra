@@ -1,0 +1,50 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.proof {
+  background: var(--proof-tint, #DFF4F4);
+  color: var(--proof-text, #00787A);
+  border: 1px solid var(--proof-line, #8FDCDC);
+}
+
+.gap {
+  background: var(--gap-tint, #FFF3D2);
+  color: var(--gap-text, #8A6200);
+  border: 1px solid var(--gap-line, #F0CE72);
+}
+
+.neutral {
+  background: var(--surface-2, #F5F8F8);
+  color: var(--ink-2, #3F4C4C);
+  border: 1px solid var(--line, #D5DEDE);
+}
+
+.danger {
+  background: var(--danger-tint, #FBE7E5);
+  color: var(--danger, #C2372B);
+  border: 1px solid #F6B8B3;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.count {
+  font-family: var(--fm, monospace);
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.05rem 0.35rem;
+  border-radius: 999px;
+}

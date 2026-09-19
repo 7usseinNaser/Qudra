@@ -1,0 +1,950 @@
+<title>أساس تصميم قُدرة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root{
+    /* الأرضيات والحبر — رمادي مائل للسماوي، مشتق من الفيروزي لا محايد افتراضي */
+    --ground:#EDF1F1;
+    --surface:#FFFFFF;
+    --surface-2:#F5F8F8;
+    --line:#D5DEDE;
+    --line-soft:#E4EBEB;
+    --ink:#141A1A;
+    --ink-2:#3F4C4C;
+    --ink-3:#6B7A7A;
+
+    /* المسار المُثبت */
+    --proof:#00B8B8;
+    --proof-text:#00787A;
+    --proof-tint:#DFF4F4;
+    --proof-line:#8FDCDC;
+
+    /* المسار الناقص */
+    --gap:#FFC107;
+    --gap-text:#8A6200;
+    --gap-tint:#FFF3D2;
+    --gap-line:#F0CE72;
+
+    --danger:#C2372B;
+    --danger-tint:#FBE7E5;
+
+    --shadow:0 1px 2px rgba(20,26,26,.05), 0 8px 24px -16px rgba(20,26,26,.28);
+
+    --f-display:"Readex Pro","IBM Plex Sans Arabic",system-ui,sans-serif;
+    --f-body:"IBM Plex Sans Arabic","Readex Pro",system-ui,sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,"Courier New",monospace;
+
+    --maxw:74rem;
+    --prose:62ch;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0E1213;
+      --surface:#161C1D;
+      --surface-2:#1D2526;
+      --line:#2C3839;
+      --line-soft:#232D2E;
+      --ink:#EAF1F1;
+      --ink-2:#AFC0C0;
+      --ink-3:#7C8D8D;
+      --proof-text:#39D6D6;
+      --proof-tint:#11302F;
+      --proof-line:#1D6A6A;
+      --gap-text:#FFCE3D;
+      --gap-tint:#33280A;
+      --gap-line:#7A5F14;
+      --danger:#F08379;
+      --danger-tint:#3A1B18;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0E1213;
+    --surface:#161C1D;
+    --surface-2:#1D2526;
+    --line:#2C3839;
+    --line-soft:#232D2E;
+    --ink:#EAF1F1;
+    --ink-2:#AFC0C0;
+    --ink-3:#7C8D8D;
+    --proof-text:#39D6D6;
+    --proof-tint:#11302F;
+    --proof-line:#1D6A6A;
+    --gap-text:#FFCE3D;
+    --gap-tint:#33280A;
+    --gap-line:#7A5F14;
+    --danger:#F08379;
+    --danger-tint:#3A1B18;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--f-body);
+    font-size:1.0625rem;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .doc{direction:rtl}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+
+  h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.25;font-weight:600}
+  p{margin:0}
+  a{color:var(--proof-text)}
+  :focus-visible{outline:2px solid var(--proof-text);outline-offset:3px;border-radius:4px}
+
+  .eyebrow{
+    font-family:var(--f-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-3);display:block;margin-bottom:.6rem;direction:ltr;text-align:right;
+  }
+  .mono{font-family:var(--f-mono);font-size:.8125rem;direction:ltr;unicode-bidi:isolate}
+  .num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+  /* ─── الترويسة ─── */
+  header.hero{
+    border-bottom:1px solid var(--line);
+    background:var(--surface);
+  }
+  .hero-in{display:flex;flex-direction:column;gap:2.25rem;padding:clamp(2.5rem,7vw,4.5rem) 0 clamp(2.25rem,5vw,3.25rem)}
+  .brandline{display:flex;align-items:center;gap:.85rem}
+  .brandline .name{font-family:var(--f-display);font-weight:700;font-size:1.25rem;letter-spacing:.01em}
+  .brandline .sub{color:var(--ink-3);font-size:.875rem;border-inline-start:1px solid var(--line);padding-inline-start:.85rem}
+  h1{font-size:clamp(2rem,5.2vw,3.4rem);font-weight:700;letter-spacing:-.01em;max-width:20ch}
+  .lede{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--ink-2);max-width:56ch;line-height:1.7}
+  .thesis{
+    display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .75rem;
+    font-family:var(--f-display);font-size:clamp(.9rem,1.7vw,1.05rem);font-weight:500;
+  }
+  .thesis span{padding:.3rem .7rem;border-radius:999px;background:var(--surface-2);border:1px solid var(--line-soft)}
+  .thesis span.p{background:var(--proof-tint);border-color:var(--proof-line);color:var(--proof-text)}
+  .thesis i{color:var(--ink-3);font-style:normal}
+
+  /* ─── الأقسام ─── */
+  section{padding:clamp(2.75rem,6vw,4.5rem) 0;border-bottom:1px solid var(--line-soft)}
+  .sec-head{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2.25rem;max-width:var(--prose)}
+  .sec-head h2{font-size:clamp(1.5rem,3.2vw,2rem)}
+  .sec-head p{color:var(--ink-2)}
+
+  .grid{display:grid;gap:1rem}
+  @media(min-width:52rem){
+    .g2{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:repeat(3,1fr)}
+  }
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.25rem 1.35rem}
+  .panel{
+    background:var(--surface);border:1px solid var(--line);border-radius:16px;
+    padding:1.5rem;box-shadow:var(--shadow);
+  }
+
+  /* قوانين */
+  .laws{display:grid;gap:.75rem}
+  .law{
+    display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.15rem 1.3rem;
+  }
+  .law .k{
+    font-family:var(--f-mono);font-size:.75rem;color:var(--proof-text);
+    background:var(--proof-tint);border:1px solid var(--proof-line);
+    border-radius:6px;padding:.15rem .45rem;margin-top:.3rem;direction:ltr;
+  }
+  .law h3{font-size:1.05rem;margin-bottom:.3rem}
+  .law p{color:var(--ink-2);font-size:.95rem;line-height:1.7}
+  .law .cost{
+    display:block;margin-top:.5rem;font-size:.85rem;color:var(--gap-text);
+    border-inline-start:2px solid var(--gap-line);padding-inline-start:.7rem;
+  }
+
+  /* اللون */
+  .swatches{display:grid;gap:1rem}
+  @media(min-width:46rem){.swatches{grid-template-columns:repeat(2,1fr)}}
+  .sw{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+  .sw .chip{height:88px;display:flex;align-items:flex-end;justify-content:flex-start;padding:.6rem .85rem}
+  .sw .chip b{font-family:var(--f-mono);font-size:.75rem;direction:ltr;padding:.15rem .4rem;border-radius:5px;background:rgba(0,0,0,.06)}
+  .sw .body{padding:.9rem 1.05rem;display:grid;gap:.35rem}
+  .sw .body strong{font-family:var(--f-display);font-size:.95rem}
+  .sw .body span{font-size:.85rem;color:var(--ink-2);line-height:1.6}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+  th,td{text-align:right;padding:.7rem .9rem;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-family:var(--f-display);font-weight:600;font-size:.8rem;color:var(--ink-3);letter-spacing:.02em;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td.t{font-family:var(--f-mono);font-size:.78rem;direction:ltr;text-align:left;white-space:nowrap;color:var(--ink-2)}
+
+  .ratio{font-family:var(--f-mono);font-size:.75rem;padding:.1rem .4rem;border-radius:5px;direction:ltr;display:inline-block}
+  .ok{background:var(--proof-tint);color:var(--proof-text)}
+  .no{background:var(--danger-tint);color:var(--danger)}
+
+  /* الخط */
+  .typespec{display:grid;gap:1rem}
+  @media(min-width:56rem){.typespec{grid-template-columns:repeat(3,1fr)}}
+  .ts{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:1.2rem 1.3rem;display:grid;gap:.65rem}
+  .ts .sample{font-size:2rem;line-height:1.3}
+  .ts .role{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);direction:ltr;text-align:right}
+  .ts .note{font-size:.875rem;color:var(--ink-2);line-height:1.65}
+  .s-display{font-family:var(--f-display);font-weight:600}
+  .s-body{font-family:var(--f-body);font-weight:400}
+  .s-mono{font-family:var(--f-mono);font-weight:400}
+
+  .scale{display:grid;gap:.5rem}
+  .scale .row{display:flex;align-items:baseline;gap:1rem;padding-bottom:.5rem;border-bottom:1px dashed var(--line-soft)}
+  .scale .row:last-child{border-bottom:none}
+  .scale .lbl{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-3);direction:ltr;min-width:9rem}
+
+  /* ─── مكوّنات المنتج ─── */
+  .spec{display:grid;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+  .spec .stage{padding:1.6rem 1.4rem;background:var(--surface-2);display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+  .spec .rule{padding:1rem 1.3rem;border-top:1px solid var(--line);display:grid;gap:.3rem}
+  .spec .rule .cname{font-family:var(--f-mono);font-size:.78rem;color:var(--proof-text);direction:ltr;text-align:right}
+  .spec .rule p{font-size:.9rem;color:var(--ink-2);line-height:1.65}
+
+  /* SkillTag */
+  .tag{display:inline-flex;align-items:center;gap:.45rem;border-radius:8px;padding:.35rem .7rem;font-size:.875rem;font-weight:500}
+  .tag.proven{background:var(--proof-tint);border:1px solid var(--proof-line);color:var(--proof-text)}
+  .tag.claimed{background:transparent;border:1px dashed var(--line);color:var(--ink-3)}
+  .tag .c{font-family:var(--f-mono);font-size:.72rem;background:var(--surface);border-radius:4px;padding:0 .3rem;direction:ltr}
+
+  /* VerificationBadge */
+  .vb{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--ink-2)}
+  .vb .dot{width:11px;height:11px;border-radius:50%;flex:none}
+  .vb.v1 .dot{background:var(--proof);border:1px solid var(--proof)}
+  .vb.v2 .dot{background:transparent;border:2px solid var(--proof-line)}
+  .vb.v3 .dot{background:transparent;border:1.5px dashed var(--ink-3)}
+
+  /* EvidenceCard */
+  .ev{
+    border:1px solid var(--line);border-radius:12px;background:var(--surface);
+    padding:.9rem 1rem;display:grid;gap:.6rem;min-width:16rem;flex:1 1 17rem;
+    border-inline-start:3px solid var(--proof);
+  }
+  .ev.weak{border-inline-start-color:var(--ink-3)}
+  .ev .top{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+  .ev .src{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-3);direction:ltr}
+  .ev h4{font-size:.95rem;font-weight:600}
+  .ev .meta{display:flex;flex-wrap:wrap;gap:.4rem .9rem;font-size:.78rem;color:var(--ink-3)}
+  .ev .meta b{font-weight:500;color:var(--ink-2)}
+
+  /* MatchRing */
+  .ring{display:grid;place-items:center;gap:.4rem}
+  .ring svg{display:block;transform:rotate(-90deg)}
+  .ring .val{font-family:var(--f-display);font-weight:700;font-size:1.5rem;font-variant-numeric:tabular-nums;direction:ltr}
+  .ring .cap{font-size:.75rem;color:var(--ink-3)}
+  .track{stroke:var(--line);fill:none}
+  .prog{stroke:var(--proof);fill:none;stroke-linecap:round;transition:stroke-dasharray .9s cubic-bezier(.2,.7,.2,1)}
+
+  /* CapabilityCard */
+  .cap{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:1.1rem 1.2rem;display:grid;gap:.6rem}
+  .cap .h{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+  .cap h4{font-size:1.02rem}
+  .lvl{font-family:var(--f-mono);font-size:.7rem;padding:.15rem .5rem;border-radius:999px;direction:ltr;letter-spacing:.04em}
+  .lvl.high{background:var(--proof-tint);color:var(--proof-text);border:1px solid var(--proof-line)}
+  .lvl.med{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
+  .cap p{font-size:.88rem;color:var(--ink-2);line-height:1.65}
+  .cap .why{font-size:.82rem;color:var(--ink-3);border-top:1px dashed var(--line-soft);padding-top:.6rem}
+
+  /* WhyPanel */
+  .reasons{display:grid;gap:.7rem}
+  .reason{display:grid;grid-template-columns:9.5rem 1fr auto;gap:.75rem;align-items:center;font-size:.875rem}
+  .bar{height:8px;border-radius:999px;background:var(--line-soft);overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:999px;background:var(--proof)}
+  .bar.g i{background:var(--gap)}
+  .reason .v{font-family:var(--f-mono);font-size:.75rem;color:var(--ink-3);direction:ltr}
+
+  /* Readiness */
+  .pill{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;padding:.3rem .75rem;font-size:.82rem;font-weight:500}
+  .pill.ready{background:var(--proof-tint);color:var(--proof-text);border:1px solid var(--proof-line)}
+  .pill.near{background:var(--gap-tint);color:var(--gap-text);border:1px solid var(--gap-line)}
+  .pill.needs{background:var(--surface-2);color:var(--ink-2);border:1px dashed var(--line)}
+
+  /* CandidateCard */
+  .cand{display:grid;gap:1rem;grid-template-columns:auto 1fr;align-items:start}
+  .cand .who h4{font-size:1.1rem}
+  .cand .who .role{font-size:.85rem;color:var(--ink-3)}
+  .cand .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
+
+  /* خريطة الشاشات */
+  .flowwrap{overflow-x:auto;padding-bottom:.5rem}
+  .flow{display:flex;gap:0;align-items:stretch;min-width:max-content}
+  .step{
+    width:13.5rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:.95rem 1.05rem;display:grid;gap:.35rem;align-content:start;
+  }
+  .step .n{font-family:var(--f-mono);font-size:.7rem;color:var(--ink-3);direction:ltr;text-align:right}
+  .step h4{font-size:.95rem}
+  .step p{font-size:.8rem;color:var(--ink-2);line-height:1.6}
+  .trace{width:2.75rem;flex:none;display:grid;place-items:center}
+  .trace svg{display:block}
+
+  /* اللحظة البطلة */
+  .hero-moment{
+    background:var(--surface);
+    border:1px solid var(--line);border-radius:18px;padding:clamp(1.25rem,3vw,2rem);
+    display:grid;gap:1.5rem;box-shadow:var(--shadow);
+  }
+  @media(min-width:52rem){.hero-moment{grid-template-columns:auto 1fr;align-items:center;gap:2.5rem}}
+  .btn{
+    font-family:var(--f-display);font-weight:600;font-size:.95rem;
+    background:var(--ink);color:var(--surface);border:none;border-radius:10px;
+    padding:.65rem 1.15rem;cursor:pointer;transition:transform .15s ease,opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn:disabled{opacity:.45;cursor:default;transform:none}
+  .delta{font-family:var(--f-mono);font-size:.8rem;color:var(--proof-text);opacity:0;transition:opacity .4s ease}
+  .delta.on{opacity:1}
+  #newEv{opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease}
+  #newEv.on{opacity:1;transform:none}
+
+  /* قرارات */
+  .asks{display:grid;gap:.75rem}
+  .ask{
+    display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;
+    border:1px solid var(--line);border-left:none;border-right:none;border-radius:0;
+    background:transparent;padding:1rem 0;border-bottom:1px solid var(--line-soft);border-top:none;
+  }
+  .ask .q{font-family:var(--f-mono);font-size:.75rem;color:var(--gap-text);background:var(--gap-tint);border:1px solid var(--gap-line);border-radius:6px;padding:.15rem .45rem;direction:ltr;margin-top:.25rem}
+  .ask h4{font-size:1rem;margin-bottom:.25rem}
+  .ask p{font-size:.9rem;color:var(--ink-2);line-height:1.7}
+
+  footer{padding:2.5rem 0 3.5rem;color:var(--ink-3);font-size:.85rem}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  }
+</style>
+
+<div class="doc">
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <div class="brandline">
+      <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M17 20 L24 20 L28 13 L34 13" fill="none" stroke="var(--proof)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 20 L22 27 L27 27 L31 22 L36 22" fill="none" stroke="var(--gap)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="20" r="6" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <circle cx="36" cy="13" r="2.6" fill="none" stroke="var(--proof)" stroke-width="2.2"/>
+        <circle cx="38" cy="22" r="2.6" fill="none" stroke="var(--gap)" stroke-width="2.2"/>
+      </svg>
+      <span class="name">قُدرة</span>
+      <span class="sub">أساس التصميم — v1 للفريق</span>
+    </div>
+
+    <h1>الدليل شيء تراه، لا رقم تصدّقه.</h1>
+
+    <p class="lede">
+      وظيفة الواجهة في قُدرة ليست تجميل النتائج، بل جعل الدليل ملموسًا: من أين جاء،
+      كم عمره، من تحقّق منه، وكم غيّر في القرار. كل قرار تصميمي هنا مشتق من هذا.
+    </p>
+
+    <div class="thesis">
+      <span>مشكلة</span><i>←</i>
+      <span>قدرة مطلوبة</span><i>←</i>
+      <span class="p">دليل</span><i>←</i>
+      <span>مطابقة مفهومة</span>
+    </div>
+  </div>
+</header>
+
+<!-- ─────────── القوانين ─────────── -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Design Laws</span>
+      <h2>ستة قوانين تحكم كل شاشة</h2>
+      <p>هذه ليست تفضيلات ذوق. كل قانون منها مأخوذ من جوهر المنتج، ولكل واحد ثمن واضح إذا كُسر.</p>
+    </div>
+
+    <div class="laws">
+      <div class="law">
+        <span class="k">L1</span>
+        <div>
+          <h3>الدليل هو الذرّة، ويظهر بشكل واحد في كل مكان</h3>
+          <p>بطاقة الدليل نفسها تظهر في الملف الشخصي، وفي نتائج المطابقة، وفي لوحة «لماذا هذا الشخص؟» — بخمس خانات ثابتة لا تتغير: المصدر، النوع، المهارة، التاريخ، مستوى التحقق.</p>
+          <span class="cost">لو اختلف شكل الدليل بين الشاشات، فقد المستخدم القدرة على مقارنته، وانهار معنى «الدليل» أصلًا.</span>
+        </div>
+      </div>
+
+      <div class="law">
+        <span class="k">L2</span>
+        <div>
+          <h3>مستوى التحقق مرئي دائمًا، بلا استثناء</h3>
+          <p>ثلاث درجات لها لغة بصرية ثابتة: <b>موثّق</b> دائرة ممتلئة، <b>مرتبط</b> دائرة مفرغة، <b>مُعلن</b> دائرة متقطّعة. الفرق يُقرأ بالشكل قبل اللون، حتى لا يعتمد على تمييز الألوان.</p>
+          <span class="cost">إخفاء الفرق يحوّل قُدرة إلى CV builder ملوّن — وهو بالضبط ما تقول الوثائق إنها ليست إياه.</span>
+        </div>
+      </div>
+
+      <div class="law">
+        <span class="k">L3</span>
+        <div>
+          <h3>لا رقم بلا سبب بجانبه</h3>
+          <p>‏91% لا تظهر وحدها أبدًا. الرقم دائمًا مصحوب إما بأسبابه مباشرة، أو بمدخل واضح إليها على بُعد نقرة واحدة، مع درجة الثقة.</p>
+          <span class="cost">الرقم المجرّد يجعل المنتج صندوقًا أسود، وأول سؤال من المُحكّم سيكون: من وين طلع هذا الرقم؟</span>
+        </div>
+      </div>
+
+      <div class="law">
+        <span class="k">L4</span>
+        <div>
+          <h3>المهارة المُدخلة يدويًا لا تشبه المهارة المدعومة بدليل</h3>
+          <p>المُثبتة: خلفية فيروزية، حد صلب، وعدّاد أدلة. المُعلنة: حد متقطّع، بلا لون، بلا عدّاد. لا تُخلط الاثنتان في صف واحد دون فاصل بصري.</p>
+          <span class="cost">خلطهما يعني أن أي شخص يكتب «React» يبدو مساويًا لمن أثبتها بخمسة مشاريع.</span>
+        </div>
+      </div>
+
+      <div class="law">
+        <span class="k">L5</span>
+        <div>
+          <h3>الفجوة ليست رفضًا، بل مسارًا</h3>
+          <p>كل عرض لفجوة ينتهي إلزاميًا بخطوة تالية: تعلّم ← تدرّب ← أثبت ← أعد المطابقة. الفجوة تُلوَّن بالأصفر (انتباه)، لا بالأحمر (خطأ).</p>
+          <span class="cost">الأحمر يقول «مرفوض» ويوقف الحلقة التي يقوم عليها المنتج بأكمله.</span>
+        </div>
+      </div>
+
+      <div class="law">
+        <span class="k">L6</span>
+        <div>
+          <h3>كل خطوة تُنتج بيانات قابلة لإعادة الاستخدام</h3>
+          <p>لا نطلب من المستخدم إدخال شيء لن يعود إليه لاحقًا كدليل أو كسياق. النموذج الطويل ممنوع؛ نسأل فقط عن الناقص، وقت الحاجة إليه.</p>
+          <span class="cost">كل حقل لا يتحول إلى دليل هو احتكاك خالص يدفع المستخدم للمغادرة قبل رؤية القيمة.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── اللون ─────────── -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Color</span>
+      <h2>مساران، لا لونان</h2>
+      <p>
+        الشعار نفسه يحمل الجواب: مساران يخرجان من نواة واحدة، أحدهما فيروزي والآخر أصفر.
+        نعطيهما معنى منتجيًا بدل استخدامهما كزينة — <b>الفيروزي = مُثبت</b>، <b>الأصفر = ناقص</b>.
+        بعدها لا يحتاج أحد إلى دليل ألوان: اللون نفسه يصير قراءةً للحالة.
+      </p>
+    </div>
+
+    <div class="swatches">
+      <div class="sw">
+        <div class="chip" style="background:#00B8B8"><b style="color:#1A1A1A">#00B8B8</b></div>
+        <div class="body">
+          <strong>فيروزي — مسار الإثبات</strong>
+          <span>الأدلة، المهارات المُثبتة، التحقق، تقدّم المطابقة، الجاهزية. هو لون «نعم، هذا مُثبت».</span>
+        </div>
+      </div>
+      <div class="sw">
+        <div class="chip" style="background:#FFC107"><b style="color:#1A1A1A">#FFC107</b></div>
+        <div class="body">
+          <strong>أصفر — مسار الفجوة</strong>
+          <span>الفجوات، ما يحتاج إثباتًا، «قريب من الجاهزية»، خطوات الـRoadmap غير المكتملة. انتباه لا خطأ.</span>
+        </div>
+      </div>
+      <div class="sw">
+        <div class="chip" style="background:#1A1A1A"><b style="color:#EDF1F1">#1A1A1A</b></div>
+        <div class="body">
+          <strong>فحمي — البنية</strong>
+          <span>النص الأساسي، الأزرار الرئيسية، الهيكل. لا يُستخدم كلون دلالي أبدًا.</span>
+        </div>
+      </div>
+      <div class="sw">
+        <div class="chip" style="background:#C2372B"><b style="color:#fff">#C2372B</b></div>
+        <div class="body">
+          <strong>أحمر — الأخطاء فقط</strong>
+          <span>محجوز حصريًا لفشل عملية، أو دليل سقط في بوابة الجودة. ممنوع استخدامه للفجوات.</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.75rem" class="panel">
+      <h3 style="margin-bottom:.5rem">قاعدة التباين — الأهم عمليًا</h3>
+      <p style="color:var(--ink-2);font-size:.95rem;margin-bottom:1.1rem;max-width:var(--prose)">
+        لونا الهوية ساطعان، وكلاهما يسقط في اختبار التباين كنص على أرضية فاتحة.
+        الحل ليس تغيير الهوية، بل الفصل بين <b>لون التعبئة</b> و<b>لون النص</b>:
+        على الأرضية الفاتحة نستخدم نسخة داكنة للنص، وعلى الداكنة يعمل لون الهوية مباشرة.
+      </p>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>الاستخدام</th><th>الوضع الفاتح</th><th>التباين</th><th>الوضع الداكن</th><th>التباين</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>فيروزي كنص/أيقونة</td>
+              <td class="t">#00787A</td><td><span class="ratio ok">5.3:1 ✓</span></td>
+              <td class="t">#39D6D6</td><td><span class="ratio ok">9.4:1 ✓</span></td>
+            </tr>
+            <tr>
+              <td>فيروزي كتعبئة <span style="color:var(--ink-3)">(نص فحمي فوقه)</span></td>
+              <td class="t">#00B8B8</td><td><span class="ratio ok">7.1:1 ✓</span></td>
+              <td class="t">#00B8B8</td><td><span class="ratio ok">7.1:1 ✓</span></td>
+            </tr>
+            <tr>
+              <td>أصفر كنص/أيقونة</td>
+              <td class="t">#8A6200</td><td><span class="ratio ok">5.5:1 ✓</span></td>
+              <td class="t">#FFCE3D</td><td><span class="ratio ok">12.1:1 ✓</span></td>
+            </tr>
+            <tr>
+              <td>أصفر كتعبئة <span style="color:var(--ink-3)">(نص فحمي فوقه)</span></td>
+              <td class="t">#FFC107</td><td><span class="ratio ok">10.7:1 ✓</span></td>
+              <td class="t">#FFC107</td><td><span class="ratio ok">10.7:1 ✓</span></td>
+            </tr>
+            <tr>
+              <td>‏#FFC107 كنص على أبيض</td>
+              <td class="t">ممنوع</td><td><span class="ratio no">1.6:1 ✗</span></td>
+              <td class="t">—</td><td>—</td>
+            </tr>
+            <tr>
+              <td>‏#00B8B8 كنص على أبيض</td>
+              <td class="t">ممنوع</td><td><span class="ratio no">2.5:1 ✗</span></td>
+              <td class="t">—</td><td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="color:var(--ink-3);font-size:.85rem;margin-top:.9rem">
+        الرماديات ليست محايدة تمامًا — كلها مائلة قليلًا نحو السماوي لتنسجم مع الفيروزي.
+        الأرضية الفاتحة <span class="mono">#EDF1F1</span>، الداكنة <span class="mono">#0E1213</span>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── الخط ─────────── -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Typography</span>
+      <h2>ثلاثة أدوار، لا ثلاثة أذواق</h2>
+      <p>منتج عربي كثيف بالبيانات والمصطلحات اللاتينية. نحتاج خطًا يحمل شخصية الشعار الهندسية، وخطًا يتحمّل الجداول والأرقام، وخطًا للبيانات الخام.</p>
+    </div>
+
+    <div class="typespec">
+      <div class="ts">
+        <span class="role">Display</span>
+        <div class="sample s-display">قُدرة — 91%</div>
+        <div class="mono">Readex&nbsp;Pro · 500/600/700</div>
+        <p class="note">هندسي مدوّر، أقرب روح لحروف الشعار. للعناوين وأرقام المطابقة وأسماء الأقسام فقط — لا يُستخدم لنص طويل.</p>
+      </div>
+      <div class="ts">
+        <span class="role">Body / UI</span>
+        <div class="sample s-body">الدليل قبل الادعاء</div>
+        <div class="mono">IBM&nbsp;Plex&nbsp;Sans&nbsp;Arabic · 400/500/600</div>
+        <p class="note">للنصوص والبطاقات والجداول والأزرار. مصمّم لواجهات تقنية كثيفة، وله شقيق لاتيني منسجم للمصطلحات.</p>
+      </div>
+      <div class="ts">
+        <span class="role">Data / Mono</span>
+        <div class="sample s-mono">GitHub · 2026</div>
+        <div class="mono">IBM&nbsp;Plex&nbsp;Mono · 400/500</div>
+        <p class="note">لأسماء المصادر، التواريخ، المعرّفات، وقيم الـtokens. يعطي البيانات إحساس «مقروءة من نظام» لا «مكتوبة بيد».</p>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:1.5rem">
+      <h3 style="margin-bottom:1rem">السلّم</h3>
+      <div class="scale">
+        <div class="row"><span class="lbl">display / 40–54px / 700</span><span class="s-display" style="font-size:1.9rem">عنوان الصفحة</span></div>
+        <div class="row"><span class="lbl">h2 / 28px / 600</span><span class="s-display" style="font-size:1.45rem">عنوان قسم</span></div>
+        <div class="row"><span class="lbl">h3 / 18px / 600</span><span class="s-display" style="font-size:1.1rem">عنوان بطاقة</span></div>
+        <div class="row"><span class="lbl">body / 17px / 400 / 1.75</span><span class="s-body">نص أساسي بارتفاع سطر مريح للعربية</span></div>
+        <div class="row"><span class="lbl">small / 14px / 400</span><span class="s-body" style="font-size:.875rem">بيانات ثانوية وشروح</span></div>
+        <div class="row"><span class="lbl">label / 12px / .16em / upper</span><span class="mono" style="letter-spacing:.16em">EVIDENCE</span></div>
+      </div>
+
+      <h3 style="margin:1.75rem 0 .75rem">قواعد الاتجاه — حيث تنكسر الواجهات العربية عادةً</h3>
+      <div class="grid g2">
+        <div class="card">
+          <h4 style="font-size:.95rem;margin-bottom:.4rem">الأرقام لاتينية دائمًا</h4>
+          <p style="font-size:.88rem;color:var(--ink-2)">‏<span class="num">91%</span> و<span class="num">2026</span> لا ٩١٪. المنتج يعرض درجات ومقاييس ونِسبًا، والأرقام اللاتينية أوضح في المقارنة وتتوافق مع كل المصطلحات التقنية المجاورة.</p>
+        </div>
+        <div class="card">
+          <h4 style="font-size:.95rem;margin-bottom:.4rem">المصطلح التقني يبقى كما هو</h4>
+          <p style="font-size:.88rem;color:var(--ink-2)">‏React، GitHub، Backend — لا تُترجم ولا تُعرّب. لكن كل نص مختلط الاتجاه يُغلَّف بـ<span class="mono">unicode-bidi:isolate</span> وإلا انقلب ترتيب العلامات.</p>
+        </div>
+        <div class="card">
+          <h4 style="font-size:.95rem;margin-bottom:.4rem">لا margin يمين/يسار</h4>
+          <p style="font-size:.88rem;color:var(--ink-2)">استخدم <span class="mono">margin-inline-start</span> و<span class="mono">padding-inline-end</span> حصريًا. أي <span class="mono">left/right</span> صريح سينكسر لحظة إضافة الإنجليزية.</p>
+        </div>
+        <div class="card">
+          <h4 style="font-size:.95rem;margin-bottom:.4rem">الأرقام في الأعمدة</h4>
+          <p style="font-size:.88rem;color:var(--ink-2)">‏<span class="mono">tabular-nums</span> إلزامي في أي جدول أو قائمة درجات، وإلا رقصت الخانات بين الصفوف وصعبت المقارنة البصرية.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── المكوّنات ─────────── -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Components</span>
+      <h2>المكوّنات التي تحمل المنتج</h2>
+      <p>سبعة مكوّنات تكفي لبناء رحلة الـMVP كاملة. كل ما تحته حيّ ومرسوم بالتوكنز أعلاه — لا صور ولا وصف نظري.</p>
+    </div>
+
+    <div class="grid g2" style="gap:1.25rem">
+
+      <!-- SkillTag -->
+      <div class="spec">
+        <div class="stage">
+          <span class="tag proven">React <span class="c">5</span></span>
+          <span class="tag proven">TypeScript <span class="c">3</span></span>
+          <span class="tag claimed">Kubernetes</span>
+          <span class="tag claimed">Figma</span>
+        </div>
+        <div class="rule">
+          <span class="cname">SkillTag — proven | claimed</span>
+          <p>الفرق يُقرأ بالشكل قبل اللون: حد صلب + عدّاد أدلة مقابل حد متقطّع بلا عدّاد. العدّاد قابل للنقر ويفتح الأدلة المرتبطة.</p>
+        </div>
+      </div>
+
+      <!-- VerificationBadge -->
+      <div class="spec">
+        <div class="stage" style="gap:1.5rem">
+          <span class="vb v1"><span class="dot"></span> موثّق — تحدّي شركة، GitHub App</span>
+          <span class="vb v2"><span class="dot"></span> مرتبط — ملف عام برابط</span>
+          <span class="vb v3"><span class="dot"></span> مُعلن — من المستخدم</span>
+        </div>
+        <div class="rule">
+          <span class="cname">VerificationBadge — v1 | v2 | v3</span>
+          <p>ثلاث درجات فقط، لا رابعة. تظهر داخل كل بطاقة دليل وبجانب كل مصدر متصل. الشكل يحمل المعنى ليعمل للمستخدمين الذين لا يميزون الألوان.</p>
+        </div>
+      </div>
+
+      <!-- EvidenceCard -->
+      <div class="spec" style="grid-column:1/-1">
+        <div class="stage" style="align-items:stretch">
+          <div class="ev">
+            <div class="top">
+              <span class="src">GitHub · repo</span>
+              <span class="vb v1"><span class="dot"></span></span>
+            </div>
+            <h4>نظام حجز مواعيد بـ Node + PostgreSQL</h4>
+            <div class="meta">
+              <span>المهارة <b>Backend</b></span>
+              <span>التاريخ <b class="num">2026-05</b></span>
+              <span>التعقيد <b>عالٍ</b></span>
+              <span>النتيجة <b>منشور</b></span>
+            </div>
+          </div>
+          <div class="ev">
+            <div class="top">
+              <span class="src">LeetCode · profile</span>
+              <span class="vb v2"><span class="dot"></span></span>
+            </div>
+            <h4>‏420 مسألة · تقييم 1840</h4>
+            <div class="meta">
+              <span>المهارة <b>Algorithms</b></span>
+              <span>التاريخ <b class="num">2026-08</b></span>
+              <span>التعقيد <b>متوسط</b></span>
+              <span>النتيجة <b>مستمر</b></span>
+            </div>
+          </div>
+          <div class="ev weak">
+            <div class="top">
+              <span class="src">Certificate · self</span>
+              <span class="vb v3"><span class="dot"></span></span>
+            </div>
+            <h4>شهادة دورة في ML</h4>
+            <div class="meta">
+              <span>المهارة <b>ML/NLP</b></span>
+              <span>التاريخ <b class="num">2024-01</b></span>
+              <span>التعقيد <b>—</b></span>
+              <span>النتيجة <b>—</b></span>
+            </div>
+          </div>
+        </div>
+        <div class="rule">
+          <span class="cname">EvidenceCard — 5 slots, always</span>
+          <p>
+            الشريط الجانبي هو مؤشر الوزن: فيروزي للدليل المؤثر، رمادي للدليل المساعد.
+            لاحظ البطاقة الثالثة — شهادة بلا تطبيق، قديمة، بلا نتيجة: النظام لا يخفيها، لكنه لا يجاملها بصريًا أيضًا.
+          </p>
+        </div>
+      </div>
+
+      <!-- MatchRing + WhyPanel -->
+      <div class="spec" style="grid-column:1/-1">
+        <div class="stage" style="gap:2rem;align-items:flex-start">
+          <div class="ring">
+            <svg width="112" height="112" viewBox="0 0 112 112" role="img" aria-label="نسبة المطابقة 91 بالمئة">
+              <circle class="track" cx="56" cy="56" r="44" stroke-width="10"></circle>
+              <circle class="prog" cx="56" cy="56" r="44" stroke-width="10" stroke-dasharray="251.6 276.5"></circle>
+            </svg>
+            <span class="val">91%</span>
+            <span class="cap">ثقة عالية · 12 دليلًا</span>
+          </div>
+          <div class="reasons" style="flex:1 1 22rem">
+            <div class="reason"><span>صلة الأدلة بالمشكلة</span><span class="bar"><i style="width:94%"></i></span><span class="v">94</span></div>
+            <div class="reason"><span>حداثة الأدلة</span><span class="bar"><i style="width:88%"></i></span><span class="v">88</span></div>
+            <div class="reason"><span>تعقيد المشاريع</span><span class="bar"><i style="width:81%"></i></span><span class="v">81</span></div>
+            <div class="reason"><span>مستوى التحقق</span><span class="bar"><i style="width:76%"></i></span><span class="v">76</span></div>
+            <div class="reason"><span>تنوّع مصادر الدليل</span><span class="bar"><i style="width:69%"></i></span><span class="v">69</span></div>
+            <div class="reason"><span>‏Speech Processing</span><span class="bar g"><i style="width:34%"></i></span><span class="v">34</span></div>
+          </div>
+        </div>
+        <div class="rule">
+          <span class="cname">MatchRing + WhyPanel</span>
+          <p>
+            الحلقة لا تُعرض أبدًا بمفردها. الأشرطة الفيروزية أسباب داعمة، والشريط الأصفر فجوة —
+            وترتيبها تنازلي يجعل أقوى سبب وأخطر فجوة مرئيَّين دون قراءة كاملة.
+          </p>
+        </div>
+      </div>
+
+      <!-- CapabilityCard -->
+      <div class="spec">
+        <div class="stage" style="display:grid;gap:.75rem">
+          <div class="cap">
+            <div class="h"><h4>Speech Processing</h4><span class="lvl high">HIGH</span></div>
+            <p>المشكلة تتطلب تحويل مكالمات صوتية إلى نص عربي وتحليلها لحظيًا.</p>
+            <span class="why">مشتقة من: «نبي النظام يفهم مكالمات العملاء» · مرتبطة بـ 3 مهام</span>
+          </div>
+          <div class="cap">
+            <div class="h"><h4>Testing</h4><span class="lvl med">MEDIUM</span></div>
+            <p>مطلوبة لضمان موثوقية المعالجة، لكنها ليست حرجة لإطلاق الـMVP.</p>
+            <span class="why">مشتقة من: قيد «الإطلاق خلال شهرين» · مرتبطة بمهمة واحدة</span>
+          </div>
+        </div>
+        <div class="rule">
+          <span class="cname">CapabilityCard</span>
+          <p>كل قدرة تحمل سببها من نص المشكلة نفسه. المستوى شارة نصية لا نجوم — النجوم تعني تقييمًا ذاتيًا، ونحن نستنتج من المشكلة.</p>
+        </div>
+      </div>
+
+      <!-- Readiness + Candidate -->
+      <div class="spec">
+        <div class="stage" style="display:grid;gap:1rem">
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+            <span class="pill ready">جاهز الآن</span>
+            <span class="pill near">قريب من الجاهزية</span>
+            <span class="pill needs">يحتاج دليلًا</span>
+          </div>
+          <div class="cand">
+            <div class="ring">
+              <svg width="76" height="76" viewBox="0 0 112 112" aria-hidden="true">
+                <circle class="track" cx="56" cy="56" r="44" stroke-width="12"></circle>
+                <circle class="prog" cx="56" cy="56" r="44" stroke-width="12" stroke-dasharray="215.7 276.5"></circle>
+              </svg>
+              <span class="val" style="font-size:1.05rem">78%</span>
+            </div>
+            <div class="who">
+              <h4>سارة الحربي</h4>
+              <span class="role">مهندسة Backend · متاحة جزئيًا</span>
+              <div class="tags">
+                <span class="tag proven">Node.js <span class="c">6</span></span>
+                <span class="tag proven">PostgreSQL <span class="c">4</span></span>
+                <span class="tag claimed">Speech APIs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rule">
+          <span class="cname">ReadinessPill + CandidateCard</span>
+          <p>«يحتاج دليلًا» ليست حكمًا سلبيًا بل دعوة لتحدٍّ قصير. البطاقة تعرض القوة والفجوة معًا — لا تُخفى الفجوة لتحسين المظهر.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── خريطة الشاشات ─────────── -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Screen Map</span>
+      <h2>ثماني شاشات تكفي الـMVP</h2>
+      <p>الرحلة الأساسية بلا تفرّع. الواصلات مأخوذة من مسارات الشعار — نستخدمها كعنصر ربط بصري في المنتج كله، لا كزينة في هذه الصفحة فقط.</p>
+    </div>
+
+    <div class="flowwrap">
+      <div class="flow">
+        <div class="step"><span class="n">01</span><h4>الرئيسية</h4><p>سؤال واحد: لديك مشكلة؟ زرّان لا أكثر.</p></div>
+        <div class="trace"><svg width="44" height="24" aria-hidden="true"><path d="M40 12 H8" stroke="var(--proof-line)" stroke-width="2" fill="none"/><circle cx="5" cy="12" r="3.5" fill="none" stroke="var(--proof)" stroke-width="2"/></svg></div>
+
+        <div class="step"><span class="n">02</span><h4>وصف المشكلة</h4><p>مربع نص واحد. الأسئلة القصيرة تظهر فقط عند نقص المعلومة.</p></div>
+        <div class="trace"><svg width="44" height="24" aria-hidden="true"><path d="M40 12 H8" stroke="var(--proof-line)" stroke-width="2" fill="none"/><circle cx="5" cy="12" r="3.5" fill="none" stroke="var(--proof)" stroke-width="2"/></svg></div>
+
+        <div class="step"><span class="n">03</span><h4>التحليل</h4><p>ست خطوات مرئية. هنا نبني الثقة بإظهار ما يفعله النظام فعلًا.</p></div>
+        <div class="trace"><svg width="44" height="24" aria-hidden="true"><path d="M40 12 H8" stroke="var(--proof-line)" stroke-width="2" fill="none"/><circle cx="5" cy="12" r="3.5" fill="none" stroke="var(--proof)" stroke-width="2"/></svg></div>
+
+        <div class="step"><span class="n">04</span><h4>القدرات المطلوبة</h4><p>بطاقات قدرة مع السبب والأولوية والمهام.</p></div>
+        <div class="trace"><svg width="44" height="24" aria-hidden="true"><path d="M40 12 H8" stroke="var(--proof-line)" stroke-width="2" fill="none"/><circle cx="5" cy="12" r="3.5" fill="none" stroke="var(--proof)" stroke-width="2"/></svg></div>
+
+        <div class="step"><span class="n">05</span><h4>المرشحون</h4><p>خمس بطاقات. كل واحدة بمدخل «لماذا هذا الشخص؟».</p></div>
+        <div class="trace"><svg width="44" height="24" aria-hidden="true"><path d="M40 12 H8" stroke="var(--proof-line)" stroke-width="2" fill="none"/><circle cx="5" cy="12" r="3.5" fill="none" stroke="var(--proof)" stroke-width="2"/></svg></div>
+
+        <div class="step"><span class="n">06</span><h4>لماذا هذا الشخص؟</h4><p>الحلقة + الأسباب + الأدلة. قلب المنتج.</p></div>
+        <div class="trace"><svg width="44" height="24" aria-hidden="true"><path d="M40 12 H8" stroke="var(--gap-line)" stroke-width="2" fill="none"/><circle cx="5" cy="12" r="3.5" fill="none" stroke="var(--gap)" stroke-width="2"/></svg></div>
+
+        <div class="step"><span class="n">07</span><h4>الفجوة</h4><p>ما ينقص، وأثره على المشروع، ثم مسار الإثبات.</p></div>
+        <div class="trace"><svg width="44" height="24" aria-hidden="true"><path d="M40 12 H8" stroke="var(--gap-line)" stroke-width="2" fill="none"/><circle cx="5" cy="12" r="3.5" fill="none" stroke="var(--gap)" stroke-width="2"/></svg></div>
+
+        <div class="step" style="border-color:var(--proof-line);background:var(--proof-tint)"><span class="n">08</span><h4>التحدي وإعادة المطابقة</h4><p>الدليل الجديد يغيّر الرقم. هذه هي اللحظة التي تُقنع.</p></div>
+      </div>
+    </div>
+
+    <p style="color:var(--ink-3);font-size:.875rem;margin-top:1rem;max-width:var(--prose)">
+      الشاشتان <span class="num">02</span> و<span class="num">03</span> هما موضع التسرّب الأكبر. القاعدة: لا نعرض نموذجًا طويلًا قبل أن يرى المستخدم قيمة، وشاشة التحليل يجب أن تُظهر تقدّمًا حقيقيًا لا دوّامة تحميل.
+    </p>
+  </div>
+</section>
+
+<!-- ─────────── اللحظة البطلة ─────────── -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Hero Interaction</span>
+      <h2>اللحظة الوحيدة التي تستحق حركة</h2>
+      <p>
+        كل شيء في العرض التقديمي يخدم ثانيتين: إضافة دليل جديد، وتغيّر الرقم أمام العين.
+        هذه هي البرهان البصري على أن الدليل يغيّر القرار — وهي المكان الوحيد الذي نسمح فيه بحركة ملحوظة.
+      </p>
+    </div>
+
+    <div class="hero-moment">
+      <div class="ring">
+        <svg width="140" height="140" viewBox="0 0 112 112" role="img" aria-label="نسبة المطابقة">
+          <circle class="track" cx="56" cy="56" r="44" stroke-width="9"></circle>
+          <circle id="heroRing" class="prog" cx="56" cy="56" r="44" stroke-width="9" stroke-dasharray="215.7 276.5"></circle>
+        </svg>
+        <span class="val" id="heroVal">78%</span>
+        <span class="delta" id="heroDelta">+13 بعد الدليل الجديد</span>
+      </div>
+
+      <div style="display:grid;gap:1rem">
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center">
+          <span class="tag proven">Node.js <span class="c">6</span></span>
+          <span class="tag proven">PostgreSQL <span class="c">4</span></span>
+          <span class="tag claimed" id="oldTag">Speech APIs</span>
+        </div>
+
+        <div class="ev" id="newEv" style="max-width:32rem">
+          <div class="top">
+            <span class="src">Company Challenge · Meta</span>
+            <span class="vb v1"><span class="dot"></span></span>
+          </div>
+          <h4>تحويل مكالمات عربية إلى نص وتحليلها</h4>
+          <div class="meta">
+            <span>المهارة <b>Speech Processing</b></span>
+            <span>التاريخ <b class="num">2026-08</b></span>
+            <span>النتيجة <b>ناجح</b></span>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn" id="heroBtn">أضف دليل التحدي</button>
+        </div>
+
+        <p style="font-size:.875rem;color:var(--ink-3);line-height:1.7;max-width:var(--prose)">
+          مواصفات الحركة: الرقم يعدّ تصاعديًا في <span class="num">900ms</span>، الحلقة تتحرك بنفس المدة والمنحنى،
+          بطاقة الدليل تدخل بإزاحة <span class="num">6px</span>، ووسم المهارة يتحوّل من مُعلن إلى مُثبت.
+          مع <span class="mono">prefers-reduced-motion</span> تقفز كل القيم فورًا إلى حالتها النهائية بلا انتقال.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── قرارات مفتوحة ─────────── -->
+<section style="border-bottom:none">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Open Decisions</span>
+      <h2>ما يحتاج قرارًا منك قبل رسم الشاشات</h2>
+      <p>هذه ليست تفاصيل تصميم، بل قرارات تغيّر بنية الواجهة نفسها. أربعتها تحتاج جوابًا من الفريق لا من المصمم وحده.</p>
+    </div>
+
+    <div class="asks">
+      <div class="ask">
+        <span class="q">Q1</span>
+        <div>
+          <h4>واجهة واحدة أم اثنتان؟</h4>
+          <p>الشركة والمستخدم لهما رحلتان مختلفتان تمامًا. هل نبني منتجًا واحدًا بتبديل دور، أم واجهتين منفصلتين؟ الجواب يحدد شكل التنقّل الأساسي، ولا يمكن تأجيله.</p>
+        </div>
+      </div>
+      <div class="ask">
+        <span class="q">Q2</span>
+        <div>
+          <h4>هل شاشة التحليل حقيقية أم تمثيلية؟</h4>
+          <p>ست خطوات مرئية تبني ثقة هائلة — لكن فقط إذا كانت مرتبطة بمراحل فعلية في الـbackend. لو كانت مؤقتات ثابتة، فأول سؤال في التحكيم يكشفها. يحتاج اتفاقًا مع فريق الـbackend الآن، لا بعد التصميم.</p>
+        </div>
+      </div>
+      <div class="ask">
+        <span class="q">Q3</span>
+        <div>
+          <h4>من أين تأتي بيانات العرض؟</h4>
+          <p>خمسة مرشحين بأدلة مقنعة يحتاجون بيانات واقعية. أقوى خيار: ملفات GitHub عامة حقيقية تُحوَّل إلى أدلة. أضعف خيار: أسماء وأرقام مخترعة — تنكشف فورًا عند فتح أي دليل.</p>
+        </div>
+      </div>
+      <div class="ask">
+        <span class="q">Q4</span>
+        <div>
+          <h4>الوضع الافتراضي: فاتح أم داكن؟</h4>
+          <p>الهوية تعمل في الاثنين، والشعار على الأسود يبدو أقوى. لكن العرض التقديمي غالبًا على شاشة قاعة — الداكن أفضل هناك، والفاتح أفضل في لقطات الشاشة والوثائق. اختر واحدًا للعرض وابنِ الثاني بعده.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:2rem;border-color:var(--proof-line);background:var(--proof-tint)">
+      <h3 style="margin-bottom:.5rem">معيار قبول أي شاشة</h3>
+      <p style="color:var(--ink-2);max-width:var(--prose)">
+        قبل اعتماد أي شاشة، اسأل: هل تُظهر هذه الشاشة مسار
+        <b>بيانات خارجية ← دليل ← قدرة ← أثر على المطابقة</b>؟
+        إن لم تكن جزءًا من هذا المسار، فهي شاشة تجميلية — أجّلها إلى ما بعد الهاكاثون.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    مبني على وثائق قُدرة v3 — Master Profile، MVP + UX، Integration &amp; AI Playbook، Startups.RIP Lessons.
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('heroBtn');
+  var ring = document.getElementById('heroRing');
+  var val = document.getElementById('heroVal');
+  var delta = document.getElementById('heroDelta');
+  var newEv = document.getElementById('newEv');
+  var oldTag = document.getElementById('oldTag');
+  var C = 2 * Math.PI * 44;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setTo(pct){
+    ring.setAttribute('stroke-dasharray', (C * pct / 100).toFixed(1) + ' ' + C.toFixed(1));
+  }
+
+  btn.addEventListener('click', function(){
+    btn.disabled = true;
+    btn.textContent = 'أُضيف الدليل';
+    newEv.classList.add('on');
+    delta.classList.add('on');
+    oldTag.className = 'tag proven';
+    oldTag.innerHTML = 'Speech APIs <span class="c">1</span>';
+    setTo(91);
+
+    if (reduce) { val.textContent = '91%'; return; }
+    var start = performance.now(), from = 78, to = 91, dur = 900;
+    function tick(now){
+      var t = Math.min((now - start) / dur, 1);
+      var e = 1 - Math.pow(1 - t, 3);
+      val.textContent = Math.round(from + (to - from) * e) + '%';
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+})();
+</script>

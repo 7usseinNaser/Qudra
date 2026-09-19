@@ -1,0 +1,4 @@
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-line,.sk-block{background:linear-gradient(90deg,var(--soft) 25%,var(--line) 50%,var(--soft) 75%);background-size:200% 100%;animation:shimmer 1.4s linear infinite;border-radius:6px;}
+@media(prefers-reduced-motion:reduce){.sk-line,.sk-block{animation:none;background:var(--soft);}}

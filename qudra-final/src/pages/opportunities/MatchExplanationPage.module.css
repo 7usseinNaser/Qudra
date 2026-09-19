@@ -1,0 +1,87 @@
+.headrow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.overallscore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.scorenum {
+  font-family: var(--f-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.scorelabel {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+
+.factors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.factorcard {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.factorhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.factorlabel {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.factorscore {
+  font-family: var(--f-mono);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.factorexplain {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.actions .btn {
+  flex: 1;
+  min-width: 8rem;
+}
+
+@media (max-width: 768px) {
+  .headrow {
+    flex-direction: column;
+  }
+  .overallscore {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+}

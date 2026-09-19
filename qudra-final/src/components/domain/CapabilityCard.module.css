@@ -1,0 +1,83 @@
+.card {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--line, #D5DEDE);
+  border-radius: var(--r, 12px);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--proof-line, #8FDCDC);
+  box-shadow: var(--shadow, 0 4px 12px rgba(20, 26, 26, 0.06));
+}
+
+.verified {
+  border-right: 4px solid var(--proof, #00B8B8);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink, #141A1A);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.category {
+  font-size: 0.78rem;
+  color: var(--ink-3, #6B7A7A);
+  font-family: var(--fm, monospace);
+}
+
+.description {
+  font-size: 0.86rem;
+  color: var(--ink-2, #3F4C4C);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line-soft, #E4EBEB);
+  font-size: 0.8rem;
+}
+
+.evidenceCount {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--ink-2, #3F4C4C);
+}
+
+.levelTag {
+  font-family: var(--fm, monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: var(--surface-2, #F5F8F8);
+  color: var(--ink-2, #3F4C4C);
+  border: 1px solid var(--line-soft, #E4EBEB);
+}

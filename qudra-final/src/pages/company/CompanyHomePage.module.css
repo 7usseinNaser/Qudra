@@ -1,0 +1,227 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.orgidentity {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.orglogo {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--r);
+  background: var(--accent);
+  color: var(--on-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.verified {
+  color: var(--proof);
+  font-weight: 600;
+  font-size: 0.84rem;
+}
+
+.unverified {
+  color: var(--warning);
+  font-weight: 600;
+  font-size: 0.84rem;
+}
+
+.headeractions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 8rem), 1fr));
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.metriccard {
+  padding: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.metricnum {
+  font-family: var(--f-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.metriclabel {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 16rem;
+  gap: 1.5rem;
+}
+
+.maincol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.sidecol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel {
+  padding: 1.2rem;
+}
+
+.paneltitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 0.8rem;
+}
+
+.rolelist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.roleitem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+}
+
+.roleinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.roletitle {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rolemeta {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.activitylist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.activityitem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.activitydot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.35rem;
+}
+
+.activitytext {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.activitytime {
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+
+.savedlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.saveditem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+}
+
+.savedinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.savedname {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.savedtitle {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.savedmatch {
+  font-family: var(--f-mono);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .header {
+    flex-direction: column;
+  }
+}
