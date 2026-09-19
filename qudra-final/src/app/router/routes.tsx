@@ -39,6 +39,16 @@ const MasterDnaPage = lazy(() => import('../../pages/profile/master/MasterDnaPag
 const MasterTimelinePage = lazy(() => import('../../pages/profile/master/MasterTimelinePage').then(m => ({ default: m.MasterTimelinePage })));
 const WhyThisLevelPage = lazy(() => import('../../pages/profile/master/WhyThisLevelPage').then(m => ({ default: m.WhyThisLevelPage })));
 
+// Profile, Source Center & Passport
+const LinkedInProfilePage = lazy(() => import('../../pages/profile/LinkedInProfilePage').then(m => ({ default: m.LinkedInProfilePage })));
+const SourceCenterPage = lazy(() => import('../../pages/profile/sources/SourceCenterPage').then(m => ({ default: m.SourceCenterPage })));
+const CapabilityPassportPage = lazy(() => import('../../pages/passport/CapabilityPassportPage').then(m => ({ default: m.CapabilityPassportPage })));
+
+// Interactive Challenge Sandbox & Full Vision Pages
+const ChallengeSandboxPage = lazy(() => import('../../pages/challenges/ChallengeSandboxPage').then(m => ({ default: m.ChallengeSandboxPage })));
+const RepoDeepInspectorPage = lazy(() => import('../../pages/github/RepoDeepInspectorPage').then(m => ({ default: m.RepoDeepInspectorPage })));
+const ProblemMatchReportPage = lazy(() => import('../../pages/problems/ProblemMatchReportPage').then(m => ({ default: m.ProblemMatchReportPage })));
+
 // Problem Owner Flow
 const ProblemInputPage = lazy(() => import('../../pages/problem/ProblemInputPage').then(m => ({ default: m.ProblemInputPage })));
 const CapabilitiesPage = lazy(() => import('../../pages/capabilities/CapabilitiesPage').then(m => ({ default: m.CapabilitiesPage })));
@@ -102,15 +112,26 @@ export const router = createBrowserRouter([
       { path: ROUTES.COMPARE, element: <Suspense fallback={<RouteFallback />}><ComparePage /></Suspense> },
       { path: ROUTES.RE_RANKING, element: <Suspense fallback={<RouteFallback />}><ReRankingPage /></Suspense> },
 
-      // Legacy Profile
+      // Profile, Source Center & Capability Passport
+      { path: '/profile/edit', element: <Suspense fallback={<RouteFallback />}><LinkedInProfilePage /></Suspense> },
+      { path: '/profile/sources', element: <Suspense fallback={<RouteFallback />}><SourceCenterPage /></Suspense> },
+      { path: '/profile/passport', element: <Suspense fallback={<RouteFallback />}><CapabilityPassportPage /></Suspense> },
+      { path: '/passport', element: <Suspense fallback={<RouteFallback />}><CapabilityPassportPage /></Suspense> },
       { path: ROUTES.PROFILE, element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
-      { path: '/profile/sources', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
       { path: '/profile/evidence', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
       { path: '/profile/evidence/:id', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
       { path: '/profile/timeline', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
       { path: '/profile/gaps', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
       { path: '/profile/opportunities', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
-      { path: '/profile/passport', element: <Suspense fallback={<RouteFallback />}><ProfilePage /></Suspense> },
+
+      // Interactive Challenges Sandbox & Full Vision Pages
+      { path: ROUTES.CHALLENGES, element: <Suspense fallback={<RouteFallback />}><ChallengeSandboxPage /></Suspense> },
+      { path: ROUTES.CHALLENGE_SANDBOX, element: <Suspense fallback={<RouteFallback />}><ChallengeSandboxPage /></Suspense> },
+      { path: '/challenges/sandbox', element: <Suspense fallback={<RouteFallback />}><ChallengeSandboxPage /></Suspense> },
+      { path: ROUTES.REPO_DEEP_INSPECT, element: <Suspense fallback={<RouteFallback />}><RepoDeepInspectorPage /></Suspense> },
+      { path: '/profile/sources/github/inspect', element: <Suspense fallback={<RouteFallback />}><RepoDeepInspectorPage /></Suspense> },
+      { path: ROUTES.PROBLEM_MATCH_REPORT, element: <Suspense fallback={<RouteFallback />}><ProblemMatchReportPage /></Suspense> },
+      { path: '/problems/match', element: <Suspense fallback={<RouteFallback />}><ProblemMatchReportPage /></Suspense> },
     ],
   },
 

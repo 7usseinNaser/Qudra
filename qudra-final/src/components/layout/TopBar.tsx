@@ -28,6 +28,7 @@ const STEPS = [
 ]
 
 const SUBNAV_TABS = [
+  { id: 'u_edit', path: '/profile/edit', label: 'البروفايل المهني' },
   { id: 'u0', path: '/profile/sources', label: 'مصادري' },
   { id: 'u1', path: '/profile', label: 'ملفي' },
   { id: 'u3', path: '/profile/evidence', label: 'أدلتي' },

@@ -18,6 +18,9 @@ export const ROUTES = {
 
   // GitHub Evidence Loop
   PROFILE_COMPLETION: '/profile/completion',
+  PROFILE_EDIT: '/profile/edit',
+  PASSPORT: '/profile/passport',
+  SOURCES: '/profile/sources',
   GITHUB_CONNECT: '/profile/sources/github',
   GITHUB_SELECT: '/profile/sources/github/select',
   GITHUB_SCANNING: '/profile/sources/github/scanning',
@@ -95,6 +98,9 @@ export const ROUTES = {
 
   // Challenges & Admin
   CHALLENGES: '/challenges',
+  CHALLENGE_SANDBOX: '/challenges/:id/sandbox',
+  REPO_DEEP_INSPECT: '/github/inspect/:repoId',
+  PROBLEM_MATCH_REPORT: '/problems/:id/match',
   ADMIN_DASHBOARD: '/admin',
   ADMIN_AI_QUEUE: '/admin/ai-queue',
   ADMIN_EVIDENCE: '/admin/evidence',

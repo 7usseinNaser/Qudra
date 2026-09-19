@@ -24,7 +24,7 @@ class ApiClient {
   private baseUrl: string;
 
   constructor() {
-    this.baseUrl = (import.meta.env.VITE_API_BASE_URL || 'https://qudra-5tqh.onrender.com').replace(/\/$/, '');
+    this.baseUrl = (import.meta.env.VITE_API_BASE_URL || 'https://qudra-backend.onrender.com').replace(/\/$/, '');
   }
 
   public getBaseUrl(): string {

@@ -9,3 +9,4 @@ export * from './QudraLogo';
 export * from './GithubIcon';
 export * from './Tag';
 export * from './Pill';
+export * from './LinkedinIcon';
