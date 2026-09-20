@@ -130,8 +130,10 @@ export const router = createBrowserRouter([
       { path: '/challenges/sandbox', element: <Suspense fallback={<RouteFallback />}><ChallengeSandboxPage /></Suspense> },
       { path: ROUTES.REPO_DEEP_INSPECT, element: <Suspense fallback={<RouteFallback />}><RepoDeepInspectorPage /></Suspense> },
       { path: '/profile/sources/github/inspect', element: <Suspense fallback={<RouteFallback />}><RepoDeepInspectorPage /></Suspense> },
+      { path: '/evidence/github/inspector', element: <Suspense fallback={<RouteFallback />}><RepoDeepInspectorPage /></Suspense> },
       { path: ROUTES.PROBLEM_MATCH_REPORT, element: <Suspense fallback={<RouteFallback />}><ProblemMatchReportPage /></Suspense> },
       { path: '/problems/match', element: <Suspense fallback={<RouteFallback />}><ProblemMatchReportPage /></Suspense> },
+      { path: '/problems/match-report', element: <Suspense fallback={<RouteFallback />}><ProblemMatchReportPage /></Suspense> },
     ],
   },
 

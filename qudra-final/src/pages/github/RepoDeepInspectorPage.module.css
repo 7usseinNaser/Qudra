@@ -1,151 +1,474 @@
+/* RepoDeepInspectorPage.module.css — Luxury Dark IDE & GitHub Explorer */
+
 .container {
-  max-width: 1200px;
+  max-width: 80rem;
   margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
-  color: var(--ink, #F1F5F9);
+  padding: 1.5rem 1.25rem 6rem;
+  direction: rtl;
+  color: #F1F5F9;
 }
 
-.headerRow {
+/* Header */
+.headerCard {
+  background: rgba(13, 21, 34, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.topBarRow {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 2rem;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-.titleArea h1 {
-  font-size: 1.5rem;
+.repoSelectorRow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.repoSelect {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  direction: ltr;
+}
+
+.repoSelect:focus {
+  border-color: #00B8B8;
+  box-shadow: 0 0 0 2px rgba(0, 184, 184, 0.2);
+}
+
+.repoTitleArea {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.repoName {
+  font-family: var(--f-display, 'Readex Pro', sans-serif);
+  font-size: 1.65rem;
   font-weight: 800;
-  margin: 0 0 0.4rem 0;
+  color: #fff;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  color: #fff;
+  direction: ltr;
 }
 
-.repoBadge {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.privateBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(245, 158, 11, 0.12);
+  color: #F59E0B;
+  border: 1px solid rgba(245, 158, 11, 0.3);
   padding: 0.2rem 0.6rem;
-  border-radius: 6px;
-  color: var(--ink-2);
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
 }
 
-/* Complexity Summary Grid */
-.summaryGrid {
+.publicBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(0, 184, 184, 0.12);
+  color: #00B8B8;
+  border: 1px solid rgba(0, 184, 184, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+/* Stats Pill Strip */
+.repoStatsStrip {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #94A3B8;
+}
+
+.statItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Main Interactive Tabs */
+.tabsBar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.65rem 1.15rem;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tabBtn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tabBtn.active {
+  color: #00B8B8;
+  background: rgba(0, 184, 184, 0.08);
+  border-bottom: 2px solid #00B8B8;
+}
+
+/* File Tree & Code Viewer Split Layout */
+.explorerLayout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 320px 1fr;
   gap: 1.25rem;
-  margin-bottom: 2rem;
+  min-height: 580px;
 }
 
-.metricCard {
-  background: rgba(11, 15, 23, 0.7);
+@media (max-width: 900px) {
+  .explorerLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.treePanel {
+  background: rgba(13, 21, 34, 0.85);
+  backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 1.25rem;
+  border-radius: 16px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
-.metricHeader {
+.panelTitleBar {
+  padding: 0.85rem 1.15rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #CBD5E1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.82rem;
-  color: var(--ink-2, #94A3B8);
 }
 
-.metricValue {
-  font-size: 1.75rem;
-  font-weight: 800;
+.breadcrumbBar {
+  padding: 0.6rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: #94A3B8;
+  overflow-x: auto;
+  direction: ltr;
+}
+
+.breadcrumbItem {
+  color: #00B8B8;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.fileList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  max-height: 520px;
+  direction: ltr;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: var(--f-mono, monospace);
+  color: #CBD5E1;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.fileItem:hover {
+  background: rgba(255, 255, 255, 0.05);
   color: #fff;
 }
 
-.metricSub {
-  font-size: 0.78rem;
-  color: var(--ink-3, #64748B);
+.fileItem.selected {
+  background: rgba(0, 184, 184, 0.15);
+  color: #00B8B8;
+  font-weight: 600;
 }
 
-/* Two Columns: Analysis & AI Extraction */
-.splitGrid {
+/* Code Viewer Area */
+.codePanel {
+  background: #090D16;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.codeHeader {
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.codeFileName {
+  font-family: var(--f-mono, monospace);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  direction: ltr;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.codeContentBox {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+  max-height: 520px;
+  background: #070A10;
+  direction: ltr;
+}
+
+.codePre {
+  margin: 0;
+  font-family: 'JetBrains Mono', 'Fira Code', var(--f-mono, monospace);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #E2E8F0;
+  white-space: pre;
+}
+
+/* Commits List Layout */
+.commitsCard {
+  background: rgba(13, 21, 34, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1.5rem;
+}
+
+.commitRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.15s ease;
+  border-radius: 10px;
+}
+
+.commitRow:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.commitAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 184, 184, 0.3);
+}
+
+.commitMsg {
+  font-weight: 600;
+  font-size: 0.94rem;
+  color: #fff;
+  margin-bottom: 0.25rem;
+  direction: ltr;
+  text-align: right;
+}
+
+.commitMeta {
+  font-size: 0.78rem;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  direction: ltr;
+}
+
+.commitSha {
+  font-family: var(--f-mono, monospace);
+  background: rgba(0, 184, 184, 0.1);
+  color: #00B8B8;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+/* Readme Markdown Card */
+.readmeCard {
+  background: rgba(13, 21, 34, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 2rem;
+  line-height: 1.8;
+  color: #CBD5E1;
+}
+
+.readmeBody {
+  font-family: var(--f-body, inherit);
+  white-space: pre-wrap;
+  direction: ltr;
+  font-size: 0.92rem;
+}
+
+/* Capabilities & Synthesis Card */
+.synthesisGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
-@media (max-width: 860px) {
-  .splitGrid {
+@media (max-width: 800px) {
+  .synthesisGrid {
     grid-template-columns: 1fr;
   }
 }
 
-.cardBlock {
-  background: rgba(11, 15, 23, 0.7);
+.synCard {
+  background: rgba(13, 21, 34, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 1.5rem;
 }
 
-.cardBlockTitle {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 1.25rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.fileAnalysisList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.fileItem {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.86rem;
-}
-
-.fileName {
-  font-family: 'IBM Plex Mono', monospace;
-  color: #00B8B8;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.evidenceGeneratedBox {
-  background: rgba(0, 184, 184, 0.04);
-  border: 1px solid rgba(0, 184, 184, 0.2);
-  border-radius: 12px;
-  padding: 1.25rem;
+.langBarWrap {
   margin-top: 1rem;
 }
 
-.evidenceHeader {
+.langBar {
+  display: flex;
+  height: 10px;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.langSeg {
+  height: 100%;
+}
+
+.langLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.82rem;
+}
+
+.langDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Token Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  padding: 1rem;
+}
+
+.modalBox {
+  background: #0D1522;
+  border: 1px solid rgba(0, 184, 184, 0.35);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  animation: popIn 0.2s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modalHeader {
+  padding: 1.25rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.aiTag {
-  background: rgba(0, 184, 184, 0.15);
-  color: #00B8B8;
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  font-size: 0.72rem;
+.modalTitle {
+  font-size: 1.1rem;
   font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.modalBody {
+  padding: 1.5rem;
+}
+
+.modalFooter {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }

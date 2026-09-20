@@ -1,22 +1,21 @@
-/**
- * TopBar — الشريط العلوي الموحّد للمنصة.
- *
- * مطابق 100% لـ prototype.html (.topbar):
- * 1. شعار قُدرة واسم المنصة (ينقل إلى البداية حسب الدور).
- * 2. تبديل الدور السريع: "مشكلتي" (role='c') ↔ "ملفي" (role='u').
- * 3. بيانات المستخدم (الاسم، الرمز الرمزي).
- * 4. زر تبديل الوضع الداكن/الفاتح.
- * 5. شريط الخطوات (Stepper) أثناء التواجد في مسار حل المشكلة (6 خطوات).
- * 6. شريط التبويبات (Subnav) أثناء التواجد في الملف الشخصي وأدلة القدرات (7 تبويبات).
- */
-
-import { useLocation, useNavigate } from 'react-router-dom'
-import { ROUTES } from '../../constants/routes'
-import { useRole } from '../../contexts/useRole'
-import type { Role } from '../../contexts/role-context-types'
-import { useTheme } from '../../contexts/useTheme'
-import { QudraLogo } from '../ui/QudraLogo'
-import styles from './TopBar.module.css'
+import { useLocation, useNavigate } from 'react-router-dom';
+import {
+  FolderGit2,
+  Cpu,
+  ShieldCheck,
+  Sparkles,
+  User,
+  Sun,
+  Moon,
+  Home
+} from 'lucide-react';
+import { ROUTES } from '../../constants/routes';
+import { useRole } from '../../contexts/useRole';
+import type { Role } from '../../contexts/role-context-types';
+import { useTheme } from '../../contexts/useTheme';
+import { QudraLogo } from '../ui/QudraLogo';
+import { ProfileEditorService } from '../../services/profile-editor.service';
+import styles from './TopBar.module.css';
 
 const STEPS = [
   { path: ROUTES.PROBLEM, label: 'المشكلة' },
@@ -25,139 +24,126 @@ const STEPS = [
   { path: ROUTES.EVALUATION, label: 'التقييم' },
   { path: ROUTES.SKILL_DNA, label: 'Skill DNA' },
   { path: ROUTES.RESULT, label: 'النتيجة' },
-]
-
-const SUBNAV_TABS = [
-  { id: 'u_edit', path: '/profile/edit', label: 'البروفايل المهني' },
-  { id: 'u0', path: '/profile/sources', label: 'مصادري' },
-  { id: 'u1', path: '/profile', label: 'ملفي' },
-  { id: 'u3', path: '/profile/evidence', label: 'أدلتي' },
-  { id: 'u6', path: '/profile/timeline', label: 'تطوّري' },
-  { id: 'u2', path: '/profile/gaps', label: 'فجوتي' },
-  { id: 'u4', path: '/profile/opportunities', label: 'الفرص' },
-  { id: 'u5', path: '/profile/passport', label: 'بطاقة الإثبات' },
-]
+];
 
 export function TopBar() {
-  const { role, switchRole, user } = useRole()
-  const { theme, toggleTheme } = useTheme()
-  const location = useLocation()
-  const navigate = useNavigate()
+  const { role, switchRole } = useRole();
+  const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const pathname = location.pathname
+  const pathname = location.pathname;
+  const currentStepIndex = STEPS.findIndex((s) => s.path === pathname);
 
-  // هل نحن في مسار صاحب المشكلة؟
-  const currentStepIndex = STEPS.findIndex((s) => s.path === pathname)
-
-  // هل نحن في مسار صاحب القدرة (الملف)؟
-  const isProfileFlow = pathname.startsWith('/profile')
+  const profile = ProfileEditorService.getProfile();
 
   const handleRoleChange = (newRole: Role) => {
-    switchRole(newRole)
+    switchRole(newRole);
     if (newRole === 'c') {
-      navigate(ROUTES.PROBLEM)
+      navigate('/problems/match-report');
     } else {
-      navigate(ROUTES.PROFILE)
+      navigate('/profile/edit');
     }
-  }
+  };
 
-  const handleBrandClick = () => {
-    if (role === 'c') {
-      navigate(ROUTES.PROBLEM)
-    } else {
-      navigate(ROUTES.PROFILE)
-    }
-  }
+  const navItems = [
+    { label: 'الرئيسية', path: '/', icon: <Home size={15} /> },
+    { label: 'البروفايل المهني', path: '/profile/edit', icon: <User size={15} /> },
+    { label: 'مستكشف الكود و GitHub', path: '/evidence/github/inspector', icon: <FolderGit2 size={15} /> },
+    { label: 'مختبر التحديات', path: '/challenges/sandbox', icon: <Cpu size={15} /> },
+    { label: 'المشكلات والمطابقة', path: '/problems/match-report', icon: <Sparkles size={15} /> },
+    { label: 'جواز القدرات', path: '/passport', icon: <ShieldCheck size={15} /> },
+  ];
 
   return (
-    <div className={styles.topbar} dir="rtl">
+    <header className={styles.topbar} dir="rtl">
       <div className={`wrap ${styles.in}`}>
+        {/* Brand Group */}
         <button
           className={styles.brand}
-          onClick={handleBrandClick}
-          title={role === 'c' ? 'مسار المشكلة' : 'ملفك الشخصي'}
+          onClick={() => navigate('/')}
+          title="قُدرة — منصة إثبات الكفاءات"
         >
-          <QudraLogo size={26} aria-hidden="true" />
-          <span className={styles.nm}>قُدرة</span>
+          <QudraLogo size={32} aria-hidden="true" />
+          <div className={styles.brandTextGroup}>
+            <span className={styles.nm}>قُدرة</span>
+            <span className={styles.tagline}>Evidence Intelligence OS</span>
+          </div>
         </button>
 
+        {/* Center Primary Navigation */}
+        <nav className={styles.centerNav} aria-label="التنقل الرئيسي">
+          {navItems.map((item) => {
+            const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
+            return (
+              <button
+                key={item.path}
+                className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+                onClick={() => navigate(item.path)}
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* Right User & Controls */}
         <div className={styles.whoami}>
-          <span className={styles.navName} id="navName">
-            {user.name || 'حسابك'}
-          </span>
-          <span className={styles.av} id="navAvatar">
-            {user.avatar || 'أ'}
-          </span>
-
-          <button
-            className={styles.themebtn}
-            id="themeToggleBtn"
-            onClick={toggleTheme}
-            aria-label="تبديل الوضع الداكن"
-            title="الوضع الداكن"
-          >
-            {theme === 'dark' ? (
-              <svg
-                viewBox="0 0 24 24"
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.9"
-                strokeLinecap="round"
-                aria-hidden="true"
-              >
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
-              </svg>
-            ) : (
-              <svg
-                viewBox="0 0 24 24"
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.9"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
-              </svg>
-            )}
-          </button>
-
-          <div className={styles.roles} role="tablist" aria-label="تبديل الدور">
+          {/* Role Switcher */}
+          <div className={styles.roles} role="tablist" aria-label="تبديل المنظور">
             <button
               role="tab"
-              id="rC"
-              aria-selected={role === 'c'}
-              onClick={() => handleRoleChange('c')}
-              title="مسار حلّ مشكلة"
-            >
-              مشكلتي
-            </button>
-            <button
-              role="tab"
-              id="rU"
               aria-selected={role === 'u'}
               onClick={() => handleRoleChange('u')}
-              title="ملفك وأدلتك"
+              title="واجهة المهندس وصاحب الكفاءة"
             >
-              ملفي
+              مهندس
+            </button>
+            <button
+              role="tab"
+              aria-selected={role === 'c'}
+              onClick={() => handleRoleChange('c')}
+              title="واجهة الشركات وأصحاب المشكلات"
+            >
+              شركة
             </button>
           </div>
+
+          {/* User Pill */}
+          <div
+            className={styles.userCard}
+            onClick={() => navigate('/profile/edit')}
+            title="فتح وتعديل ملفك الشخصي"
+          >
+            <img
+              src={profile.avatarUrl}
+              alt={profile.fullName}
+              className={styles.av}
+            />
+            <span className={styles.navName}>{profile.fullName.split(' ')[0]}</span>
+          </div>
+
+          {/* Theme Switcher */}
+          <button
+            className={styles.themebtn}
+            onClick={toggleTheme}
+            aria-label="تبديل المظهر"
+            title="تبديل الوضع الداكن/الفاتح"
+          >
+            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+          </button>
         </div>
       </div>
 
-      {/* شريط خطوات مسار المشكلة (Stepper) */}
+      {/* Problem Stepper if inside step-by-step problem flow */}
       {role === 'c' && currentStepIndex !== -1 && (
-        <div className={styles.stepper} id="stepper">
+        <div className={styles.stepper}>
           <div className="wrap">
-            <nav className={styles.stepNav} id="stepNav" aria-label="خطوات المطابقة">
+            <nav className={styles.stepNav} aria-label="خطوات المطابقة">
               {STEPS.map((s, idx) => {
-                const isCurrent = idx === currentStepIndex
-                const isDone = idx < currentStepIndex
+                const isCurrent = idx === currentStepIndex;
+                const isDone = idx < currentStepIndex;
                 return (
                   <button
                     key={s.path}
@@ -168,35 +154,12 @@ export function TopBar() {
                     <span className={styles.n}>{idx + 1}</span>
                     <span>{s.label}</span>
                   </button>
-                )
+                );
               })}
             </nav>
           </div>
         </div>
       )}
-
-      {/* شريط تبويبات الملف الشخصي (Subnav) */}
-      {role === 'u' && isProfileFlow && (
-        <div className={styles.subnav} id="subnav">
-          <div className={`wrap ${styles.subnavInner}`}>
-            {SUBNAV_TABS.map((tab) => {
-              const isCurrent =
-                pathname === tab.path ||
-                (tab.path === '/profile' && pathname === '/profile/')
-              return (
-                <button
-                  key={tab.id}
-                  className={styles.subnavBtn}
-                  aria-current={isCurrent ? 'page' : undefined}
-                  onClick={() => navigate(tab.path)}
-                >
-                  {tab.label}
-                </button>
-              )
-            })}
-          </div>
-        </div>
-      )}
-    </div>
-  )
+    </header>
+  );
 }
