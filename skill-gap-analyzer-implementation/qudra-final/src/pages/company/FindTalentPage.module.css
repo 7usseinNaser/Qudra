@@ -1,0 +1,86 @@
+.headrow {
+  margin-bottom: 2rem;
+}
+
+.formpanel {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 42rem;
+}
+
+.fieldgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.input, .select {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.86rem;
+  color: var(--ink);
+  font-family: var(--f-body);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input:focus, .select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.textarea {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.86rem;
+  color: var(--ink);
+  font-family: var(--f-body);
+  resize: vertical;
+  min-height: 5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  text-align: start;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,46 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+.settingItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--line, #eee);
+  background: var(--page, #fff);
+  cursor: pointer;
+  transition: border-color 0.15s;
+  font-family: inherit;
+  text-align: right;
+  width: 100%;
+  color: var(--ink, #222);
+}
+
+.settingItem:hover { border-color: var(--accent, #00b4a0); }
+
+.settingInfo {
+  flex: 1;
+}
+
+.settingLabel {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.settingDesc {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-3, #999);
+}
+
+.arrow {
+  font-size: 1rem;
+  color: var(--ink-3, #999);
+}

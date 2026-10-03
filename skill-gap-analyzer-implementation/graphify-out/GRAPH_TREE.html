@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>/ — graphify tree viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      margin: 20px 0 0 24px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #1e3a56;
+    }
+    .controls {
+      margin: 20px 0 15px 24px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 8px 18px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    button:active {
+      background: #004085;
+    }
+    #tree-container {
+      width: calc(100vw - 48px); /* Adjust for body margin/padding */
+      height: 85vh;
+      overflow: auto;
+      border-radius: 8px;
+      background: #fff;
+      margin-left: 24px;
+      margin-right: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #ddd;
+    }
+    svg {
+      background: #fff;
+      border-radius: 8px;
+      display: block; /* Important for D3 */
+    }
+    .node circle {
+      stroke-width: 2.5px;
+    }
+    .node text { /* Base style for the <text> container */
+      font: 13px 'Segoe UI', sans-serif;
+      paint-order: stroke fill; /* Ensures text is readable over lines */
+      stroke: #fff; /* White halo */
+      stroke-width: 3px; /* Halo thickness */
+      stroke-linejoin: round;
+      stroke-opacity: 0.85; /* Halo opacity */
+    }
+    .link {
+      fill: none;
+      stroke-opacity: 0.7;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>/ — Knowledge Graph</h1>
+  <div class="controls">
+    <button onclick="expandAll()">Expand All</button>
+    <button onclick="collapseAll()">Collapse All</button>
+    <button onclick="resetView()">Reset View</button>
+  </div>
+  <div id="tree-container">
+    <svg id="tree-svg" width="6000" height="8000"></svg>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const initialJsonData = {"name":"/","total_count":481,"children":[{"name":"alembic","total_count":10,"children":[{"name":"env.py","total_count":4,"children":[{"name":"Run migrations in 'offline' mode. This configures the context with just a URL\u2026","total_count":1,"children":[]},{"name":"Run migrations in 'online' mode. In this scenario we need to create an Engine\u2026","total_count":1,"children":[]},{"name":"run_migrations_offline()","total_count":1,"children":[]},{"name":"run_migrations_online()","total_count":1,"children":[]}]},{"name":"versions","total_count":6,"children":[{"name":"c866348b018b_add_capabilities_user_capabilities_.py","total_count":2,"children":[{"name":"downgrade()","total_count":1,"children":[]},{"name":"upgrade()","total_count":1,"children":[]}]},{"name":"d98129e410a1_add_problems_and_analysis_tables.py","total_count":2,"children":[{"name":"downgrade()","total_count":1,"children":[]},{"name":"upgrade()","total_count":1,"children":[]}]},{"name":"e198ea0acdd6_create_users_table.py","total_count":2,"children":[{"name":"downgrade()","total_count":1,"children":[]},{"name":"upgrade()","total_count":1,"children":[]}]}]}]},{"name":"app","total_count":230,"children":[{"name":"ai","total_count":21,"children":[{"name":"prompts","total_count":1,"children":[{"name":"problem_analysis.py","total_count":1,"children":[]}]},{"name":"provider.py","total_count":15,"children":[{"name":".analyze_problem()","total_count":1,"children":[]},{"name":".analyze_problem()","total_count":1,"children":[]},{"name":".evaluate_oral_answer()","total_count":1,"children":[]},{"name":".evaluate_oral_answer()","total_count":1,"children":[]},{"name":".evaluate_practical_submission()","total_count":1,"children":[]},{"name":".evaluate_practical_submission()","total_count":1,"children":[]},{"name":".generate_oral_question()","total_count":1,"children":[]},{"name":".generate_oral_question()","total_count":1,"children":[]},{"name":"AIProvider","total_count":1,"children":[]},{"name":"Analyze problem description and return validated structured analysis.","total_count":1,"children":[]},{"name":"Deterministic mock provider for unit testing and offline development.","total_count":1,"children":[]},{"name":"Evaluate practical challenge submission code/answer.","total_count":1,"children":[]},{"name":"Evaluate spoken transcript for correctness, depth, relevance, completeness.","total_count":1,"children":[]},{"name":"Generate a technical oral assessment question for a capability.","total_count":1,"children":[]},{"name":"MockAIProvider","total_count":1,"children":[]}]},{"name":"speech_to_text.py","total_count":5,"children":[{"name":".transcribe()","total_count":1,"children":[]},{"name":".transcribe()","total_count":1,"children":[]},{"name":"MockSpeechToTextProvider","total_count":1,"children":[]},{"name":"SpeechToTextProvider","total_count":1,"children":[]},{"name":"Transcribe audio bytes to text transcript.","total_count":1,"children":[]}]}]},{"name":"core","total_count":25,"children":[{"name":"config.py","total_count":3,"children":[{"name":"Application settings, loaded from environment variables / .env file. Nothing\u2026","total_count":1,"children":[]},{"name":"get_settings()","total_count":1,"children":[]},{"name":"Settings","total_count":1,"children":[]}]},{"name":"exceptions.py","total_count":16,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":"AppError","total_count":1,"children":[]},{"name":"Base class for all expected, handled application errors.","total_count":1,"children":[]},{"name":"CapabilityAlreadyExistsError","total_count":1,"children":[]},{"name":"CapabilityNotFoundError","total_count":1,"children":[]},{"name":"EmailAlreadyRegisteredError","total_count":1,"children":[]},{"name":"EvidenceValidationError","total_count":1,"children":[]},{"name":"InactiveUserError","total_count":1,"children":[]},{"name":"InvalidCredentialsError","total_count":1,"children":[]},{"name":"NotAuthenticatedError","total_count":1,"children":[]},{"name":"ProblemAccessDeniedError","total_count":1,"children":[]},{"name":"ProblemAnalysisFailedError","total_count":1,"children":[]},{"name":"ProblemNotFoundError","total_count":1,"children":[]},{"name":"ProjectAccessDeniedError","total_count":1,"children":[]},{"name":"ProjectCapabilityAlreadyExistsError","total_count":1,"children":[]},{"name":"ProjectNotFoundError","total_count":1,"children":[]}]},{"name":"security.py","total_count":5,"children":[{"name":"create_access_token()","total_count":1,"children":[]},{"name":"decode_access_token()","total_count":1,"children":[]},{"name":"hash_password()","total_count":1,"children":[]},{"name":"Return the subject (user id) encoded in the token, or None if invalid.","total_count":1,"children":[]},{"name":"verify_password()","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"db","total_count":28,"children":[{"name":"base.py","total_count":2,"children":[{"name":"Base","total_count":1,"children":[]},{"name":"Shared declarative base for all ORM models.","total_count":1,"children":[]}]},{"name":"models","total_count":23,"children":[{"name":"capability.py","total_count":1,"children":[{"name":"Capability","total_count":1,"children":[]}]},{"name":"challenge.py","total_count":3,"children":[{"name":"Challenge","total_count":1,"children":[]},{"name":"ChallengeSubmission","total_count":1,"children":[]},{"name":"ChallengeSubmissionStatus","total_count":1,"children":[]}]},{"name":"evidence.py","total_count":4,"children":[{"name":"A single piece of evidence contributing to a user's Capability Profile.","total_count":1,"children":[]},{"name":"Evidence","total_count":1,"children":[]},{"name":"EvidenceType","total_count":1,"children":[]},{"name":"VerificationStatus","total_count":1,"children":[]}]},{"name":"oral_assessment.py","total_count":2,"children":[{"name":"OralAssessment","total_count":1,"children":[]},{"name":"OralAssessmentStatus","total_count":1,"children":[]}]},{"name":"problem.py","total_count":4,"children":[{"name":"Problem","total_count":1,"children":[]},{"name":"ProblemAnalysis","total_count":1,"children":[]},{"name":"ProblemCapability","total_count":1,"children":[]},{"name":"ProblemStatus","total_count":1,"children":[]}]},{"name":"project.py","total_count":3,"children":[{"name":"A user's portfolio project. Phase 2 scope: a simple owned record usable as\u2026","total_count":1,"children":[]},{"name":"Project","total_count":1,"children":[]},{"name":"ProjectStatus","total_count":1,"children":[]}]},{"name":"project_capability.py","total_count":2,"children":[{"name":"ProjectCapability","total_count":1,"children":[]},{"name":"Tags a Capability as demonstrated/used by a Project.","total_count":1,"children":[]}]},{"name":"user.py","total_count":1,"children":[{"name":"User","total_count":1,"children":[]}]},{"name":"user_capability.py","total_count":2,"children":[{"name":"A user's capability-profile entry. `strength` reflects the strength/quality of\u2026","total_count":1,"children":[]},{"name":"UserCapability","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"session.py","total_count":2,"children":[{"name":"FastAPI dependency yielding a request-scoped DB session.","total_count":1,"children":[]},{"name":"get_db()","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"dependencies","total_count":2,"children":[{"name":"auth.py","total_count":1,"children":[{"name":"get_current_user()","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"main.py","total_count":2,"children":[{"name":"app_error_handler()","total_count":1,"children":[]},{"name":"unhandled_exception_handler()","total_count":1,"children":[]}]},{"name":"repositories","total_count":49,"children":[{"name":"capability_repository.py","total_count":6,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".get_by_id()","total_count":1,"children":[]},{"name":".get_by_name()","total_count":1,"children":[]},{"name":".list_all()","total_count":1,"children":[]},{"name":"CapabilityRepository","total_count":1,"children":[]}]},{"name":"challenge_repository.py","total_count":7,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".create_submission()","total_count":1,"children":[]},{"name":".get_by_id()","total_count":1,"children":[]},{"name":".get_submission_by_id()","total_count":1,"children":[]},{"name":".list_all()","total_count":1,"children":[]},{"name":"ChallengeRepository","total_count":1,"children":[]}]},{"name":"evidence_repository.py","total_count":4,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".list_for_user()","total_count":1,"children":[]},{"name":"EvidenceRepository","total_count":1,"children":[]}]},{"name":"oral_assessment_repository.py","total_count":6,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".get_by_id()","total_count":1,"children":[]},{"name":".list_by_user()","total_count":1,"children":[]},{"name":".update_evaluation()","total_count":1,"children":[]},{"name":"OralAssessmentRepository","total_count":1,"children":[]}]},{"name":"problem_repository.py","total_count":7,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".get_by_id()","total_count":1,"children":[]},{"name":".list_by_user()","total_count":1,"children":[]},{"name":".save_analysis()","total_count":1,"children":[]},{"name":".update_status()","total_count":1,"children":[]},{"name":"ProblemRepository","total_count":1,"children":[]}]},{"name":"project_repository.py","total_count":8,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".add_capability()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".get_by_id()","total_count":1,"children":[]},{"name":".get_project_capability()","total_count":1,"children":[]},{"name":".list_for_owner()","total_count":1,"children":[]},{"name":".update()","total_count":1,"children":[]},{"name":"ProjectRepository","total_count":1,"children":[]}]},{"name":"user_capability_repository.py","total_count":5,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".get()","total_count":1,"children":[]},{"name":".list_for_user_with_capability()","total_count":1,"children":[]},{"name":".upsert_add_strength()","total_count":1,"children":[]},{"name":"UserCapabilityRepository","total_count":1,"children":[]}]},{"name":"user_repository.py","total_count":5,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".get_by_email()","total_count":1,"children":[]},{"name":".get_by_id()","total_count":1,"children":[]},{"name":"UserRepository","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"routers","total_count":22,"children":[{"name":"auth.py","total_count":2,"children":[{"name":"login()","total_count":1,"children":[]},{"name":"register()","total_count":1,"children":[]}]},{"name":"capabilities.py","total_count":4,"children":[{"name":"# NOTE: open to any authenticated user for now \u2014 no role/admin system","total_count":1,"children":[]},{"name":"create_capability()","total_count":1,"children":[]},{"name":"get_capability()","total_count":1,"children":[]},{"name":"list_capabilities()","total_count":1,"children":[]}]},{"name":"evidence.py","total_count":2,"children":[{"name":"create_evidence()","total_count":1,"children":[]},{"name":"list_my_evidence()","total_count":1,"children":[]}]},{"name":"health.py","total_count":1,"children":[{"name":"health_check()","total_count":1,"children":[]}]},{"name":"problems.py","total_count":5,"children":[{"name":"analyze_problem()","total_count":1,"children":[]},{"name":"create_problem()","total_count":1,"children":[]},{"name":"get_problem()","total_count":1,"children":[]},{"name":"get_problem_analysis()","total_count":1,"children":[]},{"name":"list_problems()","total_count":1,"children":[]}]},{"name":"projects.py","total_count":5,"children":[{"name":"add_project_capability()","total_count":1,"children":[]},{"name":"create_project()","total_count":1,"children":[]},{"name":"get_project()","total_count":1,"children":[]},{"name":"list_my_projects()","total_count":1,"children":[]},{"name":"update_project()","total_count":1,"children":[]}]},{"name":"users.py","total_count":2,"children":[{"name":"read_current_user()","total_count":1,"children":[]},{"name":"read_my_capability_profile()","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"schemas","total_count":27,"children":[{"name":"capability.py","total_count":3,"children":[{"name":"CapabilityCreate","total_count":1,"children":[]},{"name":"CapabilityRead","total_count":1,"children":[]},{"name":"UserCapabilityRead","total_count":1,"children":[]}]},{"name":"challenge.py","total_count":4,"children":[{"name":"ChallengeCreate","total_count":1,"children":[]},{"name":"ChallengeRead","total_count":1,"children":[]},{"name":"ChallengeSubmissionRead","total_count":1,"children":[]},{"name":"ChallengeSubmitRequest","total_count":1,"children":[]}]},{"name":"evidence.py","total_count":2,"children":[{"name":"EvidenceCreate","total_count":1,"children":[]},{"name":"EvidenceRead","total_count":1,"children":[]}]},{"name":"oral_assessment.py","total_count":3,"children":[{"name":"OralAssessmentQuestionRead","total_count":1,"children":[]},{"name":"OralAssessmentRead","total_count":1,"children":[]},{"name":"OralQuestionCreateRequest","total_count":1,"children":[]}]},{"name":"problem.py","total_count":6,"children":[{"name":"ProblemAnalysisRead","total_count":1,"children":[]},{"name":"ProblemAnalysisResponse","total_count":1,"children":[]},{"name":"ProblemCreate","total_count":1,"children":[]},{"name":"ProblemRead","total_count":1,"children":[]},{"name":"RequiredCapabilityAnalysis","total_count":1,"children":[]},{"name":"RequiredCapabilityRead","total_count":1,"children":[]}]},{"name":"project.py","total_count":5,"children":[{"name":"ProjectCapabilityCreate","total_count":1,"children":[]},{"name":"ProjectCapabilityRead","total_count":1,"children":[]},{"name":"ProjectCreate","total_count":1,"children":[]},{"name":"ProjectRead","total_count":1,"children":[]},{"name":"ProjectUpdate","total_count":1,"children":[]}]},{"name":"token.py","total_count":1,"children":[{"name":"Token","total_count":1,"children":[]}]},{"name":"user.py","total_count":2,"children":[{"name":"UserCreate","total_count":1,"children":[]},{"name":"UserRead","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"services","total_count":47,"children":[{"name":"auth_service.py","total_count":5,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".authenticate()","total_count":1,"children":[]},{"name":".create_token_for_user()","total_count":1,"children":[]},{"name":".register()","total_count":1,"children":[]},{"name":"AuthService","total_count":1,"children":[]}]},{"name":"capability_service.py","total_count":5,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".get()","total_count":1,"children":[]},{"name":".list_all()","total_count":1,"children":[]},{"name":"CapabilityService","total_count":1,"children":[]}]},{"name":"challenge_service.py","total_count":7,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".create_challenge()","total_count":1,"children":[]},{"name":".get_challenge()","total_count":1,"children":[]},{"name":".list_challenges()","total_count":1,"children":[]},{"name":".submit_challenge()","total_count":1,"children":[]},{"name":"ChallengeNotFoundError","total_count":1,"children":[]},{"name":"ChallengeService","total_count":1,"children":[]}]},{"name":"evidence_service.py","total_count":5,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".list_for_user()","total_count":1,"children":[]},{"name":"EvidenceService","total_count":1,"children":[]},{"name":"Logs evidence and maintains the user's Capability Profile. NOTE: capability\u2026","total_count":1,"children":[]}]},{"name":"oral_evidence_service.py","total_count":6,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".start_assessment()","total_count":1,"children":[]},{"name":".submit_assessment()","total_count":1,"children":[]},{"name":"OralAssessmentAccessDeniedError","total_count":1,"children":[]},{"name":"OralAssessmentNotFoundError","total_count":1,"children":[]},{"name":"OralEvidenceService","total_count":1,"children":[]}]},{"name":"problem_analysis_service.py","total_count":11,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":"._get_or_create_capability()","total_count":1,"children":[]},{"name":"._to_problem_read()","total_count":1,"children":[]},{"name":".analyze_problem()","total_count":1,"children":[]},{"name":".create_problem()","total_count":1,"children":[]},{"name":".get_analysis()","total_count":1,"children":[]},{"name":".get_problem()","total_count":1,"children":[]},{"name":".list_user_problems()","total_count":1,"children":[]},{"name":"Normalize capability name to prevent duplicate variants (e.g. Backend\u2026","total_count":1,"children":[]},{"name":"ProblemAnalysisService","total_count":1,"children":[]},{"name":"slugify_name()","total_count":1,"children":[]}]},{"name":"project_service.py","total_count":7,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".add_capability()","total_count":1,"children":[]},{"name":".create()","total_count":1,"children":[]},{"name":".get_owned()","total_count":1,"children":[]},{"name":".list_for_owner()","total_count":1,"children":[]},{"name":".update()","total_count":1,"children":[]},{"name":"ProjectService","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"utils","total_count":6,"children":[{"name":"storage.py","total_count":6,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".save_file()","total_count":1,"children":[]},{"name":".save_file()","total_count":1,"children":[]},{"name":"LocalStorageService","total_count":1,"children":[]},{"name":"Save file bytes and return access URL/path.","total_count":1,"children":[]},{"name":"StorageService","total_count":1,"children":[]}]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"qudra-final","total_count":193,"children":[{"name":"package.json","total_count":44,"children":[{"name":"@types/react","total_count":1,"children":[]},{"name":"@types/react","total_count":1,"children":[]},{"name":"@types/react-dom","total_count":1,"children":[]},{"name":"@types/react-dom","total_count":1,"children":[]},{"name":"@typescript-eslint/eslint-plugin","total_count":1,"children":[]},{"name":"@typescript-eslint/eslint-plugin","total_count":1,"children":[]},{"name":"@typescript-eslint/parser","total_count":1,"children":[]},{"name":"@typescript-eslint/parser","total_count":1,"children":[]},{"name":"@vitejs/plugin-react","total_count":1,"children":[]},{"name":"@vitejs/plugin-react","total_count":1,"children":[]},{"name":"build","total_count":1,"children":[]},{"name":"codeburn","total_count":1,"children":[]},{"name":"codeburn","total_count":1,"children":[]},{"name":"dependencies","total_count":1,"children":[]},{"name":"dev","total_count":1,"children":[]},{"name":"devDependencies","total_count":1,"children":[]},{"name":"eslint","total_count":1,"children":[]},{"name":"eslint","total_count":1,"children":[]},{"name":"eslint-plugin-react-hooks","total_count":1,"children":[]},{"name":"eslint-plugin-react-hooks","total_count":1,"children":[]},{"name":"eslint-plugin-react-refresh","total_count":1,"children":[]},{"name":"eslint-plugin-react-refresh","total_count":1,"children":[]},{"name":"headroom-ai","total_count":1,"children":[]},{"name":"headroom-ai","total_count":1,"children":[]},{"name":"lint","total_count":1,"children":[]},{"name":"motion","total_count":1,"children":[]},{"name":"motion","total_count":1,"children":[]},{"name":"name","total_count":1,"children":[]},{"name":"preview","total_count":1,"children":[]},{"name":"private","total_count":1,"children":[]},{"name":"react","total_count":1,"children":[]},{"name":"react","total_count":1,"children":[]},{"name":"react-dom","total_count":1,"children":[]},{"name":"react-dom","total_count":1,"children":[]},{"name":"react-router-dom","total_count":1,"children":[]},{"name":"react-router-dom","total_count":1,"children":[]},{"name":"scripts","total_count":1,"children":[]},{"name":"type","total_count":1,"children":[]},{"name":"typecheck","total_count":1,"children":[]},{"name":"typescript","total_count":1,"children":[]},{"name":"typescript","total_count":1,"children":[]},{"name":"version","total_count":1,"children":[]},{"name":"vite","total_count":1,"children":[]},{"name":"vite","total_count":1,"children":[]}]},{"name":"src","total_count":113,"children":[{"name":"app","total_count":19,"children":[{"name":"App.tsx","total_count":1,"children":[{"name":"App()","total_count":1,"children":[]}]},{"name":"providers","total_count":1,"children":[{"name":"AppProviders.tsx","total_count":1,"children":[{"name":"AppProviders()","total_count":1,"children":[]}]}]},{"name":"router","total_count":17,"children":[{"name":"routes.tsx","total_count":17,"children":[{"name":"CandidateDetailPage","total_count":1,"children":[]},{"name":"CandidatesPage","total_count":1,"children":[]},{"name":"CapabilitiesPage","total_count":1,"children":[]},{"name":"ComparePage","total_count":1,"children":[]},{"name":"EvaluationPage","total_count":1,"children":[]},{"name":"InvitePage","total_count":1,"children":[]},{"name":"LoginPage","total_count":1,"children":[]},{"name":"ProblemInputPage","total_count":1,"children":[]},{"name":"ProfilePage","total_count":1,"children":[]},{"name":"ReRankingPage","total_count":1,"children":[]},{"name":"ResultPage","total_count":1,"children":[]},{"name":"RoleSelectPage","total_count":1,"children":[]},{"name":"RouteFallback()","total_count":1,"children":[]},{"name":"router","total_count":1,"children":[]},{"name":"SignUpPage","total_count":1,"children":[]},{"name":"SimulationPage","total_count":1,"children":[]},{"name":"SkillDnaPage","total_count":1,"children":[]}]}]}]},{"name":"components","total_count":11,"children":[{"name":"layout","total_count":7,"children":[{"name":"BottomNav.tsx","total_count":2,"children":[{"name":"BottomNav()","total_count":1,"children":[]},{"name":"NavItem","total_count":1,"children":[]}]},{"name":"MainLayout.tsx","total_count":1,"children":[{"name":"MainLayout()","total_count":1,"children":[]}]},{"name":"SplashScreen.tsx","total_count":1,"children":[{"name":"SplashScreen()","total_count":1,"children":[]}]},{"name":"TopBar.tsx","total_count":3,"children":[{"name":"STEPS","total_count":1,"children":[]},{"name":"SUBNAV_TABS","total_count":1,"children":[]},{"name":"TopBar()","total_count":1,"children":[]}]}]},{"name":"modals","total_count":2,"children":[{"name":"InviteModal.tsx","total_count":2,"children":[{"name":"InviteModal()","total_count":1,"children":[]},{"name":"InviteModalProps","total_count":1,"children":[]}]}]},{"name":"ui","total_count":2,"children":[{"name":"QudraLogo.tsx","total_count":2,"children":[{"name":"QudraLogo()","total_count":1,"children":[]},{"name":"QudraLogoProps","total_count":1,"children":[]}]}]}]},{"name":"constants","total_count":2,"children":[{"name":"routes.ts","total_count":2,"children":[{"name":"RouteKey","total_count":1,"children":[]},{"name":"ROUTES","total_count":1,"children":[]}]}]},{"name":"contexts","total_count":27,"children":[{"name":"ProblemContext.tsx","total_count":7,"children":[{"name":"CapabilityItem","total_count":1,"children":[]},{"name":"DEFAULT_CAPABILITIES","total_count":1,"children":[]},{"name":"DEFAULT_PROBLEM_TEXT","total_count":1,"children":[]},{"name":"ProblemContext","total_count":1,"children":[]},{"name":"ProblemContextValue","total_count":1,"children":[]},{"name":"ProblemProvider()","total_count":1,"children":[]},{"name":"useProblem()","total_count":1,"children":[]}]},{"name":"RoleContext.tsx","total_count":7,"children":[{"name":"DEFAULT_USER","total_count":1,"children":[]},{"name":"Role","total_count":1,"children":[]},{"name":"RoleContext","total_count":1,"children":[]},{"name":"RoleContextValue","total_count":1,"children":[]},{"name":"RoleProvider()","total_count":1,"children":[]},{"name":"UserInfo","total_count":1,"children":[]},{"name":"useRole()","total_count":1,"children":[]}]},{"name":"ThemeContext.tsx","total_count":6,"children":[{"name":"getInitialTheme()","total_count":1,"children":[]},{"name":"Theme","total_count":1,"children":[]},{"name":"ThemeContext","total_count":1,"children":[]},{"name":"ThemeContextValue","total_count":1,"children":[]},{"name":"ThemeProvider()","total_count":1,"children":[]},{"name":"useTheme()","total_count":1,"children":[]}]},{"name":"UserContext.tsx","total_count":7,"children":[{"name":"DEFAULT_USER","total_count":1,"children":[]},{"name":"UserContext","total_count":1,"children":[]},{"name":"UserContextValue","total_count":1,"children":[]},{"name":"UserProfile","total_count":1,"children":[]},{"name":"UserProvider()","total_count":1,"children":[]},{"name":"UserRole","total_count":1,"children":[]},{"name":"useUser()","total_count":1,"children":[]}]}]},{"name":"pages","total_count":52,"children":[{"name":"auth","total_count":2,"children":[{"name":"LoginPage.tsx","total_count":1,"children":[{"name":"LoginPage()","total_count":1,"children":[]}]},{"name":"SignUpPage.tsx","total_count":1,"children":[{"name":"SignUpPage()","total_count":1,"children":[]}]}]},{"name":"candidates","total_count":12,"children":[{"name":"CandidateDetailPage.tsx","total_count":6,"children":[{"name":"BASE_EVIDENCES","total_count":1,"children":[]},{"name":"CandidateDetailPage()","total_count":1,"children":[]},{"name":"NEW_EVIDENCE","total_count":1,"children":[]},{"name":"PATH_STEPS","total_count":1,"children":[]},{"name":"ReasonItem","total_count":1,"children":[]},{"name":"REASONS","total_count":1,"children":[]}]},{"name":"CandidatesPage.tsx","total_count":3,"children":[{"name":"CandidateData","total_count":1,"children":[]},{"name":"CANDIDATES_DATA","total_count":1,"children":[]},{"name":"CandidatesPage()","total_count":1,"children":[]}]},{"name":"ReRankingPage.tsx","total_count":3,"children":[{"name":"FINAL_CANDS","total_count":1,"children":[]},{"name":"FinalCand","total_count":1,"children":[]},{"name":"ReRankingPage()","total_count":1,"children":[]}]}]},{"name":"capabilities","total_count":2,"children":[{"name":"CapabilitiesPage.tsx","total_count":2,"children":[{"name":"CapabilitiesPage()","total_count":1,"children":[]},{"name":"renderIcon()","total_count":1,"children":[]}]}]},{"name":"compare","total_count":5,"children":[{"name":"ComparePage.tsx","total_count":5,"children":[{"name":"ARMS","total_count":1,"children":[]},{"name":"CMP_CAPS","total_count":1,"children":[]},{"name":"CMP_PEOPLE","total_count":1,"children":[]},{"name":"CmpPerson","total_count":1,"children":[]},{"name":"ComparePage()","total_count":1,"children":[]}]}]},{"name":"dna","total_count":5,"children":[{"name":"SkillDnaPage.tsx","total_count":5,"children":[{"name":"ARMS","total_count":1,"children":[]},{"name":"DNA_COLORS","total_count":1,"children":[]},{"name":"DNA_ITEMS","total_count":1,"children":[]},{"name":"DnaItem","total_count":1,"children":[]},{"name":"SkillDnaPage()","total_count":1,"children":[]}]}]},{"name":"evaluation","total_count":6,"children":[{"name":"EvaluationPage.tsx","total_count":6,"children":[{"name":"CRITERIA_DATA","total_count":1,"children":[]},{"name":"CriterionItem","total_count":1,"children":[]},{"name":"EvaluationPage()","total_count":1,"children":[]},{"name":"STRENGTHS_DATA","total_count":1,"children":[]},{"name":"TASK_META","total_count":1,"children":[]},{"name":"WEAKNESSES_DATA","total_count":1,"children":[]}]}]},{"name":"invite","total_count":1,"children":[{"name":"InvitePage.tsx","total_count":1,"children":[{"name":"InvitePage()","total_count":1,"children":[]}]}]},{"name":"landing","total_count":3,"children":[{"name":"LandingPage.tsx","total_count":3,"children":[{"name":"ClaimItem","total_count":1,"children":[]},{"name":"CLAIMS","total_count":1,"children":[]},{"name":"LandingPage()","total_count":1,"children":[]}]}]},{"name":"onboarding","total_count":1,"children":[{"name":"RoleSelectPage.tsx","total_count":1,"children":[{"name":"RoleSelectPage()","total_count":1,"children":[]}]}]},{"name":"problem","total_count":4,"children":[{"name":"ProblemInputPage.tsx","total_count":4,"children":[{"name":"EXAMPLES","total_count":1,"children":[]},{"name":"PHRASES","total_count":1,"children":[]},{"name":"ProblemInputPage()","total_count":1,"children":[]},{"name":"STAGES","total_count":1,"children":[]}]}]},{"name":"profile","total_count":5,"children":[{"name":"ProfilePage.tsx","total_count":5,"children":[{"name":"MY_EVIDENCES","total_count":1,"children":[]},{"name":"ProfilePage()","total_count":1,"children":[]},{"name":"ProfileTab","total_count":1,"children":[]},{"name":"TL_DATA","total_count":1,"children":[]},{"name":"TL_MONTHS","total_count":1,"children":[]}]}]},{"name":"result","total_count":3,"children":[{"name":"ResultPage.tsx","total_count":3,"children":[{"name":"MATCH_ROWS","total_count":1,"children":[]},{"name":"MatchRow","total_count":1,"children":[]},{"name":"ResultPage()","total_count":1,"children":[]}]}]},{"name":"simulation","total_count":3,"children":[{"name":"SimulationPage.tsx","total_count":3,"children":[{"name":"SIM_TASKS","total_count":1,"children":[]},{"name":"SimulationPage()","total_count":1,"children":[]},{"name":"TaskItem","total_count":1,"children":[]}]}]}]},{"name":"vite-env.d.ts","total_count":1,"children":[{"name":"*.module.css","total_count":1,"children":[]}]},{"name":"main.tsx","total_count":1,"children":[]}]},{"name":"tsconfig.json","total_count":22,"children":[{"name":"allowImportingTsExtensions","total_count":1,"children":[]},{"name":"baseUrl","total_count":1,"children":[]},{"name":"compilerOptions","total_count":1,"children":[]},{"name":"forceConsistentCasingInFileNames","total_count":1,"children":[]},{"name":"include","total_count":1,"children":[]},{"name":"isolatedModules","total_count":1,"children":[]},{"name":"jsx","total_count":1,"children":[]},{"name":"lib","total_count":1,"children":[]},{"name":"module","total_count":1,"children":[]},{"name":"moduleDetection","total_count":1,"children":[]},{"name":"moduleResolution","total_count":1,"children":[]},{"name":"noEmit","total_count":1,"children":[]},{"name":"noFallthroughCasesInSwitch","total_count":1,"children":[]},{"name":"noImplicitAny","total_count":1,"children":[]},{"name":"noUnusedLocals","total_count":1,"children":[]},{"name":"noUnusedParameters","total_count":1,"children":[]},{"name":"paths","total_count":1,"children":[]},{"name":"skipLibCheck","total_count":1,"children":[]},{"name":"strict","total_count":1,"children":[]},{"name":"strictNullChecks","total_count":1,"children":[]},{"name":"target","total_count":1,"children":[]},{"name":"useDefineForClassFields","total_count":1,"children":[]}]},{"name":"tsconfig.node.json","total_count":12,"children":[{"name":"allowSyntheticDefaultImports","total_count":1,"children":[]},{"name":"compilerOptions","total_count":1,"children":[]},{"name":"include","total_count":1,"children":[]},{"name":"isolatedModules","total_count":1,"children":[]},{"name":"lib","total_count":1,"children":[]},{"name":"module","total_count":1,"children":[]},{"name":"moduleDetection","total_count":1,"children":[]},{"name":"moduleResolution","total_count":1,"children":[]},{"name":"noEmit","total_count":1,"children":[]},{"name":"skipLibCheck","total_count":1,"children":[]},{"name":"strict","total_count":1,"children":[]},{"name":"target","total_count":1,"children":[]}]},{"name":"eslint.config.js","total_count":1,"children":[]},{"name":"vite.config.ts","total_count":1,"children":[]}]},{"name":"tests","total_count":48,"children":[{"name":"conftest.py","total_count":3,"children":[{"name":"_create_schema()","total_count":1,"children":[]},{"name":"client()","total_count":1,"children":[]},{"name":"db_session()","total_count":1,"children":[]}]},{"name":"test_auth.py","total_count":12,"children":[{"name":"_login()","total_count":1,"children":[]},{"name":"_register()","total_count":1,"children":[]},{"name":"test_current_user_with_invalid_token_rejected()","total_count":1,"children":[]},{"name":"test_current_user_with_valid_token()","total_count":1,"children":[]},{"name":"test_current_user_without_token_rejected()","total_count":1,"children":[]},{"name":"test_login_nonexistent_user_rejected()","total_count":1,"children":[]},{"name":"test_login_success_returns_token()","total_count":1,"children":[]},{"name":"test_login_wrong_password_rejected()","total_count":1,"children":[]},{"name":"test_register_duplicate_email_rejected()","total_count":1,"children":[]},{"name":"test_register_invalid_email_rejected()","total_count":1,"children":[]},{"name":"test_register_short_password_rejected()","total_count":1,"children":[]},{"name":"test_register_success()","total_count":1,"children":[]}]},{"name":"test_capabilities.py","total_count":6,"children":[{"name":"_register_and_login()","total_count":1,"children":[]},{"name":"test_capabilities_require_auth()","total_count":1,"children":[]},{"name":"test_create_and_list_capability()","total_count":1,"children":[]},{"name":"test_create_duplicate_capability_rejected()","total_count":1,"children":[]},{"name":"test_get_capability_not_found()","total_count":1,"children":[]},{"name":"test_get_user_capability_profile_empty()","total_count":1,"children":[]}]},{"name":"test_evidence.py","total_count":8,"children":[{"name":"_auth_headers()","total_count":1,"children":[]},{"name":"test_create_oral_evidence_updates_capability_profile()","total_count":1,"children":[]},{"name":"test_evidence_unknown_capability_rejected()","total_count":1,"children":[]},{"name":"test_list_my_evidence()","total_count":1,"children":[]},{"name":"test_multiple_evidence_accumulates_strength()","total_count":1,"children":[]},{"name":"test_project_evidence_for_unowned_project_rejected()","total_count":1,"children":[]},{"name":"test_project_evidence_requires_owned_project()","total_count":1,"children":[]},{"name":"test_project_evidence_without_project_id_rejected()","total_count":1,"children":[]}]},{"name":"test_health.py","total_count":1,"children":[{"name":"test_health_check()","total_count":1,"children":[]}]},{"name":"test_problems.py","total_count":11,"children":[{"name":".analyze_problem()","total_count":1,"children":[]},{"name":"_register_and_login()","total_count":1,"children":[]},{"name":"FailingAIProvider","total_count":1,"children":[]},{"name":"test_analyze_problem_success()","total_count":1,"children":[]},{"name":"test_create_problem_success()","total_count":1,"children":[]},{"name":"test_create_problem_unauthorized()","total_count":1,"children":[]},{"name":"test_duplicate_capability_prevention_via_slug_normalization()","total_count":1,"children":[]},{"name":"test_get_own_problem()","total_count":1,"children":[]},{"name":"test_get_problem_analysis()","total_count":1,"children":[]},{"name":"test_list_user_problems_pagination()","total_count":1,"children":[]},{"name":"test_prevent_access_to_other_user_problem()","total_count":1,"children":[]}]},{"name":"test_projects.py","total_count":6,"children":[{"name":"_auth_headers()","total_count":1,"children":[]},{"name":"test_add_capability_to_project()","total_count":1,"children":[]},{"name":"test_create_list_get_project()","total_count":1,"children":[]},{"name":"test_project_not_found()","total_count":1,"children":[]},{"name":"test_project_not_owned_by_other_user_forbidden()","total_count":1,"children":[]},{"name":"test_update_project()","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]}]};
+
+    function transformData(jsonData) {
+        // Helper function to recursively build the children structure
+        function processNode(node, parentL1StageName) {
+            let displayName = node.name;
+            // Append total_count if it exists and is not already in the name
+            if (node.total_count !== undefined) {
+                if (!/\(Total Count: \d+\)$/.test(displayName)) {
+                    displayName += ` (Total Count: ${node.total_count})`;
+                }
+            }
+
+            const newNode = { name: displayName };
+
+            if (parentL1StageName === "Root") {
+                 newNode.originalStageName = node.name;
+            } else {
+                newNode.originalStageName = parentL1StageName;
+            }
+
+            if (node.children && node.children.length > 0) {
+                const stageNameToPass = (parentL1StageName === "Root") ? node.name : parentL1StageName;
+                newNode.children = node.children.map(child => processNode(child, stageNameToPass));
+            }
+
+            return newNode;
+        }
+
+        let rootDisplayName = jsonData.name;
+        if (jsonData.total_count !== undefined && !/\(Total Count: \d+\)$/.test(rootDisplayName)) {
+            rootDisplayName += ` (Total Count: ${jsonData.total_count})`;
+        }
+
+        return {
+            name: rootDisplayName,
+            originalStageName: "Root",
+            children: (jsonData.children || []).map(child => processNode(child, "Root"))
+        };
+    }
+
+    const treeData = transformData(initialJsonData);
+
+    // Auto-populated phaseColors: every depth-1 child of the root gets
+    // a stable colour from a bigger palette so all top-level dirs are
+    // distinguishable.
+    const PALETTE = [
+      ["#3498DB","#2980B9","#AED6F1"], ["#2ECC71","#27AE60","#A9DFBF"],
+      ["#E74C3C","#C0392B","#F5B7B1"], ["#9B59B6","#8E44AD","#D7BDE2"],
+      ["#F39C12","#D68910","#FAD7A0"], ["#1ABC9C","#117864","#A2D9CE"],
+      ["#34495E","#1B2631","#ABB2B9"], ["#E67E22","#BA4A00","#F5CBA7"],
+      ["#16A085","#0E6655","#A2D9CE"], ["#D35400","#A04000","#EDBB99"],
+      ["#7F8C8D","#566573","#D5DBDB"], ["#C0392B","#7B241C","#F5B7B1"],
+      ["#2E86C1","#1B4F72","#A9CCE3"], ["#28B463","#196F3D","#A9DFBF"],
+      ["#AF7AC5","#6C3483","#D2B4DE"],
+    ];
+    const phaseColors = { "Root": { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+                          "Default": { fill: "#BDC3C7", stroke: "#95A5A6", collapsedFill: "#ECF0F1" } };
+    (initialJsonData.children || []).forEach((c, i) => {
+      const pal = PALETTE[i % PALETTE.length];
+      phaseColors[c.name] = { fill: pal[0], stroke: pal[1], collapsedFill: pal[2] };
+    });
+
+    const levelSpecificPalettes = {
+      0: { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+      2: { fill: "#6ab04c", stroke: "#508a38", collapsedFill: "#a3d391" },
+      3: { fill: "#f0932b", stroke: "#d0730f", collapsedFill: "#f6c07e" },
+      4: { fill: "#be2edd", stroke: "#a01cb3", collapsedFill: "#e08bf2" },
+      5: { fill: "#00a8ff", stroke: "#007ac1", collapsedFill: "#74d2ff" },
+      6: { fill: "#e55039", stroke: "#c23620", collapsedFill: "#f09a8d" },
+      default: { fill: "#747d8c", stroke: "#57606f", collapsedFill: "#a4b0be" }
+    };
+
+    const svgElement = d3.select("#tree-svg");
+    const initialSvgWidth = +svgElement.attr("width");
+    const initialSvgHeight = +svgElement.attr("height");
+    const margin = { top: 40, right: 120, bottom: 80, left: 450 };
+    let width = initialSvgWidth - margin.left - margin.right;
+    let height = initialSvgHeight - margin.top - margin.bottom;
+    const duration = 500;
+    let nodeCounter = 0;
+    const g = svgElement.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const treemap = d3.tree().nodeSize([40, 0]);
+    let rootNode = d3.hierarchy(treeData, d => d.children);
+    rootNode.x0 = 0;
+    rootNode.y0 = 0;
+
+    if (rootNode.children) {
+      rootNode.children.forEach(d_child => {
+        if (d_child.children) { collapseBranch(d_child); }
+      });
+    }
+    updateTree(rootNode);
+
+    function collapseBranch(d) { if (d.children) { d._children = d.children; d._children.forEach(collapseBranch); d.children = null; } }
+    function expandBranch(d) { if (d._children) { d.children = d._children; d._children = null; } if (d.children) { d.children.forEach(expandBranch); } }
+    window.expandAll = () => { expandBranch(rootNode); updateTree(rootNode); };
+    window.collapseAll = () => { if (rootNode.children) { rootNode.children.forEach(collapseBranch); } updateTree(rootNode); };
+    window.resetView = () => { if (rootNode.children) { rootNode.children.forEach(d_child => { if (d_child.children || d_child._children) { collapseBranch(d_child); } }); } if (rootNode._children && !rootNode.children) { rootNode.children = rootNode._children; rootNode._children = null; } updateTree(rootNode); };
+
+    function updateTree(source) {
+      const treeLayoutData = treemap(rootNode);
+      let nodes = treeLayoutData.descendants();
+      let links = treeLayoutData.descendants().slice(1);
+
+      let minX = 0;
+      let maxX = 0;
+      if (nodes.length > 0) {
+        minX = d3.min(nodes, d => d.x);
+        maxX = d3.max(nodes, d => d.x);
+      }
+
+      let neededHeight = Math.max(initialSvgHeight, maxX - minX + margin.top + margin.bottom + 100);
+      svgElement.transition().duration(duration / 2).attr("height", neededHeight);
+      g.transition().duration(duration / 2).attr("transform", `translate(${margin.left},${margin.top - minX + 40})`);
+
+      nodes.forEach(d => { d.y = d.depth * 400; }); // Adjust horizontal separation if needed
+
+      const node = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++nodeCounter));
+      const nodeEnter = node.enter().append('g')
+        .attr('class', d => "node" + (d.children || d._children ? " node--internal" : " node--leaf") + (d._children ? " _children" : ""))
+        .attr('transform', d => `translate(${source.y0},${source.x0})`)
+        .on('click', (event, d) => { if (d.children) { d._children = d.children; d.children = null; } else if (d._children) { d.children = d._children; d._children = null; } updateTree(d); })
+        .style('cursor', d => (d.children || d._children) ? 'pointer' : 'default');
+
+      nodeEnter.append('circle').attr('r', 1e-6);
+
+      nodeEnter.append('text')
+        .attr('dy', '.35em')
+        .attr('x', d => d.children || d._children ? -14 : 14)
+        .attr('text-anchor', d => d.children || d._children ? 'end' : 'start')
+        .style("fill-opacity", 1e-6)
+        .call(wrapText, 380);
+
+      const nodeUpdate = nodeEnter.merge(node);
+      nodeUpdate.transition().duration(duration)
+        .attr('transform', d => `translate(${d.y},${d.x})`)
+        .attr('class', d => "node" + (d.children ? " node--internal" : " node--leaf") + (d._children ? " node--internal _children" : ""));
+
+      nodeUpdate.select('circle').attr('r', 8.5)
+        .style('fill', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            if (d._children) return palette.collapsedFill;
+            if (d.children) return palette.fill;
+            return "#fff";
+        })
+        .style('stroke', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            return palette.stroke;
+        });
+      nodeUpdate.select('text').style("fill-opacity", 1).call(wrapText, 380);
+
+      const nodeExit = node.exit().transition().duration(duration).attr('transform', d => `translate(${source.y},${source.x})`).remove();
+      nodeExit.select('circle').attr('r', 1e-6);
+      nodeExit.select('text').style('fill-opacity', 1e-6);
+
+      const link = g.selectAll('path.link').data(links, d => d.id);
+      const linkEnter = link.enter().insert('path', "g").attr('class', 'link').attr('d', d => { const o = { x: source.x0, y: source.y0 }; return diagonal(o, o); });
+
+      linkEnter.merge(link).transition().duration(duration).attr('d', d => diagonal(d, d.parent))
+        .style('stroke', d => {
+            const sourceNode = d.parent;
+            if (!sourceNode) return phaseColors.Default.stroke;
+            const l1AncestorName = sourceNode.data.originalStageName;
+            const colorPalette = phaseColors[l1AncestorName] || phaseColors.Default;
+            return colorPalette.stroke;
+        });
+      link.exit().transition().duration(duration).attr('d', d => { const o = { x: source.x, y: source.y }; return diagonal(o, o); }).remove();
+      nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+    }
+
+    function diagonal(s, d) { return `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`; }
+
+    function wrapText(textElements, maxWidth) {
+        const textPartColors = {
+            name: '#343a40',
+            count: '#0056b3'
+        };
+        const countRegex = /(\s\(Total Count: \d+\))$/;
+
+        textElements.each(function () {
+            const textD3 = d3.select(this);
+            const originalNodeText = textD3.datum().data.name;
+            const x = parseFloat(textD3.attr("x") || 0);
+            const initialDy = textD3.attr("dy");
+            const textAnchor = textD3.attr("text-anchor");
+            const lineHeight = 1.1;
+
+            textD3.text(null);
+
+            let namePart = originalNodeText;
+            let countPartText = "";
+
+            const countMatch = originalNodeText.match(countRegex);
+            if (countMatch && originalNodeText.endsWith(countMatch[0])) {
+                namePart = originalNodeText.substring(0, originalNodeText.length - countMatch[0].length).trim();
+                countPartText = countMatch[0].trim();
+            }
+
+            const tokens = [];
+            namePart.split(/\s+/).filter(Boolean).forEach(word => {
+                tokens.push({ text: word, type: 'name' });
+            });
+            if (countPartText) {
+                tokens.push({ text: countPartText, type: 'count' });
+            }
+
+            if (tokens.length === 0 && originalNodeText) {
+                tokens.push({ text: originalNodeText, type: 'name' });
+            }
+
+            let currentTspan = textD3.append("tspan").attr("x", x).attr("dy", initialDy);
+            if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+
+            let lineTokens = [];
+
+            for (let i = 0; i < tokens.length; i++) {
+                const tokenObj = tokens[i];
+
+                lineTokens.push(tokenObj);
+                currentTspan.text(lineTokens.map(t => t.text).join(" "));
+
+                if (currentTspan.node().getComputedTextLength() > maxWidth && lineTokens.length > 1) {
+                    lineTokens.pop();
+
+                    currentTspan.text(null);
+                    lineTokens.forEach((prevToken, idx) => {
+                        currentTspan.append("tspan")
+                            .text((idx > 0 ? " " : "") + prevToken.text)
+                            .style("fill", textPartColors[prevToken.type] || textPartColors.name)
+                            .style("font-weight", prevToken.type === 'count' ? "bold" : "normal");
+                    });
+
+                    lineTokens = [tokenObj];
+                    currentTspan = textD3.append("tspan").attr("x", x).attr("dy", lineHeight + "em");
+                    if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+                }
+            }
+
+            currentTspan.text(null);
+            lineTokens.forEach((token, idx) => {
+                currentTspan.append("tspan")
+                    .text((idx > 0 ? " " : "") + token.text)
+                    .style("fill", textPartColors[token.type] || textPartColors.name)
+                    .style("font-weight", token.type === 'count' ? "bold" : "normal");
+            });
+
+            if (textD3.selectAll("tspan > tspan").empty() && textD3.select("tspan").text().length === 0 && originalNodeText) {
+                let t = textD3.select("tspan");
+                let displayText = originalNodeText;
+                t.text(displayText).style("fill", textPartColors.name);
+                if (t.node() && t.node().getComputedTextLength() > maxWidth && displayText.length > 20) {
+                    let estimatedChars = Math.floor(maxWidth / (t.node().getComputedTextLength()/displayText.length) );
+                    displayText = displayText.substring(0, Math.max(0, estimatedChars - 3)) + "...";
+                    t.text(displayText);
+                }
+            }
+        });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+.header {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--line, #D5DEDE);
+  border-radius: var(--r, 16px);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1 1 20rem;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--surface-2, #F5F8F8);
+  border: 2px solid var(--line, #D5DEDE);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink-2, #3F4C4C);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.avatarVerified {
+  border-color: var(--proof, #00B8B8);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink, #141A1A);
+  margin: 0;
+}
+
+.headline {
+  font-size: 0.9rem;
+  color: var(--ink-2, #3F4C4C);
+  margin: 0;
+}
+
+.username {
+  font-family: var(--fm, monospace);
+  font-size: 0.78rem;
+  color: var(--ink-3, #6B7A7A);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

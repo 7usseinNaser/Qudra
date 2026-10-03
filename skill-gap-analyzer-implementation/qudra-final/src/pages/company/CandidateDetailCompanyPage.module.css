@@ -1,0 +1,181 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent-soft, rgba(0,180,160,0.1));
+  color: var(--accent, #00b4a0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.metaRow {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.metaChip {
+  font-size: 0.82rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  background: var(--card, #f5f5f5);
+  border: 1px solid var(--line, #eee);
+}
+
+.section {
+  padding: 1.25rem;
+  border-radius: var(--r, 14px);
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.capList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.capRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.capInfo {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.capSkill {
+  font-weight: 500;
+}
+
+.gapLabel {
+  font-size: 0.75rem;
+  color: var(--gapc, #e0a800);
+}
+
+.capMatch {
+  min-width: 120px;
+}
+
+.capScore {
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.capBar {
+  width: 100%;
+}
+
+.capEvidence {
+  font-size: 0.8rem;
+  color: var(--ink-3, #999);
+}
+
+.evCount {
+  white-space: nowrap;
+}
+
+.evList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.evRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line, #eee);
+}
+
+.evRow:last-child {
+  border-bottom: none;
+}
+
+.evSource {
+  font-size: 0.82rem;
+  font-weight: 500;
+  min-width: 200px;
+}
+
+.evType {
+  font-size: 0.78rem;
+  color: var(--ink-3, #999);
+}
+
+.evDate {
+  font-size: 0.75rem;
+  color: var(--ink-3, #999);
+}
+
+.gapList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gapItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gapNote {
+  font-size: 0.8rem;
+  color: var(--ink-3, #999);
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 56rem) {
+  .header { flex-direction: column; align-items: flex-start; }
+  .capRow { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .capMatch { width: 100%; }
+}

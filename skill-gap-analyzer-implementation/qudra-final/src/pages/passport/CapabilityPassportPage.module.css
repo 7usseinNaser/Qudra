@@ -1,0 +1,195 @@
+/* Capability Passport Styles — QUDRA */
+
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 5rem;
+  direction: rtl;
+}
+
+.passportCard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.passportHeader {
+  background: linear-gradient(135deg, #051A1B 0%, #0C3435 50%, #051A1B 100%);
+  padding: 1.75rem 2rem;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  border-bottom: 2px solid rgba(0, 184, 184, 0.3);
+}
+
+.passportTitleArea {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.passportLogo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(0, 184, 184, 0.15);
+  border: 1px solid rgba(0, 184, 184, 0.4);
+  display: grid;
+  place-items: center;
+  color: #00B8B8;
+}
+
+.passportMainTitle {
+  font-family: var(--fh, 'Readex Pro', sans-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.passportSubTitle {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.2rem 0 0;
+}
+
+.passportBody {
+  padding: 2rem;
+}
+
+.gridTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.dnaSection {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.dnaTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.dnaScoreBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  font-size: 0.88rem;
+}
+
+.dnaItem {
+  margin-bottom: 0.9rem;
+}
+
+.dnaItem:last-child {
+  margin-bottom: 0;
+}
+
+.dnaItemLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  margin-bottom: 0.3rem;
+}
+
+.actionPanel {
+  background: rgba(0, 184, 184, 0.05);
+  border: 1px solid rgba(0, 184, 184, 0.25);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.actionPanelContent h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.actionPanelContent p {
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  margin: 0;
+  max-width: 36rem;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.provenTag {
+  background: rgba(0, 184, 184, 0.1);
+  border: 1px solid rgba(0, 184, 184, 0.3);
+  color: #00B8B8;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.claimedTag {
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  color: #FFC107;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.passportFooter {
+  background: var(--surface-2);
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+@media (max-width: 768px) {
+  .gridTwo {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,9 @@
+export type VerificationLevel = 'v1' | 'v2' | 'v3'
+export const VERIFICATION_LABELS: Record<VerificationLevel, string> = { v1: 'موثّق', v2: 'مرتبط', v3: 'مُعلن' }
+export type EvidenceSource = 'github' | 'project' | 'challenge' | 'peer' | 'cert' | 'claim' | 'leetcode' | 'qudra'
+export type ReadinessStatus = 'ready' | 'near' | 'needs'
+export const READINESS_LABELS: Record<ReadinessStatus, string> = { ready: 'جاهز الآن', near: 'قريب من الجاهزية', needs: 'يحتاج دليلًا' }
+export type TagVariant = 'proven' | 'claimed'
+export type EvidenceWeight = 1 | 2 | 3 | 4 | 5
+export type CapabilityPriority = 'أساسية' | 'مساندة'
+export type ID = string

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+.eslintcache
+*.log
+scratch/
+.system_generated/
+.agents/

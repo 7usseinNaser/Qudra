@@ -1,0 +1,98 @@
+.card {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--line, #D5DEDE);
+  border-radius: var(--r, 12px);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.16s ease, transform 0.1s ease;
+}
+
+.card:hover {
+  border-color: var(--proof, #00B8B8);
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ink-2, #3F4C4C);
+  background: var(--surface-2, #F5F8F8);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink, #141A1A);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.description {
+  font-size: 0.84rem;
+  color: var(--ink-2, #3F4C4C);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.5rem;
+  background: var(--surface-2, #F5F8F8);
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.78rem;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.metaLabel {
+  color: var(--ink-3, #6B7A7A);
+  font-size: 0.7rem;
+}
+
+.metaVal {
+  font-family: var(--fm, monospace);
+  font-weight: 600;
+  color: var(--ink, #141A1A);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--ink-3, #6B7A7A);
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--line-soft, #E4EBEB);
+}
+
+.link {
+  color: var(--proof-text, #00787A);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

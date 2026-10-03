@@ -1,0 +1,20 @@
+/* ═════════ MainLayout.module.css ═════════ */
+
+.layout {
+  min-height: 100vh;
+  background: var(--page);
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+}
+
+@media (max-width: 56rem) {
+  .main {
+    /* مساحة أسفل المحتوى لمنع حجب الأزرار خلف شريط التنقل السفلي */
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+}

@@ -1,0 +1,43 @@
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: var(--surface, #FFFFFF);
+  border: 1px dashed var(--line, #D5DEDE);
+  border-radius: var(--r, 12px);
+  margin: 1.5rem 0;
+}
+
+.iconWrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface-2, #F5F8F8);
+  border: 1px solid var(--line-soft, #E4EBEB);
+  display: grid;
+  place-items: center;
+  color: var(--ink-3, #6B7A7A);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink, #141A1A);
+  margin: 0 0 0.4rem;
+}
+
+.description {
+  font-size: 0.88rem;
+  color: var(--ink-2, #3F4C4C);
+  max-width: 44ch;
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+}
+
+.action {
+  margin-top: 0.5rem;
+}

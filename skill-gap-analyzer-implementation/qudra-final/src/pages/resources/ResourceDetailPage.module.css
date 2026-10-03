@@ -1,0 +1,116 @@
+.headrow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.provider {
+  font-size: 0.86rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 18rem;
+  gap: 1.5rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel {
+  padding: 1.2rem;
+}
+
+.paneltitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 0.8rem;
+}
+
+.text {
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.inforow {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+  gap: 0.8rem;
+}
+
+.infoitem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.infolabel {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.infoval {
+  font-size: 0.86rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.stars {
+  color: var(--gap);
+}
+
+.gaplink {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--proof-tint);
+  border: 1px solid var(--proof-line);
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.gaplink:hover {
+  background: var(--proof);
+  color: var(--on-ink);
+}
+
+.ctapanel {
+  position: sticky;
+  top: 5rem;
+}
+
+.ctatext {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin: 0 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .ctapanel {
+    position: static;
+  }
+}

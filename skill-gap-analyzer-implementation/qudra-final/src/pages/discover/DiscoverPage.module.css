@@ -1,0 +1,92 @@
+.container {
+  max-width: var(--maxw, 74rem);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ink, #141A1A);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--ink-2, #3F4C4C);
+  margin: 0;
+}
+
+.controlsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--line, #D5DEDE);
+  border-radius: var(--r, 12px);
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--surface-2, #F5F8F8);
+  border: 1px solid var(--line, #D5DEDE);
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  flex: 1 1 18rem;
+}
+
+.searchBox input {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--ink, #141A1A);
+  width: 100%;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  background: var(--surface-2, #F5F8F8);
+  border: 1px solid var(--line, #D5DEDE);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.82rem;
+  font-family: inherit;
+  color: var(--ink-2, #3F4C4C);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filterBtnActive {
+  background: var(--proof-tint, #DFF4F4);
+  color: var(--proof-text, #00787A);
+  border-color: var(--proof-line, #8FDCDC);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+}

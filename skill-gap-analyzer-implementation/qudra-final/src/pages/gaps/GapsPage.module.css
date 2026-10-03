@@ -1,0 +1,107 @@
+.headrow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.secrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.sectitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: 1rem;
+}
+
+.card {
+  text-align: start;
+  background: var(--surface);
+  border: 1px solid var(--gap-line);
+  border-radius: var(--r);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+  min-width: 0;
+}
+
+.card:hover {
+  box-shadow: var(--sh-card);
+  border-color: var(--gap);
+}
+
+.cardhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.cardname {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.impact {
+  font-size: 0.84rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.missing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.misslabel {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.missitem {
+  font-size: 0.78rem;
+  background: var(--gap-tint);
+  color: var(--gap-text);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.action {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+  border-top: 1px dashed var(--line-soft);
+  padding-top: 0.6rem;
+}
+
+@media (max-width: 768px) {
+  .headrow {
+    flex-direction: column;
+  }
+}

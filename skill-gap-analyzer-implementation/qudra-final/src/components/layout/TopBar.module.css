@@ -1,0 +1,253 @@
+/* ═════════ TopBar.module.css ═════════
+   Modern Luxury Glassmorphic TopBar — QUDRA
+*/
+
+.topbar {
+  background: rgba(10, 15, 24, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
+.in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.brandTextGroup {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.nm {
+  font-weight: 800;
+  font-size: 1.35rem;
+  font-family: var(--f-display, 'Readex Pro', sans-serif);
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.tagline {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #00B8B8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Center Nav Links */
+.centerNav {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.3rem 0.5rem;
+  border-radius: 9999px;
+}
+
+@media (max-width: 960px) {
+  .centerNav {
+    display: none;
+  }
+}
+
+.navLink {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.navLink.active {
+  color: #00B8B8;
+  background: rgba(0, 184, 184, 0.12);
+}
+
+/* Right Actions */
+.whoami {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.userCard:hover {
+  background: rgba(0, 184, 184, 0.08);
+  border-color: rgba(0, 184, 184, 0.3);
+}
+
+.navName {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #E2E8F0;
+}
+
+.av {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #00B8B8;
+}
+
+.themebtn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94A3B8;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+}
+
+.themebtn:hover {
+  color: #00B8B8;
+  background: rgba(0, 184, 184, 0.1);
+  border-color: rgba(0, 184, 184, 0.3);
+}
+
+.roles {
+  display: flex;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.roles button {
+  border: none;
+  background: transparent;
+  color: #94A3B8;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.16s;
+  font-family: inherit;
+}
+
+.roles button[aria-selected="true"] {
+  background: rgba(0, 184, 184, 0.2);
+  color: #00B8B8;
+  font-weight: 700;
+}
+
+/* Stepper for problem flow */
+.stepper {
+  background: rgba(8, 12, 20, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 0;
+}
+
+.stepNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  overflow-x: auto;
+}
+
+.stepBtn {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-family: inherit;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.stepBtn:hover {
+  color: #fff;
+}
+
+.stepBtn[aria-current="step"] {
+  color: #00B8B8;
+  font-weight: 700;
+  background: rgba(0, 184, 184, 0.1);
+}
+
+.stepBtn.done {
+  color: #10B981;
+}
+
+.n {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.stepBtn[aria-current="step"] .n {
+  background: #00B8B8;
+  color: #000;
+}
+
+.stepBtn.done .n {
+  background: #10B981;
+  color: #000;
+}
