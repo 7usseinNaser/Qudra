@@ -1,0 +1,366 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  background: var(--bg, #071415);
+  color: var(--ink, #F1F5F9);
+  overflow: hidden;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: rgba(11, 15, 23, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--ink-2, #94A3B8);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.2s ease;
+}
+
+.backBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ink, #fff);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.challengeTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink, #fff);
+  margin: 0;
+}
+
+.metaPills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.badgeDiff {
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badgeWeight {
+  background: rgba(0, 184, 184, 0.15);
+  color: #00B8B8;
+  border: 1px solid rgba(0, 184, 184, 0.3);
+}
+
+.actionsArea {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.langSelect {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--ink, #fff);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.langSelect:focus {
+  border-color: #00B8B8;
+}
+
+/* Workspace Split */
+.workspace {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+@media (max-width: 960px) {
+  .workspace {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+}
+
+/* Right Pane: Details */
+.detailsPane {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 15, 23, 0.5);
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sectionBlock h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #00B8B8;
+  margin: 0 0 0.6rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.descText {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-2, #CBD5E1);
+  margin: 0;
+}
+
+.instructionList, .constraintsList {
+  margin: 0;
+  padding-right: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: var(--ink-2, #CBD5E1);
+  line-height: 1.5;
+}
+
+.constraintsList li {
+  color: #F59E0B;
+}
+
+/* Left Pane: Code & Terminal */
+.editorPane {
+  display: flex;
+  flex-direction: column;
+  background: #0B0F17;
+  overflow: hidden;
+}
+
+.editorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+  color: var(--ink-2, #94A3B8);
+}
+
+.codeAreaWrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  background: #080C14;
+}
+
+.lineNumbers {
+  width: 44px;
+  padding: 1rem 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.25);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  user-select: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.codeTextarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #E2E8F0;
+  font-family: 'IBM Plex Mono', 'Fira Code', monospace;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  padding: 1rem 1.25rem;
+  resize: none;
+  white-space: pre;
+  tab-size: 2;
+  overflow: auto;
+  direction: ltr;
+  text-align: left;
+}
+
+/* Terminal / Test Results Bottom Pane */
+.terminalPane {
+  height: 240px;
+  background: #05080E;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terminalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink, #fff);
+}
+
+.testResultsGrid {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.testCaseCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.84rem;
+}
+
+.testCaseCard.passed {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.testCaseCard.failed {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.04);
+}
+
+.testCaseTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink, #fff);
+}
+
+.testCaseMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2, #94A3B8);
+}
+
+/* Success Celebration Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.celebrationCard {
+  background: #0B0F17;
+  border: 1px solid rgba(0, 184, 184, 0.4);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 520px;
+  padding: 2.2rem;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 184, 184, 0.25);
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.celebrationIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 184, 184, 0.15);
+  color: #00B8B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  border: 2px solid rgba(0, 184, 184, 0.4);
+}
+
+.celebrationTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+}
+
+.celebrationDesc {
+  font-size: 0.92rem;
+  color: var(--ink-2, #94A3B8);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+}
+
+.scoreImpactBox {
+  background: rgba(0, 184, 184, 0.06);
+  border: 1px dashed rgba(0, 184, 184, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.impactMetric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.impactVal {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #00B8B8;
+}
+
+.impactLabel {
+  font-size: 0.75rem;
+  color: var(--ink-2, #94A3B8);
+}

@@ -1,0 +1,53 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  width: 100%;
+  text-align: start;
+  font-family: inherit;
+  color: inherit;
+  transition: border-color 0.16s;
+}
+
+.card:not(:disabled):hover {
+  border-color: var(--proof-text);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.top h4 {
+  font-size: 0.95rem;
+  font-family: var(--f-display);
+  margin: 0;
+}
+
+.desc {
+  font-size: 0.83rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tech {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: var(--soft);
+  color: var(--ink-2);
+  font-family: var(--f-mono);
+}

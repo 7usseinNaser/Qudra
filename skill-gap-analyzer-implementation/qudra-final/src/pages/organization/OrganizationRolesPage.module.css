@@ -1,0 +1,50 @@
+.roleList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.roleCard {
+  padding: 1.25rem;
+  border-radius: var(--r, 14px);
+}
+
+.roleHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.roleName {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.permList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.permItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--ink-2, #666);
+}
+
+.permIcon {
+  color: var(--accent, #00b4a0);
+  font-weight: 700;
+}
+
+@media (max-width: 56rem) {
+  .roleList { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,172 @@
+/* ShareBox.module.css — مطابق لـ .sharecard/#shareBox في prototype.html */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 88;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  background: rgba(11, 26, 27, 0.55);
+  backdrop-filter: blur(3px);
+  animation: fade 0.25s ease both;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 40rem;
+  background: var(--card, #fff);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -25px rgba(0, 0, 0, 0.55);
+  animation: pop 0.22s cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.1rem 1.3rem;
+  border-bottom: 1px solid var(--line, #E5ECEC);
+}
+
+.head h3 { font-size: 1.05rem; font-weight: 600; color: var(--ink, #142020); }
+.head p { font-size: 0.82rem; color: var(--ink-2, #5A6E6E); margin-top: 0.15rem; }
+
+.close {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--ink-3, #8A9A9A);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  min-width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+}
+.close:hover { color: var(--ink, #142020); }
+
+.body { padding: 1.3rem; }
+
+/* بطاقة المشاركة الداكنة */
+.card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  color: #EAF6F6;
+  background: radial-gradient(120% 100% at 85% 0%, #114C5F 0%, #08303E 55%, #04202A 100%);
+  padding: 1.5rem 1.6rem 1.3rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.10;
+  background: radial-gradient(40% 60% at 12% 90%, #FFC107, transparent 70%);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  position: relative;
+  z-index: 1;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #00B8B8;
+  color: #06282A;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  flex: none;
+}
+
+.top h4 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+.top p { font-size: 0.82rem; color: #8CB8CC; margin-top: 0.1rem; }
+
+.logo {
+  width: 36px;
+  height: 36px;
+  margin-inline-start: auto;
+  opacity: 0.9;
+  background: radial-gradient(circle, #00B8B8 40%, transparent 41%);
+  border-radius: 50%;
+}
+
+.mid {
+  display: grid;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 34rem) {
+  .mid { grid-template-columns: 1fr auto; align-items: center; }
+}
+
+.sig svg { width: 100%; max-width: 230px; height: auto; overflow: visible; }
+
+.stats { display: flex; gap: 1.4rem; }
+
+.val {
+  display: block;
+  font-family: var(--f-mono, monospace);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #EAF6F6;
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+}
+
+.key {
+  display: block;
+  font-size: 0.72rem;
+  color: #8CB8CC;
+  margin-top: 0.1rem;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  z-index: 1;
+}
+
+.tag { font-size: 0.85rem; color: #33E0E0; font-weight: 600; }
+.url { font-size: 0.72rem; color: #6796AC; font-family: var(--f-mono, monospace); direction: ltr; }
+
+.privacyNote {
+  text-align: center;
+  margin-top: 0.9rem;
+  font-size: 0.82rem;
+  color: var(--ink-2, #5A6E6E);
+}
+
+.footer {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0 1.3rem 1.3rem;
+  justify-content: flex-end;
+}
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay, .sheet { animation: none; }
+}

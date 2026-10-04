@@ -1,0 +1,54 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.card {
+  padding: 1.25rem;
+  border-radius: var(--r, 14px);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.accountIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-soft, rgba(0,180,160,0.1));
+  color: var(--accent, #00b4a0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.accountInfo { flex: 1; }
+.accountName { font-size: 0.95rem; font-weight: 600; margin: 0; }
+.accountPerms { font-size: 0.78rem; color: var(--ink-3, #999); }
+
+.cardBody {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line, #eee);
+}
+
+.syncTime {
+  font-size: 0.75rem;
+  color: var(--ink-3, #999);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}

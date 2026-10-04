@@ -1,0 +1,158 @@
+.headrow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.typegrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9rem), 1fr));
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.typecard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1.2rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+  min-width: 0;
+}
+
+.typecard:hover:not(:disabled) {
+  box-shadow: var(--sh-card);
+  border-color: var(--proof-line);
+}
+
+.typecard:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.typeicon {
+  font-size: 1.5rem;
+}
+
+.typename {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.typecount {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.sectiontitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+.opplist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.oppcard {
+  text-align: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+  min-width: 0;
+}
+
+.oppcard:hover {
+  box-shadow: var(--sh-card);
+  border-color: var(--proof-line);
+}
+
+.oppcardhead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.oppinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.opptitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.opporg {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.matchbadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.matchnum {
+  font-family: var(--f-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.matchlabel {
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+
+.oppmeta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  flex-wrap: wrap;
+}
+
+.oppwhy {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  margin: 0;
+  border-top: 1px dashed var(--line-soft);
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .headrow {
+    flex-direction: column;
+  }
+  .typegrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

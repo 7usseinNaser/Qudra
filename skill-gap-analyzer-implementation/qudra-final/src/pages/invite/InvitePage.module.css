@@ -1,0 +1,119 @@
+/* ═════════ InvitePage.module.css ═════════
+   مطابق حرفياً لـ prototype.html (#inv)
+*/
+
+.invScreen {
+  min-height: 100vh;
+  background: var(--page);
+  padding: 3rem 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner {
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.skip {
+  position: absolute;
+  top: 1.5rem;
+  inset-inline-start: 1.5rem;
+  background: none;
+  border: 0;
+  color: var(--ink-2);
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.skip:hover {
+  color: var(--ink);
+}
+
+.invhead {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.invav {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  flex: none;
+}
+
+.invhead h1 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0.2rem 0;
+}
+
+.invbox {
+  padding: 1.3rem;
+}
+
+.sumtxt {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.hr {
+  height: 1px;
+  background: var(--soft);
+  margin: 0.9rem 0;
+}
+
+.invmsg {
+  padding: 1.2rem;
+  margin-top: 0.9rem;
+  background: var(--soft);
+}
+
+.invmsg p {
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.6;
+  margin: 0.4rem 0 0;
+  font-style: italic;
+}
+
+.invact {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.8rem 0 0.8rem;
+  justify-content: center;
+}
+
+.cta {
+  min-width: 12rem;
+  min-height: 48px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.96rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 26px -10px rgba(0, 120, 122, 0.65);
+  transition: all 0.18s ease;
+  font-family: inherit;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  background: #00696b;
+}

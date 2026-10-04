@@ -1,0 +1,317 @@
+/* CapabilitiesPage.module.css — منقول حرفياً من prototype.html */
+
+.pgrid {
+  display: grid;
+  gap: 1.4rem;
+}
+
+@media(min-width: 60rem) {
+  .pgrid {
+    grid-template-columns: 1fr 21rem;
+    align-items: start;
+  }
+}
+
+.pmain {
+  min-width: 0;
+}
+
+.pside {
+  display: grid;
+  gap: .8rem;
+}
+
+.sumbox {
+  padding: 1.1rem 1.3rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--sh-1);
+}
+
+.sumrow {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.sumrow .lbl {
+  font-family: var(--fm);
+  font-size: .68rem;
+  letter-spacing: .08em;
+  color: var(--ink-3);
+  display: block;
+}
+
+.sumtxt {
+  font-size: 1rem;
+  color: var(--ink);
+  margin-top: .3rem;
+  max-width: 52ch;
+  line-height: 1.7;
+}
+
+.cat {
+  font-family: var(--fm);
+  font-size: .72rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-radius: 999px;
+  padding: .3rem .8rem;
+  white-space: nowrap;
+}
+
+/* ═══════ بطاقات القدرات المطلوبة ═══════ */
+.skgrid {
+  display: grid;
+  gap: .7rem;
+}
+
+@media(min-width: 44rem) {
+  .skgrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.sk {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.05rem 1.15rem;
+  box-shadow: var(--sh-1);
+  display: grid;
+  gap: .5rem;
+}
+
+.sk .h {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+
+.sk .ic {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.sk .ic svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 1.8;
+}
+
+.sk h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.sk .req {
+  margin-inline-start: auto;
+  font-family: var(--fm);
+  font-size: .64rem;
+  letter-spacing: .04em;
+  padding: .15rem .5rem;
+  border-radius: 5px;
+  background: var(--ink);
+  color: var(--on-ink, #FFFFFF);
+}
+
+.sk .req.opt {
+  background: var(--soft);
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+}
+
+.sk q {
+  font-size: .83rem;
+  color: var(--ink-2);
+  display: block;
+  padding: .55rem .8rem;
+  background: var(--soft);
+  border-radius: 10px;
+  border-inline-start: 2px solid var(--line-2);
+  quotes: "«" "»";
+}
+
+.provebox {
+  margin-top: 1.4rem;
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: .5rem;
+  padding: 1.8rem 1.4rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--accent-soft), var(--card));
+  border: 1px solid var(--accent-line);
+}
+
+.provebox h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.provebox p {
+  color: var(--ink-2);
+  font-size: .92rem;
+  max-width: 54ch;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.provebox .btn {
+  margin-top: .6rem;
+}
+
+/* ═══════ أولوية القدرات ═══════ */
+.pcard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: var(--sh-1);
+}
+
+.pcard h3 {
+  font-size: 1rem;
+  margin-bottom: .9rem;
+}
+
+.prio {
+  display: grid;
+  gap: .8rem;
+  margin-bottom: .85rem;
+}
+
+.pr {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .75rem;
+  align-items: start;
+}
+
+.prbar {
+  width: 34px;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--soft);
+  overflow: hidden;
+  margin-top: .45rem;
+  flex: none;
+}
+
+.prbar i {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  border-radius: 4px;
+}
+
+.prbar.med i {
+  background: var(--line-2);
+}
+
+.pr b {
+  display: block;
+  font-size: .9rem;
+  font-weight: 600;
+  margin-bottom: .1rem;
+}
+
+.pr em {
+  display: block;
+  font-style: normal;
+  font-size: .81rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.prnote {
+  font-size: .79rem;
+  color: var(--ink-3);
+  line-height: 1.65;
+  padding-top: .7rem;
+  border-top: 1px solid var(--soft);
+  margin: 0;
+}
+
+.exbox2 {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: var(--sh-1);
+}
+
+.exbox2 h3 {
+  font-size: 1rem;
+  margin-bottom: .4rem;
+}
+
+.note {
+  font-size: .82rem;
+  color: var(--ink-3);
+}
+
+.exlist {
+  display: grid;
+  gap: .85rem;
+}
+
+.ex {
+  border-top: 1px solid var(--soft);
+  padding-top: .7rem;
+}
+
+.ex .n {
+  font-size: .87rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: line-through;
+  text-decoration-color: var(--line-2);
+  margin: 0;
+}
+
+.ex .w {
+  font-size: .8rem;
+  color: var(--ink-3);
+  margin-top: .1rem;
+  line-height: 1.6;
+}
+
+.nextbox {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-radius: 14px;
+  padding: 1.2rem;
+}
+
+.tiph2 {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .87rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+
+.nextbox p {
+  font-size: .84rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.nextbox b {
+  color: var(--accent);
+  font-weight: 600;
+}

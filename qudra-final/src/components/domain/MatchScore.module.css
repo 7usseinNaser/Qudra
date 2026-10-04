@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statusText {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.ready {
+  color: var(--proof-text, #00787A);
+}
+
+.near {
+  color: var(--gap-text, #8A6200);
+}
+
+.far {
+  color: var(--ink-3, #6B7A7A);
+}
+
+.sub {
+  font-size: 0.74rem;
+  color: var(--ink-3, #6B7A7A);
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Qudra mark">
+  <title>Qudra mark</title>
+  <!-- المسار المُثبت — فيروزي -->
+  <path d="M20 24 H28 L33 16 H39"
+        fill="none" stroke="#00B8B8" stroke-width="2.8"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 28 L21 34 H27"
+        fill="none" stroke="#00B8B8" stroke-width="2.8"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- المسار الناقص — أصفر -->
+  <path d="M28 26 L32 32 H37 L41 26"
+        fill="none" stroke="#FFC107" stroke-width="2.8"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- عُقد الأطراف -->
+  <circle cx="42" cy="16" r="3.1" fill="none" stroke="#00B8B8" stroke-width="2.6"/>
+  <circle cx="29" cy="34" r="3.1" fill="none" stroke="#00B8B8" stroke-width="2.6"/>
+  <circle cx="43" cy="24" r="3.1" fill="none" stroke="#FFC107" stroke-width="2.6"/>
+
+  <!-- النواة -->
+  <circle cx="14" cy="24" r="7.5" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+  <circle cx="14" cy="24" r="3.4" fill="#00B8B8"/>
+</svg>

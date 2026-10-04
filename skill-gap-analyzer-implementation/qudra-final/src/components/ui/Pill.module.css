@@ -1,0 +1,4 @@
+.pill { display: inline-flex; align-items: center; gap: .4rem; border-radius: 999px; padding: .3rem .75rem; font-size: .82rem; font-weight: 500; white-space: nowrap; }
+.ready { background: var(--proof-tint); color: var(--proof-text); border: 1px solid var(--proof-line); }
+.near { background: var(--gap-tint); color: var(--gap-text); border: 1px solid var(--gap-line); }
+.needs { background: var(--surface-2); color: var(--ink-2); border: 1px dashed var(--line); }

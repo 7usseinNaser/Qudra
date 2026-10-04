@@ -1,0 +1,94 @@
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.statusLabel {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.form {
+  padding: 1.5rem;
+  border-radius: var(--r, 14px);
+}
+
+.field { margin-bottom: 1.2rem; }
+
+.label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line-2, #ddd);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background: var(--page, #fff);
+  color: var(--ink, #222);
+  transition: border-color 0.15s;
+}
+
+.input:focus { outline: none; border-color: var(--accent, #00b4a0); }
+
+.note {
+  font-size: 0.82rem;
+  color: var(--ink-3, #999);
+  margin: 0.8rem 0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  background: var(--card, #f9f9f9);
+  border: 1px solid var(--line, #eee);
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pendingBox, .verifiedBox {
+  padding: 1.5rem;
+  border-radius: var(--r, 14px);
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.8rem;
+}
+
+.text {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--ink-2, #666);
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.stepDone, .stepActive, .stepPending {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.stepDone { color: var(--accent, #00b4a0); }
+.stepActive { color: var(--gapc, #e0a800); font-weight: 600; }
+.stepPending { color: var(--ink-3, #999); }
+
+.stepIcon { font-size: 1rem; }

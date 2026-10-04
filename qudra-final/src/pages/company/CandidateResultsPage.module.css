@@ -1,0 +1,134 @@
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.2rem 0;
+  flex-wrap: wrap;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  padding: 1.25rem;
+  border-radius: var(--r, 14px);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rank {
+  font-size: 0.75rem;
+  color: var(--ink-3, #999);
+  min-width: 1.5rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-soft, rgba(0,180,160,0.1));
+  color: var(--accent, #00b4a0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.identity {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.title {
+  font-size: 0.8rem;
+  color: var(--ink-3, #999);
+}
+
+.scoreCol {
+  text-align: center;
+  min-width: 80px;
+}
+
+.scoreVal {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: block;
+}
+
+.scoreBar {
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line-2, #e0e0e0);
+  overflow: hidden;
+  margin-top: 0.3rem;
+}
+
+.scoreBar i {
+  display: block;
+  height: 100%;
+  background: var(--accent, #00b4a0);
+  border-radius: 2px;
+}
+
+.cardBody {
+  margin-top: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 0.82rem;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.metaLabel {
+  color: var(--ink-3, #999);
+  font-size: 0.75rem;
+}
+
+.metaVal {
+  font-weight: 500;
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line, #eee);
+}
+
+@media (max-width: 56rem) {
+  .cardHead { flex-wrap: wrap; }
+  .scoreCol { width: 100%; text-align: right; }
+  .meta { gap: 0.8rem; }
+  .cardActions { flex-wrap: wrap; }
+}
