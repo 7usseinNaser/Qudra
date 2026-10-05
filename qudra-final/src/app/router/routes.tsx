@@ -49,6 +49,14 @@ const ChallengeSandboxPage = lazy(() => import('../../pages/challenges/Challenge
 const RepoDeepInspectorPage = lazy(() => import('../../pages/github/RepoDeepInspectorPage').then(m => ({ default: m.RepoDeepInspectorPage })));
 const ProblemMatchReportPage = lazy(() => import('../../pages/problems/ProblemMatchReportPage').then(m => ({ default: m.ProblemMatchReportPage })));
 
+// M18 Company Workspace (Q-0681, Q-0683, Q-0684, Q-0687, Q-0709, Q-0711)
+const M18OverviewPage = lazy(() => import('../../pages/company/m18/M18OverviewPage').then(m => ({ default: m.M18OverviewPage })));
+const M18DetailsPage = lazy(() => import('../../pages/company/m18/M18DetailsPage').then(m => ({ default: m.M18DetailsPage })));
+const M18CreatePage = lazy(() => import('../../pages/company/m18/M18CreatePage').then(m => ({ default: m.M18CreatePage })));
+const M18ResultsPage = lazy(() => import('../../pages/company/m18/M18ResultsPage').then(m => ({ default: m.M18ResultsPage })));
+const M18EmptyPage = lazy(() => import('../../pages/company/m18/M18EmptyPage').then(m => ({ default: m.M18EmptyPage })));
+const M18ErrorPage = lazy(() => import('../../pages/company/m18/M18ErrorPage').then(m => ({ default: m.M18ErrorPage })));
+
 // Problem Owner Flow
 const ProblemInputPage = lazy(() => import('../../pages/problem/ProblemInputPage').then(m => ({ default: m.ProblemInputPage })));
 const CapabilitiesPage = lazy(() => import('../../pages/capabilities/CapabilitiesPage').then(m => ({ default: m.CapabilitiesPage })));
@@ -134,6 +142,14 @@ export const router = createBrowserRouter([
       { path: ROUTES.PROBLEM_MATCH_REPORT, element: <Suspense fallback={<RouteFallback />}><ProblemMatchReportPage /></Suspense> },
       { path: '/problems/match', element: <Suspense fallback={<RouteFallback />}><ProblemMatchReportPage /></Suspense> },
       { path: '/problems/match-report', element: <Suspense fallback={<RouteFallback />}><ProblemMatchReportPage /></Suspense> },
+
+      // M18 Company Workspace (Q-0681, Q-0683, Q-0684, Q-0687, Q-0709, Q-0711)
+      { path: ROUTES.M18_OVERVIEW, element: <Suspense fallback={<RouteFallback />}><M18OverviewPage /></Suspense> },
+      { path: ROUTES.M18_DETAILS, element: <Suspense fallback={<RouteFallback />}><M18DetailsPage /></Suspense> },
+      { path: ROUTES.M18_CREATE, element: <Suspense fallback={<RouteFallback />}><M18CreatePage /></Suspense> },
+      { path: ROUTES.M18_RESULTS, element: <Suspense fallback={<RouteFallback />}><M18ResultsPage /></Suspense> },
+      { path: ROUTES.M18_EMPTY, element: <Suspense fallback={<RouteFallback />}><M18EmptyPage /></Suspense> },
+      { path: ROUTES.M18_ERROR, element: <Suspense fallback={<RouteFallback />}><M18ErrorPage /></Suspense> },
     ],
   },
 
