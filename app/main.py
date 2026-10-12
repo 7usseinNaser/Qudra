@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 
 from app.core.config import settings
 from app.core.exceptions import AppError
-from app.routers import auth, capabilities, evidence, health, problems, projects, tasks, users
+from app.routers import auth, capabilities, evidence, health, problems, projects, tasks, users, workspaces, workspace_tasks
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("qudra")
@@ -27,6 +27,7 @@ def unhandled_exception_handler(request: Request, exc: Exception) -> JSONRespons
 
 app.include_router(health.router)
 app.include_router(auth.router, prefix=settings.API_V1_PREFIX)
+app.include_router(auth.router, prefix="/api")
 app.include_router(users.router, prefix=settings.API_V1_PREFIX)
 app.include_router(users.router, prefix="/api")
 app.include_router(capabilities.router, prefix=settings.API_V1_PREFIX)
@@ -39,6 +40,10 @@ app.include_router(problems.router, prefix=settings.API_V1_PREFIX)
 app.include_router(problems.router, prefix="/api")
 app.include_router(tasks.router, prefix=settings.API_V1_PREFIX)
 app.include_router(tasks.router, prefix="/api")
+app.include_router(workspace_tasks.router, prefix=settings.API_V1_PREFIX)
+app.include_router(workspace_tasks.router, prefix="/api")
+app.include_router(workspaces.router, prefix=settings.API_V1_PREFIX)
+app.include_router(workspaces.router, prefix="/api")
 
 
 
