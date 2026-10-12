@@ -15,11 +15,13 @@ from app.schemas.problem import (
 )
 from app.schemas.skill_gap import SkillGapResponse
 from app.schemas.team import ComposeTeamRequest, TeamCompositionResponse
+from app.schemas.workspace import WorkspaceRead
 from app.services.matching_service import MatchingService
 from app.services.problem_analysis_service import ProblemAnalysisService
 from app.services.skill_gap_service import SkillGapService
 from app.services.task_allocation_service import TaskAllocationService
 from app.services.team_composer_service import TeamComposerService
+from app.services.workspace_service import WorkspaceService
 
 router = APIRouter(prefix="/problems", tags=["problems"])
 
@@ -138,3 +140,21 @@ def list_problem_tasks(
     return TaskAllocationService(db).list_tasks_for_problem(
         problem_id=problem_id, user_id=current_user.id
     )
+
+
+@router.post(
+    "/{problem_id}/workspace",
+    response_model=WorkspaceRead,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_problem_workspace(
+    problem_id: uuid.UUID,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+) -> WorkspaceRead:
+    """Creates a Mini Project Workspace from a problem's composed team.
+
+    A PROPOSED team must exist (compose-team must be called first).
+    Returns the workspace with all mirrored team members.
+    """
+    return WorkspaceService(db).create_workspace(problem_id, current_user.id)

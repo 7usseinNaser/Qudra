@@ -1,7 +1,6 @@
-"""Feature 9: Human / AI Allocation — Database models.
+"""Feature 9 & 10: Task, TaskCapability, TaskAllocation, and TaskAssignment models.
 
-Task, TaskCapability, and TaskAllocation models for project tasks and their
-intelligent Human/AI decision allocations.
+Provides full lifecycle management for project tasks within a Mini Project Workspace.
 """
 
 import enum
@@ -26,13 +25,15 @@ class TaskStatus(str, enum.Enum):
     TODO = "TODO"
     IN_PROGRESS = "IN_PROGRESS"
     DONE = "DONE"
+    BLOCKED = "BLOCKED"
     CANCELLED = "CANCELLED"
 
 
 class TaskPriority(str, enum.Enum):
-    HIGH = "HIGH"
-    MEDIUM = "MEDIUM"
     LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
 
 
 class TaskComplexity(str, enum.Enum):
@@ -42,12 +43,18 @@ class TaskComplexity(str, enum.Enum):
 
 
 class Task(Base):
-    """A project work task associated with a Problem and its composed Team."""
+    """A project work task associated with a Workspace, Problem, and Team."""
 
     __tablename__ = "tasks"
 
     id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    workspace_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("workspaces.id", ondelete="CASCADE"),
+        nullable=True,
+        index=True,
     )
     problem_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
@@ -85,6 +92,21 @@ class Task(Base):
     requires_verification: Mapped[bool] = mapped_column(
         Boolean, default=True, nullable=False
     )
+    estimated_effort: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    due_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    created_by: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id", ondelete="SET NULL"),
+        nullable=True,
+    )
+    assigned_member_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("workspace_members.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
@@ -98,6 +120,11 @@ class Task(Base):
 
     problem: Mapped["Problem"] = relationship("Problem")
     team: Mapped["Team | None"] = relationship("Team")
+    workspace: Mapped["Workspace | None"] = relationship("Workspace", back_populates="tasks")
+    assigned_member: Mapped["WorkspaceMember | None"] = relationship(
+        "WorkspaceMember", foreign_keys=[assigned_member_id]
+    )
+    creator: Mapped["User | None"] = relationship("User", foreign_keys=[created_by])
     capabilities: Mapped[list["TaskCapability"]] = relationship(
         "TaskCapability", back_populates="task", cascade="all, delete-orphan"
     )

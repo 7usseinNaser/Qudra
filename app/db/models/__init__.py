@@ -22,6 +22,12 @@ from app.db.models.team import (
 )
 from app.db.models.user import User
 from app.db.models.user_capability import UserCapability
+from app.db.models.workspace import (
+    Workspace,
+    WorkspaceMember,
+    WorkspaceMemberStatus,
+    WorkspaceStatus,
+)
 
 __all__ = [
     "User",
@@ -50,5 +56,10 @@ __all__ = [
     "TaskStatus",
     "TaskPriority",
     "TaskComplexity",
+    "Workspace",
+    "WorkspaceMember",
+    "WorkspaceStatus",
+    "WorkspaceMemberStatus",
 ]
+
 
