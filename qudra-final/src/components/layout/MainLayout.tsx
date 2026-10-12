@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { TopBar } from './TopBar'
 import { BottomNav } from './BottomNav'
 import { CmdPalette } from '../overlays'
+import { ErrorBoundary } from '../patterns/ErrorBoundary'
 import styles from './MainLayout.module.css'
 
 export function MainLayout() {
   const [cmdOpen, setCmdOpen] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -24,7 +26,9 @@ export function MainLayout() {
     <div className={styles.layout} dir="rtl">
       <TopBar />
       <main id="mainC" className={styles.main} tabIndex={-1}>
-        <Outlet />
+        <ErrorBoundary resetKeys={[location.pathname]}>
+          <Outlet />
+        </ErrorBoundary>
       </main>
       <BottomNav />
       <CmdPalette open={cmdOpen} onClose={() => setCmdOpen(false)} onNavigate={navigate} />

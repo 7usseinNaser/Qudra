@@ -232,4 +232,30 @@
    - [x] `npx tsc --noEmit`: 0 errors.
    - [x] `npm run build`: نجاح البناء في 2.08 ثانية مع توليد 35 chunk دون أي تعارض.
 
+---
+
+## [2026-10-12] — FE-P01: بوابة الانطلاق والاستيراد واللوحة الرئيسية (18 شاشة: M09 + M04 + M02)
+
+**الحالة العامة**: ✅ نجح كاملاً عبر Chrome الحقيقي (`channel: 'chrome'`, شاشة 1440×900)
+
+### ما تم فحصه فعلياً
+- [x] **M09 (6/6)**: فتح `ExplainDrawer` بالنقر الحقيقي وإغلاقه، تنقّل AnchorNav (Overview → Details مع تأكيد تغيّر المسار)، تبديل اختيار فجوة في Create — `verify-m09.cjs` → PASSED
+- [x] **M04 (6/6)**: نقر "بدء الاستيراد" (Overview → Create مع تأكيد المسار)، تعبئة رابط حقيقي في Create، نقر retry في Error — `verify-m04.cjs` → PASSED
+- [x] **M04 الخط الأحمر الأمني**: فحص `localStorage`/`sessionStorage` بعد زيارة Create → `SECURITY-PASS: no token/PAT` (لا مفاتيح token/pat/secret/access)
+- [x] **M02 (6/6)**: تبديل الدورين مطور/منشأة ذهاباً وإياباً، تبديل تبويبات Details الأربعة، toggle ويدجت في Customize، retry في Error — `verify-m02.cjs` → PASSED
+- [x] **الترابط مع باقي النظام**: كل شاشة تعرض AnchorNav الخاص بوحدتها؛ M09 يقرأ `gaps-data.ts`؛ M02 يقرأ `MasterProfileService`؛ المسارات الـ17 الجديدة مسجلة في `routes.ts` + `routes.tsx`
+- [x] **ErrorBoundary**: التفاف `MainLayout > Outlet` (مع `resetKeys=[pathname]`) + `App > RouterProvider` — لا انهيار للواجهة عند خطأ عارض
+
+### بوابات الجودة
+- [x] `npm run typecheck`: **0 errors** (قبل وبعد تعديل ErrorBoundary)
+- [x] `Total console errors` عبر الوحدات الثلاث: **0** — `Total pageerrors`: **0**
+- [x] اللقطات: **18/18** في `verification/m09/` + `verification/m04/` + `verification/m02/`
+
+### مشاكل مكتشفة (إن وُجدت)
+- المشكلة: لقطة Q-0151 فشلت أول مرة (Timeout على fonts أثناء screenshot) لأن زر retry أعاد تحميل الصفحة لحظة الالتقاط.
+  الحالة: تم إصلاحها فوراً — تعديل `verify-m04.cjs` (لقطة قبل النقر ثم انتظار الاستقرار) + نفس الحماية في `verify-m02.cjs` → إعادة التشغيل 6/6.
+- المشكلة: زر Q-0071 كان باسم "إعادة المحاولة" لا "إعادة المحاولة الآن" (صفحة أُعيد تصميمها بسيناريوهات خطأ).
+  الحالة: تم إصلاحها فوراً — تحديث المحدد في `verify-m02.cjs` → 6/6.
+- ملاحظة مفتوحة: لا يوجد نص مواصفة حرفي لـ Q-0149 في أي ملف بالمستودع (راجع DECISIONS.md القرار 015) — بانتظار تأكيد حسين.
+
 

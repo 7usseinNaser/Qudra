@@ -15,7 +15,7 @@ import {
   TimeoutException,
   NetworkException,
 } from './errors';
-import { HttpMethod, RequestOptions } from './types';
+import { HttpMethod, RequestOptions, ApiErrorPayload } from './types';
 
 const TOKEN_STORAGE_KEY = 'qudra_auth_token';
 const DEFAULT_TIMEOUT_MS = 30000;
@@ -130,16 +130,16 @@ class ApiClient {
       }
 
       // Handle non-2xx HTTP errors
-      let errorPayload: any = undefined;
+      let errorPayload: ApiErrorPayload | undefined = undefined;
       try {
-        errorPayload = await response.json();
+        errorPayload = (await response.json()) as ApiErrorPayload;
       } catch {
         // Not JSON error body
       }
 
       const errorMessage =
         (typeof errorPayload?.detail === 'string' ? errorPayload.detail : '') ||
-        errorPayload?.message ||
+        (typeof errorPayload?.message === 'string' ? errorPayload.message : '') ||
         `طلب الخادم فشل مع رمز الحالة ${response.status}`;
 
       if (response.status === 401) {

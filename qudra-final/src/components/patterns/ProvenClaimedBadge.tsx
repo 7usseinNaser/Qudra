@@ -3,7 +3,7 @@ import styles from './ProvenClaimedBadge.module.css';
 
 export type BadgeState = 'PROVEN' | 'CLAIMED' | 'IN_PROGRESS' | 'REJECTED' | 'PENDING_REVIEW';
 
-interface ProvenClaimedBadgeProps {
+export interface ProvenClaimedBadgeProps {
   state: BadgeState;
   size?: 'sm' | 'md';
   showIcon?: boolean;

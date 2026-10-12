@@ -219,4 +219,100 @@
 | P2.5.2 | تحديث STATUS.md | `DONE_UNVERIFIED` |
 | P2.5.3 | تحديث CHANGELOG.md | `DONE_UNVERIFIED` |
 | P2.5.4 | تحديث TASKS.md | `DONE_UNVERIFIED` |
-| P2.5.5 | `npm run build` بصفر أخطاء | `IN_PROGRESS` |
+| P2.5.5 | `npm run build` بصفر أخطاء | `VERIFIED` |
+
+---
+
+## مرحلة FE-P06 — حزمة الإغلاق النهائي (2026-10-12)
+
+### FE-P06.1 — بناء شاشات M18 Company Workspace
+| # | المهمة | الحالة |
+|---|---|---|
+| FE-P06.1.1 | بناء M18OverviewPage (Q-0681) | `VERIFIED` |
+| FE-P06.1.2 | بناء M18DetailsPage (Q-0683) | `VERIFIED` |
+| FE-P06.1.3 | بناء M18CreatePage (Q-0684) | `VERIFIED` |
+| FE-P06.1.4 | بناء M18ResultsPage (Q-0687) | `VERIFIED` |
+| FE-P06.1.5 | بناء M18EmptyPage (Q-0709) | `VERIFIED` |
+| FE-P06.1.6 | بناء M18ErrorPage (Q-0711) | `VERIFIED` |
+
+### FE-P06.2 — بناء شاشات M19 Candidates Pipeline
+| # | المهمة | الحالة |
+|---|---|---|
+| FE-P06.2.1 | بناء M19OverviewPage (Q-0721) | `VERIFIED` |
+| FE-P06.2.2 | بناء M19DetailsPage (Q-0723) | `VERIFIED` |
+| FE-P06.2.3 | بناء M19CreatePage (Q-0724) | `VERIFIED` |
+| FE-P06.2.4 | بناء M19ResultsPage (Q-0727) | `VERIFIED` |
+| FE-P06.2.5 | بناء M19EmptyPage (Q-0749) | `VERIFIED` |
+| FE-P06.2.6 | بناء M19ErrorPage (Q-0751) | `VERIFIED` |
+
+### FE-P06.3 — بناء شاشات M23 Community & Exchange
+| # | المهمة | الحالة |
+|---|---|---|
+| FE-P06.3.1 | بناء M23OverviewPage (Q-0881) | `VERIFIED` |
+| FE-P06.3.2 | بناء M23DetailsPage (Q-0883) | `VERIFIED` |
+| FE-P06.3.3 | بناء M23CreatePage (Q-0884) | `VERIFIED` |
+| FE-P06.3.4 | بناء M23ResultsPage (Q-0887) | `VERIFIED` |
+| FE-P06.3.5 | بناء M23EmptyPage (Q-0909) | `VERIFIED` |
+| FE-P06.3.6 | بناء M23ErrorPage (Q-0911) | `VERIFIED` |
+
+### FE-P06.4 — بناء شاشات M26 Settings & Billing
+| # | المهمة | الحالة |
+|---|---|---|
+| FE-P06.4.1 | بناء M26OverviewPage (Q-1001) | `VERIFIED` |
+| FE-P06.4.2 | بناء M26DetailsPage (Q-1003) | `VERIFIED` |
+| FE-P06.4.3 | بناء M26CreatePage (Q-1004) | `VERIFIED` |
+| FE-P06.4.4 | بناء M26ResultsPage (Q-1007) | `VERIFIED` |
+| FE-P06.4.5 | بناء M26EmptyPage (Q-1029) | `VERIFIED` |
+| FE-P06.4.6 | بناء M26ErrorPage (Q-1031) | `VERIFIED` |
+
+### FE-P06.5 — تحديث المسارات والراوتر
+| # | المهمة | الحالة |
+|---|---|---|
+| FE-P06.5.1 | تحديث routes.ts (24 مسار جديد) | `VERIFIED` |
+| FE-P06.5.2 | تحديث router routes.tsx | `VERIFIED` |
+
+### FE-P06.6 — سكربتات التحقق الآلي
+| # | المهمة | الحالة |
+|---|---|---|
+| FE-P06.6.1 | verify-m18.cjs | `VERIFIED` |
+| FE-P06.6.2 | verify-m19.cjs | `VERIFIED` |
+| FE-P06.6.3 | verify-m23.cjs | `VERIFIED` |
+| FE-P06.6.4 | verify-m26.cjs | `VERIFIED` |
+| FE-P06.6.5 | verify-full-vision.cjs (156/156) | `VERIFIED` |
+
+### FE-P06.7 — إصلاحات TypeScript الشاملة
+| # | المهمة | الحالة |
+|---|---|---|
+| FE-P06.7.1 | إصلاح Badge size/style props | `VERIFIED` |
+| FE-P06.7.2 | إصلاح Bar style prop | `VERIFIED` |
+| FE-P06.7.3 | إصلاح missing imports | `VERIFIED` |
+| FE-P06.7.4 | إصلاح store.ts constants | `VERIFIED` |
+| FE-P06.7.5 | npm run typecheck → 0 أخطاء | `VERIFIED` |
+
+### FE-P01 — بوابة الانطلاق والاستيراد واللوحة الرئيسية (18 شاشة)
+| # | المهمة | الحالة |
+|---|---|---|
+| FE-P01.1.1 | خدمة `gaps-data.ts` (الفجوة الكبرى + الإجراء التالي + الثقة/المجاهيل) | `VERIFIED` (Playwright 6/6 + typecheck 0) |
+| FE-P01.1.2 | مسارات M09/M04/M02 في `routes.ts` + `routes.tsx` (17 مساراً جديداً) | `VERIFIED` |
+| FE-P01.2.1 | بناء M09OverviewPage (Q-0321) | `VERIFIED` |
+| FE-P01.2.2 | بناء M09DetailsPage (Q-0323, fallback للفجوة الأساسية) | `VERIFIED` |
+| FE-P01.2.3 | بناء M09CreatePage (Q-0324) | `VERIFIED` |
+| FE-P01.2.4 | بناء M09ResultsPage (Q-0327) | `VERIFIED` |
+| FE-P01.2.5 | بناء M09EmptyPage (Q-0349) | `VERIFIED` |
+| FE-P01.2.6 | بناء M09ErrorPage (Q-0351) | `VERIFIED` |
+| FE-P01.3.1 | بناء M04OverviewPage (Q-0121) | `VERIFIED` |
+| FE-P01.3.2 | بناء M04DetailsPage (Q-0123, fallback لمصدر linkedin) | `VERIFIED` |
+| FE-P01.3.3 | بناء M04CreatePage (Q-0124: ZIP + روابط + PAT بالذاكرة فقط) | `VERIFIED` |
+| FE-P01.3.4 | بناء M04ResultsPage (Q-0127) | `VERIFIED` |
+| FE-P01.3.5 | بناء M04EmptyPage (Q-0149 — النص الحرفي بانتظار حسين، راجع DECISIONS 015) | `VERIFIED` (بشرط معلّق على النص) |
+| FE-P01.3.6 | بناء M04ErrorPage (Q-0151: تعافٍ دون فقدان الملف) | `VERIFIED` |
+| FE-P01.4.1 | بناء M02DetailsPage (Q-0043) | `VERIFIED` |
+| FE-P01.4.2 | بناء M02CreatePage (Q-0044 تخصيص) | `VERIFIED` |
+| FE-P01.4.3 | بناء M02ResultsPage (Q-0047 ملخص) | `VERIFIED` |
+| FE-P01.4.4 | بناء M02EmptyPage (Q-0069) | `VERIFIED` |
+| FE-P01.4.5 | بناء M02ErrorPage (Q-0071) | `VERIFIED` |
+| FE-P01.5.1 | التفاف ErrorBoundary (MainLayout Outlet + App RouterProvider) | `VERIFIED` |
+| FE-P01.6.1 | verify-m09.cjs (6/6 + 0 console errors) | `VERIFIED` |
+| FE-P01.6.2 | verify-m04.cjs (6/6 + SECURITY-PASS لا PAT مخزّن) | `VERIFIED` |
+| FE-P01.6.3 | verify-m02.cjs (6/6 + 0 console errors) | `VERIFIED` |
+| FE-P01.6.4 | npm run typecheck → 0 أخطاء (قبل/بعد ErrorBoundary) | `VERIFIED` |

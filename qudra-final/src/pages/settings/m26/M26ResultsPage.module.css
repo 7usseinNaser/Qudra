@@ -1,0 +1,294 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  flex: 1;
+}
+
+.subtitle {
+  margin: 0.5rem 0 0;
+  color: var(--ink-2);
+  font-size: 1rem;
+}
+
+.notice {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--danger-tint);
+  border: 1px solid var(--danger);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.noticeicon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.notice strong {
+  color: var(--danger);
+}
+
+.notice p {
+  margin: 0.25rem 0 0;
+  color: var(--danger);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.currentplan {
+  margin-bottom: 2rem;
+}
+
+.sectiontitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+.plandetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--proof-line);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.plandetail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detaillabel {
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--f-mono);
+  direction: ltr;
+}
+
+.detailvalue {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge.proof {
+  background: var(--proof-tint);
+  color: var(--proof-text);
+  border: 1px solid var(--proof-line);
+}
+
+.badge.gap {
+  background: var(--gap-tint);
+  color: var(--gap-text);
+  border: 1px solid var(--gap-line);
+}
+
+.badge.danger {
+  background: var(--danger-tint);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.usagegrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .usagegrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .usagegrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.usagecard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.usageheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.usagelabel {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.usagestatus {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.usagestatus.good {
+  background: var(--proof-tint);
+  color: var(--proof-text);
+}
+
+.usagestatus.warning {
+  background: var(--gap-tint);
+  color: var(--gap-text);
+}
+
+.usagestatus.danger {
+  background: var(--danger-tint);
+  color: var(--danger);
+}
+
+.usagebar {
+  height: 8px;
+  background: var(--line-soft);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.usagefill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.usagemeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.usagevalue {
+  font-family: var(--f-display);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.usagelimit {
+  color: var(--ink-3);
+}
+
+.billinglist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.billingitem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+}
+
+.billingdate {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  direction: ltr;
+  margin-bottom: 0.25rem;
+}
+
+.billingdesc {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.billingright {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.billingamount {
+  font-family: var(--f-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--proof-text);
+}
+
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rec {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.recicon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.rectitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.35rem;
+}
+
+.recdesc {
+  color: var(--ink-2);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
+}

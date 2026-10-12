@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/ui/Button';
-import { GitHubService, type GitHubRepo } from '../../../services/github.service';
+import { GitHubService } from '../../../services/github.service';
+import type { GitHubRepo } from '../../../services/types';
 import styles from './m14.module.css';
-import { ArrowRight, Search, CheckCircle, AlertCircle, GitHub, Lock, Globe, Cpu, Star, GitFork, RefreshCw } from 'lucide-react';
-
-interface RepoSelection {
-  repoId: string;
-  selected: boolean;
-  reason?: string;
-}
+import { ArrowRight, Search, AlertCircle, Lock, Cpu, Star, GitFork, RefreshCw } from 'lucide-react';
+import { GithubIcon } from '../../../components/ui/GithubIcon';
 
 export const M14CreatePage: React.FC = () => {
   const navigate = useNavigate();
@@ -248,7 +244,7 @@ export const M14CreatePage: React.FC = () => {
                   />
                   <div className={styles.checkboxContent}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
-                      <GitHub size={18} style={{ color: 'var(--proof)' }} />
+                      <span style={{ color: 'var(--proof)' }}><GithubIcon size={18} /></span>
                       <span className={styles.checkboxTitle}>{repo.fullName}</span>
                       <span className={styles.repoVisibility + ' ' + (repo.isPrivate ? 'private' : 'public')}>
                         {repo.isPrivate ? '🔒 خاص' : '🌐 عام'}

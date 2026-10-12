@@ -1,0 +1,417 @@
+.page {
+  max-width: var(--maxw, 74rem);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.headerIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(0, 184, 184, 0.15), rgba(6, 182, 212, 0.15));
+  display: grid;
+  place-items: center;
+  color: var(--proof);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.25rem;
+  font-family: var(--f-display);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  margin: 0;
+  max-width: 40rem;
+  line-height: 1.5;
+}
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  font-family: var(--f-mono);
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  font-family: var(--f-display);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.primaryGapSection {
+  margin-top: 0.5rem;
+}
+
+.primaryGapCard {
+  background: var(--surface);
+  border: 2px solid var(--proof-line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.primaryGapHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 184, 184, 0.08), rgba(6, 182, 212, 0.08));
+  border-bottom: 1px solid var(--proof-line);
+}
+
+.primaryGapTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.primaryGapBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .primaryGapBody {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gapInfo h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.25rem;
+}
+
+.gapCategory {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin: 0 0 1rem;
+}
+
+.gapStrengths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.strengthItem {
+  background: var(--surface-2);
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.strengthLabel {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.25rem;
+}
+
+.strengthValue {
+  font-family: var(--f-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.strengthValue.gapDelta {
+  color: var(--gap-text);
+}
+
+.gapImpact h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin: 0 0 0.5rem;
+}
+
+.gapImpact p {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  margin: 0 0 0.5rem;
+  line-height: 1.6;
+}
+
+.impactDetail {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin: 0 !important;
+}
+
+.actionSection {
+  margin-top: 0.5rem;
+}
+
+.actionCard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.actionMain {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.actionIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--proof-tint), var(--gap-tint));
+  display: grid;
+  place-items: center;
+  color: var(--proof);
+  flex-shrink: 0;
+}
+
+.actionContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.actionLabel {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+
+.actionReasoning {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  margin: 0 0 0.75rem;
+  line-height: 1.6;
+}
+
+.actionConfidence {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.confidenceBar {
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.confidenceFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--proof), #06B6D4);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: var(--proof);
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.primaryBtn:hover {
+  background: var(--proof-text);
+  transform: translateY(-1px);
+}
+
+.gapsSection {
+  margin-top: 0.5rem;
+}
+
+.gapsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.gapCard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.gapCard:hover {
+  border-color: var(--proof-line);
+  box-shadow: var(--shadow);
+}
+
+.gapCard.critical {
+  border-color: var(--danger);
+}
+
+.gapCard.moderate {
+  border-color: var(--gap-line);
+}
+
+.gapCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.gapCardSkill {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.gapCardDesc {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.gapCardMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  font-family: var(--f-mono);
+}
+
+.gapDelta {
+  color: var(--gap-text) !important;
+  font-weight: 600;
+}
+
+.gapCardActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.unknownsSection {
+  margin-top: 0.5rem;
+  padding: 1.5rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+}
+
+.unknownsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.unknownItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.unknownIcon {
+  color: var(--gap);
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .headerMeta {
+    justify-content: flex-start;
+  }
+  
+  .actionMain {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .actionIcon {
+    width: 100%;
+    height: 48px;
+  }
+  
+  .gapStrengths {
+    grid-template-columns: 1fr;
+  }
+}

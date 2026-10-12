@@ -1,0 +1,213 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  flex: 1;
+}
+
+.subtitle {
+  margin: 0.5rem 0 0;
+  color: var(--ink-2);
+  font-size: 1rem;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summarycard {
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.summarynum {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--proof-text);
+  line-height: 1.2;
+}
+
+.summarylabel {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--ink-3);
+  margin-top: 0.25rem;
+}
+
+.funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.funnelstage {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.funnelheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.funnelname {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.funnelcount {
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--proof-text);
+}
+
+.funnelbar {
+  height: 8px;
+  background: var(--line-soft);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.funnelfill {
+  height: 100%;
+  background: var(--proof);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.funnelmetrics {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.metric {
+  text-align: center;
+}
+
+.metricvalue {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.metriclabel {
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--f-mono);
+  direction: ltr;
+}
+
+.funnelcandidates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.funnelcandidate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.matchscore {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--proof-text);
+}
+
+.insights {
+  margin-bottom: 2rem;
+}
+
+.insightstitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.insightslist {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 700px) {
+  .insightslist {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.insightcard {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.insighticon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.insighttitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.35rem;
+}
+
+.insightdesc {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.footeractions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}

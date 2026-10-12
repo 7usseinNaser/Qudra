@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/ui/Button';
-import { GitHubService, type GitHubRepo } from '../../../services/github.service';
+import { GitHubService } from '../../../services/github.service';
+import type { GitHubRepo } from '../../../services/types';
 import { ProfileEditorService } from '../../../services/profile-editor.service';
 import styles from './m14.module.css';
 import { PlusCircle, Sparkles, Info, Search, GitCommit, CheckCircle, AlertCircle, Star, GitFork } from 'lucide-react';
+import { M14EmptyPage } from './M14EmptyPage';
 
 interface RepoAnalysisSummary {
   totalRepos: number;
@@ -51,8 +53,8 @@ export const M14OverviewPage: React.FC = () => {
           findingsAccepted: findings,
           evidenceCreated: evidence,
           avgQualityScore: analyzed > 0 ? 78 : 0,
-          totalCommits: list.reduce((acc, r) => acc + Math.floor(Math.random() * 200) + 50, 0),
-          totalLinesOfCode: list.reduce((acc, r) => acc + Math.floor(Math.random() * 50000) + 10000, 0)
+          totalCommits: list.reduce((acc) => acc + Math.floor(Math.random() * 200) + 50, 0),
+          totalLinesOfCode: list.reduce((acc) => acc + Math.floor(Math.random() * 50000) + 10000, 0)
         });
       } catch {
         setSummary({

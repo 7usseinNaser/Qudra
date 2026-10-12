@@ -1,0 +1,257 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.backlink {
+  flex-shrink: 0;
+}
+
+.companyinfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--proof-tint);
+  border: 1px solid var(--proof-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--proof-text);
+}
+
+.companyinfo h1 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+
+.verified {
+  color: var(--proof-text);
+  font-weight: 500;
+}
+
+.headeractions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.metriccard {
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.metricnum {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.metriclabel {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--ink-3);
+  margin-top: 0.25rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.maincol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidecol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.panel {
+  border-radius: 14px;
+}
+
+.paneltitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.description {
+  color: var(--ink-2);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detailitem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detaillabel {
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--f-mono);
+  direction: ltr;
+}
+
+.detailvalue {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.detailvalue a {
+  color: var(--proof-text);
+  text-decoration: none;
+}
+
+.detailvalue a:hover {
+  text-decoration: underline;
+}
+
+.problemlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.problemitem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+}
+
+.probleminfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.problemtitle {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.problemmeta {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.teammembers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.teammember {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.memberavatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.memberinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+}
+
+.membername {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.memberrole {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.quickactions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.block {
+  width: 100%;
+  text-align: right;
+}
+
+.box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}

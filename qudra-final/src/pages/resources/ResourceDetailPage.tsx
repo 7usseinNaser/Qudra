@@ -27,7 +27,7 @@ export function ResourceDetailPage() {
   }
 
   const relatedGap = resource.relatedGapId
-    ? QudraStore.getGaps().find((g: any) => g.id === resource.relatedGapId)
+    ? QudraStore.getGaps().find((g) => g.id === resource.relatedGapId)
     : null;
 
   return (

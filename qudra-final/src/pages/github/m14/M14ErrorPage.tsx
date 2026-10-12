@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/ui/Button';
 import { GitHubService } from '../../../services/github.service';
 import styles from './m14.module.css';
-import { ArrowRight, AlertCircle, RefreshCw, Lock, Key, GitHub, WifiOff, ShieldCheck, ExternalLink, AlertTriangle } from 'lucide-react';
+import { ArrowRight, AlertCircle, RefreshCw, Lock, Key, WifiOff, ShieldCheck, AlertTriangle } from 'lucide-react';
+import { GithubIcon } from '../../../components/ui/GithubIcon';
 
 type ErrorType = 'permission' | 'rate_limit' | 'network' | 'not_found' | 'token_expired' | 'unknown';
 
@@ -192,7 +193,7 @@ export const M14ErrorPage: React.FC = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem', background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '8px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <GitHub size={16} style={{ color: 'var(--proof)' }} />
+                <span style={{ color: 'var(--proof)' }}><GithubIcon size={16} /></span>
                 <span style={{ fontWeight: 600, color: 'var(--ink)' }}>Qudra</span>
                 <span className={styles.repoVisibility + ' public'}>🌐 عام</span>
               </div>
@@ -200,7 +201,7 @@ export const M14ErrorPage: React.FC = () => {
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem', background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '8px', opacity: 0.6 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <GitHub size={16} style={{ color: '#F59E0B' }} />
+                <span style={{ color: '#F59E0B' }}><GithubIcon size={16} /></span>
                 <span style={{ fontWeight: 600, color: 'var(--ink)' }}>private-repo</span>
                 <span className={styles.repoVisibility + ' private'}>🔒 خاص</span>
               </div>

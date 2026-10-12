@@ -4,13 +4,12 @@ import { QudraStore } from '../../../services/store';
 import { Button } from '../../../components/ui/Button';
 import { M10AnchorNav } from './M10AnchorNav';
 import styles from './m10.module.css';
-import { ArrowLeft, Sparkles, BookOpen, Target, TrendingUp, Info, Filter } from 'lucide-react';
+import { ArrowLeft, Sparkles, BookOpen, Info, Filter } from 'lucide-react';
 
 export const M10OverviewPage: React.FC = () => {
   const navigate = useNavigate();
   const [showExplain, setShowExplain] = useState(false);
 
-  const user = QudraStore.getUser();
   const gaps = QudraStore.getGaps();
   const capabilities = QudraStore.getCapabilities();
 
@@ -95,7 +94,7 @@ export const M10OverviewPage: React.FC = () => {
           </span>
           <span className={styles.metricHint}>
             {primaryGap
-              ? `مُرشحة لسد: ${primaryGap.description.substring(0, 40)}...`
+              ? `مُرشحة لسد: ${primaryGap.description?.substring(0, 40)}...`
               : 'لا توجد فجوة نشطة — اذهب إلى شاشة الفجوات'}
           </span>
         </div>
@@ -127,14 +126,14 @@ export const M10OverviewPage: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.75rem' }}>
           <Sparkles size={20} color="var(--proof)" />
           <h2 style={{ fontSize: '1.15rem', fontWeight: 700, margin: 0 }}>
-            التوصية الحالية: {primaryGap ? `دورة لمعالجة «${primaryGap.description.substring(0, 35)}...»` : 'اختر فجوة أولاً'}
+            التوصية الحالية: {primaryGap ? `دورة لمعالجة «${primaryGap.description?.substring(0, 35)}...»` : 'اختر فجوة أولاً'}
           </h2>
         </div>
 
         {primaryGap && (
           <>
             <p style={{ color: 'var(--ink-2)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-              بناءً على فجوتك النشطة في <strong>{primaryGap.description}</strong>، أفضل دورة مقترحة تجمع بين:
+              بناءً على فجوتك النشطة في <strong>{primaryGap.description || '—'}</strong>، أفضل دورة مقترحة تجمع بين:
               المحتوى المناسب للمستوى، المشروع التطبيقي المدمج، والسعر المعقول.
             </p>
 

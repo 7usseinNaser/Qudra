@@ -6,6 +6,36 @@
 
 ## [Unreleased]
 
+### feat — 2026-10-12 — FE-P01: بوابة الانطلاق والاستيراد واللوحة الرئيسية (18 شاشة)
+- **خدمة جديدة**: `src/services/gaps-data.ts` — الفجوة الكبرى + الإجراء التالي + الثقة/المجاهيل (مصدّرة من `services/index.ts`)
+- **بناء 17 شاشة جديدة + تسجيل 17 مساراً**:
+  - `src/pages/next/m09/` — M09 Next Step Engine (Q-0321/0323/0324/0327/0349/0351)
+  - `src/pages/import/m04/` — M04 Import Center (Q-0121/0123/0124/0127/0149/0151)
+  - `src/pages/home/m02/` — M02 (Q-0043/0044/0047/0069/0071 بجانب Q-0041 القائمة)
+- **أمان**: حظر تخزين PAT/رموز الوصول (ذاكرة الجلسة فقط) + فحص آلي SECURITY-PASS في `verify-m04.cjs`
+- **متانة**: التفاف `ErrorBoundary` حول `MainLayout > Outlet` وحول `RouterProvider`
+- **تحقق**: `verify-m09/m04/m02.cjs` (Chrome حقيقي) — 18/18 لقطة + صفر console errors + `typecheck` صفر أخطاء
+
+### feat — 2026-10-12 — FE-P06: حزمة الإغلاق النهائي (M18 + M19 + M23 + M26)
+- **بناء 24 شاشة ارتكاز جديدة**:
+  - `src/pages/company/m18/` — M18 Company Workspace (Q-0681, Q-0683, Q-0684, Q-0687, Q-0709, Q-0711)
+  - `src/pages/pipeline/m19/` — M19 Candidates Pipeline (Q-0721, Q-0723, Q-0724, Q-0727, Q-0749, Q-0751)
+  - `src/pages/community/m23/` — M23 Community & Exchange (Q-0881, Q-0883, Q-0884, Q-0887, Q-0909, Q-0911)
+  - `src/pages/settings/m26/` — M26 Settings & Billing (Q-1001, Q-1003, Q-1004, Q-1007, Q-1029, Q-1031)
+- **تحديث routes.ts** — إضافة 24 مسار جديد (M18-M26)
+- **تحديث router** — استيراد وربط الشاشات الجديدة
+- **سكربتات Playwright**:
+  - `verify-m18.cjs`, `verify-m19.cjs`, `verify-m23.cjs`, `verify-m26.cjs`
+  - `verify-full-vision.cjs` — بوابة الانحدار الكاملة 156/156
+- **إصلاحات TypeScript شاملة**:
+  - إصلاح Badge props (size/style) في M04, M09, M10, M17, M20, M21
+  - إصلاح Bar style prop في M17, M20, M21
+  - إصلاح missing imports في M04, M12, M17, M20, M21, M22
+  - إصلاح type mismatches في M09, M10, M12, M16
+  - إصلاح store.ts missing constants
+  - إصلاح gaps-data.ts type issues
+- **npm run typecheck** — 0 أخطاء ✅
+
 ### fix & release — 2026-09-12 — إصلاح شريط التمرير الأفقي وتسجيل الدخول والرفع على GitHub
 - **حل مشكلة التمدد الأفقي (Horizontal Scrollbar)**:
   - ضبط `LoginPage.module.css` بإضافة `overflow-x: hidden` على الحاوية و `overflow: hidden` على شريط الـ band لقص الشعار الممتد خارج الشاشة.

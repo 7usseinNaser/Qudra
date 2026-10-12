@@ -10,9 +10,9 @@ app = FastAPI(title="Async Stream Processor")
 
 # اكتب حلك الهندسي هنا:
 async def process_data_stream(payload: dict, session: AsyncSession) -> dict:
-    \"\"\"
+    """
     معالجة التدفق غير المتزامن بكفاءة وأمان
-    \"\"\"
+    """
     if not payload.get("items"):
         raise HTTPException(status_code=400, detail="Empty payload")
     

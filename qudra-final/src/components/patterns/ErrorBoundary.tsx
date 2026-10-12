@@ -1,5 +1,5 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { AlertTriangle, RefreshCw, Home, BugReport } from 'lucide-react';
+import { Component, ErrorInfo, ReactNode } from 'react';
+import { AlertTriangle, RefreshCw, Home, Bug } from 'lucide-react';
 import { Button } from '../ui/Button';
 import styles from './ErrorBoundary.module.css';
 
@@ -9,7 +9,7 @@ interface ErrorBoundaryState {
   errorInfo: ErrorInfo | null;
 }
 
-interface ErrorBoundaryProps {
+export interface ErrorBoundaryProps {
   children: ReactNode;
   fallback?: ReactNode;
   onError?: (error: Error, errorInfo: ErrorInfo) => void;
@@ -32,7 +32,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     this.setState({ error, errorInfo });
     this.props.onError?.(error, errorInfo);
 
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       console.error('[ErrorBoundary] Caught error:', error, errorInfo);
     }
   }
@@ -71,7 +71,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             واجهنا مشكلة أثناء عرض هذه الصفحة. فريق التطوير تم إشعاره تلقائياً.
           </p>
 
-          {process.env.NODE_ENV === 'development' && this.state.error && (
+          {import.meta.env.DEV && this.state.error && (
             <details className={styles.details}>
               <summary className={styles.summary}>تفاصيل التقنية (للمطورين)</summary>
               <pre className={styles.errorText}>
@@ -108,7 +108,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                   `${this.state.error?.name}: ${this.state.error?.message}\n\n${this.state.error?.stack}`
                 );
               }}
-              leftIcon={<BugReport size={16} />}
+              leftIcon={<Bug size={16} />}
             >
               نسخ الخطأ
             </Button>

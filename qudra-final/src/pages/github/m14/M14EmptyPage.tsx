@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/ui/Button';
 import styles from './m14.module.css';
-import { Search, GitHub, Link, AlertCircle, Info } from 'lucide-react';
+import { Search, Link, AlertCircle, Info, GitCommit, ShieldCheck } from 'lucide-react';
+import { GithubIcon } from '../../../components/ui/GithubIcon';
 
 export const M14EmptyPage: React.FC = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ export const M14EmptyPage: React.FC = () => {
         </p>
 
         <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1.5rem' }}>
-          <Button variant="proof" size="lg" onClick={() => navigate('/code-intel/create')} leftIcon={<GitHub size={18} />}>
+          <Button variant="proof" size="lg" onClick={() => navigate('/code-intel/create')} leftIcon={<GithubIcon size={18} />}>
             ربط GitHub وتحليل المستودعات
           </Button>
           <Button variant="outline" size="lg" onClick={() => navigate('/profile/sources/github')} leftIcon={<Link size={18} />}>

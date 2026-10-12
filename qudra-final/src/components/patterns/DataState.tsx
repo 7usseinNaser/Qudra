@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loader2, Inbox, AlertTriangle, RefreshCw, FileSearch, ShieldCheck } from 'lucide-react';
+import { Loader2, AlertTriangle, FileSearch, ShieldCheck } from 'lucide-react';
 import { Button } from '../ui/Button';
 import styles from './DataState.module.css';
 

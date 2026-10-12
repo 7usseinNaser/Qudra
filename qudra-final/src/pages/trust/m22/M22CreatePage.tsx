@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/ui/Button';
 import styles from './m22.module.css';
-import { ArrowRight, ShieldCheck, AlertCircle, CheckCircle, Award, UserCheck, GitFork, Plus, Minus, AlertTriangle, Clock } from 'lucide-react';
+import { ArrowRight, ShieldCheck, AlertCircle, CheckCircle, Award, UserCheck, GitFork, Plus, Minus, AlertTriangle, Clock, MessageSquare } from 'lucide-react';
 
 type VerificationMethod = 'official' | 'organization_link' | 'expert_review' | 'oral_assessment' | 'peer_confirmation';
 

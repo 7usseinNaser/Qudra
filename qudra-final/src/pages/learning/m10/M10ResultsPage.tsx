@@ -4,15 +4,32 @@ import { QudraStore } from '../../../services/store';
 import { Button } from '../../../components/ui/Button';
 import { M10AnchorNav } from './M10AnchorNav';
 import styles from './m10.module.css';
-import { ArrowLeft, CheckCircle2, Clock, TrendingUp, Award, BookOpen, AlertTriangle, Info } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Award, BookOpen, AlertTriangle, Info } from 'lucide-react';
 
 export const M10ResultsPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const state = location.state as { course?: any } | null;
+  interface CourseState {
+  course?: {
+    id: string;
+    title: string;
+    provider: string;
+    level: string;
+    durationHours: number;
+    price: number;
+    language: string;
+    gapAddressed: string;
+    description: string;
+    evidence: string[];
+    progress: number;
+    status: string;
+    enrolledAt: string;
+  };
+}
+
+const state = location.state as CourseState | null;
   const [showExplain, setShowExplain] = useState(false);
 
-  const user = QudraStore.getUser();
   const courses = QudraStore.getCourses();
   const completedCourses = courses.filter(c => c.status === 'COMPLETED');
   const inProgressCourses = courses.filter(c => c.status === 'IN_PROGRESS');

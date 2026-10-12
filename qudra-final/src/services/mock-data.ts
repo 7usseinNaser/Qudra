@@ -9,7 +9,11 @@ import {
   GapDetail,
   Opportunity,
   Challenge,
-  GrowthPlan
+  GrowthPlan,
+  Team,
+  ProjectWorkspace,
+  Interview,
+  Course
 } from './types';
 
 export const INITIAL_MOCK_USER: User = {
@@ -633,4 +637,431 @@ export const INITIAL_GROWTH_PLAN: GrowthPlan = {
     }
   ]
 };
+
+export const INITIAL_TEAMS: Team[] = [
+  {
+    id: 'team_1',
+    name: 'فريق صوت المستقبل',
+    description: 'فريق لبناء منصة معالجة صوتية ذكية تدعم العربية والإنجليزية',
+    opportunityId: 'opp_1',
+    members: [
+      {
+        id: 'tm_1',
+        userId: 'usr_01',
+        name: 'سارة المنصوري',
+        username: 'sara_dev',
+        role: 'lead',
+        capabilities: ['FastAPI', 'PostgreSQL', 'Docker', 'React', 'Audio Processing'],
+        verifiedCapabilities: ['FastAPI & Microservices', 'PostgreSQL & Database Design', 'React & TypeScript Architecture'],
+        claimedCapabilities: ['Docker & Containerization', 'Audio Processing'],
+        matchScore: 95,
+        status: 'active',
+        joinedAt: '2026-09-10T10:00:00Z',
+        contributionScore: 0
+      },
+      {
+        id: 'tm_2',
+        userId: 'usr_02',
+        name: 'أحمد التميمي',
+        username: 'ahmed_t',
+        role: 'backend',
+        capabilities: ['Node.js', 'PostgreSQL', 'Docker', 'REST APIs'],
+        verifiedCapabilities: ['PostgreSQL & Database Design'],
+        claimedCapabilities: ['Node.js', 'Docker', 'REST APIs'],
+        matchScore: 82,
+        status: 'active',
+        joinedAt: '2026-09-11T14:00:00Z',
+        contributionScore: 0
+      },
+      {
+        id: 'tm_3',
+        userId: 'usr_04',
+        name: 'نور الهدى',
+        username: 'nour_h',
+        role: 'frontend',
+        capabilities: ['React', 'TypeScript', 'Tailwind CSS', 'Audio Visualization'],
+        verifiedCapabilities: ['React & TypeScript Architecture'],
+        claimedCapabilities: ['Tailwind CSS', 'Audio Visualization'],
+        matchScore: 78,
+        status: 'active',
+        joinedAt: '2026-09-12T09:00:00Z',
+        contributionScore: 0
+      },
+      {
+        id: 'tm_4',
+        userId: 'usr_05',
+        name: 'خالد الحربي',
+        username: 'khaled_h',
+        role: 'devops',
+        capabilities: ['Docker', 'Kubernetes', 'CI/CD', 'AWS'],
+        verifiedCapabilities: ['Docker & Containerization'],
+        claimedCapabilities: ['Kubernetes', 'CI/CD', 'AWS'],
+        matchScore: 72,
+        status: 'active',
+        joinedAt: '2026-09-13T16:00:00Z',
+        contributionScore: 0
+      }
+    ],
+    requiredCapabilities: ['FastAPI', 'PostgreSQL', 'React', 'Docker', 'Audio Processing'],
+    createdAt: '2026-09-10T10:00:00Z',
+    updatedAt: '2026-09-13T16:00:00Z',
+    status: 'active',
+    harmonyScore: 87,
+    coveragePercentage: 100
+  },
+  {
+    id: 'team_2',
+    name: 'فريق لوحات التحكم الذكية',
+    description: 'فريق لتطوير لوحة تحكم تحليلية متقدمة للمسابقات والتقييم',
+    opportunityId: 'opp_2',
+    members: [
+      {
+        id: 'tm_5',
+        userId: 'usr_01',
+        name: 'سارة المنصوري',
+        username: 'sara_dev',
+        role: 'lead',
+        capabilities: ['React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Data Visualization'],
+        verifiedCapabilities: ['React & TypeScript Architecture', 'FastAPI & Microservices', 'PostgreSQL & Database Design'],
+        claimedCapabilities: ['Data Visualization'],
+        matchScore: 92,
+        status: 'active',
+        joinedAt: '2026-09-08T10:00:00Z',
+        contributionScore: 0
+      },
+      {
+        id: 'tm_6',
+        userId: 'usr_06',
+        name: 'ليلى السعيد',
+        username: 'layla_s',
+        role: 'frontend',
+        capabilities: ['React', 'D3.js', 'TypeScript', 'Chart.js'],
+        verifiedCapabilities: ['React & TypeScript Architecture'],
+        claimedCapabilities: ['D3.js', 'Chart.js'],
+        matchScore: 85,
+        status: 'active',
+        joinedAt: '2026-09-09T11:00:00Z',
+        contributionScore: 0
+      },
+      {
+        id: 'tm_7',
+        userId: 'usr_07',
+        name: 'عمر عبدالله',
+        username: 'omar_a',
+        role: 'backend',
+        capabilities: ['FastAPI', 'PostgreSQL', 'WebSocket', 'Real-time'],
+        verifiedCapabilities: ['FastAPI & Microservices'],
+        claimedCapabilities: ['PostgreSQL', 'WebSocket', 'Real-time'],
+        matchScore: 80,
+        status: 'active',
+        joinedAt: '2026-09-10T15:00:00Z',
+        contributionScore: 0
+      }
+    ],
+    requiredCapabilities: ['React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Data Visualization', 'Real-time'],
+    createdAt: '2026-09-08T10:00:00Z',
+    updatedAt: '2026-09-10T15:00:00Z',
+    status: 'active',
+    harmonyScore: 84,
+    coveragePercentage: 83
+  }
+];
+
+export const INITIAL_INTERVIEWS: Interview[] = [
+  {
+    id: 'interview-1',
+    title: 'مقابلة تقنية: React Testing & Architecture',
+    gapAddressed: 'Testing evidence limited',
+    capability: 'React & TypeScript Architecture',
+    expertId: 'exp-1',
+    scheduledAt: '2026-10-07T10:00:00Z',
+    durationMinutes: 45,
+    status: 'SCHEDULED',
+    method: 'مقابلة شفهية تقنية (Expert-reviewed)',
+    questions: [
+      'اشرح استراتيجية الاختبار في مشروعك الأخير',
+      'كيف تتعامل مع اختبارات التكامل المعقدة؟',
+      'متى تستخدم mock vs integration tests؟'
+    ],
+    evidence: [],
+    notes: 'مجدولة لمعالجة فجوة Testing evidence limited',
+    createdAt: '2026-10-01T10:00:00Z'
+  },
+  {
+    id: 'interview-2',
+    title: 'مقابلة تقنية: Node.js Backend Architecture',
+    gapAddressed: 'Backend scalability gaps',
+    capability: 'Node.js & Express Backend',
+    expertId: 'exp-2',
+    scheduledAt: '2026-10-10T14:00:00Z',
+    durationMinutes: 60,
+    status: 'COMPLETED',
+    method: 'مقابلة شفهية تقنية (Expert-reviewed)',
+    questions: [
+      'صمم نظام rate limiting للتوسع',
+      'كيف تتعامل مع distributed transactions؟',
+      'اشرح caching strategy في مشروعك'
+    ],
+    evidence: ['تسجيل المقابلة', 'تقرير التقييم', 'ملاحظات المراجع'],
+    notes: 'مكتملة - تقييم ناجح',
+    result: 'PASS',
+    score: 87,
+    progress: 100,
+    createdAt: '2026-09-20T10:00:00Z'
+  }
+];
+
+export const INITIAL_COURSES: Course[] = [
+  {
+    id: 'course-1',
+    title: 'React Testing Library — من الصفر للإنتاج',
+    provider: 'QUDRA Academy',
+    level: 'متوسط',
+    durationHours: 6,
+    price: 0,
+    language: 'العربية',
+    gapAddressed: 'Testing evidence limited',
+    description: 'تعلم كتابة اختبارات وحدوية وتكاملية لتطبيقات React باستخدام Testing Library و Jest. يتضمن مشروع تطبيقي كامل مع CI/CD.',
+    evidence: ['مشروع اختبارات مكتمل', 'نتيجة CI خضراء', 'تغطية كود 80%+'],
+    progress: 35,
+    status: 'IN_PROGRESS',
+    enrolledAt: '2026-09-10',
+    sourceUrl: 'https://qudra.example/course/react-testing'
+  },
+  {
+    id: 'course-2',
+    title: 'TypeScript Advanced Patterns',
+    provider: 'QUDRA Academy',
+    level: 'متقدم',
+    durationHours: 8,
+    price: 0,
+    language: 'العربية',
+    gapAddressed: 'Advanced TS patterns',
+    description: 'أنماط TypeScript متقدمة: Generics متقدمة، Conditional Types، Template Literal Types، و Type-safe APIs.',
+    evidence: [],
+    progress: 0,
+    status: 'NOT_STARTED',
+    enrolledAt: null,
+    sourceUrl: 'https://qudra.example/course/ts-advanced'
+  }
+];
+
+export const INITIAL_WORKSPACES: ProjectWorkspace[] = [
+  {
+    id: 'ws_1',
+    name: 'مشروع منصة المعالجة الصوتية',
+    description: 'مساحة العمل لفريق صوت المستقبل - بناء API معالجة صوتية',
+    teamId: 'team_1',
+    opportunityId: 'opp_1',
+    columns: ['backlog', 'todo', 'in_progress', 'review', 'done'],
+    tasks: [
+      {
+        id: 'task_1',
+        title: 'تصميم مخطط قاعدة البيانات للصوتيات',
+        description: 'إنشاء الجداول المطلوبة لتخزين ملفات الصوت والنصوص المستخرجة',
+        column: 'done',
+        assigneeId: 'tm_1',
+        assigneeName: 'سارة المنصوري',
+        priority: 'high',
+        estimatedHours: 8,
+        actualHours: 6,
+        tags: ['database', 'schema', 'audio'],
+        createdAt: '2026-09-10T10:00:00Z',
+        updatedAt: '2026-09-11T14:00:00Z',
+        dueDate: '2026-09-12'
+      },
+      {
+        id: 'task_2',
+        title: 'بناء REST API لرفع ملفات الصوت',
+        description: 'تطوير نقاط نهاية غير متزامنة لمعالجة رفع الملفات الصوتية',
+        column: 'done',
+        assigneeId: 'tm_1',
+        assigneeName: 'سارة المنصوري',
+        priority: 'critical',
+        estimatedHours: 16,
+        actualHours: 14,
+        tags: ['api', 'fastapi', 'audio', 'async'],
+        createdAt: '2026-09-11T10:00:00Z',
+        updatedAt: '2026-09-13T16:00:00Z',
+        dueDate: '2026-09-15'
+      },
+      {
+        id: 'task_3',
+        title: 'تكامل نموذج تحويل الكلام إلى نص',
+        description: 'دمج نموذج Whisper أو نموذج عربي مخصص لاستخراج النصوص',
+        column: 'in_progress',
+        assigneeId: 'tm_2',
+        assigneeName: 'أحمد التميمي',
+        priority: 'critical',
+        estimatedHours: 24,
+        actualHours: 10,
+        tags: ['ai', 'whisper', 'speech-to-text', 'arabic'],
+        createdAt: '2026-09-12T09:00:00Z',
+        updatedAt: '2026-09-15T10:00:00Z',
+        dueDate: '2026-09-20'
+      },
+      {
+        id: 'task_4',
+        title: 'بناء واجهة رفع وعرض النتائج',
+        description: 'تطوير واجهة React لرفع الملفات وعرض النصوص المستخرجة والملخصات',
+        column: 'todo',
+        assigneeId: 'tm_3',
+        assigneeName: 'نور الهدى',
+        priority: 'high',
+        estimatedHours: 20,
+        actualHours: 0,
+        tags: ['frontend', 'react', 'ui', 'audio-player'],
+        createdAt: '2026-09-13T10:00:00Z',
+        updatedAt: '2026-09-13T10:00:00Z',
+        dueDate: '2026-09-25'
+      },
+      {
+        id: 'task_5',
+        title: 'إعداد CI/CD ونشر على Kubernetes',
+        description: 'إنشاء خط إنتاج آلي للبناء والاختبار والنشر',
+        column: 'backlog',
+        assigneeId: 'tm_4',
+        assigneeName: 'خالد الحربي',
+        priority: 'medium',
+        estimatedHours: 16,
+        actualHours: 0,
+        tags: ['devops', 'kubernetes', 'ci-cd', 'docker'],
+        createdAt: '2026-09-14T10:00:00Z',
+        updatedAt: '2026-09-14T10:00:00Z',
+        dueDate: '2026-09-30'
+      },
+      {
+        id: 'task_6',
+        title: 'اختبارات التحميل والأداء',
+        description: 'إجراء اختبارات حمل على API الصوتية لضمان الاستجابة السريعة',
+        column: 'backlog',
+        assigneeId: 'tm_2',
+        assigneeName: 'أحمد التميمي',
+        priority: 'medium',
+        estimatedHours: 8,
+        actualHours: 0,
+        tags: ['testing', 'performance', 'load-test'],
+        createdAt: '2026-09-14T10:00:00Z',
+        updatedAt: '2026-09-14T10:00:00Z',
+        dueDate: '2026-10-05'
+      }
+    ],
+    deliverables: [
+      {
+        id: 'del_1',
+        taskId: 'task_1',
+        title: 'مخطط قاعدة البيانات - ملفات الصوت',
+        description: 'مخطط ERD شامل مع فهارس محسنة للاستعلامات الصوتية',
+        type: 'document',
+        url: 'https://github.com/team-voice-future/db-schema',
+        submittedBy: 'سارة المنصوري',
+        submittedAt: '2026-09-11T14:00:00Z',
+        status: 'claimed_evidence',
+        evidenceId: 'ev_db_01'
+      },
+      {
+        id: 'del_2',
+        taskId: 'task_2',
+        title: 'REST API لرفع ومعالجة الصوت',
+        description: 'كود المصدر الكامل لنقاط نهاية API الصوتية مع التوثيق',
+        type: 'code',
+        url: 'https://github.com/team-voice-future/audio-api',
+        submittedBy: 'سارة المنصوري',
+        submittedAt: '2026-09-13T16:00:00Z',
+        status: 'submitted',
+        reviewerId: 'tm_2'
+      }
+    ],
+    createdAt: '2026-09-10T10:00:00Z',
+    updatedAt: '2026-09-15T10:00:00Z',
+    kanbanView: true
+  },
+  {
+    id: 'ws_2',
+    name: 'مشروع لوحة تحكم المسابقات',
+    description: 'مساحة العمل لفريق لوحات التحكم الذكية - بناء لوحة تحليلية',
+    teamId: 'team_2',
+    opportunityId: 'opp_2',
+    columns: ['backlog', 'todo', 'in_progress', 'review', 'done'],
+    tasks: [
+      {
+        id: 'task_7',
+        title: 'تصميم نظام التصميم ولوحة الألوان',
+        description: 'إنشاء نظام تصميم موحد للوحة التحكم مع دعم RTL',
+        column: 'done',
+        assigneeId: 'tm_5',
+        assigneeName: 'سارة المنصوري',
+        priority: 'high',
+        estimatedHours: 12,
+        actualHours: 10,
+        tags: ['design', 'design-system', 'rtl', 'accessibility'],
+        createdAt: '2026-09-08T10:00:00Z',
+        updatedAt: '2026-09-10T14:00:00Z',
+        dueDate: '2026-09-12'
+      },
+      {
+        id: 'task_8',
+        title: 'بناء مكونات الرسوم البيانية التفاعلية',
+        description: 'تطوير مكونات D3.js/Chart.js لعرض نتائج المسابقات مباشرة',
+        column: 'in_progress',
+        assigneeId: 'tm_6',
+        assigneeName: 'ليلى السعيد',
+        priority: 'critical',
+        estimatedHours: 20,
+        actualHours: 8,
+        tags: ['frontend', 'charts', 'd3', 'real-time'],
+        createdAt: '2026-09-09T10:00:00Z',
+        updatedAt: '2026-09-14T10:00:00Z',
+        dueDate: '2026-09-18'
+      },
+      {
+        id: 'task_9',
+        title: 'WebSocket للخ النتائج المباشرة',
+        description: 'تنفيذ اتصال فوري لتحديث النتائج والمطابقات لحظياً',
+        column: 'todo',
+        assigneeId: 'tm_7',
+        assigneeName: 'عمر عبدالله',
+        priority: 'high',
+        estimatedHours: 16,
+        actualHours: 0,
+        tags: ['backend', 'websocket', 'real-time', 'fastapi'],
+        createdAt: '2026-09-10T10:00:00Z',
+        updatedAt: '2026-09-10T10:00:00Z',
+        dueDate: '2026-09-22'
+      },
+      {
+        id: 'task_10',
+        title: 'صفحة عرض تفاصيل المسابقة',
+        description: 'بناء صفحة تفصيلية تعرض نتائج المسابقة والمطابقات',
+        column: 'backlog',
+        assigneeId: 'tm_5',
+        assigneeName: 'سارة المنصوري',
+        priority: 'medium',
+        estimatedHours: 16,
+        actualHours: 0,
+        tags: ['frontend', 'page', 'results', 'matching'],
+        createdAt: '2026-09-11T10:00:00Z',
+        updatedAt: '2026-09-11T10:00:00Z',
+        dueDate: '2026-09-25'
+      }
+    ],
+    deliverables: [
+      {
+        id: 'del_3',
+        taskId: 'task_7',
+        title: 'نظام التصميم - لوحات التحكم',
+        description: 'توثيق نظام التصميم مع المكونات والرموز والألوان',
+        type: 'design',
+        url: 'https://figma.com/team-dashboard-design',
+        submittedBy: 'سارة المنصوري',
+        submittedAt: '2026-09-10T14:00:00Z',
+        status: 'claimed_evidence',
+        evidenceId: 'ev_design_01'
+      }
+    ],
+    createdAt: '2026-09-08T10:00:00Z',
+    updatedAt: '2026-09-14T10:00:00Z',
+    kanbanView: true
+  }
+];
 

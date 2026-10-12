@@ -4,7 +4,7 @@ import { QudraStore } from '../../../services/store';
 import { Button } from '../../../components/ui/Button';
 import { M10AnchorNav } from './M10AnchorNav';
 import styles from './m10.module.css';
-import { ArrowLeft, Sparkles, AlertCircle, Shield, BookOpen, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Sparkles, AlertCircle, BookOpen, CheckCircle2 } from 'lucide-react';
 
 const DRAFT_STORAGE_KEY = 'qudra_m10_course_draft';
 
@@ -53,7 +53,9 @@ export const M10CreatePage: React.FC = () => {
       localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify({
         title, provider, sourceUrl, level, durationHours, price, language, gapAddressed, description
       }));
-    } catch { }
+    } catch {
+      // Ignore localStorage errors
+    }
   }, [title, provider, sourceUrl, level, durationHours, price, language, gapAddressed, description]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -111,7 +113,7 @@ export const M10CreatePage: React.FC = () => {
     const suggestions = {
       title: `دورة لمعالجة: ${gapAddressed}`,
       provider: 'QUDRA Academy',
-      level: 'متوسط',
+      level: 'متوسط' as const,
       durationHours: 6,
       price: 0,
       language: 'العربية',

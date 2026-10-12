@@ -1,6 +1,8 @@
 import { GitHubRepo } from './types';
 import { QudraStore } from './store';
 
+export type { GitHubRepo };
+
 const TOKEN_STORAGE_KEY = 'qudra_github_pat';
 
 export interface GitHubContentItem {

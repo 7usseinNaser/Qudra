@@ -2,20 +2,21 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import styles from './ExplainDrawer.module.css';
 
-interface EvidenceRef {
+export interface EvidenceItem {
   id: string;
   title: string;
   type: string;
   status: string;
   strength: number;
 }
+export type EvidenceRef = EvidenceItem;
 
-interface ExplainDrawerProps {
+export interface ExplainDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
   conclusion?: string;
-  evidence?: EvidenceRef[];
+  evidence?: EvidenceItem[];
   inferences?: string[];
   confidence?: number;
   unknowns?: string[];

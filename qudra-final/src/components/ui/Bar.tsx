@@ -6,9 +6,10 @@ export interface BarProps {
   max?: number;
   label?: string;
   showValue?: boolean;
-  size?: 'sm' | 'md' | 'lg';
-  variant?: 'proof' | 'gap' | 'accent' | 'danger';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'proof' | 'gap' | 'accent' | 'danger' | 'claimed' | 'info';
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const Bar: React.FC<BarProps> = ({

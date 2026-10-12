@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { QudraStore } from '../../../services/store';
 import { Button } from '../../../components/ui/Button';
 import { M10AnchorNav } from './M10AnchorNav';
 import styles from './m10.module.css';
@@ -61,9 +60,6 @@ export const M10DetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const [showExplain, setShowExplain] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<typeof mockCourses[0] | null>(mockCourses[0]);
-
-  const user = QudraStore.getUser();
-  const gaps = QudraStore.getGaps();
 
   return (
     <div className={styles.container}>

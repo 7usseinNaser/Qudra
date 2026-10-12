@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/ui/Button';
 import styles from './m22.module.css';
-import { ArrowRight, AlertCircle, RefreshCw, ShieldCheck, AlertTriangle, UserCheck, MessageSquare, Award, GitFork, Search, Clock } from 'lucide-react';
+import { ArrowRight, AlertCircle, RefreshCw, ShieldCheck, AlertTriangle, UserCheck, MessageSquare, Award, GitFork, Search, Clock, Sparkles } from 'lucide-react';
 
 type ErrorType = 'source_unreachable' | 'reviewer_unavailable' | 'evidence_insufficient' | 'method_mismatch' | 'network' | 'unknown';
 

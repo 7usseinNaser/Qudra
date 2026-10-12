@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/ui/Button';
-import { GitHubService, type GitHubRepo } from '../../../services/github.service';
+import { GitHubService } from '../../../services/github.service';
+import type { GitHubRepo } from '../../../services/types';
 import styles from './m14.module.css';
-import { ArrowRight, GitCommit, Star, GitFork, Cpu, ShieldCheck, AlertCircle, CheckCircle, Clock, FileCode2, Search, ExternalLink, GitHub } from 'lucide-react';
+import { ArrowRight, GitCommit, Star, GitFork, Cpu, ShieldCheck, AlertCircle, CheckCircle, Clock, FileCode2, Search, ExternalLink } from 'lucide-react';
+import { GithubIcon } from '../../../components/ui/GithubIcon';
 
 export const M14DetailsPage: React.FC = () => {
   const { id } = useParams<{ id?: string }>();
@@ -11,7 +13,6 @@ export const M14DetailsPage: React.FC = () => {
   const [repo, setRepo] = useState<GitHubRepo | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const [showExplain, setShowExplain] = useState(false);
 
   useEffect(() => {
     const loadRepo = async () => {
@@ -122,7 +123,7 @@ export const M14DetailsPage: React.FC = () => {
               background: 'rgba(0, 184, 184, 0.1)'
             }}
           >
-            <GitHub size={14} /> فتح على GitHub <ExternalLink size={12} />
+            <GithubIcon size={14} /> فتح على GitHub <ExternalLink size={12} />
           </a>
         </div>
       </div>
@@ -335,7 +336,7 @@ export const M14DetailsPage: React.FC = () => {
               <Search size={16} /> تحليل مستودع آخر
             </Button>
             <Button variant="ghost" size="md" onClick={() => navigate('/profile/master')}>
-              <GitHub size={16} /> جواز القدرات
+              <GithubIcon size={16} /> جواز القدرات
             </Button>
           </div>
         </div>

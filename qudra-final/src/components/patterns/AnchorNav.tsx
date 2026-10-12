@@ -2,14 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './AnchorNav.module.css';
 
-interface AnchorLink {
+export interface AnchorLink {
   id: string;
   label: string;
   path: string;
   icon?: React.ReactNode;
 }
 
-interface AnchorNavProps {
+export interface AnchorNavProps {
   anchors: AnchorLink[];
   title?: string;
 }
@@ -30,7 +30,6 @@ export const AnchorNav: React.FC<AnchorNavProps> = ({ anchors, title }) => {
                 ? `${styles.link} ${styles.active}`
                 : styles.link
             }
-            aria-current={isActive ? 'page' : undefined}
           >
             {anchor.icon && <span className={styles.icon} aria-hidden="true">{anchor.icon}</span>}
             <span className={styles.label}>{anchor.label}</span>

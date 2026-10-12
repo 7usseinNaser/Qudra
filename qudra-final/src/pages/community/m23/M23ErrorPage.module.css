@@ -1,0 +1,57 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  max-width: 420px;
+  padding: 2rem;
+}
+
+.icon {
+  font-size: 4rem;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.code {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  color: var(--danger);
+  background: var(--danger-tint);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  direction: ltr;
+}
+
+.scr-t {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+
+.desc {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.actions .btn {
+  flex: 1;
+  min-width: 140px;
+}
+
+.note {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}

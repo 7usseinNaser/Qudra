@@ -9,7 +9,11 @@ import {
   GapDetail,
   Opportunity,
   Challenge,
-  GrowthPlan
+  GrowthPlan,
+  Team,
+  ProjectWorkspace,
+  Interview,
+  Course
 } from './types';
 import { 
   INITIAL_MOCK_USER, 
@@ -22,7 +26,11 @@ import {
   INITIAL_GAPS,
   INITIAL_OPPORTUNITIES,
   INITIAL_CHALLENGES,
-  INITIAL_GROWTH_PLAN
+  INITIAL_GROWTH_PLAN,
+  INITIAL_TEAMS,
+  INITIAL_WORKSPACES,
+  INITIAL_INTERVIEWS,
+  INITIAL_COURSES
 } from './mock-data';
 
 const STORAGE_KEYS = {
@@ -37,7 +45,11 @@ const STORAGE_KEYS = {
   GAPS: 'qudra_gaps',
   OPPORTUNITIES: 'qudra_opportunities',
   CHALLENGES: 'qudra_challenges',
-  GROWTH_PLAN: 'qudra_growth_plan'
+  GROWTH_PLAN: 'qudra_growth_plan',
+  TEAMS: 'qudra_teams',
+  WORKSPACES: 'qudra_workspaces',
+  INTERVIEWS: 'qudra_interviews',
+  COURSES: 'qudra_courses'
 };
 
 function loadItem<T>(key: string, fallback: T): T {
@@ -175,6 +187,46 @@ export const QudraStore = {
     saveItem(STORAGE_KEYS.GROWTH_PLAN, plan);
   },
 
+  // Teams
+  getTeams(): Team[] {
+    return loadItem<Team[]>(STORAGE_KEYS.TEAMS, INITIAL_TEAMS);
+  },
+  setTeams(teams: Team[]): void {
+    saveItem(STORAGE_KEYS.TEAMS, teams);
+  },
+  addTeam(team: Team): void {
+    const list = this.getTeams();
+    this.setTeams([team, ...list]);
+  },
+  updateTeam(teamId: string, updates: Partial<Team>): Team | null {
+    const teams = this.getTeams();
+    const index = teams.findIndex(t => t.id === teamId);
+    if (index === -1) return null;
+    teams[index] = { ...teams[index], ...updates, updatedAt: new Date().toISOString() };
+    this.setTeams(teams);
+    return teams[index];
+  },
+
+  // Workspaces
+  getWorkspaces(): ProjectWorkspace[] {
+    return loadItem<ProjectWorkspace[]>(STORAGE_KEYS.WORKSPACES, INITIAL_WORKSPACES);
+  },
+  setWorkspaces(workspaces: ProjectWorkspace[]): void {
+    saveItem(STORAGE_KEYS.WORKSPACES, workspaces);
+  },
+  addWorkspace(workspace: ProjectWorkspace): void {
+    const list = this.getWorkspaces();
+    this.setWorkspaces([workspace, ...list]);
+  },
+  updateWorkspace(workspaceId: string, updates: Partial<ProjectWorkspace>): ProjectWorkspace | null {
+    const workspaces = this.getWorkspaces();
+    const index = workspaces.findIndex(w => w.id === workspaceId);
+    if (index === -1) return null;
+    workspaces[index] = { ...workspaces[index], ...updates, updatedAt: new Date().toISOString() };
+    this.setWorkspaces(workspaces);
+    return workspaces[index];
+  },
+
   // Reset to default
   resetAll(): void {
     localStorage.removeItem(STORAGE_KEYS.USER);
@@ -189,5 +241,33 @@ export const QudraStore = {
     localStorage.removeItem(STORAGE_KEYS.OPPORTUNITIES);
     localStorage.removeItem(STORAGE_KEYS.CHALLENGES);
     localStorage.removeItem(STORAGE_KEYS.GROWTH_PLAN);
+    localStorage.removeItem(STORAGE_KEYS.TEAMS);
+    localStorage.removeItem(STORAGE_KEYS.WORKSPACES);
+    localStorage.removeItem(STORAGE_KEYS.INTERVIEWS);
+    localStorage.removeItem(STORAGE_KEYS.COURSES);
+  },
+
+  // Interviews
+  getInterviews(): Interview[] {
+    return loadItem<Interview[]>(STORAGE_KEYS.INTERVIEWS, INITIAL_INTERVIEWS);
+  },
+  setInterviews(interviews: Interview[]): void {
+    saveItem(STORAGE_KEYS.INTERVIEWS, interviews);
+  },
+  addInterview(interview: Interview): void {
+    const list = this.getInterviews();
+    this.setInterviews([interview, ...list]);
+  },
+
+  // Courses
+  getCourses(): Course[] {
+    return loadItem<Course[]>(STORAGE_KEYS.COURSES, INITIAL_COURSES);
+  },
+  setCourses(courses: Course[]): void {
+    saveItem(STORAGE_KEYS.COURSES, courses);
+  },
+  addCourse(course: Course): void {
+    const list = this.getCourses();
+    this.setCourses([course, ...list]);
   }
 };

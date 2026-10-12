@@ -66,6 +66,7 @@ export interface Capability {
   evidences?: Evidence[];
   isVerified: boolean;
   lastUpdated: string;
+  status?: string;
 }
 
 export interface CapabilityGap {
@@ -212,6 +213,9 @@ export interface GapDetail {
   challenge?: GapChallenge;
   project?: GapProject;
   recommendedAction?: string;
+  status?: string;
+  description?: string;
+  gapType?: string;
 }
 
 export type OpportunityType = 
@@ -260,6 +264,7 @@ export interface Opportunity {
   matchReason?: string;
   requiredCapabilities?: string[];
   requiredSkills?: string[];
+  url?: string;
   relatedGapId?: string;
   whyYouMatch?: string[];
 }
@@ -305,5 +310,128 @@ export interface GrowthPlan {
   currentState: string;
   gapIds: string[];
   milestones: GrowthMilestone[];
+}
+
+export type TeamRole = 'lead' | 'backend' | 'frontend' | 'fullstack' | 'devops' | 'designer' | 'pm' | 'qa' | 'ai_ml' | 'data';
+export type TeamMemberStatus = 'invited' | 'active' | 'completed' | 'left';
+
+export interface TeamMember {
+  id: string;
+  userId: string;
+  name: string;
+  username: string;
+  avatarUrl?: string;
+  role: TeamRole;
+  capabilities: string[];
+  verifiedCapabilities: string[];
+  claimedCapabilities: string[];
+  matchScore: number;
+  status: TeamMemberStatus;
+  joinedAt?: string;
+  contributionScore?: number;
+}
+
+export interface Team {
+  id: string;
+  name: string;
+  description: string;
+  opportunityId?: string;
+  problemId?: string;
+  members: TeamMember[];
+  requiredCapabilities: string[];
+  createdAt: string;
+  updatedAt: string;
+  status: 'forming' | 'active' | 'completed' | 'archived';
+  harmonyScore: number;
+  coveragePercentage: number;
+}
+
+export type WorkspaceColumn = 'backlog' | 'todo' | 'in_progress' | 'review' | 'done';
+
+export interface WorkspaceTask {
+  id: string;
+  title: string;
+  description: string;
+  column: WorkspaceColumn;
+  assigneeId?: string;
+  assigneeName?: string;
+  priority: 'low' | 'medium' | 'high' | 'critical';
+  estimatedHours?: number;
+  actualHours?: number;
+  tags: string[];
+  deliverableId?: string;
+  createdAt: string;
+  updatedAt: string;
+  dueDate?: string;
+}
+
+export interface Deliverable {
+  id: string;
+  taskId: string;
+  title: string;
+  description: string;
+  type: 'code' | 'document' | 'design' | 'test' | 'deployment' | 'demo';
+  url?: string;
+  fileUrl?: string;
+  submittedBy: string;
+  submittedAt: string;
+  status: 'draft' | 'submitted' | 'approved' | 'rejected' | 'claimed_evidence';
+  evidenceId?: string;
+  reviewerId?: string;
+  reviewerNotes?: string;
+}
+
+export interface ProjectWorkspace {
+  id: string;
+  name: string;
+  description: string;
+  teamId: string;
+  opportunityId?: string;
+  columns: WorkspaceColumn[];
+  tasks: WorkspaceTask[];
+  deliverables: Deliverable[];
+  createdAt: string;
+  updatedAt: string;
+  kanbanView: boolean;
+}
+
+export type InterviewStatus = 'SCHEDULED' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
+export type InterviewResult = 'PASS' | 'FAIL';
+
+export interface Interview {
+  id: string;
+  title: string;
+  gapAddressed: string;
+  capability: string;
+  expertId: string;
+  scheduledAt: string;
+  durationMinutes: number;
+  status: InterviewStatus;
+  method: string;
+  questions: string[];
+  evidence?: string[];
+  notes?: string;
+  result?: InterviewResult;
+  score?: number;
+  progress?: number;
+  sourceUrl?: string;
+  createdAt: string;
+}
+
+export interface Course {
+  id: string;
+  title: string;
+  provider: string;
+  level: 'مبتدئ' | 'متوسط' | 'متقدم';
+  durationHours: number;
+  price: number;
+  language: string;
+  gapAddressed: string;
+  description: string;
+  evidence: string[];
+  progress: number;
+  status: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED';
+  enrolledAt: string | null;
+  sourceUrl: string;
 }
 

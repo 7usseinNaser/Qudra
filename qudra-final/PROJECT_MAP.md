@@ -5,7 +5,7 @@
 
 **قاعدة الصيانة الإلزامية:** لا يُغلق أي Task يتضمن ملفاً جديداً أو تعديلاً جوهرياً على ملف موجود دون تحديث هذا الملف. راجع القسم 35 من `QUDRA_FINAL_BOLT_PROMPT.md` للصيغة الدقيقة المطلوبة لكل إدخال.
 
-**آخر تحديث:** 2026-09-07 — B0.5.10 تفكيك ProfilePage إلى 7 تبويبات مع Container خفيف + تفعيل النوافذ المنبثقة الخمس (CmdPalette, ShareBox, ConfirmBox, GradingOverlay, StateBox)
+**آخر تحديث:** 2026-10-12 — FE-P06: بناء M18/M19/M23/M26 (24 شاشة ارتكاز) + سكربتات Playwright + إصلاحات TypeScript شاملة
 
 ---
 
@@ -607,10 +607,119 @@
 
 ---
 
+## FE-P01 — ملفات M09/M04/M02 الجديدة (2026-10-12)
+
+## `src/services/gaps-data.ts`
+
+**الغرض:** قراءة فجوات الكفاءات الحقيقية (من `INITIAL_GAPS` لحين ربط الباك إند)، تحديد الفجوة الكبرى بترجيح الخطورة، وتوليد إجراء واحد محدد مع الثقة والمجاهيل.
+
+**يحتوي على:**
+- `GapsDataResponse`: فجوات + الفجوة الأساسية + الإجراء التالي + المجاهيل + الطابع الزمني
+- `GapsDataService.getGapsData/getPrimaryGap/getNextBestAction`: واجهة القراءة لمحرك الخطوة التالية
+
+**الترابط مع باقي المشروع:**
+- يستورد من: `./types` و `./mock-data`
+- يُستخدم من قبل: `src/pages/next/m09/*` (الoverview/details/create) ومصدَّر عبر `services/index.ts`
+- مرتبط بـ Route: `/next/*`
+
+**آخر تحديث:** FE-P01 + 2026-10-12
+
+---
+
+## `src/pages/next/m09/` (6 شاشات: Q-0321/0323/0324/0327/0349/0351)
+
+**الغرض:** محرك الخطوة التالية — عرض الفجوة الكبرى والتوصية بإجراء واحد دقيق مع الثقة والمجاهيل في `ExplainDrawer`.
+
+**يحتوي على:**
+- `M09OverviewPage`: بطاقة الفجوة الكبرى + بطاقة الإجراء (شريط ثقة) + شبكة كل الفجوات + قائمة المجاهيل
+- `M09DetailsPage`: تحليل القوة (حالي/مستهدف/دلتا) + الأثر + المسار + الأدلة الموجودة/المفقودة (fallback للفجوة الأساسية عند غياب `gapId`)
+- `M09CreatePage`: اختيار فجوات + هدف مخصص + توليد خطة مراحل
+- `M09ResultsPage`: ملخص تقدم + شارات `ProvenClaimedBadge` + إنجازات
+- `M09EmptyPage` / `M09ErrorPage`: حالة الفراغ + التعافي الآمن مع وضع تجريبي
+- `m09.module.css`: توكنز التصميم + RTL + متجاوب
+
+**الترابط مع باقي المشروع:**
+- يستورد من: `services/gaps-data` + `components/patterns/*` + `constants/routes`
+- مرتبط بـ Route: `/next/overview|details|create|results|empty|error`
+
+**آخر تحديث:** FE-P01 + 2026-10-12
+
+---
+
+## `src/pages/import/m04/` (6 شاشات: Q-0121/0123/0124/0127/0149/0151)
+
+**الغرض:** مركز الاستيراد — LinkedIn ZIP وروابط Credly/LeetCode وPAT لـ HackTheBox (بالذاكرة فقط، لا تخزين).
+
+**يحتوي على:**
+- `M04OverviewPage`: 4 بطاقات مصادر + إحصائيات + سياسة الأمان الثلاثية
+- `M04DetailsPage`: تفاصيل المصدر + عينات أدلة + تحذير PAT (fallback لمصدر linkedin)
+- `M04CreatePage`: سحب وإفلات ZIP + حقول روابط/PAT + معالجة مرحلية + معاينة قبل التأكيد
+- `M04ResultsPage`: ملخص الأدلة + شارة User-supplied/Fragile + الأثر على الملف
+- `M04EmptyPage` / `M04ErrorPage`: حالة الفراغ + أخطاء شائعة وحلول + تعافٍ دون فقدان الملف
+- `m04.module.css`: توكنز التصميم + RTL + متجاوب
+
+**الترابط مع باقي المشروع:**
+- يستورد من: `components/patterns/*` + `constants/routes`
+- مرتبط بـ Route: `/import/overview|details|create|results|empty|error`
+
+**حالات خاصة يجب معرفتها:**
+- أي PAT يبقى في متغير JS فقط أثناء الجلسة — مؤكد آلياً في `scripts/verify-m04.cjs`
+- نص Q-0149 الحرفي غير موجود في أي مواصفة بالمستودع (DECISIONS 015)
+
+**آخر تحديث:** FE-P01 + 2026-10-12
+
+---
+
+## `src/pages/home/m02/` (5 شاشات: Q-0043/0044/0047/0069/0071 بجانب Q-0041)
+
+**الغرض:** اللوحة الرئيسية التنفيذية بست حالات — Q-0041 هي `HomePage` القائمة.
+
+**يحتوي على:**
+- `M02DetailsPage`: تبويبات كفاءات/أدلة/DNA/خط زمني من `MasterProfileService`
+- `M02CreatePage`: تخصيص ويدجتس (مقاييس/إجراءات/رؤى/اجتماعي) + معاينة مباشرة
+- `M02ResultsPage`: KPIs + شارات + أقوى كفاءة + نشاط أخير + خطوات تالية (دورا المطور والمنشأة)
+- `M02EmptyPage`: لوحة المستخدم الجديد + 4 خطوات إعداد موجه
+- `M02ErrorPage`: سيناريوهات خطأ + وضع محدود + شارة `[Demo / تجريبي]` عند العمل بلا اتصال
+- `m02.module.css`: توكنز التصميم + RTL + متجاوب
+
+**الترابط مع باقي المشروع:**
+- يستورد من: `services/master-profile.service` + `contexts/useRole` + `components/patterns/*`
+- مرتبط بـ Route: `/home|/home/details|customize|summary|empty|error`
+
+**آخر تحديث:** FE-P01 + 2026-10-12
+
+---
+
+## `scripts/verify-m09.cjs` + `scripts/verify-m04.cjs` + `scripts/verify-m02.cjs`
+
+**الغرض:** تحقق Playwright بالمتصفح الحقيقي (`channel: 'chrome'`) — انتظار انصراف السبلاش + نقرات حقيقية + صفر أخطاء console + 18 لقطة في `verification/{m09,m04,m02}/`.
+
+**يحتوي على:**
+- 6 مسارات × 3 وحدات مع تفاعل مخصص لكل شاشة (ExplainDrawer، تنقّل AnchorNav، تبديل الدور، تعبئة روابط)
+- فحص أمان M04: لا مفاتيح token/PAT في `localStorage`/`sessionStorage`
+- إدخالات `verify:m09/m04/m02/fe-p01` في `package.json`
+
+**آخر تحديث:** FE-P01 + 2026-10-12
+
+---
+
+## `src/components/layout/MainLayout.tsx` + `src/app/App.tsx` (تعديل FE-P01)
+
+**الغرض:** تغليف `ErrorBoundary` على مستويين لمنع انهيار الواجهة.
+
+**يحتوي على:**
+- `MainLayout`: `ErrorBoundary resetKeys=[pathname]` حول `Outlet` (تعافٍ inline + reset عند التنقل)
+- `App`: `ErrorBoundary` حول `RouterProvider` (شبكة أمان للمسارات المستقلة)
+
+**آخر تحديث:** FE-P01 + 2026-10-12
+
+---
+
 ## سجل التحديثات على هذا الملف نفسه
 
 | التاريخ | Task ID | التغيير |
 |---|---|---|
+| 2026-10-12 | FE-P01 | توثيق `gaps-data.ts` + 17 شاشة (m09/m04/m02) + 3 سكربتات تحقق + تغليف ErrorBoundary |
 | 2026-09-07 | UI-01 | إنشاء مكوّن `QudraLogo.tsx` وتوحيده عبر 6 شاشات وحذف أصول SVG المشبوهة |
 | 2026-09-07 | CSS-01 | توحيد توكنز `design-system.html`، إعادة تصنيف المكوّنات (المسار أ/ب)، وبناء `.linkbtn` و `.act` |
 | — | — | إنشاء الهيكل الابتدائي قبل بدء التنفيذ |

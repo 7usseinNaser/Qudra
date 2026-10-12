@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/ui/Button';
-import { GitHubService, type GitHubRepo } from '../../../services/github.service';
+import { GitHubService } from '../../../services/github.service';
+import type { GitHubRepo } from '../../../services/types';
 import { ProfileEditorService } from '../../../services/profile-editor.service';
 import styles from './m14.module.css';
-import { ArrowRight, CheckCircle, Sparkles, Search, GitHub, ShieldCheck, FileCode2, AlertCircle, Star, GitFork, Cpu, ExternalLink, GitCommit } from 'lucide-react';
+import { ArrowRight, CheckCircle, Sparkles, Search, ShieldCheck, FileCode2, AlertCircle, Star, GitFork, Cpu, ExternalLink, GitCommit } from 'lucide-react';
+import { GithubIcon } from '../../../components/ui/GithubIcon';
 
 interface AnalysisResult {
   repoId: string;
@@ -37,7 +39,7 @@ export const M14ResultsPage: React.FC = () => {
         setRepos(list);
 
         const scannedRepos = list.filter(r => r.isScanned);
-        const mockResults: AnalysisResult[] = scannedRepos.map((repo, idx) => ({
+        const mockResults: AnalysisResult[] = scannedRepos.map((repo) => ({
           repoId: repo.id,
           repoName: repo.name,
           repoFullName: repo.fullName,
@@ -175,12 +177,12 @@ export const M14ResultsPage: React.FC = () => {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        {results.map((result, index) => (
+        {results.map((result) => (
           <div key={result.repoId} className={styles.resultCard}>
             <div className={styles.resultCardHeader}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
-                  <GitHub size={20} style={{ color: 'var(--proof)' }} />
+                  <span style={{ color: 'var(--proof)' }}><GithubIcon size={20} /></span>
                   <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700, color: 'var(--ink)' }}>
                     {result.repoFullName}
                   </h3>

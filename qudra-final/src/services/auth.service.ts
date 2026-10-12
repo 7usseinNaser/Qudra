@@ -58,7 +58,7 @@ export const AuthService = {
       const user = mapRemoteUserToDomain(remoteUser);
       QudraStore.setUser(user);
       return user;
-    } catch (error) {
+    } catch {
       // If token expired (401), apiClient clears token automatically
       return null;
     }
